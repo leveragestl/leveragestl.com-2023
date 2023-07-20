@@ -79,6 +79,19 @@
     }
   }
 
+  i.arrow-right {
+    position: absolute;
+    top: 75%;
+    left: 0;
+    width: 26px;
+    height: 16px;
+    opacity: 0;
+    transform: translate(-25%, -25%);
+    z-index: 50;
+    background-color: theme('colors.gold');
+    transition: opacity 300ms $ease-in-cubic;
+  }
+
   &:hover {
     .workTile {
       &__title {
@@ -113,17 +126,4 @@
     }
     
   }
-}
-
-i.arrow-right {
-  position: absolute;
-  top: 75%;
-  left: 0;
-  width: 26px;
-  height: 16px;
-  opacity: 0;
-  transform: translate(-25%, -25%);
-  z-index: 50;
-  background-color: theme('colors.gold');
-  transition: opacity 300ms $ease-in-cubic;
 }
