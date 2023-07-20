@@ -1,0 +1,9 @@
+---
+const {classes} = Astro.props;
+const defaultClasses = 'bg-darkgray text-white h-screen wrapper flex items-center'
+---
+<section id="hero" class:list={[classes ? defaultClasses + ' ' + classes : defaultClasses]}>
+  <div class="">
+    <slot />
+  </div>
+</section>

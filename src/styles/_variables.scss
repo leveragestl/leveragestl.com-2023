@@ -1,0 +1,11 @@
+// =============================================================================
+// CSS Variables
+// =============================================================================
+
+:root {
+	--grid-margin: max(5vw, calc((100vw - theme('screens.2xl')) / 2));
+	--container-margin: max(0px, calc((100vw - theme('screens.6xl')) / 2));
+	--margin-diff: calc(var(--grid-margin) - var(--container-margin));
+	--column-width: calc((100vw - var(--grid-margin)) / 12);
+  --wrapper-width: calc(var(--grid-margin) * 12);
+}

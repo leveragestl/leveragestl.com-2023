@@ -1,0 +1,317 @@
+---
+interface Props {
+  label: string;
+  url: string;
+  external?: boolean;
+}
+
+const { label, url, external = false } = Astro.props
+---
+<!-- <a class="button text-gold font-merriweather font-bold text-18 antialiased italic" target={external && '_blank'} href={url} >{label}</a> -->
+
+<span class="button button--slash text-gold hover:text-white font-merriweather font-bold text-18 antialiased italic transition-colors duration-500 ease-in-out" data-aos="fade-up">
+  <a href={url} target={external && '_blank'} class="anchor" data-anchor-id="meet-team">
+    <span class="text">{label}</span>
+    <span class="line line--right"></span>
+    <span class="line line--top"></span>
+    <span class="line line--left line--left--end"></span>
+    <span class="line line--left line--left--start"></span>
+    <span class="line line--bottom"></span>
+  </a>
+</span>
+
+<style lang="scss">
+  .button {
+    font-size: 15px;
+    text-align: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    position: relative;
+
+    &--slash {
+      overflow: visible;
+
+      a {
+        padding: 8px 15px;
+        display: inline-block;
+        border: 3px solid transparent;
+        position: relative;
+        cursor: pointer;
+
+        .text {
+          display: block;
+        }
+      }
+
+      .line {
+        position: absolute;
+        background: theme('colors.gold');
+
+        &--left--start {
+          width: 3px;
+          bottom: -3px;
+          top: 3px;
+          left: -10px;
+          height: 75%;
+          transform: skew(-15deg) scale3d(1, 1, 1);
+          transition: transform 0.125s cubic-bezier(.68,.01,.71,.98) .29s;
+          transform-origin: bottom;
+        }
+
+      }
+
+      &--white {
+
+        a {
+          color: white;
+        }
+
+        .line {
+          background: white;
+        }
+      }
+    }
+
+    &--box {
+      background: transparent;
+      width: 145px;
+      padding: 12px 0;
+      margin: 0 auto;
+      font-size: 14px;
+      line-height: 14px;
+      border: 1px solid theme('colors.gold');
+      display: block;
+
+      &:before {
+        display: none;
+      }
+
+      &-white {
+        color: white;
+        border: 1px solid white;
+      }
+    }
+
+    &--hasWrap {
+      background: white;
+      width: 250px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      display: block;
+    }
+
+    &--back {
+      color: theme('colors.gold');
+      background: white;
+      margin-top: 20px;
+      border: none;
+      position: relative;
+
+      &:before {
+        content: "";
+        width: 18px;
+        height: 12px;
+        background: white url(https://res.cloudinary.com/dmvyaxsbi/image/upload/f_auto,q_auto/leverage_media/arrow-back-thin@2x.png) no-repeat;
+        background-size: 18px 12px;
+        display: block;
+        position: absolute;
+        left: calc(50% - 45px);
+      }
+    }
+
+    &--next {
+      color: theme('colors.gold');
+      z-index: 1;
+
+      &:after {
+        width: 230px;
+      }
+    }
+  }
+  @media only screen and (min-width: 960px) {
+    .button {
+      overflow: hidden;
+      transition: color 0.75s;
+      cursor: pointer;
+
+      &--box {
+
+        &:after {
+          content: "";
+          width: 145px;
+          height: 50px;
+          margin: 0 0 0 0;
+          z-index: -1;
+          position: absolute;
+          top: 0;
+          left: 0;
+          background: theme('colors.gold');
+          display: block;
+          transform: translateX(-100%);
+          transition: transform 0.5s;
+          transition-timing-function: cubic-bezier(0, 0.62, 0.27, 0.99);
+        }
+
+        &:hover {
+          color: white;
+
+          &:after {
+            transform: translateX(0);
+          }
+        }
+
+        &-header {
+          color: black;
+          border: 1px solid black;
+          // transition: 3s !important;
+
+          &:after {
+            background: black;
+          }
+
+          &:hover {
+            color: white;
+          }
+        }
+
+        &-white {
+          z-index: 1;
+
+          &:after {
+            background: white;
+          }
+
+          &:hover {
+            color: theme('colors.gold');
+          }
+        }
+      }
+
+      &--slash {
+        overflow: visible;
+
+        .line {
+
+          &--left--end {
+            width: 2px;
+            bottom: -2px;
+            top: -2px;
+            left: -2px;
+            transform: scale3d(1, 0, 1);
+            transform-origin: top;
+            transition: transform 0.125s cubic-bezier(.68,.01,.71,.98);
+          }
+
+          &--top {
+            height: 2px;
+            left: -2px;
+            right: -2px;
+            top: -2px;
+            transform: scale3d(0, 1, 1);
+            transform-origin: right;
+            transition: transform 0.08s cubic-bezier(.68,.01,.71,.98) 0.125s;
+          }
+
+          &--right {
+            width: 2px;
+            bottom: -2px;
+            top: -2px;
+            right: -2px;
+            transform: scale3d(1, 0, 1);
+            transform-origin: bottom;
+            transition: transform 0.05s cubic-bezier(.68,.01,.71,.98) 0.205s;
+          }
+
+          &--bottom {
+            width: 108%;
+            height: 2px;
+            bottom: -2px;
+            left: -8%;
+            right: -2px;
+            transform: scale3d(0, 1, 1);
+            transform-origin: left;
+            transition: transform 0.08s cubic-bezier(.68,.01,.71,.98) 0.21s, left .08s linear .21s,width .08s linear .21s;
+          }
+        }
+
+        &:hover {
+
+          .text {
+            transform: translate3d(0, 0, 0);
+            transition: transform 0.6s cubic-bezier(0.2, 0, 0, 1) 0.4s;
+          }
+        }
+
+        a {
+
+          &:hover {
+
+            .line {
+              transform: scale3d(1, 1, 1);
+
+              &--left--start {
+                transform: skew(-15deg) scale3d(1, 0, 1);
+                transition: transform 0.25s cubic-bezier(.68,.01,.71,.98) 0s;
+                transform-origin: bottom;
+              }
+
+              &--bottom {
+                width: 100%;
+                left: 0;
+                transition: transform 0.15s cubic-bezier(.68,.01,.71,.98) 0.25s;
+                transform-origin: left;
+              }
+
+              &--right {
+                transition: transform 0.1s cubic-bezier(.68,.01,.71,.98) 0.4s;
+                transform-origin: bottom;
+              }
+
+              &--top {
+                transition: transform 0.1s cubic-bezier(.68,.01,.71,.98) 0.5s;
+                transform-origin: right;
+              }
+
+              &--left--end {
+                transform: scale3d(1, 1, 1);
+                transition: transform 0.25s cubic-bezier(0, 0.53, 0.29, 1) .6s;
+                transform-origin: top;
+              }
+            }
+          }
+        }
+      }
+
+      &--back {
+        transition: transform .3s cubic-bezier(.67,.02,.27,.95);
+
+        &:before {
+          transition: transform .3s cubic-bezier(.67,.02,.27,.95) .15s;
+        }
+
+        &:hover {
+          color: #a98841;
+          transform: translateX(-10px);
+
+          &:before {
+            background: white url(https://res.cloudinary.com/dmvyaxsbi/image/upload/f_auto,q_auto/leverage_media/arrow-back-thin-hover.png) no-repeat;
+            background-size: 18px 12px;
+            transform: translateX(-5px);
+          }
+        }
+      }
+
+      &--next {
+
+        &:hover {
+
+          &:after {
+            width: 230px;
+          }
+        }
+      }
+    }
+  }
+</style>

@@ -1,0 +1,47 @@
+---
+import CTA from "./CTA.astro"
+const angle = '-6.88deg'
+---
+<div class="wrapperCap wrapperCap--top"></div>
+<div class="wrapperDiagonal">
+  <slot />
+  <CTA />
+</div>
+<div class="wrapperCap wrapperCap--bottom"></div>
+
+<style lang="scss" define:vars={{angle}}>
+  .wrapperDiagonal {
+    position: relative;
+    display: block;
+    background-color: white;
+    color: theme('colors.darkgray');
+    min-height: 100vh;
+    padding-top: 5rem;
+
+    &:global(> *) {
+      position: relative;
+      z-index: 20;
+    }
+  }
+
+  .wrapperCap {
+    --height: 20rem;
+
+    position: relative;
+    display: block;
+    background-color: white;
+    width: 100%;
+    height: var(--height);
+    z-index: 10;
+
+    &--top {
+      transform: skewY(var(--angle)) translateY(50%);
+      margin-top: calc(var(--height) * -0.9);
+    }
+
+    &--bottom {
+      transform: skewY(var(--angle)) translateY(-50%);
+      margin-bottom: calc(var(--height) * -0.9);
+    }
+  }
+</style>

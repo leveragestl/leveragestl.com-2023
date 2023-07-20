@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro'
+import posts from '../data/posts.json'
+import Hero from '../components/Hero.astro'
+import WorkExerpt from '../components/WorkExerpt.astro'
+import WrapperDiagonal from '../components/WrapperDiagonal.astro'
+import Quotes from '../components/Quotes.astro'
+---
+
+<Layout title="Leverage STL" namespace="home">
+  <Hero>
+    <h2 class="h1">We design + build <br class="hidden xl:block"><span class="text-outline text-outline--light">custom brand <br class="hidden xl:block">experiences</span></h2>
+
+    <div class="mt-16">
+      <span class="button button--slash text-gold hover:text-white font-bold antialiased font-merriweather text-18 italic ease-in-out" data-aos="fade-up">
+        <a href="#" class="anchor">
+          <span class="text">learn more</span>
+          <span class="line line--right"></span>
+          <span class="line line--top"></span>
+          <span class="line line--left line--left--end"></span>
+          <span class="line line--left line--left--start"></span>
+          <span class="line line--bottom"></span>
+        </a>
+      </span>
+    </div>
+  </Hero>
+  <!-- <section id="hero" class="bg-darkgray text-white h-screen wrapper flex items-center">
+    <div class="">
+
+    </div>
+  </section> -->
+
+  <WrapperDiagonal>
+    <section data-animGroup data-animEffect="fadeInUp" class="wrapper">
+      <video data-animElem src="" poster="/videoReelThumb.jpg"></video>
+      <div id="introText" class="max-w-screen-md mx-auto my-40">
+        <h4>We are a full-service creative agency in St. Louis that specializes in design, development, and strategic marketing. Passionate dedication to our crafts ranks <span class="highlight-gold">Leverage as one of the best branding and creative companies in St. Louis</span>. We strive to create trusted partnerships with our clients, supporting them in the discovery, creation, and cultivation of their brands.</h4>
+      </div>
+    </section>
+
+    <section data-animGroup data-animEffect="fadeInLeft" class="grid grid-cols-margins-12 items-center">
+      <div class="col-start-wrapper col-end-line-6 pr-10">
+        <figure class="-ml-8">
+          <img src="icon-lightbulb.svg" alt="">
+        </figure>
+        <div class="mt-7">
+          <h3 class="h1 text-outline text-outline--dark">Branding</h3>
+        </div>
+        <blockquote class="mt-4">
+          <p>"Your brand is the single most important investment you can make in your business." <cite>Steve Forbes</cite></p>
+        </blockquote>
+        <p>Don't just take our word for it, listen to the guy who has done okay for himself. We (and Steve) believe branding drives business results. It's the great equalizer—allowing startups to compete with corporate giants. But, it's also the great differentiator—helping you stand apart from your competition.</p>
+        <div class="mt-8">
+          <h3>Branding services we offer:</h3>
+        </div>
+        <ul class="mt-4 list-disc columns-3 pl-4 text-18 leading-[28px] [&>li]:mb-2 antialiased">
+          <li>Brand Guidelines</li>
+          <li>Logo Design</li>
+          <li>Visual Identity</li>
+          <li>Brand Voice</li>
+          <li>Asset Library</li>
+        </ul>
+        <div class="mt-8">
+          <span class="button button--slash text-gold font-merriweather font-bold text-18 antialiased italic transition-colors duration-500 ease-in-out">
+            <a href="#" class="anchor">
+              <span class="text">View more of our branding work</span>
+              <span class="line line--right"></span>
+              <span class="line line--top"></span>
+              <span class="line line--left line--left--end"></span>
+              <span class="line line--left line--left--start"></span>
+              <span class="line line--bottom"></span>
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="md:col-start-mid md:col-end-last">
+        <a data-animElem href="" class="block relative overflow-hidden">
+          <figure class="h-[982px]">
+            <img class="w-full h-full object-center object-cover" src="communityPartnersPreview.png" alt="">
+          </figure>
+          <div class="absolute bottom-0 flex w-full justify-between items-end">
+            <div class="p-12">
+              <h3 class="h2 text-white font-bold">Community Partners</h3>
+            </div>
+            <div class="wedge w-[200px] h-[175px] translate-x-px translate-y-px relative">
+              <i class="arrow-right w-[44px] h-[20px] absolute top-2/3 left-3/4 -translate-x-1/2 -translate-y-1/2 z-50 bg-gold"></i>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="wrapper mt-36 mb-40">
+      <h3 class="h1 text-outline text-outline--dark">Our Work</h3>
+      <div class="grid grid-cols-2 mt-12 gap-y-16">
+        {posts.map((post) => 
+          <WorkExerpt slug={post.slug} title={post.title} img={post.img} tags={post.tags} desc={post.desc} />
+        )}
+      </div>
+
+      <div class="mt-36 w-full text-center">
+        <span class="button button--slash text-gold font-merriweather font-bold text-18 antialiased italic transition-colors duration-500 ease-in-out">
+          <a href="#" class="anchor">
+            <span class="text">view all work</span>
+            <span class="line line--right"></span>
+            <span class="line line--top"></span>
+            <span class="line line--left line--left--end"></span>
+            <span class="line line--left line--left--start"></span>
+            <span class="line line--bottom"></span>
+          </a>
+        </span>
+      </div>
+    </section>
+
+    <Quotes />
+
+    <section class="wrapper mt-40">
+      <div class="bg-darkgray text-white p-24">
+        <div class="w-full text-center mb-12">
+          <h3 class="h2 font-bold">The latest from leverage</h3>
+        </div>
+        <div class="grid grid-cols-3 gap-x-32">
+          <a class="block" href="#">
+            <h3>Meet Drew - Senior Web Developer</h3>
+            <div class="mt-8 text-gold font-serif font-bold text-18 italic">read full article</div>
+          </a>
+          <a class="block" href="#">
+            <h3>Brand Guidelines: What, Why & How?</h3>
+            <div class="mt-6 text-gold font-serif font-bold text-18 italic">read full article</div>
+          </a>
+          <a class="block" href="#">
+            <h3>Web Animation Trends We're Lovin'</h3>
+            <div class="mt-6 text-gold font-serif font-bold text-18 italic">read full article</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </WrapperDiagonal>
+
+</Layout>
+<!--
+<script>
+  import barba from "@barba/core"
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+  gsap.registerPlugin( ScrollTrigger );
+
+  const homeAnimationTL = gsap.timeline({
+    defaults: {
+      duration: 1,
+      ease: 'power2.out',
+    },
+    scrollTrigger: {
+      start: '#hero',
+      markers: true
+    }
+  }).add('start')
+
+  function homeAnimations() {
+  
+    homeAnimationTL.to('#hero', {duration: 3, autoAlpha: 0})
+  }
+
+  barba.hooks.once(() => {
+    homeAnimationTL.set('#hero', {autoAlpha: 0})
+    homeAnimations()
+  })
+
+  barba.hooks.afterLeave(() => {
+    let triggers = ScrollTrigger.getAll();
+    triggers.forEach(function (trigger) {
+      trigger.kill();
+    })
+  })
+
+  barba.hooks.beforeEnter(() => {
+    homeAnimationTL.set('#hero', {autoAlpha: 0})
+  })
+
+  barba.hooks.after(() => {
+    homeAnimations()
+  })
+
+</script>
+-->

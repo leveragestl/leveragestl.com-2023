@@ -1,0 +1,37 @@
+[
+  {
+    "org": "Graphic Design USA",
+    "award": "American Digital Design Award",
+    "proj": "Community Partners",
+    "link": true,
+    "year": "2023"
+  },
+  {
+    "org": "Graphic Design USA",
+    "award": "Health & Wellness Award",
+    "proj": "Post Rx Healthcare",
+    "link": true,
+    "year": "2023"
+  },
+  {
+    "org": "Small Business Monthly",
+    "award": "Most innovative companies",
+    "proj": "",
+    "link": false,
+    "year": "2022"
+  },
+  {
+    "org": "Graphic Design USA",
+    "award": "American Digital Design Award",
+    "proj": "Chalily",
+    "link": true,
+    "year": "2022"
+  },
+  {
+    "org": "Graphic Design USA",
+    "award": "American Digital Design Award",
+    "proj": "Frick's Quality meats",
+    "link": true,
+    "year": "2022"
+  }
+]

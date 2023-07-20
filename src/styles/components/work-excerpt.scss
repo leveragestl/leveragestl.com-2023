@@ -1,0 +1,129 @@
+@import 'node_modules/easings-css';
+
+:root {
+  --rotate: 0;
+  --skewX: 0;
+  --skewY: 0;
+  --translateX: 0;
+  --translateY: 0;
+}
+
+%transforms {
+  transform: rotate(var(--rotate)) skew(var(--skewX), var(--skewY)) translate(var(--translateX), var(--translateY));
+}
+
+.workTile {
+  display: block;
+  margin: 0 5rem;
+
+  &:nth-child(even) {
+    transform: translateY(6rem);
+  }
+
+  &__title {
+    font-weight: 800;
+    transition: color 640ms $ease-out-cubic;
+  }
+
+  &__content {
+    margin-top: 1rem;
+  }
+
+  &__tags {
+    font-family: theme('fontFamily.serif');
+    color: theme('colors.lightgray');
+  }
+
+  &__desc {
+    margin-top: 1.5rem;
+    font-size: 18px;
+    line-height: 28px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 640ms $ease-out-cubic;
+  }
+
+  &__figure {
+    position: relative;
+    height: 554px;
+    margin-bottom: 0;
+    overflow: hidden;
+    transition: all 640ms $ease-out-cubic;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 3s ease-out;
+  }
+
+  &__wedge {
+    position: absolute;
+    bottom: 0;
+    right: -25%;
+    width: 170px; height: 170px;
+
+    &::after {
+      --skewX: -40deg;
+      --translateY: 100%;
+      @extend %transforms;
+
+      content: '';
+      display: block;
+      position: absolute;
+      inset: 0;
+      background-color: white;
+      transition: transform 220ms $ease-in-quad;
+    }
+  }
+
+  &:hover {
+    .workTile {
+      &__title {
+        color: theme('colors.gold');
+      }
+
+      &__desc {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+
+      &__figure {
+        // transform: translateY(-5px);
+        // box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+
+      &__img {
+        transform: scale(1.05);
+      }
+
+      &__wedge {
+        &::after {
+          --translateY: 0%;
+          transition: transform 430ms $ease-out-cubic;
+        }
+      }
+    }
+
+    i.arrow-right {
+      opacity: 1;
+      transition: opacity 300ms $ease-out-cubic;
+    }
+    
+  }
+}
+
+i.arrow-right {
+  position: absolute;
+  top: 75%;
+  left: 0;
+  width: 26px;
+  height: 16px;
+  opacity: 0;
+  transform: translate(-25%, -25%);
+  z-index: 50;
+  background-color: theme('colors.gold');
+  transition: opacity 300ms $ease-in-cubic;
+}

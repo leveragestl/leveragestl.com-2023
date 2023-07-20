@@ -1,0 +1,11 @@
+---
+const { name, title, img } = Astro.props
+---
+
+<div class="slide">
+  <figure class="mb-8">
+    <img src={img} alt="">
+  </figure>
+  <h4 class="h2 !mb-0">{name}</h4>
+  <p class="font-serif text-lightgray">{title}</p>
+</div>

@@ -1,0 +1,124 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<header id="site-header" class="fixed z-50 top-0 left-0 w-full h-[--site-header-height] wrapper flex justify-between items-center">
+  <figure id="logo" class="h-full flex justify-start items-center">
+    <a href="/" class="block max-h-full">
+      <Logo />
+    </a>
+  </figure>
+
+  <nav class="text-white font-bold">
+    <ul class="flex gap-x-8 uppercase tracking-wider">
+      <li class="hover:text-gold"><a href="/">Home</a></li>
+      <li class="hover:text-gold"><a href="/about/">About</a></li>
+      <li class="hover:text-gold"><a href="/styles/">Styles</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div id="site-header-bg" class="fixed z-40 top-0 left-0 w-full h-[--site-header-height] bg-white"></div>
+
+<script>
+  function headerStyle() {
+    const siteHeader = document.querySelector('#site-header');
+
+    let scrolled = document.scrollingElement.scrollTop;
+    let position = document.querySelector('body').offsetTop;
+    if( scrolled > position + 10 ) {
+      document.body.classList.add('scrolled');
+    } else {
+      document.body.classList.remove('scrolled');
+    }
+  } headerStyle();
+  
+  document.addEventListener("scroll", (e) => {
+    headerStyle();
+  });
+</script>
+
+<style lang="scss" is:global>
+  @import 'node_modules/easings-css';
+
+  :root {
+    --site-header-height: 100px; 
+  }
+
+  #site-header-bg {
+    transform: translateY(-100%);
+    transition: transform 50ms ease-out, opacity 200ms ease-out;  
+  }
+
+  nav {
+    z-index: 10;
+
+    li {
+      transition: color 200ms ease-out;
+    }
+  }
+
+  #logo {
+    a {
+      height: var(--site-header-height);
+      padding: 20px 0;
+      z-index: 999;
+
+      path, polygon {
+        transition: fill 200ms ease-out;
+      }
+
+      body.scrolled & {
+        path, polygon {
+          fill: theme('colors.darkgray');
+        }
+      }
+
+      &:hover {
+        path, polygon {
+          fill: theme('colors.gold') !important;            
+        }
+      }
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Scroll
+  body.scrolled {
+
+    #site-header-bg {
+      transform: translateY(0);
+      transition: transform 300ms ease-out;  
+    }
+
+    nav {
+      color: theme('colors.darkgray');
+    }
+
+    #logo {
+      path, polygon {
+        fill: theme('colors.darkgray');
+      }
+    }
+  }
+
+  html.is-animating {
+    #site-header-bg {
+      opacity: 0;
+    }
+
+    nav li a {
+      color: white;
+    }
+
+    #logo {
+      path, polygon {
+        fill: white !important;
+      }
+    }
+  }
+</style>

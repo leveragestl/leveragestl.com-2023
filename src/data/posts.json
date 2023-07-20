@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Frick's Quality Meats",
+    "img": "/work-fricks-thumb.png",
+    "slug": "#",
+    "tags": ["video", "website design + development", "photography"],
+    "desc": "New photography and a brand anthem video helped showcase the emotional connection people feel when consuming their products."
+  },
+  {
+    "title": "Muros",
+    "img": "/work-muros-thumb.png",
+    "slug": "#",
+    "tags": ["website design + development"],
+    "desc": "Nullam id dolor id nibh ultricies vehicula ut id elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+  },
+  {
+    "title": "Community Partners",
+    "img": "/work-communityPartners-thumb.png",
+    "slug": "#",
+    "tags": ["branding", "website design + development"],
+    "desc": "Nullam id dolor id nibh ultricies vehicula ut id elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+  },
+  {
+    "title": "Nestlé Purina Careers",
+    "img": "/work-nestlePurinaCareers-thumb.png",
+    "slug": "#",
+    "tags": ["website design + development"],
+    "desc": "Nullam id dolor id nibh ultricies vehicula ut id elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+  }
+]

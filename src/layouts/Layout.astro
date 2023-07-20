@@ -1,0 +1,40 @@
+---
+import '../styles/global.scss'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro';
+// import { PageTransition } from 'astro-page-transition';
+
+export interface Props {
+	title: string;
+  namespace: string;
+}
+
+const { title, namespace } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body data-barba="wrapper" class:list={namespace}>
+    <SiteHeader />
+    <main id="swup" class="transition-fade" data-barba="container" data-barba-namespace={namespace}>
+      <slot />
+      <!-- <div data-transition-mask class="fixed inset-0 bg-gold w-[150%] -left-[25%] -skew-x-[21.8deg] z-[49] hidden"></div> -->
+    </main>
+    <SiteFooter />
+    <div class="transition-wipe"></div>
+
+    <script>
+      // import '../scripts/barba.js'
+      // import '../scripts/main.js'
+      import '../scripts/utils/swup.js'
+    </script>
+	</body>
+</html>
