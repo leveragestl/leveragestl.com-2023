@@ -1,22 +1,36 @@
 ---
 import CTA from "./CTA.astro"
-const angle = '-6.88deg'
+// const diagWrapperAngle = '-6.88deg'
+// const diagWrapperHeight = '15vw'
+
+interface Props {
+  class?: string;
+  headerScrollTrigger?: boolean;
+}
+
+const { class: className, headerScrollTrigger = true } = Astro.props;
 ---
+{headerScrollTrigger ? <div data-header-scrolled></div> : ''}
 <div class="wrapperCap wrapperCap--top"></div>
-<div class="wrapperDiagonal">
+<div class:list={['wrapperDiagonal', className]}>
   <slot />
   <CTA />
 </div>
 <div class="wrapperCap wrapperCap--bottom"></div>
 
-<style lang="scss" define:vars={{angle}}>
+<style lang="scss">
   .wrapperDiagonal {
     position: relative;
     display: block;
     background-color: white;
     color: theme('colors.darkgray');
     min-height: 100vh;
-    padding-top: 5rem;
+    padding-top: var(--diagWrapperHeight);
+    padding-bottom: var(--diagWrapperHeight);
+
+    @screen xl {
+      padding-bottom: 0;
+    }
 
     &:global(> *) {
       position: relative;
@@ -25,23 +39,21 @@ const angle = '-6.88deg'
   }
 
   .wrapperCap {
-    --height: 20rem;
-
     position: relative;
     display: block;
     background-color: white;
     width: 100%;
-    height: var(--height);
+    height: var(--diagWrapperHeight);
     z-index: 10;
 
     &--top {
-      transform: skewY(var(--angle)) translateY(50%);
-      margin-top: calc(var(--height) * -0.9);
+      transform: skewY(var(--diagWrapperAngle)) translateY(50%);
+      margin-top: calc(var(--diagWrapperHeight) * -0.9);
     }
 
     &--bottom {
-      transform: skewY(var(--angle)) translateY(-50%);
-      margin-bottom: calc(var(--height) * -0.9);
+      transform: skewY(var(--diagWrapperAngle)) translateY(-50%);
+      margin-bottom: calc(var(--diagWrapperHeight) * -0.9);
     }
   }
 </style>

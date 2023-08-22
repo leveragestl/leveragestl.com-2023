@@ -1,6 +1,7 @@
 {
   // "extends": "astro/tsconfigs/base"
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "types": ["unplugin-fonts/client"]
   }
 }

@@ -3,7 +3,6 @@ import '../styles/global.scss'
 import SiteHeader from '../components/SiteHeader.astro'
 import SiteFooter from '../components/SiteFooter.astro';
 // import { PageTransition } from 'astro-page-transition';
-
 export interface Props {
 	title: string;
   namespace: string;
@@ -18,13 +17,16 @@ const { title, namespace } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description">
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+    <link rel="preload" href="https://use.typekit.net/cin4lzn.css" as="style">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://use.typekit.net/cin4lzn.css">
 		<title>{title}</title>
 	</head>
 	<body data-barba="wrapper" class:list={namespace}>
     <SiteHeader />
-    <main id="swup" class="transition-fade" data-barba="container" data-barba-namespace={namespace}>
+    <div id="site-header-bg" class="fixed z-40 top-0 left-0 w-full h-[--site-header-height] bg-white"></div>
+    <main id="swup" data-barba="container" data-barba-namespace={namespace}>
       <slot />
       <!-- <div data-transition-mask class="fixed inset-0 bg-gold w-[150%] -left-[25%] -skew-x-[21.8deg] z-[49] hidden"></div> -->
     </main>

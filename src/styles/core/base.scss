@@ -1,0 +1,18 @@
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: theme('colors.darkgray');
+  color: theme('colors.darkgray');
+  font-family: proxima-nova, sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  // scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: theme('colors.gold');
+  color: white;
+}

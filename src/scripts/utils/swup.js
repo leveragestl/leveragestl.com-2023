@@ -1,8 +1,15 @@
 import Swup from 'swup';
-import SwupScrollPlugin from '@swup/scroll-plugin';
+// import SwupScrollPlugin from '@swup/scroll-plugin';
 import SwupScriptsPlugin from '@swup/scripts-plugin';
 
+import {gsap} from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger)
+
+const swup = new Swup();
+
+/*
 const swup = new Swup({
   skipPopStateHandling: (event) => event.state?.source !== 'swup',
   animateHistoryBrowsing: true,
@@ -17,9 +24,12 @@ const swup = new Swup({
     })
   ]
 });
+*/
+let triggersExist = false
 
 // Animation Imports
-import { generalAnimations, homeAnimations, aboutAnimations } from '../core/animation';
+import { generalAnimations, heroAnimation, homeAnimations, aboutAnimations } from '../core/animation';
+import { siteHeader } from '../core/siteHeader';
 
 // Run once when page loads
 if (document.readyState === 'complete') {
@@ -27,23 +37,23 @@ if (document.readyState === 'complete') {
 } else {
   document.addEventListener('DOMContentLoaded', () => init());
 }
-
 // Run after every additional navigation by swup
-swup.on('pageView', () => init());
+swup.hooks.on('page:view', () => init());
 
 function unload() {
-  if (document.querySelector('#carousel')) {
-    // carousel.destroy()
-    let triggers = ScrollTrigger.getAll();
-    triggers.forEach(function (trigger) {
-        trigger.kill();
-    })
-  }
+  // const triggers = ScrollTrigger.getAll();
+  // if (triggers) {
+  //   triggers.forEach((trigger) => {
+  //     trigger.kill();
+  //   })
+  // }
+  ScrollTrigger.killAll()
+  document.body.classList.remove('scrolled')
 }
-
-swup.on('willReplaceContent', () => unload());
+swup.hooks.before('content:replace', () => unload());
 
 function init() {
+
   if (document.querySelector('#carousel')) {
     // new Carousel('#carousel')
   }
@@ -52,19 +62,27 @@ function init() {
     // $('#lightbox').lightbox()
   }
 
-  if (document.querySelector('#something-else')) {
-    // and so on
+  if (document.querySelector('#site-header')) {
+    siteHeader()
   }
-
+  /*
   if (document.querySelector('[data-animElem]')) {
     generalAnimations()
   }
 
-  if (document.querySelector('#swup[data-barba-namespace="home"]')) {
-    homeAnimations()
+  if (document.querySelector('#hero')) {
+    heroAnimation()
   }
-
+  */
+  if (document.querySelector('[data-barba-namespace="home"]')) {
+    setTimeout(() => homeAnimations(), 50);
+  }
+  /*
   if (document.querySelector('#swup[data-barba-namespace="about"]')) {
     aboutAnimations()
   }
+  */
+
+  // heroAnimation()
+
 }

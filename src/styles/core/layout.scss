@@ -1,0 +1,50 @@
+@use '../_partials/_mixins' as *;
+
+.wrapper {
+  @include wrapper;
+}
+
+.no-wrapper {
+  @include no-wrapper;
+}
+
+.wrapperDiagonal {
+  position: relative;
+  display: block;
+  background-color: white;
+  color: theme('colors.darkgray');
+  min-height: 100vh;
+  padding-top: var(--diagWrapperHeight);
+  padding-bottom: var(--diagWrapperHeight);
+
+  @screen xl {
+    padding-bottom: 0;
+  }
+}
+
+.wrapperCap {
+  position: relative;
+  display: block;
+  background-color: white;
+  width: 100%;
+  height: var(--diagWrapperHeight);
+  z-index: 10;
+
+  &--top {
+    transform: skewY(var(--diagWrapperAngle)) translateY(50%);
+    margin-top: calc(var(--diagWrapperHeight) * -0.9);
+
+    [data-barba-namespace="home"] & {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      // height: 100%; 
+    }
+  }
+
+  &--bottom {
+    transform: skewY(var(--diagWrapperAngle)) translateY(-50%);
+    margin-bottom: calc(var(--diagWrapperHeight) * -0.9);
+  }
+}

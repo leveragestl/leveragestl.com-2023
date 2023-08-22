@@ -1,21 +1,23 @@
 ---
 import NavArrows from "./NavArrows.astro"
+
+const { class: className } = Astro.props;
 ---
 
-<section class="wrapper">
-  <div class="max-w-screen-lg">
-    <h3 class="h1 text-outline text-outline--dark">What our clients are saying...</h3>
+<div class:list={[className]}>
+  <div class="max-w-lg">
+    <h3 class="h4 mb-8 lg:mb-16">What our clients are saying...</h3>
   </div>
-  <div class="relative max-w-screen-md mx-auto">
-    <blockquote class="mt-12">
-      <p class="h4">“Working with Leverage on our website redesign was easy. The process they use from the initial meeting to the finishing of the project is very detailed and personal. They do excellent work, but more importantly they create a relationship with their customer. Thank you to Matt, Laura, and the Leverage Team!”</p>
-      <cite class="block not-italic mt-16">
-        <span class="h3">Spiker H.</span><br>
-        <span class="font-sans">The Tournament Guy</span>
+  <div class="relative max-w-[824px] mx-auto">
+    <blockquote class="mb-10 grid grid-cols-2 gap-y-8 lg:gap-y-12 justify-between">
+      <p class="col-span-2">“Working with Leverage on our website redesign was easy. The process they use from the initial meeting to the finishing of the project is very detailed and personal. They do excellent work, but more importantly they create a relationship with their customer. Thank you to Matt, Laura, and the Leverage Team!”</p>
+      <cite class="col-span-2 lg:col-span-1">
+        <div class="h4 mb-0">Spiker H.</div>
+        <div class="italic text-base">The Tournament Guy</div>
       </cite>
+      <div class="col-span-2 lg:col-span-1 flex w-fit justify-end mx-auto lg:mx-0 lg:w-auto gap-x-2 mt-2 lg:mt-8">
+        <NavArrows />
+      </div>  
     </blockquote>
-    <div class="flex gap-x-2 absolute right-0 -bottom-12">
-      <NavArrows />
-    </div>
   </div>
-</section>
+</div>

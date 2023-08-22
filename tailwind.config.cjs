@@ -30,12 +30,12 @@ module.exports = {
       'portrait': { 'raw': '(orientation: portrait)' },
     },
     fontFamily: {
-			'head': ['Proxima Nova'],
-			'sans': ['Proxima Nova'],
-			'proxima': ['Proxima Nova'],
-			'body': ['Merriweather'],
-			'serif': ['Merriweather'],
-			'merriweather': ['Merriweather'],
+			'head': ['proxima-nova'],
+			'sans': ['proxima-nova'],
+			'proxima': ['proxima-nova'],
+			'body': ['merriweather'],
+			'serif': ['merriweather'],
+			'merriweather': ['merriweather'],
 		},
     fontSize: {
       'xs': ['.75rem', '1rem'],
@@ -152,7 +152,7 @@ module.exports = {
 			},
       colors: {
         'lightgray': '#8C8A8A',
-        'mediumgray': '#333333',
+        'mediumgray': '#353535',
         'darkgray': '#181818',
         'gold': '#BB9A54'
       },

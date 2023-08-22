@@ -12,7 +12,6 @@ let mm = gsap.matchMedia();
 // General
 // =============================================================================
 export function generalAnimations() {
-  console.log('hi from generalAnimations');
   mm.add("(min-width: 1023.98px)", () => {
 
     // ~~~~~~~~~~~ Animation Groups ~~~~~~~~~~ //
@@ -110,49 +109,37 @@ export function generalAnimations() {
 // Hero Animation
 // =============================================================================
 export function heroAnimation() {
-  const heroSection = document.querySelector('#hero-section')
-  const logoPrimaries = gsap.utils.toArray('#logo svg .primary-color')
-  const menuIcon = document.querySelector('.menu-icon')
-  const menuItems = gsap.utils.toArray('#nav-primary li.menu-item')
-  const headline = document.querySelector('#hero-headline')
-  const subhead = document.querySelector('#hero-subhead')
-
-  const heroMask = document.createElement('div')
-  heroMask.id = 'hero-mask'
-  heroMask.classList.add('bg-white', 'w-full', 'h-full', 'col-start-first', 'col-end-last', 'row-start-first', 'row-end-last', 'z-10')
-  heroSection.appendChild(heroMask)
-
-  const heroAnimationTL = gsap.timeline({
-    defaults: {
-      duration: 1,
-      delay: 2,
-      ease: 'power2.out',
-    }
-  }).add('start')
-
-  heroAnimationTL.to(heroMask, {yPercent: -100}, 'start')
-  heroAnimationTL.to([subhead, headline, menuItems], {color: 'white'}, 'start')
-  heroAnimationTL.to(logoPrimaries, {fill: 'white'}, 'start')
-
-  let scrolled = document.scrollingElement.scrollTop;
-  let position = document.querySelector('body').offsetTop;
-  if( scrolled < position + 10 ) {
-    menuIcon.classList.add('menu-icon--blue')
-
-    setTimeout(() => {
-      menuIcon.classList.remove('menu-icon--blue')
-    }, 1000);
-  }
+  // gsap.fromTo('.hero', {y: 50, autoAlpha: 0}, {duration: 1, autoAlpha: 1, y: 0})
 }
 
 // =============================================================================
 // Home Animations
 // =============================================================================
 export function homeAnimations() {
-  console.log('hi from homeAnimations');
-  // ~~~~~~~~~~~~~~~~~ Home ~~~~~~~~~~~~~~~~ //
-  gsap.from('#hero', {duration: 1, y: 50, autoAlpha: 0})  
-  gsap.from('#introText .highlight-gold', {duration: 0.75, ease: 'power4.easeIn', backgroundSize: '100% 0.5em, 0% 0.5em', scrollTrigger: {trigger: '#introText', start: 'top center'}})
+  // ~~~~~~~~~~~~~~~~~ Hero ~~~~~~~~~~~~~~~~ //
+  // gsap.fromTo('#hero', {y: 50, autoAlpha: 0}, {duration: 1, autoAlpha: 1, y: 0})
+  // gsap.from('#introText .highlight-gold', {duration: 0.75, ease: 'power4.easeIn', backgroundSize: '100% 0.5em, 0% 0.5em', scrollTrigger: {trigger: '#introText', start: 'top center'}})
+
+  mm.add("(min-width: 1023.98px)", () => {
+    const pinHeroTL = gsap.timeline({
+      defaults: {
+        ease: 'none',
+        duration: 1
+      },
+      scrollTrigger: {
+        start: 'top top',
+        trigger: '#home_hero',
+        pin: '#home_hero',
+        scrub: true,
+        end: '100%',
+        // anticipatePin: 1,
+        // markers: true,
+      }
+    })
+    pinHeroTL.to('video', {y: 0})
+
+  })
+  
   /*
   if (document.querySelector('main[data-barba-namespace="home"]')) {
     const homeMain = document.querySelector('main[data-barba-namespace="home"]');
@@ -189,7 +176,7 @@ export function homeAnimations() {
 // About Animations
 // =============================================================================
 export function aboutAnimations() {
-  gsap.from('#hero', {duration: 1, y: 50, autoAlpha: 0})
+  // gsap.fromTo('#hero', {y: 50, autoAlpha: 0}, {duration: 1, autoAlpha: 1, y: 0})
 }
 
 // =============================================================================

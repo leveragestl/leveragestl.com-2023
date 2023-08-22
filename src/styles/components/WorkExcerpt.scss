@@ -14,19 +14,26 @@
 
 .workTile {
   display: block;
-  margin: 0 5rem;
+
+  @screen xl {
+    margin: 0 4rem;    
+  }
 
   &:nth-child(even) {
-    transform: translateY(6rem);
+    @screen xl {
+      margin-top: 6rem;
+    }
   }
 
   &__title {
     font-weight: 800;
     transition: color 640ms $ease-out-cubic;
+    margin-bottom: 0.5rem;
   }
 
   &__content {
     margin-top: 1rem;
+    text-align: left;
   }
 
   &__tags {
@@ -41,17 +48,23 @@
     opacity: 0;
     transform: translateY(10px);
     transition: all 640ms $ease-out-cubic;
+    display: none;
   }
 
   &__figure {
     position: relative;
-    height: 554px;
+    // height: 554px;
+    width: 100%;
+    height: 0;
+    padding-bottom: 102%;
     margin-bottom: 0;
     overflow: hidden;
     transition: all 640ms $ease-out-cubic;
   }
 
   &__img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -60,14 +73,18 @@
   }
 
   &__wedge {
+    --size: 125px;
+
     position: absolute;
     bottom: 0;
-    right: -25%;
-    width: 170px; height: 170px;
+    right: calc(-1 * var(--size));
+    width: var(--size); 
+    height: var(--size);
 
     &::after {
-      --skewX: -40deg;
-      --translateY: 100%;
+      --skewX: -45deg;
+      // --translateY: 100%;
+      --translateX: -50%;
       @extend %transforms;
 
       content: '';
@@ -75,18 +92,16 @@
       position: absolute;
       inset: 0;
       background-color: white;
+      transform-origin: bottom;
       transition: transform 220ms $ease-in-quad;
     }
   }
 
   i.arrow-right {
     position: absolute;
-    top: 75%;
-    left: 0;
-    width: 26px;
-    height: 16px;
-    opacity: 0;
-    transform: translate(-25%, -25%);
+    bottom: 0;
+    left: -15%;
+    transform: translate(-50%, -50%);
     z-index: 50;
     background-color: theme('colors.gold');
     transition: opacity 300ms $ease-in-cubic;

@@ -1,0 +1,38 @@
+%icon {
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  display: block;
+}
+
+.arrow-left {
+  @extend %icon;
+  width: 26px;
+  height: 26px;
+  background-color: theme('colors.lightgray');
+  mask-image: url("data:image/svg+xml,%3Csvg width='26' height='16' viewBox='0 0 26 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.792892 7.2929C0.402369 7.68342 0.402369 8.31658 0.792893 8.70711L7.15686 15.0711C7.54738 15.4616 8.18054 15.4616 8.57107 15.0711C8.96159 14.6805 8.96159 14.0474 8.57107 13.6569L2.91421 8L8.57107 2.34315C8.96159 1.95262 8.96159 1.31946 8.57107 0.928934C8.18054 0.538409 7.54738 0.538409 7.15685 0.928934L0.792892 7.2929ZM26 7L1.5 7L1.5 9L26 9L26 7Z' fill='%238C8A8A'/%3E%3C/svg%3E%0A");
+
+  &--short {
+    width: 17px;
+    height: 16px;
+    background-color: theme('colors.gold');
+    mask-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.3848 8.52083C16.7754 8.1303 16.7754 7.49714 16.3848 7.10661L10.0209 0.742653C9.63036 0.352129 8.99719 0.352129 8.60667 0.742653C8.21614 1.13318 8.21614 1.76634 8.60667 2.15687L14.2635 7.81372L8.60667 13.4706C8.21614 13.8611 8.21614 14.4943 8.60667 14.8848C8.99719 15.2753 9.63036 15.2753 10.0209 14.8848L16.3848 8.52083ZM0.724609 8.81372H15.6777V6.81372H0.724609V8.81372Z' fill='%23BB9A54'/%3E%3C/svg%3E%0A");
+  }
+}
+
+.arrow-right {
+  @extend .arrow-left;
+  transform: rotateY(180deg);
+
+  &--short {
+    @extend .arrow-left--short;
+  }
+}
+
+.arrow-down {
+  @extend %icon;
+  width: 16px;
+  height: 27px;
+  background-color: theme('colors.gold');
+  mask-image: url("data:image/svg+xml,%3Csvg width='16' height='27' viewBox='0 0 16 27' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.29289 25.9571C7.68342 26.3476 8.31658 26.3476 8.70711 25.9571L15.0711 19.5931C15.4616 19.2026 15.4616 18.5695 15.0711 18.1789C14.6805 17.7884 14.0474 17.7884 13.6569 18.1789L8 23.8358L2.34315 18.1789C1.95262 17.7884 1.31946 17.7884 0.928932 18.1789C0.538408 18.5695 0.538408 19.2026 0.928932 19.5931L7.29289 25.9571ZM7 0.75L7 25.25H9L9 0.75L7 0.75Z' fill='%23BB9A54'/%3E%3C/svg%3E%0A");
+}

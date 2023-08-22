@@ -1,0 +1,145 @@
+// =============================================================================
+// Typography
+// =============================================================================
+
+body {
+  font-size: 16px;
+  text-align: center;
+}
+
+p, .p {
+  font-size: 16px;
+  line-height: 28px;
+}
+
+p.large {
+  font-size: 18px;
+  line-height: 32px;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.heading, .subhead {
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  margin-bottom: 2rem;
+}
+
+h1, h2, h3, .h1, .h2, .h3 {
+  font-family: proxima-nova;
+  text-transform: uppercase;
+}
+
+h4, h5, h6, .h4, .h5, .h6 {
+  font-family: merriweather;
+}
+
+h1, .h1 {
+  font-size: 55px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 1.35px;
+
+  @screen xl {
+    font-size: 90px;
+    line-height: 94px;
+  }
+}
+
+h2, .h2 {
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 800;
+
+  @screen xl {
+    font-size: 60px;
+  }
+}
+
+h3, .h3 {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-weight: bold;
+
+  @screen xl {
+    font-size: 40px;
+    line-height: 42px;
+  }
+}
+
+h4, .h4 {
+  font-size: 24px;
+  line-height: normal;
+  text-transform: uppercase;
+  font-family: proxima-nova, sans-serif;
+  font-weight: bold;
+  line-height: normal;
+
+  @screen xl {
+    font-size: 26px;
+  }
+}
+
+.text-outline {
+  -webkit-text-stroke-width: 1px;
+  color: transparent;
+
+  &::selection {
+    -webkit-text-stroke-width: 0;
+    color: white;
+  }
+
+  &--light {
+    -webkit-text-stroke-color: white;
+  }
+
+  &--dark {
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: theme('colors.darkgray');
+  }
+}
+
+.content-block {
+  p {
+    margin-bottom: 2rem;
+  }
+}
+
+blockquote {
+  p {
+    font-family: proxima-nova, sans-serif;
+    font-size: 26px;
+    line-height: 40px;
+    
+    @screen xl {
+      font-size: 30px;
+      line-height: 46px;
+    }
+  }
+
+  cite {
+    display: block;
+    font-style: normal;
+  }
+
+  @screen xl {
+    font-size: 30px;
+    line-height: 46px;
+  }
+}
+
+.highlight-gold {
+  --base-color: transparent;
+  --hover-color: theme('colors.gold');
+
+  // display: inline;
+  background-image: linear-gradient(var(--base-color), var(--base-color)), linear-gradient(var(--hover-color), var(--hover-color));
+  background-position: 100% 100%, 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 0.5em, 100% 0.5em;
+}
+
+blockquote {
+  font-family: merriweather;
+  margin-bottom: 2rem;
+}

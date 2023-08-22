@@ -1,10 +1,10 @@
 ---
-import Logo from "./Logo.astro";
+import Logo from "./Logo.astro"
 ---
 
 <header id="site-header" class="fixed z-50 top-0 left-0 w-full h-[--site-header-height] wrapper flex justify-between items-center">
-  <figure id="logo" class="h-full flex justify-start items-center">
-    <a href="/" class="block max-h-full">
+  <figure id="logo" class="flex justify-start items-center">
+    <a href="/" class="">
       <Logo />
     </a>
   </figure>
@@ -18,9 +18,10 @@ import Logo from "./Logo.astro";
   </nav>
 </header>
 
-<div id="site-header-bg" class="fixed z-40 top-0 left-0 w-full h-[--site-header-height] bg-white"></div>
-
 <script>
+  /*
+  import {gsap} from 'gsap'
+
   function headerStyle() {
     const siteHeader = document.querySelector('#site-header');
 
@@ -36,14 +37,27 @@ import Logo from "./Logo.astro";
   document.addEventListener("scroll", (e) => {
     headerStyle();
   });
+
+  if (document.querySelector('[data-header-scrolled]')) {
+    const siteHeaderAnimTL = gsap.timeline({
+      defaults: {
+        // duration: 1,
+        // ease: 'linear'
+      },
+      scrollTrigger: {
+        trigger: '[data-header-scrolled]',
+        start: 'top top',
+        // markers: true,
+        onUpdate:() => document.body.classList.toggle('scrolled')
+      }
+    }) 
+    siteHeaderAnimTL
+  }
+  */
 </script>
 
 <style lang="scss" is:global>
   @import 'node_modules/easings-css';
-
-  :root {
-    --site-header-height: 100px; 
-  }
 
   #site-header-bg {
     transform: translateY(-100%);
@@ -61,8 +75,15 @@ import Logo from "./Logo.astro";
   #logo {
     a {
       height: var(--site-header-height);
-      padding: 20px 0;
+      padding: 5px 0;
       z-index: 999;
+      margin-left: -10px;
+      display: flex;
+      align-items: center;
+
+      @screen xl {
+        margin-left: -15px;
+      }
 
       path, polygon {
         transition: fill 200ms ease-out;
@@ -83,7 +104,11 @@ import Logo from "./Logo.astro";
 
     svg {
       width: 100%;
-      height: 100%;
+      height: 50px;
+
+      @screen xl {
+        height: 60px;
+      }
     }
   }
 
@@ -105,7 +130,7 @@ import Logo from "./Logo.astro";
       }
     }
   }
-
+  /*
   html.is-animating {
     #site-header-bg {
       opacity: 0;
@@ -121,4 +146,5 @@ import Logo from "./Logo.astro";
       }
     }
   }
+  */
 </style>

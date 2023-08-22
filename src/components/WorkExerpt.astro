@@ -5,18 +5,15 @@ const { title, img, slug, tags, desc } = Astro.props
   <figure class="workTile__figure">
     <img class="workTile__img object-" src={img} alt="">
     <div class="workTile__wedge">
-      <i class="arrow-right"></i>
+      <i class="arrow-right arrow-right--short"></i>
     </div>
   </figure>
   <div class="workTile__content">
-    <h3 class="workTile__title h2">{title}</h3>
+    <h3 class="workTile__title h3">{title}</h3>
     <div class="workTile__tags">
       {tags.map((tag, i) =>
         <span class="workTile__tag">{tag}{i === tags.length - 1 ? '' : ', '}</span>
       )}
-    </div>
-    <div class="workTile__desc">
-      <p>{desc}</p>
     </div>
   </div>
 </a>

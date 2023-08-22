@@ -1,0 +1,13 @@
+@mixin wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: (var(--grid-margin));
+  padding-right: (var(--grid-margin));
+}
+
+@mixin no-wrapper {
+  margin-left: unset;
+  margin-right: unset;
+  padding-left: unset;
+  padding-right: unset;
+}

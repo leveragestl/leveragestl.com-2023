@@ -1,0 +1,39 @@
+// Fade
+/*
+.transition-fade {
+  transition: opacity 500ms ease-out;
+  opacity: 1;
+}
+
+html.is-animating .transition-fade {
+  opacity: 0;
+}
+*/
+
+// Wipe
+.transition-wipe {
+  position: fixed;
+  width: 100%;
+  height: 150%;
+  top: -25%;
+  left: 0;
+  background-color: theme('colors.gold');
+  z-index: 49;
+  opacity: 1;
+  transform: skewY(-6.88deg) translateY(-100%);
+  transition: none;
+}
+
+html.is-changing .transition-wipe {
+  transform: skewY(-6.88deg) translateY(100%);
+  transition: transform 300ms ease-out;
+  // transition-delay: 300ms;
+  transition-delay: 100ms;
+}
+
+html.is-animating .transition-wipe {
+  transform: skewY(-6.88deg) translateY(0%);
+  transition: transform 300ms ease-out;
+  // transition-delay: 500ms;
+  transition-delay: 100ms;
+}
