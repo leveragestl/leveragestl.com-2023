@@ -150,7 +150,7 @@ export function homeAnimations() {
       // .to('video', {duration: 1, yPercent: '-=75'}, 'start')
       // .to('#home_hero-inner', {duration: 1, yPercent: '-=25'}, 'start')
 
-      .to('#home_hero-inner', {duration: 0.5, yPercent: '-=65'}, 'start')
+      .to('#home_hero-inner', {duration: 0.5, yPercent: '-=60'}, 'start')
       .to('video', {duration: 0.5, yPercent: '-=100'}, 'start')
       // .add('half')
       // .to('#home_hero-inner', {duration: 0.5, yPercent: '-=10'}, 'half')
@@ -185,7 +185,7 @@ export function homeAnimations() {
         trigger: '[data-pin="services"]',
         pin: '[data-pin="services"]',
         scrub: true,
-        end: '450%',
+        end: '300%',
         // end: `${height}px`,
         // pinSpacing: false,
         // anticipatePin: 1,
@@ -241,7 +241,7 @@ export function homeAnimations() {
           start: 'top bottom',
           trigger: '[data-pin="services"]',
           scrub: true,
-          end: '450%',
+          end: '300%',
           // markers: true
         }
       }).add('start')
@@ -332,7 +332,8 @@ export function revealText() {
       scrollTrigger: {
         trigger: revealTextElem,
         start: 'top center',
-        // markers: true  
+        // markers: true ,
+        toggleActions: "restart none none reverse"
       }
     }).add('start')
     // cubic-bezier(0.01,-0.67,0,1);
@@ -355,13 +356,14 @@ export function fillText() {
 
 
     // gsap.set(split.lines, {overflow: 'hidden'})
-    gsap.set(splitFill.chars, {clipPath: 'inset(100% 0% 0% 0%)'})
+    gsap.set(splitFill.chars, {clipPath: 'inset(0% 0% 100% 0%)'})
 
     gsap.timeline({
       scrollTrigger: {
         trigger: fillTextElem,
         start: 'top center',
-        // markers: true  
+        // markers: true
+        toggleActions: "restart none none reverse"
       }
     }).add('start')
     // cubic-bezier(0.01,-0.67,0,1);
