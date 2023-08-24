@@ -119,8 +119,9 @@ export function homeAnimations() {
   // gsap.fromTo('#hero', {y: 50, autoAlpha: 0}, {duration: 1, autoAlpha: 1, y: 0})
   // gsap.from('#introText .highlight-gold', {duration: 0.75, ease: 'power4.easeIn', backgroundSize: '100% 0.5em, 0% 0.5em', scrollTrigger: {trigger: '#introText', start: 'top center'}})
 
+  // ~~~~~~~~~~~~~~~ Hero Pin ~~~~~~~~~~~~~~ //
   mm.add("(min-width: 1023.98px)", () => {
-    const heroElem = document.querySelector('#home_hero')
+    const heroElem = document.querySelector('[data-pin="hero"]')
 
     const pinHeroTL = gsap.timeline({
       defaults: {
@@ -129,8 +130,8 @@ export function homeAnimations() {
       },
       scrollTrigger: {
         start: 'top top',
-        trigger: '#home_hero',
-        pin: '#home_hero',
+        trigger: '[data-pin="hero"]',
+        pin: '[data-pin="hero"]',
         scrub: true,
         end: '150%',
         // pinSpacing: false,
@@ -158,72 +159,159 @@ export function homeAnimations() {
     window.addEventListener('resize', () => {pinHeroTL.progress(0)})
     // document.addEventListener('DOMContentLoaded', () => pinHeroTL.progress(0));
 
-    setTimeout(() => {
-    }, 500);
-
     document.querySelector('#content').style.marginTop = (heroElem.offsetHeight * -0.75)+'px'      
 
   })
+
+  // ~~~~~~~~~~~~~ Services Pin ~~~~~~~~~~~~ //
+  mm.add("(min-width: 1023.98px)", () => {
+
+    // Scenes 
+    const scenes = gsap.utils.toArray('[data-scene="container"]');
+    // const scenesElem = document.querySelector('[data-pin="services"]');
   
-  /*
-  if (document.querySelector('main[data-barba-namespace="home"]')) {
-    const homeMain = document.querySelector('main[data-barba-namespace="home"]');
-    const hero = homeMain.querySelector('#hero');
+    const sceneElem = document.querySelector('[data-scene="container"]');
+    const sceneElemHeight = sceneElem.offsetHeight;
 
-    gsap.from(hero, {duration: 1, autoAlpha: 0})  
-  }
-  */
-  /*
-  // ~~~~~~~~~~~~~~~~ About ~~~~~~~~~~~~~~~~ //
-  const aboutSection = document.querySelector('#about-section')
-  const aboutHeadline = aboutSection.querySelector('#about-headline')
-  const aboutSubhead = aboutSection.querySelector('#about-subhead')
-  const aboutContent = aboutSection.querySelector('.content-block')
+    // const height = ((scenes.length) * sceneElemHeight) + 'px';
 
-  gsap.set([aboutHeadline, aboutSubhead, aboutContent], {autoAlpha: 0, x: -50})
-
-  const aboutAnimationTL = gsap.timeline({
-    defaults: {
-      duration: 1,
-      ease: 'power2.out'
-    },
-    scrollTrigger: {
-      trigger: aboutSection,
-      start: 'top 60%'
-    }
-  }).add('start')
-
-  aboutAnimationTL.to([aboutHeadline, aboutSubhead, aboutContent], {autoAlpha: 1, x: 0, stagger: 0.15})
-  */
-}
-
-// =============================================================================
-// About Animations
-// =============================================================================
-export function aboutAnimations() {
-  // gsap.fromTo('#hero', {y: 50, autoAlpha: 0}, {duration: 1, autoAlpha: 1, y: 0})
-}
-
-// =============================================================================
-// Scroll Curve
-// =============================================================================
-export function scrollCurveAnimation() {
-
-    const scrollCurveElem = document.querySelector('#scroll-curve')
-    
-    let scrollCurveAnimTL = gsap.timeline({
+    const pinServicesTL = gsap.timeline({
+      defaults: {
+        ease: 'none',
+        duration: 1
+      },
       scrollTrigger: {
-        trigger: scrollCurveElem,
-        start: 'top 70%',
-        // end: (window.innerHeight / 2) +' top',
-        toggleActions: "play pause resume reverse",
-        // scrub: true,
+        start: 'top-=150px 50px',
+        trigger: '[data-pin="services"]',
+        pin: '[data-pin="services"]',
+        scrub: true,
+        end: '450%',
+        // end: `${height}px`,
+        // pinSpacing: false,
+        // anticipatePin: 1,
+        // markers: true,
       }
     }).add('start')
 
-    scrollCurveAnimTL.to(scrollCurveElem, {duration: 0.5, ease: 'power1.out', scaleY: 1.2})
-    scrollCurveAnimTL.to(scrollCurveElem, {duration: 2, ease: 'power4.out', scaleY: 0})
+    // Set all scene components to autoAlpha: 0
+    gsap.set('[data-scene="content"]', {autoAlpha: 0, zIndex: 0, y: 10})
+    gsap.set('[data-scene="image"]', {autoAlpha: 0, zIndex: 0})
 
+    // Set first scene components to autoAlpha: 1
+    gsap.set('[data-scene="container"]:first-of-type [data-scene="content"], [data-scene="container"]:first-of-type [data-scene="image"]', {autoAlpha: 1, zIndex: 1})
+
+    pinServicesTL
+      // Branding
+      .addLabel('branding')
+
+      .set('[data-scene="container"]#branding [data-scene="content"]', {autoAlpha: 1, zIndex: 1, y: 0})
+      .set('[data-scene="container"]#branding [data-scene="image"]', {autoAlpha: 1, zIndex: 2})
+
+      .set('[data-scene="container"]#branding [data-scene="content"]', {zIndex: 0}, 'branding+=1.5')
+      .to('[data-scene="container"]#branding [data-scene="content"]', {autoAlpha: 0, y: 10}, 'branding+=1.5')
+
+      .set('[data-scene="container"]#websites [data-scene="image"]', {autoAlpha: 1, zIndex: 1}, 'branding')
+      .to('[data-scene="container"]#branding [data-scene="image"]', {clipPath: 'inset(0% 0% 100% 0%)'}, 'branding+=1.5')
+
+      // Websites
+      .removeLabel('branding').addLabel('websites')
+
+      .set('[data-scene="container"]#websites [data-scene="content"]', {zIndex: 1})
+      .set('[data-scene="container"]#websites [data-scene="image"]', {autoAlpha: 1, zIndex: 2})
+      .to('[data-scene="container"]#websites [data-scene="content"]', {autoAlpha: 1, y: 0})
+
+      .set('[data-scene="container"]#websites [data-scene="content"]', {zIndex: 0}, 'websites+=1.5')
+      .to('[data-scene="container"]#websites [data-scene="content"]', {autoAlpha: 0, y: 10}, 'websites+=1.5')
+      
+      .set('[data-scene="container"]#marketing [data-scene="image"]', {autoAlpha: 1, zIndex: 1}, 'websites')
+      .to('[data-scene="container"]#websites [data-scene="image"]', {clipPath: 'inset(0% 0% 100% 0%)'}, 'websites+=1.5')
+      
+      // Marketing
+      .removeLabel('websites').addLabel('marketing')
+      .set('[data-scene="container"]#marketing [data-scene="content"]', {zIndex: 1})
+      .to('[data-scene="container"]#marketing [data-scene="content"]', {autoAlpha: 1, y: 0})
+
+      
+      const servicesParallaxTL = gsap.timeline({
+        defaults: {
+          ease: 'none',
+          duration: 1
+        },
+        scrollTrigger: {
+          start: 'top bottom',
+          trigger: '[data-pin="services"]',
+          scrub: true,
+          end: '450%',
+          // markers: true
+        }
+      }).add('start')
+
+      servicesParallaxTL.to('[data-pin="services"]', {duration: 0.5, yPercent: '-=10'}, 'start')
+
+      // servicesParallaxTL.to('[data-scene="content"]', {duration: 0.5, yPercent: '+=15'}, 'start')
+      // servicesParallaxTL.to('[data-scene="content"]', {duration: 0.25, yPercent: '+=15'}, 'start+=0.5')
+      // servicesParallaxTL.to('[data-scene="image"]', {duration: 1, yPercent: 5}, 'start')
+
+    // gsap.to('.servicesContainer', {y: 50, scrollTrigger: {
+    //   // start: 'top-=100px 50px',
+    //   start: 'top top',
+    //   trigger: '.servicesContainer',
+    //   scrub: true,
+    //   // end: '450%',
+    // }})
+
+    // window.addEventListener('resize', () => {pinServicesTL.progress(0)})
+
+    // Set scenes wrapper to absolute
+    // gsap.set(scenes, {position: "absolute", top: '50%', translateY: '-50%'});
+
+    // Loop over scenes
+    /*
+    scenes.forEach(function(elem, i) {
+
+      let scene = elem;
+      let sceneContent = elem.querySelector('[data-scene="content"]');
+      let sceneImage = elem.querySelector('[data-scene="image"]');
+
+      // Setup first Scene
+      if (i == 0) {
+        gsap.set(sceneContent, {
+          zIndex: 1
+        }, i)
+      }
+      
+      // Scene Enter animation      
+      if (i !== 0) {   
+        pinServicesTL.from(sceneImage, { 
+          autoAlpha: 0
+        }, i)
+
+        pinServicesTL.from(sceneContent, { 
+          autoAlpha: 0,
+          translateY: 100
+        }, i)
+
+        pinServicesTL.fromTo(scene, { 
+          zIndex: 0
+        }, {
+          zIndex: 1
+        }, i)
+      }
+      
+      // Scene Exit animation
+      if (i !== scenes.length - 1) {
+        pinServicesTL.to(sceneContent, { 
+          autoAlpha: 0, 
+          translateY: -100
+        }, i + 1)
+
+        pinServicesTL.to(sceneImage, { 
+          autoAlpha: 0
+        }, i + 1)
+      }
+    })
+    */
+  })
 }
 
 // =============================================================================
@@ -279,4 +367,11 @@ export function fillText() {
     // cubic-bezier(0.01,-0.67,0,1);
     .to(splitFill.chars, {duration: 0.5, clipPath: 'inset(0% 0% 0% 0%)', /* ease: CustomEase.create("easeName", "0, 0, 0, 1"), */ stagger: {each: 0.035, /* from: 'random', */ ease: 'sine.out'}}, 'start')      
   }
+}
+
+// =============================================================================
+// About Animations
+// =============================================================================
+export function aboutAnimations() {
+  // gsap.fromTo('#hero', {y: 50, autoAlpha: 0}, {duration: 1, autoAlpha: 1, y: 0})
 }

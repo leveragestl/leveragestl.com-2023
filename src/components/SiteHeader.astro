@@ -2,14 +2,14 @@
 import Logo from "./Logo.astro"
 ---
 
-<header id="site-header" class="fixed z-50 top-0 left-0 w-full h-[--site-header-height] wrapper flex justify-between items-center mix-blend-difference">
-  <figure id="logo" class="flex justify-start items-center">
+<header id="site-header" class="absolute z-50 top-0 left-0 w-full h-[--site-header-height] flex justify-between items-center mix-blend-difference">
+  <figure id="logo" class="fixed left-[--container-margin] flex justify-start items-center">
     <a href="/" class="">
       <Logo />
     </a>
   </figure>
 
-  <nav class="text-white font-bold">
+  <nav class="text-white font-bold fixed right-[--container-margin]">
     <ul class="flex gap-x-8 uppercase tracking-wider">
       <li class="hover:text-gold"><a href="/">Home</a></li>
       <li class="hover:text-gold"><a href="/about/">About</a></li>
@@ -88,13 +88,13 @@ import Logo from "./Logo.astro"
       path, polygon {
         transition: fill 200ms ease-out;
       }
-
+      /*
       body.scrolled & {
         path, polygon {
           fill: theme('colors.darkgray');
         }
       }
-
+      */
       &:hover {
         path, polygon {
           fill: theme('colors.gold') !important;            
@@ -115,18 +115,20 @@ import Logo from "./Logo.astro"
   // Scroll
   body.scrolled {
 
+    /*
     #site-header-bg {
       transform: translateY(0);
       transition: transform 300ms ease-out;  
     }
-
+    */
     nav {
-      color: theme('colors.darkgray');
+      // color: theme('colors.darkgray');
+      position: absolute;
     }
 
     #logo {
       path, polygon {
-        fill: theme('colors.darkgray');
+        // fill: theme('colors.darkgray');
       }
     }
   }

@@ -36,6 +36,9 @@ swup.hooks.before('content:replace', () => unload());
 // Animation
 import { generalAnimations, heroAnimation, homeAnimations, aboutAnimations, revealText, fillText } from './core/animation';
 
+// Header
+import { siteHeader } from './core/siteHeader';
+
 // ~~~~~~~~~~~~~~~~~ Init ~~~~~~~~~~~~~~~~ //
 
 function init() {
@@ -55,6 +58,8 @@ function init() {
   if (document.querySelector('[data-fillText]')) {
     setTimeout(() => fillText(), 50);
   }
+
+  siteHeader()
 
   /*
   if (document.querySelector('[data-animElem]')) {
