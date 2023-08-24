@@ -34,7 +34,7 @@ swup.hooks.before('content:replace', () => unload());
 // ~~~~~~~~~~~~~~ Imports ~~~~~~~~~~~~~~ //
 
 // Animation
-import { generalAnimations, heroAnimation, homeAnimations, aboutAnimations, revealText, fillText } from './core/animation';
+import { generalAnimations, heroAnimation, homeAnimations, aboutAnimations, revealText, fillText, parallaxColumns } from './core/animation';
 
 // Header
 import { siteHeader } from './core/siteHeader';
@@ -57,6 +57,10 @@ function init() {
 
   if (document.querySelector('[data-fillText]')) {
     setTimeout(() => fillText(), 50);
+  }
+
+  if (document.querySelector('[data-parallax="columns"]')) {
+    setTimeout(() => parallaxColumns(), 50);
   }
 
   siteHeader()

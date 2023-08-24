@@ -1,7 +1,7 @@
 ---
-const { title, img, slug, tags, desc } = Astro.props
+const { title, img, slug, tags, desc, class: className } = Astro.props
 ---
-<a class="workTile" href={slug}>
+<a class:list={['workTile', className]} href={slug}>
   <figure class="workTile__figure">
     <img class="workTile__img object-" src={img} alt="">
     <div class="workTile__wedge">

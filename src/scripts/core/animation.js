@@ -176,20 +176,14 @@ export function homeAnimations() {
     // const height = ((scenes.length) * sceneElemHeight) + 'px';
 
     const pinServicesTL = gsap.timeline({
-      defaults: {
-        ease: 'none',
-        duration: 1
-      },
       scrollTrigger: {
-        start: 'top-=150px 50px',
+        start: 'top+=100px top',
         trigger: '[data-pin="services"]',
         pin: '[data-pin="services"]',
         scrub: true,
         end: '300%',
-        // end: `${height}px`,
-        // pinSpacing: false,
-        // anticipatePin: 1,
-        // markers: true,
+        fastScrollEnd: true
+        // markers: true
       }
     }).add('start')
 
@@ -231,12 +225,7 @@ export function homeAnimations() {
       .set('[data-scene="container"]#marketing [data-scene="content"]', {zIndex: 1})
       .to('[data-scene="container"]#marketing [data-scene="content"]', {autoAlpha: 1, y: 0})
 
-      
       const servicesParallaxTL = gsap.timeline({
-        defaults: {
-          ease: 'none',
-          duration: 1
-        },
         scrollTrigger: {
           start: 'top bottom',
           trigger: '[data-pin="services"]',
@@ -247,70 +236,6 @@ export function homeAnimations() {
       }).add('start')
 
       servicesParallaxTL.to('[data-pin="services"]', {duration: 0.5, yPercent: '-=10'}, 'start')
-
-      // servicesParallaxTL.to('[data-scene="content"]', {duration: 0.5, yPercent: '+=15'}, 'start')
-      // servicesParallaxTL.to('[data-scene="content"]', {duration: 0.25, yPercent: '+=15'}, 'start+=0.5')
-      // servicesParallaxTL.to('[data-scene="image"]', {duration: 1, yPercent: 5}, 'start')
-
-    // gsap.to('.servicesContainer', {y: 50, scrollTrigger: {
-    //   // start: 'top-=100px 50px',
-    //   start: 'top top',
-    //   trigger: '.servicesContainer',
-    //   scrub: true,
-    //   // end: '450%',
-    // }})
-
-    // window.addEventListener('resize', () => {pinServicesTL.progress(0)})
-
-    // Set scenes wrapper to absolute
-    // gsap.set(scenes, {position: "absolute", top: '50%', translateY: '-50%'});
-
-    // Loop over scenes
-    /*
-    scenes.forEach(function(elem, i) {
-
-      let scene = elem;
-      let sceneContent = elem.querySelector('[data-scene="content"]');
-      let sceneImage = elem.querySelector('[data-scene="image"]');
-
-      // Setup first Scene
-      if (i == 0) {
-        gsap.set(sceneContent, {
-          zIndex: 1
-        }, i)
-      }
-      
-      // Scene Enter animation      
-      if (i !== 0) {   
-        pinServicesTL.from(sceneImage, { 
-          autoAlpha: 0
-        }, i)
-
-        pinServicesTL.from(sceneContent, { 
-          autoAlpha: 0,
-          translateY: 100
-        }, i)
-
-        pinServicesTL.fromTo(scene, { 
-          zIndex: 0
-        }, {
-          zIndex: 1
-        }, i)
-      }
-      
-      // Scene Exit animation
-      if (i !== scenes.length - 1) {
-        pinServicesTL.to(sceneContent, { 
-          autoAlpha: 0, 
-          translateY: -100
-        }, i + 1)
-
-        pinServicesTL.to(sceneImage, { 
-          autoAlpha: 0
-        }, i + 1)
-      }
-    })
-    */
   })
 }
 
@@ -369,6 +294,33 @@ export function fillText() {
     // cubic-bezier(0.01,-0.67,0,1);
     .to(splitFill.chars, {duration: 0.5, clipPath: 'inset(0% 0% 0% 0%)', /* ease: CustomEase.create("easeName", "0, 0, 0, 1"), */ stagger: {each: 0.035, /* from: 'random', */ ease: 'sine.out'}}, 'start')      
   }
+}
+
+export function parallaxColumns() {
+
+  mm.add("(min-width: 1023.98px)", () => {
+    const parallaxColumnElems = document.querySelectorAll('[data-parallax="columns"]')
+
+    for (const parallaxColumnElem of parallaxColumnElems) {
+
+      // const oddElems = parallaxColumnElem.querySelectorAll('.workTile:nth-of-type(odd)')
+      // const evenElems = parallaxColumnElem.querySelectorAll('.workTile:nth-of-type(even)')
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: parallaxColumnElem,
+          start: 'top center',
+          end: '100%',
+          scrub: true,
+          // markers: true,
+          toggleActions: "restart none none reverse"
+        }
+      }).add('start')
+
+      .to('.workTile:nth-of-type(even)', {y: '-=150'}, 'start')  
+      .to('.workTile:nth-of-type(odd)', {y: '+=150'}, 'start')  
+    }
+  })
 }
 
 // =============================================================================
