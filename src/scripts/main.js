@@ -1,159 +1,74 @@
-// Dependencies imports
-import barba from "@barba/core"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { ScrollSmoother } from "gsap/ScrollSmoother"
+// =============================================================================
+// GSAP
+// =============================================================================
 
-// Animation imports
-import { generalAnimations } from "./core/animation"
-import { homeAnimations } from "./core/animation"
+import {gsap} from 'gsap'
+import { ScrollTrigger, SplitText, ScrollSmoother } from 'gsap/all'
+
+gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother)
+
+// =============================================================================
+// Swup
+// =============================================================================
+
+import Swup from 'swup';
+const swup = new Swup();
+
+if (document.readyState === 'complete') {
+  init();
+} else {
+  document.addEventListener('DOMContentLoaded', () => init());
+}
+swup.hooks.on('page:view', () => init());
+
+function unload() {
+  ScrollTrigger.killAll()
+  document.body.classList.remove('scrolled')
+}
+swup.hooks.before('content:replace', () => unload());
 
 // =============================================================================
 // Scripts
 // =============================================================================
 
-gsap.registerPlugin( ScrollTrigger, ScrollSmoother);
+// ~~~~~~~~~~~~~~ Imports ~~~~~~~~~~~~~~ //
 
-function contentAnimation() {
-  let animGroups = document.querySelectorAll('[data-animGroup]')
+// Animation
+import { generalAnimations, heroAnimation, homeAnimations, aboutAnimations, revealText, fillText } from './core/animation';
 
-  for (const animGroup of animGroups) {
+// ~~~~~~~~~~~~~~~~~ Init ~~~~~~~~~~~~~~~~ //
 
-    // Get all elems
-    const animGroupElems = animGroup.querySelectorAll('[data-animElem]')
+function init() {
+  ScrollSmoother.create({
+    smooth: 1,               // how long (in seconds) it takes to "catch up" to the native scroll position
+    effects: true,           // looks for data-speed and data-lag attributes on elements
+    // smoothTouch: 0.1,        // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
+  });
 
-    // Define Timeline
-    let animGroupTL = gsap.timeline({
-      defaults: {
-        duration: 1,
-        delay: 0,
-        ease: 'power2.out'
-      },
-      scrollTrigger: {
-        trigger: animGroup,
-        start: 'top center',
-        markers: false
-      }
-    }).add('start')
+  if (document.querySelector('[data-barba-namespace="home"]')) {
+    setTimeout(() => homeAnimations(), 50);
+  }
+  if (document.querySelector('[data-revealText]')) {
+    setTimeout(() => revealText(), 50);
+  }
 
-    for (const [i, animGroupElem] of animGroupElems.entries()) {
-      gsap.set(animGroupElem, {autoAlpha: 0, x: -50})
-      animGroupTL.to(animGroupElem, {autoAlpha: 1, x: 0}, 'start')  
-    }
-
+  if (document.querySelector('[data-fillText]')) {
+    setTimeout(() => fillText(), 50);
   }
 
   /*
-  gsap.set("[data-animation]", {
-    opacity:0,
-    y:-20
-  });
-  gsap.to("[data-animation]", {
-    duration:.4,
-    delay:0, 
-    opacity:1, 
-    x:0,
-    scrollTrigger: {
-      trigger: "[data-animation]",
-      start: "top bottom-=400px",
-    }
-  });
-  */
-}
-
-let position = 120
-
-// history.scrollRestoration = "manual";
-var scrollPosY = [0];
-
-barba.hooks.enter((data) => {
-  if(data.trigger !== "back") {
-    scrollPosY.push(barba.history.current.scroll.y);
-    window.scrollTo(0,0);
-  } else {
-    window.scrollTo(0, scrollPosY.pop())
+  if (document.querySelector('[data-animElem]')) {
+    generalAnimations()
   }
-});
 
-function init(){
-  /*  
-  // do something before the transition starts
-  barba.hooks.before(() => {
-  });
-
-  // do something after the transition finishes
-  barba.hooks.after(() => {
-      ga('set', 'page', window.location.pathname);
-      ga('send', 'pageview');
-  });
+  if (document.querySelector('#hero')) {
+    heroAnimation()
+  }
+  */
+  /*
+  if (document.querySelector('#swup[data-barba-namespace="about"]')) {
+    aboutAnimations()
+  }
   */
 
-  // scroll to the top of the page
-  barba.hooks.enter(() => {
-      window.scrollTo(0, 0);
-  });
-  barba.init({
-    transitions: [{
-      name: 'slide-transition',
-      once(data) {
-        // contentAnimation()
-        let animElemsExist = document.querySelector('[data-animElem]')
-        // if (animElemsExist) {
-        //   generalAnimations()
-        // }
-        homeAnimations()
-      },
-      async beforeLeave(data) {
-        return gsap.set(data.current.container.querySelector('[data-transition-mask]'), {
-          display: 'block'
-        })
-      },
-      async leave(data) {
-        return gsap.fromTo(data.current.container.querySelector('[data-transition-mask]'), {
-          xPercent: () => (data.trigger == 'back') ? position : -position
-        }, {
-          xPercent: 0, duration: 0.35,
-        })
-      },
-      async afterLeave(data) {
-        let triggers = ScrollTrigger.getAll();
-        triggers.forEach(function (trigger) {
-            trigger.kill();
-        })
-        return gsap.set(data.current.container, {
-          display: 'none'
-        })
-      },
-
-      async beforeEnter(data) {
-        return gsap.set(data.next.container.querySelector('[data-transition-mask]'), {
-          display: 'block',
-        });
-      },
-      async enter(data) {
-        return gsap.fromTo(data.next.container.querySelector('[data-transition-mask]'), {
-          xPercent: 0
-        }, {
-          duration: 0.35, delay: 0.15,
-          xPercent: () => (data.trigger == 'back') ? -position : position
-        })
-      },
-      async after(data) {
-        // contentAnimation()
-        let animElemsExist = document.querySelector('[data-animElem]')
-        // if (animElemsExist) {
-        //   generalAnimations()
-        // }
-        console.log(data.next.container.getAttribute('data-barba-namespace'));
-
-        if (data.next.container.getAttribute('data-barba-namespace', 'home')) {
-          homeAnimations()
-        }
-      }
-    }]
-  })
 }
-
-window.addEventListener('DOMContentLoaded', function () {
-  init();
-});

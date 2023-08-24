@@ -27,16 +27,20 @@ const { title, namespace } = Astro.props;
     <SiteHeader />
     <div id="site-header-bg" class="fixed z-40 top-0 left-0 w-full h-[--site-header-height] bg-white"></div>
     <main id="swup" data-barba="container" data-barba-namespace={namespace}>
-      <slot />
-      <!-- <div data-transition-mask class="fixed inset-0 bg-gold w-[150%] -left-[25%] -skew-x-[21.8deg] z-[49] hidden"></div> -->
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
+          <slot />
+          <!-- <div data-transition-mask class="fixed inset-0 bg-gold w-[150%] -left-[25%] -skew-x-[21.8deg] z-[49] hidden"></div> -->
+          <SiteFooter />
+        </div>
+      </div>
     </main>
-    <SiteFooter />
     <div class="transition-wipe"></div>
 
     <script>
       // import '../scripts/barba.js'
       // import '../scripts/main.js'
-      import '../scripts/utils/swup.js'
+      import '../scripts/main.js'
     </script>
 	</body>
 </html>

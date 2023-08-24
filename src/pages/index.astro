@@ -15,12 +15,13 @@ import CTA from '../components/CTA.astro'
     <div id="home_hero-inner" class="wrapper grid grid-rows-[var(--site-header-height)_1fr_var(--diagWrapperHeight)] bg-darkgray text-white md:h-[75vh] lg:h-[95vh] lg:min-h-[800px]">
       <div class="row-start-2 lg:flex lg:justify-center lg:items-center">
         <!-- Content -->
-        <div class="lg:max-w-[852px] lg:text-left">
+        <div id="home_hero-content" class="lg:max-w-[852px] lg:text-left">
 
-          <div class="grid grid-cols-1 grid-rows-1 [&>*]:col-start-1 [&>*]:row-start-1 lg:mt-8">
-            <h2 class="h1 text-outline text-outline--light text-[45px] z-40 relative lg:text-[120px] lg:leading-[110px] mb-0">We design + <br class="hidden lg:block">build brand experiences</h2>
-            <h2 class="h1 text-[45px] z-10 relative lg:text-[120px] lg:leading-[110px] mb-0"><span class="text-outline text-outline--light">We design + <br class="hidden lg:block">build</span> brand experiences</h2>
-          </div>
+          <h2 class="h1 text-[45px] relative lg:text-[120px] lg:leading-[110px] mb-0 grid grid-cols-1 grid-rows-1 lg:mt-8">
+            <span class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light">We design + <br class="hidden lg:block">build brand experiences</span>
+            <span class="relative z-10 col-start-1 row-start-1" aria-hidden="true"><span class="text-outline text-outline--light">We design + <br class="hidden lg:block">build</span> brand experiences</span>
+          </h2>
+
           <div class="mt-5 lg:mt-16 justify-start relative z-20">
             <span class="button button--slash text-gold hover:text-white font-bold antialiased font-merriweather lg:text-18 italic ease-in-out" data-aos="fade-up">
               <a href="#" class="anchor">
@@ -46,17 +47,14 @@ import CTA from '../components/CTA.astro'
       <div class="wrapperCap wrapperCap--top"></div>
     
     </div>
-    <!-- White fill -->
-    <div class="absolute left-0 bg-white h-[--diagWrapperHeight] w-full"></div>
   </section>
 
   <!-- Page Content -->
-  <div class="absolute mt-[75vh]" data-header-scrolled></div>  
-  <div class="wrapperDiagonal">
+  <div id="content" class="wrapperDiagonal">
     <!-- Intro -->
     <section data-animGroup data-animEffect="fadeInUp" class="wrapper -mt-40 mb-24 lg:mb-48">
       <div class="lg:max-w-[815px] lg:mx-auto">
-        <h2 class="mb-8">Strategic design, development, and marketing is kind of our thing.</h2>
+        <h2 data-revealText class="mb-8">Strategic design, development, and marketing is kind of our thing.</h2>
         <p class="large">We believe thoughtful, beautiful design leads to better experiences, and better experiences drive business results. Whether you're refreshing, creating something from scratch, or expanding upon what's already established, we can help. Let's partner together to elevate your brand, website, and content. We'll rely on your industry expertise, while we put our strategic design, development and marketing execution on display.</p>
       </div>
       <div class="mt-16 hidden lg:block">
@@ -69,7 +67,10 @@ import CTA from '../components/CTA.astro'
     <!-- Services -->
     <section data-animGroup data-animEffect="fadeInLeft" class="lg:text-left">
       <div class="wrapper mt-7">
-        <h3 class="h1 text-outline text-outline--dark text-left lg:max-w-md lg:mb-20">Our Services</h3>
+        <h3 data-fillText class="h1 text-left lg:max-w-md lg:mb-20 grid grid-cols-1 grid-rows-1">
+          <span data-fillText="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--dark">Our Services</span>
+          <span data-fillText="fill" class="relative z-40 col-start-1 row-start-1">Our Services</span>
+        </h3>
       </div>
       <div class="bg-darkgray text-white w-full wrapper pt-9 pb-16 lg:pt-0 lg:pb-52 grid lg:grid-cols-12 lg:grid-rows-auto-2">
         <div class="lg:col-start-first lg:col-end-6 lg:px-16 lg:pt-16 lg:row-start-1">
@@ -114,7 +115,10 @@ import CTA from '../components/CTA.astro'
     </section>
     <!-- Work -->
     <section class="wrapper my-24 lg:my-48">
-      <h3 class="h1 text-outline text-outline--dark text-left mb-0">Our Work</h3>
+      <h3 data-fillText class="h1 mb-0 text-left grid grid-cols-1 grid-rows-1">
+        <span data-fillText="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--dark">Our Work</span>
+        <span data-fillText="fill" class="relative z-40 col-start-1 row-start-1">Our Work</span>
+      </h3>
       <div class="grid lg:grid-cols-2 mt-12 gap-y-12 lg:gap-y-24 lg:mt-16">
         {posts.map((post) =>
           <WorkExerpt slug={post.slug} title={post.title} img={post.img} tags={post.tags} desc={post.desc} />
