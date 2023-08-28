@@ -122,7 +122,6 @@ export function homeAnimations() {
   // ~~~~~~~~~~~~~~~ Hero Pin ~~~~~~~~~~~~~~ //
   mm.add("(min-width: 1023.98px)", () => {
     const heroElem = document.querySelector('[data-pin="hero"]')
-
     const pinHeroTL = gsap.timeline({
       defaults: {
         ease: 'none',
@@ -133,37 +132,32 @@ export function homeAnimations() {
         trigger: '[data-pin="hero"]',
         pin: '[data-pin="hero"]',
         scrub: true,
-        end: '150%',
-        // pinSpacing: false,
+        // end: '150%',
+        pinSpacing: false,
+        preventOverlaps: false,
         // anticipatePin: 1,
         // markers: true,
       }
     }).add('start')
 
-    pinHeroTL
-      // .to('video', {duration: 0.5, yPercent: '-=50'}, 'start')
-      // .to('#home_hero-inner', {duration: 0.5, yPercent: '-=15'}, 'start')
-      // .add('half')
-      // .to('#home_hero-inner', {duration: 0.5, yPercent: '-=50'}, 'half')
-      // .to('video', {duration: 0.5, yPercent: '-=15'}, 'half')
+    // pinHeroTL
+      .to('#home_hero-inner', {/* duration: 0.5, */ yPercent: '-=60'}, 'start')
+      .to('video', {/* duration: 0.5, */ yPercent: '-=75'}, 'start')
 
-      // .to('video', {duration: 1, yPercent: '-=75'}, 'start')
-      // .to('#home_hero-inner', {duration: 1, yPercent: '-=25'}, 'start')
+    // window.addEventListener('resize', () => {pinHeroTL.progress(0)})
 
-      .to('#home_hero-inner', {duration: 0.5, yPercent: '-=60'}, 'start')
-      .to('video', {duration: 0.5, yPercent: '-=100'}, 'start')
-      // .add('half')
-      // .to('#home_hero-inner', {duration: 0.5, yPercent: '-=10'}, 'half')
-      // .to('video', {duration: 0.5, yPercent: '-=100'}, 'half')
-
-    window.addEventListener('resize', () => {pinHeroTL.progress(0)})
     // document.addEventListener('DOMContentLoaded', () => pinHeroTL.progress(0));
-
-    document.querySelector('#content').style.marginTop = (heroElem.offsetHeight * -0.75)+'px'      
+    // document.querySelector('#content').style.marginTop = (heroElem.offsetHeight * -0.75)+'px'      
 
   })
 
   // ~~~~~~~~~~~~~ Services Pin ~~~~~~~~~~~~ //
+  let triggerOffset = 100
+
+  mm.add("(min-height: 1024px)", () =>  {
+    triggerOffset = -100
+  })
+
   mm.add("(min-width: 1023.98px)", () => {
 
     // Scenes 
@@ -177,12 +171,12 @@ export function homeAnimations() {
 
     const pinServicesTL = gsap.timeline({
       scrollTrigger: {
-        start: 'top+=100px top',
+        start: 'top+='+triggerOffset+'px top',
         trigger: '[data-pin="services"]',
         pin: '[data-pin="services"]',
         scrub: true,
         end: '300%',
-        fastScrollEnd: true
+        fastScrollEnd: true,
         // markers: true
       }
     }).add('start')
@@ -224,18 +218,6 @@ export function homeAnimations() {
       .removeLabel('websites').addLabel('marketing')
       .set('[data-scene="container"]#marketing [data-scene="content"]', {zIndex: 1})
       .to('[data-scene="container"]#marketing [data-scene="content"]', {autoAlpha: 1, y: 0})
-
-      const servicesParallaxTL = gsap.timeline({
-        scrollTrigger: {
-          start: 'top bottom',
-          trigger: '[data-pin="services"]',
-          scrub: true,
-          end: '300%',
-          // markers: true
-        }
-      }).add('start')
-
-      servicesParallaxTL.to('[data-pin="services"]', {duration: 0.5, yPercent: '-=10'}, 'start')
   })
 }
 
