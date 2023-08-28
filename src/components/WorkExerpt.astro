@@ -1,13 +1,15 @@
 ---
 const { title, img, slug, tags, desc, class: className } = Astro.props
 ---
-<a class:list={['workTile', className]} href={slug}>
-  <figure class="workTile__figure">
-    <img class="workTile__img object-" src={img} alt="">
+<a data-parallax="window" class:list={['workTile', className]} href={slug}>
+  <div class="workTile__frame">
+    <figure class="workTile__figure">
+      <img class="workTile__img object-" src={img} alt="">
+    </figure>
     <div class="workTile__wedge">
       <i class="arrow-right arrow-right--short"></i>
     </div>
-  </figure>
+  </div>
   <div class="workTile__content">
     <h3 class="workTile__title h3">{title}</h3>
     <div class="workTile__tags">

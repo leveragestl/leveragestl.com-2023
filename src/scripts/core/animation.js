@@ -269,7 +269,7 @@ export function fillText() {
       scrollTrigger: {
         trigger: fillTextElem,
         start: 'top center',
-        // markers: true
+        // markers: true,
         toggleActions: "restart none none reverse"
       }
     }).add('start')
@@ -277,6 +277,10 @@ export function fillText() {
     .to(splitFill.chars, {duration: 0.5, clipPath: 'inset(0% 0% 0% 0%)', /* ease: CustomEase.create("easeName", "0, 0, 0, 1"), */ stagger: {each: 0.035, /* from: 'random', */ ease: 'sine.out'}}, 'start')      
   }
 }
+
+// =============================================================================
+// Parallax Columns
+// =============================================================================
 
 export function parallaxColumns() {
 
@@ -302,6 +306,36 @@ export function parallaxColumns() {
       .to('.workTile:nth-of-type(even)', {y: '-=150'}, 'start')  
       .to('.workTile:nth-of-type(odd)', {y: '+=150'}, 'start')  
     }
+  })
+}
+
+// =============================================================================
+// Parallax Window
+// =============================================================================
+
+export function parallaxWindow() {
+
+  mm.add("(min-width: 1023.98px)", () => {
+
+    gsap.utils.toArray('[data-parallax="window"]').forEach((elem, i) => {
+      elem.fig = elem.querySelector('figure'); 
+
+      gsap.fromTo(elem.fig, {
+        yPercent: () => -50
+      }, {
+        yPercent: () => 50,
+        ease: "linear",
+        scrollTrigger: {
+          trigger: elem,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+          invalidateOnRefresh: true, // to make it responsive
+          // markers: true,
+        }
+      })
+    })
+
   })
 }
 
