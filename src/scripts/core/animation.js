@@ -175,7 +175,7 @@ export function homeAnimations() {
         trigger: '[data-pin="services"]',
         pin: '[data-pin="services"]',
         scrub: true,
-        end: '300%',
+        end: '200%',
         fastScrollEnd: true,
         // markers: true
       }
@@ -195,11 +195,11 @@ export function homeAnimations() {
       .set('[data-scene="container"]#branding [data-scene="content"]', {autoAlpha: 1, zIndex: 1, y: 0})
       .set('[data-scene="container"]#branding [data-scene="image"]', {autoAlpha: 1, zIndex: 2})
 
-      .set('[data-scene="container"]#branding [data-scene="content"]', {zIndex: 0}, 'branding+=1.5')
-      .to('[data-scene="container"]#branding [data-scene="content"]', {autoAlpha: 0, y: 10}, 'branding+=1.5')
+      .set('[data-scene="container"]#branding [data-scene="content"]', {zIndex: 0}, 'branding+=0.5')
+      .to('[data-scene="container"]#branding [data-scene="content"]', {autoAlpha: 0, y: 10}, 'branding+=0.5')
 
       .set('[data-scene="container"]#websites [data-scene="image"]', {autoAlpha: 1, zIndex: 1}, 'branding')
-      .to('[data-scene="container"]#branding [data-scene="image"]', {clipPath: 'inset(0% 0% 100% 0%)'}, 'branding+=1.5')
+      .to('[data-scene="container"]#branding [data-scene="image"]', {clipPath: 'inset(0% 0% 100% 0%)'}, 'branding+=0.5')
 
       // Websites
       .removeLabel('branding').addLabel('websites')
@@ -208,11 +208,11 @@ export function homeAnimations() {
       .set('[data-scene="container"]#websites [data-scene="image"]', {autoAlpha: 1, zIndex: 2})
       .to('[data-scene="container"]#websites [data-scene="content"]', {autoAlpha: 1, y: 0})
 
-      .set('[data-scene="container"]#websites [data-scene="content"]', {zIndex: 0}, 'websites+=1.5')
-      .to('[data-scene="container"]#websites [data-scene="content"]', {autoAlpha: 0, y: 10}, 'websites+=1.5')
+      .set('[data-scene="container"]#websites [data-scene="content"]', {zIndex: 0}, 'websites+=1')
+      .to('[data-scene="container"]#websites [data-scene="content"]', {autoAlpha: 0, y: 10}, 'websites+=1')
       
       .set('[data-scene="container"]#marketing [data-scene="image"]', {autoAlpha: 1, zIndex: 1}, 'websites')
-      .to('[data-scene="container"]#websites [data-scene="image"]', {clipPath: 'inset(0% 0% 100% 0%)'}, 'websites+=1.5')
+      .to('[data-scene="container"]#websites [data-scene="image"]', {clipPath: 'inset(0% 0% 100% 0%)'}, 'websites+=1')
       
       // Marketing
       .removeLabel('websites').addLabel('marketing')

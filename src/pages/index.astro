@@ -106,10 +106,21 @@ import CTA from '../components/CTA.astro'
               </div>
             </div>
             <!-- image -->
-            <div data-scene="image" class="-mt-24 lg:px-16 col-start-6 col-end-last">
-              <figure class="relative w-full h-0 pb-[112%] overflow-hidden">
-                <img class="absolute inset-0 w-full h-full object-cover object-right-top" src="/work/mama-lolas/preview.jpg" alt="">
-              </figure>
+            <div data-scene="image" data-parallax="" class="-mt-24 lg:px-16 col-start-6 col-end-last">
+              <a class="workTile w-full h-full" href="#mama-lolas">
+
+                <div class="workTile__frame h-0 pb-[112%]">
+                  <figure class="workTile__figure relative w-full h-full overflow-hidden">
+                    <img class="workTile__img absolute inset-0 w-full h-full object-cover object-right-top" src="/work/mama-lolas/preview.jpg" alt="">
+                  </figure>
+                  <h3 class="text-white absolute bottom-0 pl-10">Ma
+                    <h3 class="text-white absolute bottom-0 pl-10">Mama Lola's</h3>ma Lola's</h3>
+                  <div class="workTile__wedge workTile__wedge--dark workTile__wedge--dark">
+                    <i class="arrow-right arrow-right--short"></i>
+                  </div>
+                </div>
+
+              </a>
             </div>
           </div>
           <!-- content: website -->
@@ -144,11 +155,22 @@ import CTA from '../components/CTA.astro'
               </div>
             </div>
             <!-- image -->
-            <div data-scene="image" class="-mt-24 lg:px-16 col-start-6 col-end-last">
-              <figure class="relative w-full h-0 pb-[112%] overflow-hidden">
-                <img class="absolute inset-0 w-full h-full object-cover object-right-top" src="/work-fricks-thumb.png" alt="">
-              </figure>
+            <div data-scene="image" data-parallax="" class="-mt-24 lg:px-16 col-start-6 col-end-last">
+              <a class="workTile w-full h-full" href="#fricks">
+
+                <div class="workTile__frame h-0 pb-[112%]">
+                  <figure class="workTile__figure relative w-full h-full overflow-hidden">
+                    <img class="workTile__img absolute inset-0 w-full h-full object-cover object-right-top" src="/work-fricks-thumb.png" alt="">
+                  </figure>
+                  <h3 class="text-white absolute bottom-0 pl-10">Frick's Quality Meats</h3>
+                  <div class="workTile__wedge workTile__wedge--dark">
+                    <i class="arrow-right arrow-right--short"></i>
+                  </div>
+                </div>
+
+              </a>
             </div>
+
           </div>
           <!-- content: marketing -->
           <div data-scene="container" id="marketing" class="lg:col-start-wrapper lg:col-end-wrapper lg:row-start-2 grid grid-cols-12">
@@ -182,10 +204,20 @@ import CTA from '../components/CTA.astro'
               </div>
             </div>
             <!-- image -->
-            <div data-scene="image" class="-mt-24 lg:px-16 col-start-6 col-end-last">
-              <figure class="relative w-full h-0 pb-[112%] overflow-hidden">
-                <img class="absolute inset-0 w-full h-full object-cover object-right-top" src="/work-muros-thumb.png" alt="">
-              </figure>
+            <div data-scene="image" data-parallax="" class="-mt-24 lg:px-16 col-start-6 col-end-last">
+              <a class="workTile w-full h-full" href="#muros">
+
+                <div class="workTile__frame h-0 pb-[112%]">
+                  <figure class="workTile__figure relative w-full h-full overflow-hidden">
+                    <img class="workTile__img absolute inset-0 w-full h-full object-cover object-right-top" src="/work-muros-thumb.png" alt="">
+                  </figure>
+                  <h3 class="text-white absolute bottom-0 pl-10">Muros</h3>
+                  <div class="workTile__wedge workTile__wedge--dark">
+                    <i class="arrow-right arrow-right--short"></i>
+                  </div>
+                </div>
+
+              </a>
             </div>
           </div>
         </div>
@@ -209,7 +241,7 @@ import CTA from '../components/CTA.astro'
         <span data-fillText="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--dark">Our Work</span>
         <span data-fillText="fill" class="relative z-40 col-start-1 row-start-1">Our Work</span>
       </h3>
-      <div class="grid lg:grid-cols-2 mt-12 gap-y-12 lg:gap-y-24 lg:mt-16">
+      <div class="grid lg:grid-cols-2 mt-12 gap-y-12 lg:gap-y-24 lg:mt-16 work-columns">
         {posts.map((post) =>
           <WorkExerpt slug={post.slug} title={post.title} img={post.img} tags={post.tags} desc={post.desc} />
         )}

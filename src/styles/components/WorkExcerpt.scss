@@ -13,16 +13,37 @@
 }
 
 .workTile {
-  display: block;
-  height: fit-content;
 
-  @screen xl {
-    margin: 0 4rem;    
-  }
+  // Work Section (columns)
+  .work-columns & {
+    display: block;
+    height: fit-content;  
 
-  &:nth-child(even) {
     @screen xl {
-      margin-top: 6rem;
+      margin: 0 4rem;
+    }
+  
+    &:nth-child(even) {
+      @screen xl {
+        margin-top: 6rem;
+      }
+    }
+
+    &__frame {
+      height: 0;
+      padding-bottom: 102%;
+    }
+
+    &__img {
+      height: 150%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:hover {
+      .workTile__img {
+        transform: translateY(-50%) scale(1.035);
+      }
     }
   }
   
@@ -56,8 +77,9 @@
     position: relative;
     // height: 554px;
     width: 100%;
-    height: 0;
-    padding-bottom: 102%;
+    height: 100%;
+    // height: 0;
+    // padding-bottom: 102%;
     margin-bottom: 0;
     overflow: hidden;
   }
@@ -74,16 +96,14 @@
     position: absolute;
     // inset: 0;
     width: 100%;
-    height: 150%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
-    top: 50%;
-    transform: translateY(-50%);
     transition: transform 3s ease-out;
   }
 
   &__wedge {
-    --size: 125px;
+    --size: 150px;
 
     position: absolute;
     bottom: 0;
@@ -92,9 +112,8 @@
     height: var(--size);
 
     &::after {
-      --skewX: -45deg;
-      // --translateY: 100%;
-      --translateX: -50%;
+      --skewX: -40deg;
+      --translateY: 100%;
       @extend %transforms;
 
       content: '';
@@ -102,21 +121,25 @@
       position: absolute;
       inset: 0;
       background-color: white;
-      transform-origin: bottom;
-      transition: transform 220ms $ease-in-quad;
+      transition: transform 400ms $ease-in-quad;
+    }
+
+    &--dark::after {
+      background-color: theme('colors.darkgray');
     }
   }
 
   i.arrow-right {
     position: absolute;
-    bottom: 0;
-    left: -15%;
+    bottom: 5px;
+    right: var(--size);
     transform: translate(-50%, -50%);
     z-index: 10;
     background-color: theme('colors.gold');
+    opacity: 0;
     transition: opacity 300ms $ease-in-cubic;
   }
-  /*
+
   &:hover {
     .workTile {
       &__title {
@@ -131,6 +154,7 @@
       &__figure {
         // transform: translateY(-5px);
         // box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        // transform: scale(1.05);
       }
 
       &__img {
@@ -151,5 +175,4 @@
     }
     
   }
-  */
 }
