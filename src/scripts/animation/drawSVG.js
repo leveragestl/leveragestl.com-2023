@@ -19,9 +19,14 @@ export function drawSVG() {
       }
     }).addLabel('start')
 
-    drawSVGAnimTL
-      .from('#be-useful path', {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0})
-      .from('#be-kind path', {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0}, '-=0.75')
-      .from('#be-fearless path', {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0}, '-=1')
+    if (drawSVGElem.querySelector('.draw-group')) {
+      let drawGroups = drawSVGElem.querySelectorAll('.draw-group')
+      
+      for (const drawGroup of drawGroups) {
+        drawSVGAnimTL.from(drawGroup.querySelectorAll('path'), {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0}, '-=1')
+      }
+    } else {
+      drawSVGAnimTL.from(drawSVGElem.querySelectorAll('path'), {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0})
+    }
   }
 }

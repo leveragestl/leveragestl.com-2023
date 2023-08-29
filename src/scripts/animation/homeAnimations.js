@@ -69,6 +69,11 @@ export function homeAnimations() {
         scrub: true,
         end: '150%',
         fastScrollEnd: true,
+        snap: {
+          snapTo: [0.01, 0.5, 0.99],
+          delay: 0,
+          directional: false
+        }
         // markers: true
       }
     }).add('start')
@@ -94,11 +99,11 @@ export function homeAnimations() {
       .to('[data-scene="container"]#branding [data-scene="image"]', {clipPath: 'inset(0% 0% 100% 0%)'}, 'branding+=0.5')
 
       // Websites
-      .removeLabel('branding').addLabel('websites')
+      .addLabel('websites')
 
       .set('[data-scene="container"]#websites [data-scene="content"]', {zIndex: 1})
       .set('[data-scene="container"]#websites [data-scene="image"]', {autoAlpha: 1, zIndex: 2})
-      .to('[data-scene="container"]#websites [data-scene="content"]', {autoAlpha: 1, y: 0})
+      .to('[data-scene="container"]#websites [data-scene="content"]', {autoAlpha: 1, y: 0}, 'websites')
 
       .set('[data-scene="container"]#websites [data-scene="content"]', {zIndex: 0}, 'websites+=1')
       .to('[data-scene="container"]#websites [data-scene="content"]', {autoAlpha: 0, y: 10}, 'websites+=1')
@@ -107,9 +112,9 @@ export function homeAnimations() {
       .to('[data-scene="container"]#websites [data-scene="image"]', {clipPath: 'inset(0% 0% 100% 0%)'}, 'websites+=1')
       
       // Marketing
-      .removeLabel('websites').addLabel('marketing')
+      .addLabel('marketing')
       .set('[data-scene="container"]#marketing [data-scene="content"]', {zIndex: 1})
-      .to('[data-scene="container"]#marketing [data-scene="content"]', {autoAlpha: 1, y: 0})
+      .to('[data-scene="container"]#marketing [data-scene="content"]', {autoAlpha: 1, y: 0}, 'marketing')
   })
 
   const parallaxServicesTL = gsap.timeline({
@@ -127,7 +132,7 @@ export function homeAnimations() {
   }).addLabel('start')
 
   parallaxServicesTL
-  .fromTo('#branding .workTile__figure', {yPercent: '-=12.5'}, {duration: 1.5, yPercent: 0}, '-=0.5')
-  .fromTo('#websites .workTile__figure', {yPercent: '-=12.5'}, {duration: 1.5, yPercent: 0}, '-=0.5')
-  .fromTo('#marketing .workTile__figure', {yPercent: '-=12.5'}, {duration: 1.5, yPercent: 0}, '-=0.5')
+  .fromTo('#branding .workTile__figure', {yPercent: 0}, {duration: 1.5, yPercent: '-=12.5'}, '-=0.5')
+  .fromTo('#websites .workTile__figure', {yPercent: 0}, {duration: 1.5, yPercent: '-=12.5'}, '-=0.5')
+  .fromTo('#marketing .workTile__figure', {yPercent: 0}, {duration: 1.5, yPercent: '-=12.5'}, '-=0.5')
 }
