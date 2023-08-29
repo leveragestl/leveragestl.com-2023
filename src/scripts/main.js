@@ -3,9 +3,9 @@
 // =============================================================================
 
 import {gsap} from 'gsap'
-import { ScrollTrigger, SplitText, ScrollSmoother } from 'gsap/all'
+import { ScrollTrigger, SplitText, ScrollSmoother, DrawSVGPlugin } from 'gsap/all'
 
-gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother)
+gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother, DrawSVGPlugin)
 
 // =============================================================================
 // Swup
@@ -34,7 +34,13 @@ swup.hooks.before('content:replace', () => unload());
 // ~~~~~~~~~~~~~~ Imports ~~~~~~~~~~~~~~ //
 
 // Animation
-import { generalAnimations, heroAnimation, homeAnimations, aboutAnimations, revealText, fillText, parallaxWindow, parallaxColumns } from './core/animation';
+import { generalAnimations } from './animation/generalAnimations';
+import { homeAnimations } from './animation/homeAnimations';
+import { revealText } from './animation/revealText';
+import { fillText } from './animation/fillText';
+import { parallaxColumns } from './animation/parallaxColumns';
+import { parallaxWindow } from './animation/parallaxWindow';
+import { drawSVG } from './animation/drawSVG';
 
 // Header
 import { siteHeader } from './core/siteHeader';
@@ -48,11 +54,10 @@ function init() {
     // smoothTouch: 0.1,        // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
   });
 
+  siteHeader()
+
   if (document.querySelector('[data-barba-namespace="home"]')) {
     setTimeout(() => homeAnimations(), 50);
-  }
-  if (document.querySelector('[data-revealText]')) {
-    setTimeout(() => revealText(), 50);
   }
 
   if (document.querySelector('[data-fillText]')) {
@@ -67,13 +72,14 @@ function init() {
     setTimeout(() => parallaxColumns(), 50);
   }
 
-  siteHeader()
-
-  /*
-  if (document.querySelector('[data-animElem]')) {
-    generalAnimations()
+  if (document.querySelector('[data-anim-elem]')) {
+    setTimeout(() => generalAnimations(), 50);
   }
 
+  if (document.querySelector('[data-draw-svg]')) {
+    setTimeout(() => drawSVG(), 50);
+  }
+  /*
   if (document.querySelector('#hero')) {
     heroAnimation()
   }

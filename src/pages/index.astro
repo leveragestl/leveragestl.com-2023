@@ -11,6 +11,7 @@ import CTA from '../components/CTA.astro'
 
 <Layout title="Leverage STL" namespace="home">
 
+  <!-- Hero -->
   <section data-pin="hero" id="home_hero" class="hero relative bg-white">
     <div id="home_hero-inner" class="wrapper grid grid-rows-[var(--site-header-height)_1fr_var(--diagWrapperHeight)] bg-darkgray text-white md:h-[75vh] lg:h-[95vh] lg:min-h-[800px]">
       <div class="row-start-2 lg:flex lg:justify-center lg:items-center pb-12">
@@ -51,22 +52,24 @@ import CTA from '../components/CTA.astro'
   <!-- Page Content -->
   <div id="content" class="wrapperDiagonal transition-fade">
     <!-- Intro -->
-    <section class="wrapper mt-[min(100px,_var(--diagWrapperHeight))] mb-24 lg:mb-48">
+    <section data-anim-group class="wrapper mt-[min(100px,_var(--diagWrapperHeight))] mb-24 lg:mb-48">
       <div class="lg:max-w-[815px] lg:mx-auto">
-        <h2 data-revealText class="mb-8">Strategic design, development, and marketing is kind of our thing.</h2>
-        <p class="large">We believe thoughtful, beautiful design leads to better experiences, and better experiences drive business results. Whether you're refreshing, creating something from scratch, or expanding upon what's already established, we can help. Let's partner together to elevate your brand, website, and content. We'll rely on your industry expertise, while we put our strategic design, development and marketing execution on display.</p>
-      </div>
-      <div class="mt-16 hidden lg:block">
-        <a class="font-black font-serif text-gold italic text-18 flex justify-center flex-col items-center gap-y-2" href="">
-          <span>keep scrolling to explore our services and work</span>
-          <i class="arrow-down"></i>
-        </a>
+        <h2 data-revealText data-anim-elem="revealText" class="mb-8">Strategic design, development, and marketing is kind of our thing.</h2>
+        <div data-anim-elem="fadeInUp" data-anim-timing="0.5">
+          <p class="large">We believe thoughtful, beautiful design leads to better experiences, and better experiences drive business results. Whether you're refreshing, creating something from scratch, or expanding upon what's already established, we can help. Let's partner together to elevate your brand, website, and content. We'll rely on your industry expertise, while we put our strategic design, development and marketing execution on display.</p>
+          <div class="mt-16 hidden lg:block">
+            <a class="font-black font-serif text-gold italic text-18 flex justify-center flex-col items-center gap-y-2" href="">
+              <span>keep scrolling to explore our services and work</span>
+              <i class="arrow-down"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
     <!-- Services -->
-    <section data-pin="services" class="lg:text-left">
+    <section data-pin="services" data-anim-group class="lg:text-left">
       <div class="wrapper mt-7">
-        <h3 data-fillText class="h1 text-left lg:max-w-md lg:mb-20 grid grid-cols-1 grid-rows-1">
+        <h3 data-anim-elem="fillText" class="h1 text-left lg:max-w-md lg:mb-20 grid grid-cols-1 grid-rows-1">
           <span data-fillText="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--dark">Our Services</span>
           <span data-fillText="fill" class="relative z-40 col-start-1 row-start-1">Our Services</span>
         </h3>
@@ -116,7 +119,7 @@ import CTA from '../components/CTA.astro'
                   <h3 class="text-white absolute bottom-0 pl-10">Ma
                     <h3 class="text-white absolute bottom-0 pl-10">Mama Lola's</h3>ma Lola's</h3>
                   <div class="workTile__wedge workTile__wedge--dark workTile__wedge--dark">
-                    <i class="arrow-right arrow-right--short"></i>
+                    <i class="arrow-right"></i>
                   </div>
                 </div>
 
@@ -164,7 +167,7 @@ import CTA from '../components/CTA.astro'
                   </figure>
                   <h3 class="text-white absolute bottom-0 pl-10">Frick's Quality Meats</h3>
                   <div class="workTile__wedge workTile__wedge--dark">
-                    <i class="arrow-right arrow-right--short"></i>
+                    <i class="arrow-right"></i>
                   </div>
                 </div>
 
@@ -209,11 +212,11 @@ import CTA from '../components/CTA.astro'
 
                 <div class="workTile__frame h-0 pb-[112%]">
                   <figure class="workTile__figure relative w-full h-full overflow-hidden">
-                    <img class="workTile__img absolute inset-0 w-full h-full object-cover object-right-top" src="/work-muros-thumb.png" alt="">
+                    <div class=""><img class="workTile__img absolute inset-0 w-full h-full object-cover object-right-top" src="/work-muros-thumb.png" alt=""></div>
                   </figure>
                   <h3 class="text-white absolute bottom-0 pl-10">Muros</h3>
                   <div class="workTile__wedge workTile__wedge--dark">
-                    <i class="arrow-right arrow-right--short"></i>
+                    <i class="arrow-right"></i>
                   </div>
                 </div>
 
@@ -237,7 +240,7 @@ import CTA from '../components/CTA.astro'
     </section>
     <!-- Work -->
     <section class="wrapper my-24 lg:my-48">
-      <h3 data-fillText class="h1 mb-0 text-left grid grid-cols-1 grid-rows-1">
+      <h3 data-anim-elem="fillText" class="h1 mb-0 text-left grid grid-cols-1 grid-rows-1">
         <span data-fillText="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--dark">Our Work</span>
         <span data-fillText="fill" class="relative z-40 col-start-1 row-start-1">Our Work</span>
       </h3>
@@ -266,21 +269,21 @@ import CTA from '../components/CTA.astro'
     </section>
     
     <!-- Blog -->
-    <section class="bg-darkgray text-white pt-16 pb-28 lg:pt-32 lg:pb-48">
+    <section data-anim-group data-anim-timing="-=0.75" data-anim-start="top 90%" class="bg-darkgray text-white pt-16 pb-28 lg:pt-32 lg:pb-48">
       <div class="wrapper text-left">
-        <div class="w-full mb-10 lg:mb-16">
+        <div data-anim-elem="fadeInUp" data-anim-timing="0.75" class="w-full mb-10 lg:mb-16">
           <h3 class="h4 font-bold">The latest from leverage</h3>
         </div>
         <div class="grid lg:grid-cols-3 gap-x-32">
-          <a class="block mb-10" href="#">
+          <a data-anim-elem="fadeInUp" class="block mb-10" href="#">
             <h5 class="text-24 mb-0">Meet Drew - Senior Web Developer</h5>
             <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic">read full article</div>
           </a>
-          <a class="block mb-10" href="#">
+          <a data-anim-elem="fadeInUp" class="block mb-10" href="#">
             <h5 class="text-24 mb-0">Brand Guidelines: What, Why & How?</h5>
             <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic">read full article</div>
           </a>
-          <a class="block mb-10" href="#">
+          <a data-anim-elem="fadeInUp" class="block mb-10" href="#">
             <h5 class="text-24 mb-0">Web Animation Trends We're Lovin'</h5>
             <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic">read full article</div>
           </a>

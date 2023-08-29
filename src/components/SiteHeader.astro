@@ -2,12 +2,13 @@
 import Logo from "./Logo.astro"
 ---
 
-<header id="site-header" class="absolute z-50 top-0 left-0 w-full h-[--site-header-height] flex justify-between items-center mix-blend-difference">
-  <figure id="logo" class="fixed left-[--container-margin] flex justify-start items-center">
-    <a href="/" class="">
-      <Logo />
-    </a>
-  </figure>
+<figure id="logo" class="left-[--container-margin] flex justify-start items-center">
+  <a href="/" class="">
+    <Logo />
+  </a>
+</figure>
+
+<header id="site-header" class="absolute z-50 top-0 left-0 w-full h-[--site-header-height] flex justify-between items-center">
 
   <nav class="text-white font-bold fixed right-[--container-margin]">
     <ul class="flex gap-x-8 uppercase tracking-wider">
@@ -73,6 +74,10 @@ import Logo from "./Logo.astro"
   }
 
   #logo {
+    position: fixed;
+    mix-blend-mode: difference;
+    z-index: 999;
+    // transition: all 200ms ease-out;
     a {
       height: var(--site-header-height);
       padding: 5px 0;
@@ -86,7 +91,7 @@ import Logo from "./Logo.astro"
       }
 
       path, polygon {
-        transition: fill 200ms ease-out;
+        // transition: fill 200ms ease-out;
       }
       /*
       body.scrolled & {
@@ -95,10 +100,12 @@ import Logo from "./Logo.astro"
         }
       }
       */
-      &:hover {
-        path, polygon {
-          fill: theme('colors.gold') !important;            
-        }
+    }
+
+    &:hover {
+      mix-blend-mode: normal;
+      path, polygon {
+        fill: theme('colors.gold') !important;            
       }
     }
 
