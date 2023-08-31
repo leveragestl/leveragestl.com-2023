@@ -23,10 +23,10 @@ const { title, namespace } = Astro.props;
     <link rel="stylesheet" href="https://use.typekit.net/cin4lzn.css">
 		<title>{title}</title>
 	</head>
-	<body data-barba="wrapper" class:list={namespace}>
+	<body class:list={namespace}>
     <SiteHeader />
     <div id="site-header-bg" class="fixed z-40 top-0 left-0 w-full h-[--site-header-height] bg-white"></div>
-    <main id="swup" data-barba="container" data-barba-namespace={namespace}>
+    <main id="swup">
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <slot />

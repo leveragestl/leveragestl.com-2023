@@ -7,11 +7,6 @@ export function siteHeader() {
 
   let scrollTarget = window.innerHeight
 
-  /*
-  if(document.querySelector('main#swup').getAttribute('data-barba-namespace') == "home") {
-    scrollTarget = window.innerHeight * 1.7
-  }
-  */
   if(document.querySelector('[data-header-scrolled]')) {
     scrollTarget = document.querySelector('[data-header-scrolled]').offsetTop
   }

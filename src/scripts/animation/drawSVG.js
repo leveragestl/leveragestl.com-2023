@@ -5,11 +5,9 @@ import { DrawSVGPlugin } from "gsap/all";
 gsap.registerPlugin(DrawSVGPlugin);
 
 export function drawSVG() {
-  const drawSVGElems = document.querySelectorAll('[data-draw-svg]')
+  const drawSVGElems = document.querySelectorAll('[data-draw-svg=""]')
 
   for (const drawSVGElem of drawSVGElems) {
-
-    console.log(drawSVGElem);
 
     const drawSVGAnimTL = gsap.timeline({
       scrollTrigger: {

@@ -12,10 +12,15 @@ gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother, DrawSVGPlugin)
 // =============================================================================
 
 import Swup from 'swup';
-const swup = new Swup();
+import SwupBodyClassPlugin from '@swup/body-class-plugin';
+
+const swup = new Swup({
+  plugins: [new SwupBodyClassPlugin()]
+});
 
 if (document.readyState === 'complete') {
-  init();
+  // setTimeout(() => init(), 50)
+  init()
 } else {
   document.addEventListener('DOMContentLoaded', () => init());
 }
@@ -34,60 +39,86 @@ swup.hooks.before('content:replace', () => unload());
 // ~~~~~~~~~~~~~~ Imports ~~~~~~~~~~~~~~ //
 
 // Animation
-import { generalAnimations } from './animation/generalAnimations';
-import { homeAnimations } from './animation/homeAnimations';
-import { revealText } from './animation/revealText';
-import { fillText } from './animation/fillText';
-import { parallaxColumns } from './animation/parallaxColumns';
-import { parallaxWindow } from './animation/parallaxWindow';
-import { drawSVG } from './animation/drawSVG';
+import { generalAnimations } from './animation/generalAnimations'
+import { homeAnimations } from './animation/homeAnimations'
+import { ctaAnimations } from './animation/ctaAnimations'
+import { revealText } from './animation/revealText'
+import { fillText } from './animation/fillText'
+import { parallaxColumns } from './animation/parallaxColumns'
+import { parallaxWindow } from './animation/parallaxWindow'
+import { drawSVG } from './animation/drawSVG'
 
 // Header
-import { siteHeader } from './core/siteHeader';
+import { siteHeader } from './core/siteHeader'
 
 // ~~~~~~~~~~~~~~~~~ Init ~~~~~~~~~~~~~~~~ //
 
+function smoothScroll() {
+  let smoother = ScrollSmoother.create({
+    smooth: 1,
+    effects: true,
+    // smoothTouch: 0.1,
+  })
+  
+  let hashLinks = document.querySelectorAll('a[href^="#"]')
+  
+  for (const hashLink of hashLinks) {
+    let target = hashLink.getAttribute('href')
+    hashLink.setAttribute('href', 'javascript:void(0)')
+    hashLink.setAttribute('data-hash', target)
+
+    hashLink.addEventListener('click', (e) => {      
+      e.preventDefault()
+      smoother.scrollTo(target, true, 'top 50px')
+    })
+  }
+  
+  /*
+  window.onload = (event) => {  
+    let urlHash = window.location.href.split("#")[1]
+  
+    let scrollElem = document.querySelector("#" + urlHash)
+    
+    if (urlHash && scrollElem) {
+      gsap.to(smoother, {
+        scrollTop: smoother.offset(scrollElem, "top 50px"),
+        duration: 1,
+        delay: 0.5
+      });
+    }
+  }
+  */  
+}
+
 function init() {
-  ScrollSmoother.create({
-    smooth: 1,               // how long (in seconds) it takes to "catch up" to the native scroll position
-    effects: true,           // looks for data-speed and data-lag attributes on elements
-    // smoothTouch: 0.1,        // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
-  });
 
-  siteHeader()
+  smoothScroll(); siteHeader()
 
-  if (document.querySelector('[data-barba-namespace="home"]')) {
-    setTimeout(() => homeAnimations(), 50);
+  if (document.body.classList.contains('home')) {
+    homeAnimations()
+  }
+
+  if (document.querySelector('section#cta')) {
+    ctaAnimations()
   }
 
   if (document.querySelector('[data-fillText]')) {
-    setTimeout(() => fillText(), 50);
+    fillText()
   }
 
   if (document.querySelector('[data-parallax="window"]')) {
-    setTimeout(() => parallaxWindow(), 50);
+    parallaxWindow()
   }
 
   if (document.querySelector('[data-parallax="columns"]')) {
-    setTimeout(() => parallaxColumns(), 50);
+    parallaxColumns()
   }
 
   if (document.querySelector('[data-anim-elem]')) {
-    setTimeout(() => generalAnimations(), 50);
+    generalAnimations()
   }
 
   if (document.querySelector('[data-draw-svg]')) {
-    setTimeout(() => drawSVG(), 50);
+    drawSVG()
   }
-  /*
-  if (document.querySelector('#hero')) {
-    heroAnimation()
-  }
-  */
-  /*
-  if (document.querySelector('#swup[data-barba-namespace="about"]')) {
-    aboutAnimations()
-  }
-  */
-
 }

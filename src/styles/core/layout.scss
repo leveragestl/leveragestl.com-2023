@@ -34,7 +34,7 @@
     transform: skewY(var(--diagWrapperAngle)) translateY(50%);
     margin-top: calc(var(--diagWrapperHeight) * -0.85);
 
-    #home_hero & {
+    .home #hero & {
       position: absolute;
       bottom: 0;
       left: 0;

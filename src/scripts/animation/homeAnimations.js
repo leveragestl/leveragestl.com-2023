@@ -1,8 +1,7 @@
 import { gsap } from "gsap";
-import { Flip } from "gsap/Flip";
-import { ScrollTrigger, SplitText, CustomEase, ScrollSmoother } from "gsap/all";
+import { ScrollTrigger } from "gsap/all";
 
-gsap.registerPlugin(Flip, ScrollTrigger, SplitText, CustomEase, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger);
 
 let mm = gsap.matchMedia();
 
@@ -10,6 +9,60 @@ export function homeAnimations() {
   // ~~~~~~~~~~~~~~~~~ Hero ~~~~~~~~~~~~~~~~ //
   // gsap.fromTo('#hero', {y: 50, autoAlpha: 0}, {duration: 1, autoAlpha: 1, y: 0})
   // gsap.from('#introText .highlight-gold', {duration: 0.75, ease: 'power4.easeIn', backgroundSize: '100% 0.5em, 0% 0.5em', scrollTrigger: {trigger: '#introText', start: 'top center'}})
+  
+
+  // ~~~~~~~~~~~~~ Hero DrawSVG ~~~~~~~~~~~~ //
+
+  let wrapperCapAnimated = false
+
+  if (document.querySelector('[data-draw-svg="hero"]')) {
+    const heroDrawSVGElem = document.querySelector('[data-draw-svg="hero"]')
+
+    gsap.set(heroDrawSVGElem.querySelectorAll('#solid path'), {clipPath: 'inset(0% 100% 0% 0%)'})
+    gsap.set('#hero video', {autoAlpha: 0, y: 10})
+    gsap.set('#hero .wrapperCap--top', {clipPath: 'inset(0% 100% 0% 0%)'})
+    // gsap.set('#hero .button', {autoAlpha: 0, y: 10})
+
+    const heroDrawSVGAnimTL = gsap.timeline({
+      scrollTrigger: {
+        trigger: heroDrawSVGElem,
+        start: 'top 75%',
+        toggleActions: 'restart none none reverse',
+        fastScrollEnd: true
+      }
+    }).addLabel('start')
+  
+    if (heroDrawSVGElem.querySelector('.draw-group')) {
+      let drawGroups = heroDrawSVGElem.querySelectorAll('.draw-group')
+      
+      for (const drawGroup of drawGroups) {
+        heroDrawSVGAnimTL
+          .from(drawGroup.querySelectorAll('path'), {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0}, '-=1')
+      }
+    } else {
+      heroDrawSVGAnimTL
+        .from(heroDrawSVGElem.querySelectorAll('path'), {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0}, 'start')
+    }
+
+    heroDrawSVGAnimTL
+      .to('[data-draw-svg="hero"] #solid path', {duration: 0.05, stagger: 0.05, clipPath: 'inset(0% 0% 0% 0%)'}, '-=1.5')
+      .to(['[data-draw-svg="hero"] > *', '#hero .button-wrapper'], {duration: 1, y: '-=50'}, '-=0.5')
+      .to('section#hero .wrapperCap--top', {clipPath: 'inset(0% 0% 0% 0%)'}, '-=2')
+      .set('section#hero .wrapperCap--top', {clipPath: 'inset(0% 0% 0% 0%)'})
+      .to('#hero-inner', {duration: 1, height: '90vh'}, '-=1')
+      .from('#hero .button', {duration: 1, autoAlpha: 0, y: 10}, '-=0.5')
+      .to('#hero video', {duration: 1, autoAlpha: 1, y: 0}, '-=0.5')
+  }
+
+  const wrapperCapAnimTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#hero-content',
+      start: 'bottom center',
+    }
+  })
+
+  wrapperCapAnimTL
+  .to('section#hero .wrapperCap--top', {clipPath: 'inset(0% 0% 0% 0%'})
 
   // ~~~~~~~~~~~~~~~ Hero Pin ~~~~~~~~~~~~~~ //
   mm.add("(min-width: 1023.98px)", () => {
@@ -33,7 +86,7 @@ export function homeAnimations() {
     }).add('start')
 
     pinHeroTL
-      .to('#home_hero-inner', {/* duration: 0.5, */ yPercent: '-=60'}, 'start')
+      .to('.home #hero-inner', {/* duration: 0.5, */ yPercent: '-=60'}, 'start')
       .to('video', {/* duration: 0.5, */ yPercent: '-=75'}, 'start')
 
     // window.addEventListener('resize', () => {pinHeroTL.progress(0)})
@@ -132,7 +185,7 @@ export function homeAnimations() {
   }).addLabel('start')
 
   parallaxServicesTL
-  .fromTo('#branding .workTile__figure', {yPercent: 0}, {duration: 1.5, yPercent: '-=12.5'}, '-=0.5')
-  .fromTo('#websites .workTile__figure', {yPercent: 0}, {duration: 1.5, yPercent: '-=12.5'}, '-=0.5')
-  .fromTo('#marketing .workTile__figure', {yPercent: 0}, {duration: 1.5, yPercent: '-=12.5'}, '-=0.5')
+    .fromTo('#branding .workTile__figure', {yPercent: 0}, {duration: 1.5, yPercent: '-=12.5'}, '-=0.5')
+    .fromTo('#websites .workTile__figure', {yPercent: 0}, {duration: 1.5, yPercent: '-=12.5'}, '-=0.5')
+    .fromTo('#marketing .workTile__figure', {yPercent: 0}, {duration: 1.5, yPercent: '-=12.5'}, '-=0.5')
 }

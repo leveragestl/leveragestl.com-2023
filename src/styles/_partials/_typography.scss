@@ -83,10 +83,10 @@ h4, .h4 {
 .text-outline {
   -webkit-text-stroke-width: 1px;
   color: transparent;
-
+  
   &::selection {
-    -webkit-text-stroke-width: 0;
-    color: white;
+    -webkit-text-stroke-width: inherit;
+    color: transparent;
   }
 
   &--light {

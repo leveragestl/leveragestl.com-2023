@@ -133,9 +133,9 @@ export function generalAnimations() {
   
       const splitFill = new SplitText(elem.querySelector('[data-fillText="fill"]'), {type: "chars, words, lines"});
   
-      gsap.set(splitFill.chars, {clipPath: 'inset(0% 0% 100% 0%)'})
+      gsap.set(splitFill.chars, {clipPath: 'inset(0% 100% 0% 0%)'})
   
-      tl.to(splitFill.chars, {duration: 0.5, clipPath: 'inset(0% 0% 0% 0%)', stagger: {each: 0.035, ease: 'sine.out'}}, 'start')      
+      tl.to(splitFill.chars, {duration: 0.075, clipPath: 'inset(0% 0% 0% 0%)', stagger: 0.075}, 'start')
     }
   }
 
