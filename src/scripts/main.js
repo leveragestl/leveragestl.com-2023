@@ -38,6 +38,9 @@ swup.hooks.before('content:replace', () => unload());
 
 // ~~~~~~~~~~~~~~ Imports ~~~~~~~~~~~~~~ //
 
+// Sliders
+import { quotesSlider } from './vendors/swiper'
+
 // Animation
 import { generalAnimations } from './animation/generalAnimations'
 import { homeAnimations } from './animation/homeAnimations'
@@ -120,5 +123,9 @@ function init() {
 
   if (document.querySelector('[data-draw-svg]')) {
     drawSVG()
+  }
+
+  if (document.querySelector('[data-slider="quotes"]')) {
+    quotesSlider()
   }
 }
