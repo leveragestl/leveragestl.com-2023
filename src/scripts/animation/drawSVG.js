@@ -21,10 +21,10 @@ export function drawSVG() {
       let drawGroups = drawSVGElem.querySelectorAll('.draw-group')
       
       for (const drawGroup of drawGroups) {
-        drawSVGAnimTL.from(drawGroup.querySelectorAll('path'), {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0}, '-=1')
+        drawSVGAnimTL.from(drawGroup.querySelectorAll('path'), {duration: 1, stagger: {each: 0.035, ease: 'sine.out'}, drawSVG: 0}, '-=1')
       }
     } else {
-      drawSVGAnimTL.from(drawSVGElem.querySelectorAll('path'), {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0})
+      drawSVGAnimTL.from(drawSVGElem.querySelectorAll('path'), {duration: 1, stagger: {each: 0.035, ease: 'sine.out'}, drawSVG: 0})
     }
   }
 }

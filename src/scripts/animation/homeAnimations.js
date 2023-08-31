@@ -37,20 +37,19 @@ export function homeAnimations() {
       
       for (const drawGroup of drawGroups) {
         heroDrawSVGAnimTL
-          .from(drawGroup.querySelectorAll('path'), {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0}, '-=1')
+          .from(drawGroup.querySelectorAll('path'), {duration: 1, stagger: {each: 0.035, ease: 'sine.out'}, drawSVG: 0}, '-=1')
       }
     } else {
       heroDrawSVGAnimTL
-        .from(heroDrawSVGElem.querySelectorAll('path'), {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0}, 'start')
+        .from(heroDrawSVGElem.querySelectorAll('path'), {duration: 1, stagger: {each: 0.035, ease: 'sine.out'}, drawSVG: 0}, 'start')
     }
 
     heroDrawSVGAnimTL
-      .to('[data-draw-svg="hero"] #solid path', {duration: 0.05, stagger: 0.05, clipPath: 'inset(0% 0% 0% 0%)'}, '-=1.5')
-      .to(['[data-draw-svg="hero"] > *', '#hero .button-wrapper'], {duration: 1, y: '-=50'}, '-=0.5')
-      .to('section#hero .wrapperCap--top', {clipPath: 'inset(0% 0% 0% 0%)'}, '-=2')
-      .set('section#hero .wrapperCap--top', {clipPath: 'inset(0% 0% 0% 0%)'})
-      .to('#hero-inner', {duration: 1, height: '90vh'}, '-=1')
-      .from('#hero .button', {duration: 1, autoAlpha: 0, y: 10}, '-=0.5')
+      .to('[data-draw-svg="hero"] #solid path', {duration: 0.05, stagger: 0.05, clipPath: 'inset(0% 0% 0% 0%)'}, '-=1')
+      .to(['[data-draw-svg="hero"] > *', '#hero .button-wrapper'], {duration: 1, y: '-=50'}, '-=1.5')
+      .to('section#hero .wrapperCap--top', {clipPath: 'inset(0% 0% 0% 0%)'}, '<')
+      .to('#hero-inner', {duration: 1, height: '90vh'}, '<')
+      .from('#hero .button', {duration: 1, autoAlpha: 0, y: 10}, '-=1')
       .to('#hero video', {duration: 1, autoAlpha: 1, y: 0}, '-=0.5')
   }
 

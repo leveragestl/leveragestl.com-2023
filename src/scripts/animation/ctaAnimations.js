@@ -21,15 +21,14 @@ export function ctaAnimations() {
     
     for (const drawGroup of drawGroups) {
       ctaDrawSVGAnimTL
-        .from(drawGroup.querySelectorAll('path'), {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0}, '-=1')
+        .from(drawGroup.querySelectorAll('path'), {duration: 1, stagger: {each: 0.025, ease: 'sine.out'}, drawSVG: 0}, '-=1')
     }
   } else {
     ctaDrawSVGAnimTL
-      .from(ctaDrawSVGElem.querySelectorAll('path'), {duration: 1, stagger: {each: 0.05, ease: 'sine.out'}, drawSVG: 0}, 'start')
+      .from(ctaDrawSVGElem.querySelectorAll('path'), {duration: 1, stagger: {each: 0.025, ease: 'sine.out'}, drawSVG: 0}, 'start')
   }
 
   ctaDrawSVGAnimTL
-    .to('[data-draw-svg="cta"] #solid path', {duration: 0.05, stagger: 0.05, clipPath: 'inset(0% 0% 0% 0%)'})
+    .to('[data-draw-svg="cta"] #solid path', {duration: 0.04, stagger: 0.04, clipPath: 'inset(0% 0% 0% 0%)'})
     .from('section#cta .button', {duration: 1, autoAlpha: 0, y: 10})
-
 }
