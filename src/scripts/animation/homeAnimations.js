@@ -7,8 +7,8 @@ let mm = gsap.matchMedia();
 
 export function homeAnimations() {
   // ~~~~~~~~~~~~~~~~~ Hero ~~~~~~~~~~~~~~~~ //
-  gsap.set('#hero video', {autoAlpha: 0, y: 50})
-  gsap.set('#hero .wrapperCap--top', {clipPath: 'inset(0% 100% 0% 0%)'})
+  gsap.set('#hero video', {y: 100})
+  gsap.set('#hero .wrapperCap--top', {autoAlpha: 1, rotate: 0, y: '15vw'})
 
   const heroAnimationTL = gsap.timeline({
     scrollTrigger: {
@@ -40,13 +40,14 @@ export function homeAnimations() {
   }
 
   heroAnimationTL
-    .to('[data-hero-text] #solid path', {duration: 0.05, stagger: 0.05, clipPath: 'inset(0% 0% 0% 0%)'}, '-=1')
-    .to('[data-hero-text] > *', {duration: 1, y: '-=50'}, '-=1.5')
-    .to('#hero .wrapperCap--top', {duration: 0.25, clipPath: 'inset(0% 0% 0% 0%)'}, '<')
+    // .to('[data-hero-text] #solid path', {duration: 0.05, stagger: 0.05, clipPath: 'inset(0% 0% 0% 0%)'}, '-=1')
+    .to('[data-hero-text] > *', {duration: 1, y: '-=50'}, '+=1')
+    .to('#hero .wrapperCap--top', {yPercent: -50, rotate: -6.88}, '<')
     .to('#hero-inner', {duration: 1, height: '90vh'}, '<')
-    .to('#hero video', {duration: 1, autoAlpha: 1, y: 0}, '-=0.5')
+    .to('#hero video', {duration: 1, autoAlpha: 1, y: -50}, '-=0.5')
 
   // Make sure to animate diagonal cap in so the spacing looks okay for the headline
+  /*
   const wrapperCapAnimTL = gsap.timeline({
     scrollTrigger: {
       trigger: '#hero-content',
@@ -56,6 +57,7 @@ export function homeAnimations() {
 
   wrapperCapAnimTL
   .to('section#hero .wrapperCap--top', {clipPath: 'inset(0% 0% 0% 0%'})
+  */
 
   // ~~~~~~~~~~~~~~~ Hero Pin ~~~~~~~~~~~~~~ //
   mm.add("(min-width: 1023.98px)", () => {

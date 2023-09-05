@@ -26,12 +26,12 @@
   position: relative;
   display: block;
   background-color: white;
-  width: 100%;
+  width: 110%;
   height: var(--diagWrapperHeight);
   z-index: 10;
 
   &--top {
-    transform: skewY(var(--diagWrapperAngle)) translateY(50%);
+    transform: skewY(var(--diagWrapperAngle)) translate(-5%, 50%);
     margin-top: calc(var(--diagWrapperHeight) * -0.85);
 
     .home #hero & {
