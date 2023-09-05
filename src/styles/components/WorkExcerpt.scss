@@ -163,14 +163,16 @@
 
   i.arrow-right {
     position: absolute;
-    bottom: 12.5%;
-    right: 15%;
+    bottom: 20%;
+    right: 20%;
     // right: var(--size);
-    transform: translate(-50%, -50%) rotate(180deg);
+    // transform: translate(-50%, -50%) rotate(180deg);
+    margin-right: 10px;
     z-index: 10;
     background-color: theme('colors.gold');
     opacity: 0;
-    transition: opacity 300ms $ease-in-cubic;
+    transition: all 300ms ease-out;
+
   }
 
   &:hover {
@@ -214,7 +216,7 @@
 
     i.arrow-right {
       opacity: 1;
-      transition: opacity 300ms $ease-out-cubic;
+      margin-right: 0;
       z-index: 999;
     }
     

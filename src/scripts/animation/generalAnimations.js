@@ -129,13 +129,17 @@ export function generalAnimations() {
     // fillText
     if (elem.getAttribute('data-anim-elem') == "fillText") {
     
-      const splitOutline = new SplitText(elem.querySelector('[data-fillText="outline"]'), {type: "chars, words, lines"});
+      const splitOutline = new SplitText(elem.querySelector('[data-fillText="outline"]'), {type: "chars, words, lines", linesClass: 'fillText__line', wordsClass: 'fillText__word', charsClass: 'fillText__char++'});
   
-      const splitFill = new SplitText(elem.querySelector('[data-fillText="fill"]'), {type: "chars, words, lines"});
-  
-      gsap.set(splitFill.chars, {clipPath: 'inset(0% 100% 0% 0%)'})
-  
-      tl.to(splitFill.chars, {duration: 0.075, clipPath: 'inset(0% 0% 0% 0%)', stagger: 0.075}, 'start')
+      const splitFill = new SplitText(elem.querySelector('[data-fillText="fill"]'), {type: "chars, words, lines", linesClass: 'fillText__line', wordsClass: 'fillText__word', charsClass: 'fillText__char++'});
+
+
+      const durDefault = 1
+      const dur = (splitFill.chars.length * 0.1 > durDefault) ? splitFill.chars.length * 0.1 : durDefault
+
+      elem.setAttribute('data-duration', dur);
+    
+      tl.from(splitFill.lines, {duration: dur, ease: 'expo.out', clipPath: 'inset(0% 100% 0% 0%)', stagger: dur / 2})
     }
   }
 

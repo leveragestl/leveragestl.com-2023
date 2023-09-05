@@ -67,3 +67,13 @@
   background-color: white;
   clip-path: polygon(100% 0, 0% 100%, 100% 100%);
 }
+
+[data-anim-elem="fillText"] {
+  width: fit-content;
+}
+
+[data-anim-elem="fillText"] > *,
+.fillText__line {
+  display: inline-block;
+  width: fit-content;
+}

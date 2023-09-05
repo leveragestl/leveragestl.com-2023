@@ -82,7 +82,7 @@ export function homeAnimations() {
 
     pinHeroTL
       .to('.home #hero-inner', {/* duration: 0.5, */ yPercent: '-=30'}, 'start')
-      .to('video', {/* duration: 0.5, */ yPercent: '-=37.5'}, 'start')
+      .to('video', {/* duration: 0.5, */ yPercent: '-=33'}, 'start')
 
     // window.addEventListener('resize', () => {pinHeroTL.progress(0)})
 

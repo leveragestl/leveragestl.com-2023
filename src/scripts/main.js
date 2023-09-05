@@ -105,9 +105,9 @@ function init() {
     ctaAnimations()
   }
 
-  if (document.querySelector('[data-fillText]')) {
-    fillText()
-  }
+  // if (document.querySelector('[data-fillText]')) {
+  //   fillText()
+  // }
 
   if (document.querySelector('[data-parallax="window"]')) {
     parallaxWindow()
