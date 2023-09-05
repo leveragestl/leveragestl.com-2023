@@ -72,7 +72,7 @@ export function homeAnimations() {
         trigger: '[data-pin="hero"]',
         pin: '[data-pin="hero"]',
         scrub: true,
-        // end: '150%',
+        end: '50%',
         pinSpacing: false,
         preventOverlaps: false,
         // anticipatePin: 1,
@@ -81,8 +81,8 @@ export function homeAnimations() {
     }).add('start')
 
     pinHeroTL
-      .to('.home #hero-inner', {/* duration: 0.5, */ yPercent: '-=60'}, 'start')
-      .to('video', {/* duration: 0.5, */ yPercent: '-=75'}, 'start')
+      .to('.home #hero-inner', {/* duration: 0.5, */ yPercent: '-=30'}, 'start')
+      .to('video', {/* duration: 0.5, */ yPercent: '-=37.5'}, 'start')
 
     // window.addEventListener('resize', () => {pinHeroTL.progress(0)})
 
