@@ -101,7 +101,7 @@ function init() {
     homeAnimations()
   }
 
-  if (document.querySelector('section#cta')) {
+  if (document.querySelector('[data-draw-svg="cta"]')) {
     ctaAnimations()
   }
 

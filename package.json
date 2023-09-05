@@ -14,6 +14,7 @@
     "@barba/core": "^2.9.7",
     "@fortawesome/fontawesome-free": "^6.4.0",
     "@swup/body-class-plugin": "^3.1.1",
+    "@swup/fade-theme": "^2.0.0",
     "@swup/scripts-plugin": "^1.1.0",
     "@swup/scroll-plugin": "^3.3.0",
     "astro": "^2.8.3",

@@ -7,52 +7,46 @@ let mm = gsap.matchMedia();
 
 export function homeAnimations() {
   // ~~~~~~~~~~~~~~~~~ Hero ~~~~~~~~~~~~~~~~ //
-  // gsap.fromTo('#hero', {y: 50, autoAlpha: 0}, {duration: 1, autoAlpha: 1, y: 0})
-  // gsap.from('#introText .highlight-gold', {duration: 0.75, ease: 'power4.easeIn', backgroundSize: '100% 0.5em, 0% 0.5em', scrollTrigger: {trigger: '#introText', start: 'top center'}})
-  
+  gsap.set('#hero video', {autoAlpha: 0, y: 50})
+  gsap.set('#hero .wrapperCap--top', {clipPath: 'inset(0% 100% 0% 0%)'})
 
+  const heroAnimationTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: '[data-hero-text]',
+      start: 'top 75%',
+      toggleActions: 'restart none none reverse',
+      fastScrollEnd: true
+    }
+  }).addLabel('start')
+  
   // ~~~~~~~~~~~~~ Hero DrawSVG ~~~~~~~~~~~~ //
 
-  let wrapperCapAnimated = false
-
   if (document.querySelector('[data-draw-svg="hero"]')) {
-    const heroDrawSVGElem = document.querySelector('[data-draw-svg="hero"]')
+    function drawSVGHero() {
+      const heroDrawSVGElem = document.querySelector('[data-draw-svg="hero"]')
 
-    gsap.set(heroDrawSVGElem.querySelectorAll('#solid path'), {clipPath: 'inset(0% 100% 0% 0%)'})
-    gsap.set('#hero video', {autoAlpha: 0, y: 10})
-    gsap.set('#hero .wrapperCap--top', {clipPath: 'inset(0% 100% 0% 0%)'})
-    // gsap.set('#hero .button', {autoAlpha: 0, y: 10})
-
-    const heroDrawSVGAnimTL = gsap.timeline({
-      scrollTrigger: {
-        trigger: heroDrawSVGElem,
-        start: 'top 75%',
-        toggleActions: 'restart none none reverse',
-        fastScrollEnd: true
+      gsap.set(heroDrawSVGElem.querySelectorAll('#solid path'), {clipPath: 'inset(0% 100% 0% 0%)'})
+    
+      if (heroDrawSVGElem.querySelector('.draw-group')) {
+        let drawGroups = heroDrawSVGElem.querySelectorAll('.draw-group')
+        
+        for (const drawGroup of drawGroups) {
+          heroAnimationTL.from(drawGroup.querySelectorAll('path'), {duration: 1, stagger: {each: 0.035, ease: 'sine.out'}, drawSVG: 0}, '-=1')
+        }
+      } else {
+        heroAnimationTL.from(heroDrawSVGElem.querySelectorAll('path'), {duration: 1, stagger: {each: 0.035, ease: 'sine.out'}, drawSVG: 0}, 'start')
       }
-    }).addLabel('start')
-  
-    if (heroDrawSVGElem.querySelector('.draw-group')) {
-      let drawGroups = heroDrawSVGElem.querySelectorAll('.draw-group')
-      
-      for (const drawGroup of drawGroups) {
-        heroDrawSVGAnimTL
-          .from(drawGroup.querySelectorAll('path'), {duration: 1, stagger: {each: 0.035, ease: 'sine.out'}, drawSVG: 0}, '-=1')
-      }
-    } else {
-      heroDrawSVGAnimTL
-        .from(heroDrawSVGElem.querySelectorAll('path'), {duration: 1, stagger: {each: 0.035, ease: 'sine.out'}, drawSVG: 0}, 'start')
     }
-
-    heroDrawSVGAnimTL
-      .to('[data-draw-svg="hero"] #solid path', {duration: 0.05, stagger: 0.05, clipPath: 'inset(0% 0% 0% 0%)'}, '-=1')
-      .to(['[data-draw-svg="hero"] > *', '#hero .button-wrapper'], {duration: 1, y: '-=50'}, '-=1.5')
-      .to('section#hero .wrapperCap--top', {clipPath: 'inset(0% 0% 0% 0%)'}, '<')
-      .to('#hero-inner', {duration: 1, height: '90vh'}, '<')
-      .from('#hero .button', {duration: 1, autoAlpha: 0, y: 10}, '-=1')
-      .to('#hero video', {duration: 1, autoAlpha: 1, y: 0}, '-=0.5')
   }
 
+  heroAnimationTL
+    .to('[data-hero-text] #solid path', {duration: 0.05, stagger: 0.05, clipPath: 'inset(0% 0% 0% 0%)'}, '-=1')
+    .to('[data-hero-text] > *', {duration: 1, y: '-=50'}, '-=1.5')
+    .to('#hero .wrapperCap--top', {duration: 0.25, clipPath: 'inset(0% 0% 0% 0%)'}, '<')
+    .to('#hero-inner', {duration: 1, height: '90vh'}, '<')
+    .to('#hero video', {duration: 1, autoAlpha: 1, y: 0}, '-=0.5')
+
+  // Make sure to animate diagonal cap in so the spacing looks okay for the headline
   const wrapperCapAnimTL = gsap.timeline({
     scrollTrigger: {
       trigger: '#hero-content',
@@ -115,7 +109,8 @@ export function homeAnimations() {
 
     const pinServicesTL = gsap.timeline({
       scrollTrigger: {
-        start: 'top+='+triggerOffset+'px top',
+        start: 'top-=96px top',
+        // start: 'top top',
         trigger: '[data-pin="services"]',
         pin: '[data-pin="services"]',
         scrub: true,
