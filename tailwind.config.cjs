@@ -26,8 +26,8 @@ module.exports = {
 			'9xl': '2800px',
 			'mouse': { 'raw': '(any-hover: hover)' },
 			'touch': { 'raw': '(any-hover: none)' },
-      'short': { 'raw': '(max-height: 900px)' },
-      'portrait': { 'raw': '(orientation: portrait)' },
+      'short': { 'raw': '(max-height: 1024px) and (min-aspect-ratio: 4/3)' },
+      'portrait': { 'raw': '(min-width: 1280px) and (orientation: portrait)' },
     },
     fontFamily: {
 			'head': ['proxima-nova'],

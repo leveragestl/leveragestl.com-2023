@@ -2,11 +2,12 @@
 .transition-fade {
   opacity: 1;
   transform: translateY(0);
+  display: block;
 }
 
 html.is-animating .transition-fade {
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(50%) !important;
   transition: all 640ms cubic-bezier(1,0,1,1);
 }
 
@@ -35,3 +36,8 @@ html.is-animating .transition-wipe {
   transition: transform 300ms ease-in-out;
   transition-delay: 450ms;
 }
+/*
+.transition-wipe {
+  transform: skewY(-6.88deg) translateY(0);
+}
+*/

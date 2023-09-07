@@ -46,56 +46,31 @@ import { generalAnimations } from './animation/generalAnimations'
 import { homeAnimations } from './animation/homeAnimations'
 import { ctaAnimations } from './animation/ctaAnimations'
 import { revealText } from './animation/revealText'
-import { fillText } from './animation/fillText'
 import { parallaxColumns } from './animation/parallaxColumns'
 import { parallaxWindow } from './animation/parallaxWindow'
 import { drawSVG } from './animation/drawSVG'
+import { pageTransitions } from './animation/pageTransitions'
 
 // Header
 import { siteHeader } from './core/siteHeader'
 
+// Links
+import { linkHandler } from './utils/linkHandler'
+
 // ~~~~~~~~~~~~~~~~~ Init ~~~~~~~~~~~~~~~~ //
 
 function smoothScroll() {
-  let smoother = ScrollSmoother.create({
+  ScrollSmoother.create({
     smooth: 1,
     effects: true,
     // smoothTouch: 0.1,
   })
-  
-  let hashLinks = document.querySelectorAll('a[href^="#"]')
-  
-  for (const hashLink of hashLinks) {
-    let target = hashLink.getAttribute('href')
-    hashLink.setAttribute('href', 'javascript:void(0)')
-    hashLink.setAttribute('data-hash', target)
 
-    hashLink.addEventListener('click', (e) => {      
-      e.preventDefault()
-      smoother.scrollTo(target, true, 'top 50px')
-    })
-  }
-  
-  /*
-  window.onload = (event) => {  
-    let urlHash = window.location.href.split("#")[1]
-  
-    let scrollElem = document.querySelector("#" + urlHash)
-    
-    if (urlHash && scrollElem) {
-      gsap.to(smoother, {
-        scrollTop: smoother.offset(scrollElem, "top 50px"),
-        duration: 1,
-        delay: 0.5
-      });
-    }
-  }
-  */  
 }
 
 function init() {
 
-  smoothScroll(); siteHeader()
+  smoothScroll(); siteHeader(); linkHandler()
 
   if (document.body.classList.contains('home')) {
     homeAnimations()
@@ -104,10 +79,6 @@ function init() {
   if (document.querySelector('[data-draw-svg="cta"]')) {
     ctaAnimations()
   }
-
-  // if (document.querySelector('[data-fillText]')) {
-  //   fillText()
-  // }
 
   if (document.querySelector('[data-parallax="window"]')) {
     parallaxWindow()
@@ -128,4 +99,10 @@ function init() {
   if (document.querySelector('[data-slider="quotes"]')) {
     quotesSlider()
   }
+
+  if (document.querySelector('a')) {
+    // pageTransitions()
+  }
 }
+
+// document.addEventListener('DOMContentLoaded', () => init())

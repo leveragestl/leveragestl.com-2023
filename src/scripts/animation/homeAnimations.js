@@ -5,10 +5,20 @@ gsap.registerPlugin(ScrollTrigger);
 
 let mm = gsap.matchMedia();
 
+function setIntroSpacing() {
+  let videoHeight = document.querySelector('video').offsetHeight
+  document.querySelector('#intro').style.paddingTop = `${videoHeight - 250}px`
+}
+
+document.addEventListener('DOMContentLoaded', setIntroSpacing)
+window.addEventListener('resize', setIntroSpacing)
+
+
 export function homeAnimations() {
   // ~~~~~~~~~~~~~~~~~ Hero ~~~~~~~~~~~~~~~~ //
-  gsap.set('#hero video', {y: 100})
   gsap.set('#hero .wrapperCap--top', {autoAlpha: 1, rotate: 0, y: '15vw'})
+  gsap.set('#hero video', {y: 50})
+  // gsap.set('#hero .video-container', {autoAlpha: 1})
 
   const heroAnimationTL = gsap.timeline({
     scrollTrigger: {
@@ -43,8 +53,8 @@ export function homeAnimations() {
     // .to('[data-hero-text] #solid path', {duration: 0.05, stagger: 0.05, clipPath: 'inset(0% 0% 0% 0%)'}, '-=1')
     .to('[data-hero-text] > *', {duration: 1, y: '-=50'}, '+=1')
     .to('#hero .wrapperCap--top', {yPercent: -50, rotate: -6.88}, '<')
-    .to('#hero-inner', {duration: 1, height: '90vh'}, '<')
-    .to('#hero video', {duration: 1, autoAlpha: 1, y: -50}, '-=0.5')
+    // .to('#hero-inner', {duration: 1, height: '90vh'}, '<')
+    .to('#hero video', {duration: 1, autoAlpha: 1, y: 0}, '-=0.5')
 
   // Make sure to animate diagonal cap in so the spacing looks okay for the headline
   /*
@@ -74,20 +84,15 @@ export function homeAnimations() {
         scrub: true,
         end: '50%',
         pinSpacing: false,
-        preventOverlaps: false,
+        // preventOverlaps: false,
         // anticipatePin: 1,
         // markers: true,
       }
     }).add('start')
 
     pinHeroTL
-      .to('.home #hero-inner', {/* duration: 0.5, */ yPercent: '-=30'}, 'start')
-      .to('video', {/* duration: 0.5, */ yPercent: '-=33'}, 'start')
-
-    // window.addEventListener('resize', () => {pinHeroTL.progress(0)})
-
-    // document.addEventListener('DOMContentLoaded', () => pinHeroTL.progress(0));
-    // document.querySelector('#content').style.marginTop = (heroElem.offsetHeight * -0.75)+'px'      
+      .to('.home #hero-inner', {yPercent: '-=25'}, 'start')
+      .to('.video-container', {y: '-=250px'}, 'start')
 
   })
 

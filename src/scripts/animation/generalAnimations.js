@@ -139,7 +139,7 @@ export function generalAnimations() {
 
       elem.setAttribute('data-duration', dur);
     
-      tl.from(splitFill.lines, {duration: dur, ease: 'expo.out', clipPath: 'inset(0% 100% 0% 0%)', stagger: dur / 2})
+      tl.from(splitFill.lines, {duration: dur, ease: 'expo.out', clipPath: 'inset(0% 100% 0% 0%)', stagger: dur / 3})
     }
   }
 
