@@ -18,6 +18,7 @@ export function homeAnimations() {
   // ~~~~~~~~~~~~~~~~~ Hero ~~~~~~~~~~~~~~~~ //
   gsap.set('#hero .wrapperCap--top', {autoAlpha: 1, rotate: 0, y: '15vw'})
   gsap.set('#hero .video-container', {y: '45vh'})
+  gsap.set('#hero video', {y: 50})
 
   const heroAnimationTL = gsap.timeline({
     scrollTrigger: {
@@ -30,10 +31,10 @@ export function homeAnimations() {
 
   heroAnimationTL
     .to('[data-hero-text] > *', {duration: 1, y: 0}, '+=1')
-    .to('#hero .wrapperCap--top', {yPercent: -50, rotate: -6.88}, '<')
+    .to('#hero .wrapperCap--top', {duration: 1.5, ease: 'expo.out', yPercent: -50, rotate: -6.88}, '<')
     // .to('#intro', {y: 0}, '<')
     // .to('#hero-inner', {duration: 1, height: '90vh'}, '<')
-    // .to('#hero video', {duration: 1, autoAlpha: 1, y: 0}, '-=0.5')
+    .to('#hero video', {duration: 1, autoAlpha: 1, y: 0}, '-=0.75')
 
   // ~~~~~~~~~~~~~~~ Hero Pin ~~~~~~~~~~~~~~ //
   mm.add("(min-width: 1023.98px)", () => {
