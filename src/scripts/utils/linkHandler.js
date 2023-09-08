@@ -1,11 +1,13 @@
 import {gsap} from 'gsap'
 import { ScrollSmoother } from 'gsap/all'
 
-let smoother = ScrollSmoother.create({
-  smooth: 1,
-  effects: true,
-  // smoothTouch: 0.1,
-})
+if (window.matchMedia('(any-hover: hover) and (pointer: coarse)').matches) {
+  let smoother = ScrollSmoother.create({
+    smooth: 1,
+    effects: true,
+    // smoothTouch: 0.1,
+  })
+}
 
 export function linkHandler() {
 

@@ -4,21 +4,20 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
 let mm = gsap.matchMedia();
-
+/*
 function setIntroSpacing() {
   let videoHeight = document.querySelector('video').offsetHeight
-  document.querySelector('#intro').style.paddingTop = `${videoHeight - 250}px`
+  document.querySelector('#intro').style.marginTop = `${videoHeight}px`
 }
 
 document.addEventListener('DOMContentLoaded', setIntroSpacing)
 window.addEventListener('resize', setIntroSpacing)
-
+*/
 
 export function homeAnimations() {
   // ~~~~~~~~~~~~~~~~~ Hero ~~~~~~~~~~~~~~~~ //
   gsap.set('#hero .wrapperCap--top', {autoAlpha: 1, rotate: 0, y: '15vw'})
-  gsap.set('#hero video', {y: 50})
-  // gsap.set('#hero .video-container', {autoAlpha: 1})
+  gsap.set('#hero .video-container', {y: '45vh'})
 
   const heroAnimationTL = gsap.timeline({
     scrollTrigger: {
@@ -28,46 +27,13 @@ export function homeAnimations() {
       fastScrollEnd: true
     }
   }).addLabel('start')
-  
-  // ~~~~~~~~~~~~~ Hero DrawSVG ~~~~~~~~~~~~ //
-
-  if (document.querySelector('[data-draw-svg="hero"]')) {
-    function drawSVGHero() {
-      const heroDrawSVGElem = document.querySelector('[data-draw-svg="hero"]')
-
-      gsap.set(heroDrawSVGElem.querySelectorAll('#solid path'), {clipPath: 'inset(0% 100% 0% 0%)'})
-    
-      if (heroDrawSVGElem.querySelector('.draw-group')) {
-        let drawGroups = heroDrawSVGElem.querySelectorAll('.draw-group')
-        
-        for (const drawGroup of drawGroups) {
-          heroAnimationTL.from(drawGroup.querySelectorAll('path'), {duration: 1, stagger: {each: 0.035, ease: 'sine.out'}, drawSVG: 0}, '-=1')
-        }
-      } else {
-        heroAnimationTL.from(heroDrawSVGElem.querySelectorAll('path'), {duration: 1, stagger: {each: 0.035, ease: 'sine.out'}, drawSVG: 0}, 'start')
-      }
-    }
-  }
 
   heroAnimationTL
-    // .to('[data-hero-text] #solid path', {duration: 0.05, stagger: 0.05, clipPath: 'inset(0% 0% 0% 0%)'}, '-=1')
-    .to('[data-hero-text] > *', {duration: 1, y: '-=50'}, '+=1')
+    .to('[data-hero-text] > *', {duration: 1, y: 0}, '+=1')
     .to('#hero .wrapperCap--top', {yPercent: -50, rotate: -6.88}, '<')
+    // .to('#intro', {y: 0}, '<')
     // .to('#hero-inner', {duration: 1, height: '90vh'}, '<')
-    .to('#hero video', {duration: 1, autoAlpha: 1, y: 0}, '-=0.5')
-
-  // Make sure to animate diagonal cap in so the spacing looks okay for the headline
-  /*
-  const wrapperCapAnimTL = gsap.timeline({
-    scrollTrigger: {
-      trigger: '#hero-content',
-      start: 'bottom center',
-    }
-  })
-
-  wrapperCapAnimTL
-  .to('section#hero .wrapperCap--top', {clipPath: 'inset(0% 0% 0% 0%'})
-  */
+    // .to('#hero video', {duration: 1, autoAlpha: 1, y: 0}, '-=0.5')
 
   // ~~~~~~~~~~~~~~~ Hero Pin ~~~~~~~~~~~~~~ //
   mm.add("(min-width: 1023.98px)", () => {
@@ -82,8 +48,8 @@ export function homeAnimations() {
         trigger: '[data-pin="hero"]',
         pin: '[data-pin="hero"]',
         scrub: true,
-        end: '50%',
-        pinSpacing: false,
+        // end: '50%',
+        // pinSpacing: false,
         // preventOverlaps: false,
         // anticipatePin: 1,
         // markers: true,
@@ -92,8 +58,7 @@ export function homeAnimations() {
 
     pinHeroTL
       .to('.home #hero-inner', {yPercent: '-=25'}, 'start')
-      .to('.video-container', {y: '-=250px'}, 'start')
-
+      .to('.video-container', {y: 0}, 'start')
   })
 
   // ~~~~~~~~~~~~~ Services Pin ~~~~~~~~~~~~ //

@@ -14,24 +14,19 @@ import HeroSVG from '../components/HeroSVG.astro'
 
   <!-- Hero -->
   <section data-pin="hero" id="hero" class="hero relative bg-white">
-    <div id="hero-inner" class="wrapper grid items-center grid-rows-[var(--site-header-height)_1fr_var(--site-header-height)] bg-darkgray text-white md:h-[75vh] lg:h-screen">
-      <div class="transition-fade z-20 row-start-2 col-start-1 lg:flex lg:justify-center lg:items-center flex flex-col gap-y-24">
+    <div id="hero-inner" class="wrapper grid items-center grid-rows-[var(--site-header-height)_1fr_var(--site-header-height)] bg-darkgray text-white min-h-[75vh] md:h-[75vh] lg:h-[90vh]">
+      <div class="relative z-20 row-start-2 col-start-1 lg:flex lg:justify-center lg:items-center flex flex-col gap-y-24">
+
         <!-- Content -->
         <div id="hero-content" class="w-full lg:max-w-[852px] lg:text-left">
           <h2 data-hero-text class="h1 text-[45px] relative lg:text-[120px] lg:leading-[110px] mb-0 grid grid-cols-1 grid-rows-1">
             <span class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light">We design + <br class="hidden lg:block">build brand experiences</span>
             <span class="relative z-10 col-start-1 row-start-1" aria-hidden="true"><span class="text-outline text-outline--light">We design + <br class="hidden lg:block">build</span> brand experiences</span>
           </h2>
-          <!--
-          <div data-draw-svg="hero" class="relative grid grid-cols-1 grid-rows-1">
-            <HeroSVG outline class="relative z-40 col-start-1 row-start-1" />
-            <HeroSVG class="relative z-10 col-start-1 row-start-1" />
-          </div>
-          -->
         </div>
-
-        <div class="w-full h-full z-10 video-container relative row-start-3">
-          <video class="absolute left-0 top-0 w-full opacity-0" src="/sizzle-off.mp4" autoplay loop muted poster="/videoReelThumb.jpg"></video>
+        <!-- Video -->
+        <div class="w-full h-full z-10 video-container absolute top-0 -mt-48 xl:-mt-40">
+          <video class="absolute top-full" src="/sizzle.mp4" autoplay loop muted poster="/videoReelThumb.jpg"></video>
         </div>  
 
       </div>
@@ -47,7 +42,7 @@ import HeroSVG from '../components/HeroSVG.astro'
   </section>
 
   <!-- Page Content -->
-  <div id="content" class="wrapperDiagonal !pt-0">
+  <div id="content" class="wrapperDiagonal !pt-0 mt-32 5xl:mt-0">
     <!-- Intro -->
     <section id="intro" data-anim-group class="wrapper mb-24 lg:mb-48">
       <div class="lg:max-w-[815px] lg:mx-auto transition-fade">
@@ -73,11 +68,11 @@ import HeroSVG from '../components/HeroSVG.astro'
       </div>
       <div data-pin="services" class="bg-darkgray text-white w-full pt-9 pb-16 lg:pt-0 lg:pb-56">
 
-        <div class="servicesContainer grid lg:grid-cols-margins-12 lg:grid-rows-auto-2">
+        <div class="servicesContainer grid grid-cols-margins-4 gap-y-8 lg:grid-cols-margins-12 lg:grid-rows-auto-2">
           <!-- content: branding -->
-          <div data-scene="container" id="branding" class="lg:col-start-wrapper lg:col-end-wrapper lg:row-start-2 grid grid-cols-12">
+          <div data-scene="container" id="branding" class="col-start-wrapper col-end-wrapper lg:row-start-2 grid grid-cols-12">
             <!-- copy -->
-            <div data-scene="content" class="lg:px-16 lg:pt-16 relative col-start-first col-end-6">
+            <div data-scene="content" class="lg:px-16 lg:pt-16 relative col-start-first col-end-last lg:col-start-first lg:col-end-6">
               <figure class="mx-auto w-fit block lg:mx-0">
                 <img src="icon-lightbulb.svg" alt="">
               </figure>
@@ -106,7 +101,7 @@ import HeroSVG from '../components/HeroSVG.astro'
               </div>
             </div>
             <!-- image -->
-            <div data-scene="image" data-parallax="" class="-mt-24 lg:px-16 col-start-6 col-end-last">
+            <div data-scene="image" data-parallax="" class="-mt-24 lg:px-16 col-start-first col-end-last lg:col-start-6 lg:col-end-last">
               <a class="workTile w-full h-full" href="#mama-lolas">
 
                 <div class="workTile__frame h-0 pb-[112%]">
@@ -123,9 +118,9 @@ import HeroSVG from '../components/HeroSVG.astro'
             </div>
           </div>
           <!-- content: website -->
-          <div data-scene="container" id="websites" class="lg:col-start-wrapper lg:col-end-wrapper lg:row-start-2 grid grid-cols-12">
+          <div data-scene="container" id="websites" class="col-start-wrapper col-end-wrapper lg:row-start-2 grid grid-cols-12">
             <!-- copy -->
-            <div data-scene="content" class="lg:px-16 lg:pt-16 relative col-start-first col-end-6">
+            <div data-scene="content" class="lg:px-16 lg:pt-16 relative col-start-first col-end-last lg:col-start-first lg:col-end-6">
               <figure class="mx-auto w-fit block lg:mx-0">
                 <img src="icon-lightbulb.svg" alt="">
               </figure>
@@ -154,7 +149,7 @@ import HeroSVG from '../components/HeroSVG.astro'
               </div>
             </div>
             <!-- image -->
-            <div data-scene="image" data-parallax="" class="-mt-24 lg:px-16 col-start-6 col-end-last">
+            <div data-scene="image" data-parallax="" class="-mt-24 lg:px-16 col-start-first col-end-last lg:col-start-6 lg:col-end-last">
               <a class="workTile w-full h-full" href="#fricks">
 
                 <div class="workTile__frame h-0 pb-[112%]">
@@ -172,9 +167,9 @@ import HeroSVG from '../components/HeroSVG.astro'
 
           </div>
           <!-- content: marketing -->
-          <div data-scene="container" id="marketing" class="lg:col-start-wrapper lg:col-end-wrapper lg:row-start-2 grid grid-cols-12">
+          <div data-scene="container" id="marketing" class="col-start-wrapper col-end-wrapper lg:row-start-2 grid grid-cols-12">
             <!-- copy -->
-            <div data-scene="content" class="lg:px-16 lg:pt-16 relative col-start-first col-end-6">
+            <div data-scene="content" class="lg:px-16 lg:pt-16 relative col-start-first col-end-last lg:col-start-first lg:col-end-6">
               <figure class="mx-auto w-fit block lg:mx-0">
                 <img src="icon-lightbulb.svg" alt="">
               </figure>
@@ -203,7 +198,7 @@ import HeroSVG from '../components/HeroSVG.astro'
               </div>
             </div>
             <!-- image -->
-            <div data-scene="image" data-parallax="" class="-mt-24 lg:px-16 col-start-6 col-end-last">
+            <div data-scene="image" data-parallax="" class="-mt-24 lg:px-16 col-start-first col-end-last lg:col-start-6 lg:col-end-last">
               <a class="workTile w-full h-full" href="#muros">
 
                 <div class="workTile__frame h-0 pb-[112%]">
@@ -224,7 +219,7 @@ import HeroSVG from '../components/HeroSVG.astro'
         <!-- <div class="lg:col-start-line-6 lg:col-end-wrapper lg:px-16 lg:row-span-3 lg:row-start-1"></div> -->
         
         <!-- swipe -->
-        <div class="lg:hidden">
+        <div class="lg:hidden mt-8 lg:mt-0">
           <div class="flex w-fit mx-auto gap-x-2">
             <NavArrows />
           </div>

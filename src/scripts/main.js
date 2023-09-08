@@ -70,7 +70,11 @@ function smoothScroll() {
 
 function init() {
 
-  smoothScroll(); siteHeader(); linkHandler()
+  if (window.matchMedia('(pointer: fine)').matches) {
+    smoothScroll()
+  }
+  
+  siteHeader(); linkHandler()
 
   if (document.body.classList.contains('home')) {
     homeAnimations()

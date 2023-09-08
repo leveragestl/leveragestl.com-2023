@@ -6,13 +6,19 @@ import 'swiper/css/bundle';
 export function quotesSlider() {
   const quotesSlider = new Swiper( '[data-slider="quotes"]', {
     loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
+    autoHeight: true,
     navigation: {
       prevEl: '[data-slider-nav="prev"]',
       nextEl: '[data-slider-nav="next"]'
+    },
+    breakpoints: {
+      1024: {
+        autoHeight: false,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+      }
     }
   })
 }
