@@ -82,9 +82,9 @@ export function homeAnimations() {
 
     const pinServicesTL = gsap.timeline({
       scrollTrigger: {
-        start: 'top-=96px top',
+        start: 'top top',
         // start: 'top top',
-        trigger: '[data-pin="services"]',
+        trigger: '[data-pin="services"] .workTile__frame',
         pin: '[data-pin="services"]',
         scrub: true,
         end: '150%',
@@ -93,7 +93,7 @@ export function homeAnimations() {
           snapTo: [0.01, 0.5, 0.99],
           delay: 0,
           directional: false
-        }
+        },
         // markers: true
       }
     }).add('start')
