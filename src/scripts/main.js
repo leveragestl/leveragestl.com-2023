@@ -53,7 +53,7 @@ import { pageTransitions } from './animation/pageTransitions'
 
 // Header
 import { siteHeader } from './core/siteHeader'
-import { menuToggle } from './core/menuToggle'
+import { menuToggle } from './core/navPanel'
 
 // Links
 import { linkHandler } from './utils/linkHandler'
@@ -61,7 +61,7 @@ import { linkHandler } from './utils/linkHandler'
 // ~~~~~~~~~~~~~~~~~ Init ~~~~~~~~~~~~~~~~ //
 
 function smoothScroll() {
-  ScrollSmoother.create({
+  let smoother = ScrollSmoother.create({
     smooth: 1,
     effects: true,
     // smoothTouch: 0.1,

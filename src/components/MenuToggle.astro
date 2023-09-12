@@ -27,11 +27,22 @@
     justify-content: center;
     text-indent: -9999px;
     transition: height 300ms ease-in-out;
+
+    &:hover {
+      #menu-icon {
+        &::before {
+          transform: translateY(2px)
+        }
+        &::after {
+          transform: translateY(-2px)
+        }
+      }
+    }
   }
 
   #menu-icon {
     position: relative;
-    width: 2rem;
+    width: var(--icon-width);
     height: var(--icon-weight);
     background: white;
     border-radius: 0.5rem;
@@ -72,12 +83,12 @@
 			transition: top 200ms ease, transform 200ms ease;
 		}
 		&, &::before, &::after {
-			transition: background-color 200ms ease 300ms;
+			transition: top 200ms ease, transform 200ms ease, background-color 200ms ease 300ms;
 		}
 		.menu-toggle-active & {
 			&, &::before, &::after {
         background-color: white;
-				transition: background-color 200ms ease 0s;
+				transition: top 200ms ease, transform 200ms ease, background-color 200ms ease 0s;
 			}
 		}
 	}
@@ -108,7 +119,7 @@
 				// background: none !important;
 			}
 			#menu-icon::after {
-				@apply bg-white;
+        // background-color: white;
 			}
 		}
 	}

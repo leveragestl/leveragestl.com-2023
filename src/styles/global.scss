@@ -81,5 +81,14 @@
   width: fit-content;
 }
 
-.split_outer {overflow: hidden;}
-.split_inner {display: inline-block;}
+.split_outer {
+  overflow: hidden;
+}
+
+.split_inner {
+  display: inline-block;
+}
+
+body.scroll-disabled {
+  height: 100% !important;
+}

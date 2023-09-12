@@ -8,11 +8,7 @@ export function linkHandler() {
   // ===========================================================================
 
   if (window.matchMedia('(pointer: fine)').matches) {
-    let smoother = ScrollSmoother.create({
-      smooth: 1,
-      effects: true,
-      // smoothTouch: 0.1,
-    })
+    let smoother = ScrollSmoother.get()
 
     const offset = getComputedStyle(document.body).getPropertyValue('--site-header-height')
 
