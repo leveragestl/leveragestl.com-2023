@@ -8,6 +8,30 @@ import { ScrollTrigger, SplitText, ScrollSmoother, DrawSVGPlugin } from 'gsap/al
 gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother, DrawSVGPlugin)
 
 // =============================================================================
+// Imports
+// =============================================================================
+
+// Sliders
+import { quotesSlider } from './vendors/swiper'
+
+// Animation
+import { generalAnimations } from './animation/generalAnimations'
+import { homeAnimations } from './animation/homeAnimations'
+import { ctaAnimations } from './animation/ctaAnimations'
+import { revealText } from './animation/revealText'
+import { parallaxColumns } from './animation/parallaxColumns'
+import { parallaxWindow } from './animation/parallaxWindow'
+import { drawSVG } from './animation/drawSVG'
+import { pageTransitions } from './animation/pageTransitions'
+
+// Header
+import { siteHeader } from './core/siteHeader'
+import { menuToggle, checkNav, openNav, closeNav } from './core/navPanel'
+
+// Links
+import { linkHandler } from './utils/linkHandler'
+
+// =============================================================================
 // Swup
 // =============================================================================
 
@@ -28,35 +52,17 @@ swup.hooks.on('page:view', () => init());
 
 function unload() {
   ScrollTrigger.killAll()
-  document.body.classList.remove('scrolled')
+  if (document.body.classList.contains('scrolled')) {
+    document.body.classList.remove('scrolled')
+  }
+
+  checkNav()
 }
 swup.hooks.before('content:replace', () => unload());
 
 // =============================================================================
 // Scripts
 // =============================================================================
-
-// ~~~~~~~~~~~~~~ Imports ~~~~~~~~~~~~~~ //
-
-// Sliders
-import { quotesSlider } from './vendors/swiper'
-
-// Animation
-import { generalAnimations } from './animation/generalAnimations'
-import { homeAnimations } from './animation/homeAnimations'
-import { ctaAnimations } from './animation/ctaAnimations'
-import { revealText } from './animation/revealText'
-import { parallaxColumns } from './animation/parallaxColumns'
-import { parallaxWindow } from './animation/parallaxWindow'
-import { drawSVG } from './animation/drawSVG'
-import { pageTransitions } from './animation/pageTransitions'
-
-// Header
-import { siteHeader } from './core/siteHeader'
-import { menuToggle } from './core/navPanel'
-
-// Links
-import { linkHandler } from './utils/linkHandler'
 
 // ~~~~~~~~~~~~~~~~~ Init ~~~~~~~~~~~~~~~~ //
 

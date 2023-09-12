@@ -2,7 +2,7 @@
   display: inline-block;
   text-align: center;
   position: relative;
-  background-color: #a98841;
+  background-color: theme('colors.gold');
   font-style: italic;
   font-family: 'Merriweather', serif;
   padding: 5px 14px;
@@ -17,7 +17,7 @@
   &--slash {
     overflow: visible;
     background-color: transparent;
-    color: #a98841;
+    color: theme('colors.gold');
     padding: 0;
     font-size: initial;
 
@@ -281,7 +281,7 @@
       }
 
       &:hover {
-        color: #a98841;
+        color: theme('colors.gold');
         transform: translateX(-10px);
 
         &:before {
