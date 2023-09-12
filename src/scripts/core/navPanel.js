@@ -27,9 +27,9 @@ export function menuToggle() {
     // Scroll Handler
     setTimeout(() => {
       document.body.classList.add('scroll-disabled')
-    }, 1000);
-    let smoother = ScrollSmoother.get()
+    }, 1500);
 
+    let smoother = ScrollSmoother.get()
     scrollPosY = smoother.scrollTop()
 
 		// Toggle
@@ -65,7 +65,7 @@ export function menuToggle() {
         linesClass: "split_outer"
       })
 
-      let offset = 0.25
+      let offset = 0.5
       let decay = 0.15 / (i + 1)
 
       if (i > 0) {
