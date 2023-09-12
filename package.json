@@ -12,7 +12,7 @@
   "dependencies": {
     "@astrojs/tailwind": "^4.0.0",
     "@barba/core": "^2.9.7",
-    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@fortawesome/fontawesome-free": "^6.4.2",
     "@swup/body-class-plugin": "^3.1.1",
     "@swup/fade-theme": "^2.0.0",
     "@swup/scripts-plugin": "^1.1.0",

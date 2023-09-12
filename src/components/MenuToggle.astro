@@ -1,0 +1,117 @@
+---
+
+---
+<button id="menu-toggle" aria-controls="site-menu">Site Menu
+  <div id="menu-icon-wrapper">
+    <div id="menu-icon"></div>
+  </div>
+</button>
+
+<style lang="scss" is:global>
+  :root {
+    --toggle-size: 2rem;
+    --icon-width: 2rem;
+    --icon-weight: 0.1rem;
+    --icon-spacing: 0.5rem;
+
+    @screen lg {
+      --toggle-size: 4rem;
+    }
+  }
+
+  #menu-toggle {
+    width: var(--toggle-size);
+    height: var(--toggle-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-indent: -9999px;
+    transition: height 300ms ease-in-out;
+  }
+
+  #menu-icon {
+    position: relative;
+    width: 2rem;
+    height: var(--icon-weight);
+    background: white;
+    border-radius: 0.5rem;
+    transition: all 500ms ease-in-out;
+
+    &::before, &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      background: inherit;
+      width: 100%;
+      height: var(--icon-weight);
+      border-radius: 0.5rem;
+      transition: all 300ms ease-in-out;
+    }
+
+    &::before {
+      top: calc(-1 * var(--icon-spacing));
+    }
+
+    &::after {
+      top: var(--icon-spacing);
+    }
+  }
+
+  #menu-toggle {
+	#menu-icon-wrapper {
+		transform-origin: center;
+		transition: transform 300ms ease-in-out;
+	}
+
+	#menu-icon {
+		&::before {
+			transition: top 200ms ease;			
+		}
+		&::after {
+			transition: top 200ms ease, transform 200ms ease;
+		}
+		&, &::before, &::after {
+			transition: background-color 200ms ease 300ms;
+		}
+		.menu-toggle-active & {
+			&, &::before, &::after {
+        background-color: white;
+				transition: background-color 200ms ease 0s;
+			}
+		}
+	}
+	&.smash {
+		#menu-icon {
+			&::before,
+			&::after {
+        top: 0;
+			}
+		}
+	}
+
+	&.plus {
+		#menu-icon::before {
+			transform: rotate(90deg);
+			height: 0.125rem !important;
+		}
+		#menu-icon::after {
+			transform: rotate(0deg);
+			height: 0.05rem !important;
+		}
+	}
+
+	&.spin {
+		#menu-icon-wrapper {
+			transform: rotate(135deg);
+			#menu-icon {
+				// background: none !important;
+			}
+			#menu-icon::after {
+				@apply bg-white;
+			}
+		}
+	}
+}
+
+</style>

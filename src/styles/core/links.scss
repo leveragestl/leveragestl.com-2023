@@ -1,0 +1,14 @@
+.link {
+  --base-color: transparent;
+  --hover-color: theme('colors.gold');
+
+  position: relative;
+  cursor: pointer;
+  display: inline;
+  background-image: linear-gradient(var(--base-color), var(--base-color)), linear-gradient(var(--hover-color), var(--hover-color));
+  // background-size: 100% 0.25em, 0 0.25em;
+  background-size: 0 0.35em, 100% 0.35em;
+  background-position: 100% 100%, 0 calc(100% - 0.2em);
+  background-repeat: no-repeat;
+  transition: color 300ms ease-out, background-size 500ms ease-in-out;
+}

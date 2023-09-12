@@ -1,85 +1,58 @@
 ---
 import Logo from "./Logo.astro"
+import MenuToggle from "./MenuToggle.astro";
+import NavPanel from "./NavPanel.astro";
 ---
 
-<figure id="logo" class="left-[--container-margin] flex justify-start items-center">
-  <a href="/" class="">
-    <Logo />
-  </a>
-</figure>
-
-<header id="site-header" class="absolute z-50 top-0 left-0 w-full h-[--site-header-height] flex justify-between items-center">
-
-  <nav class="text-white font-bold fixed right-[--container-margin]">
-    <ul class="flex gap-x-8 uppercase tracking-wider">
-      <li class="hover:text-gold"><a href="/">Home</a></li>
-      <li class="hover:text-gold"><a href="/about/">About</a></li>
-      <li class="hover:text-gold"><a href="/styles/">Styles</a></li>
-    </ul>
-  </nav>
-</header>
-
-<script>
-  /*
-  import {gsap} from 'gsap'
-
-  function headerStyle() {
-    const siteHeader = document.querySelector('#site-header');
-
-    let scrolled = document.scrollingElement.scrollTop;
-    let position = document.querySelector('body').offsetTop;
-    if( scrolled > position + 10 ) {
-      document.body.classList.add('scrolled');
-    } else {
-      document.body.classList.remove('scrolled');
-    }
-  } headerStyle();
+<div id="site-header">
+  <div id="logo-menu" class="flex">
+    <MenuToggle />
+    <figure id="logo">
+      <a href="/" class="">
+        <Logo />
+      </a>
+    </figure>
+  </div>
   
-  document.addEventListener("scroll", (e) => {
-    headerStyle();
-  });
+  <div id="project-start-button">
+    <a class="button" href="">start a project</a>
+  </div>
+</div>
 
-  if (document.querySelector('[data-header-scrolled]')) {
-    const siteHeaderAnimTL = gsap.timeline({
-      defaults: {
-        // duration: 1,
-        // ease: 'linear'
-      },
-      scrollTrigger: {
-        trigger: '[data-header-scrolled]',
-        start: 'top top',
-        // markers: true,
-        onUpdate:() => document.body.classList.toggle('scrolled')
-      }
-    }) 
-    siteHeaderAnimTL
-  }
-  */
-</script>
+<NavPanel />
 
 <style lang="scss" is:global>
   @import 'node_modules/easings-css';
 
-  #site-header-bg {
-    transform: translateY(-100%);
-    transition: transform 50ms ease-out, opacity 200ms ease-out;  
-  }
+  #site-header {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--site-header-height);
+    display: contents;
 
-  nav {
-    z-index: 10;
-
-    li {
-      transition: color 200ms ease-out;
+    & > * {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: fixed;
+      z-index: 999;
+      height: inherit;
     }
   }
 
-  #logo {
-    position: fixed;
+  #logo-menu {
     mix-blend-mode: difference;
-    z-index: 999;
-    // transition: all 200ms ease-out;
+    left: var(--container-margin);
+    column-gap: 1rem;
+
+    @screen lg {
+      column-gap: 0;
+    }
     a {
-      height: var(--site-header-height);
+      height: 100%;
       padding: 5px 0;
       z-index: 999;
       margin-left: -10px;
@@ -87,19 +60,8 @@ import Logo from "./Logo.astro"
       align-items: center;
 
       @screen xl {
-        margin-left: -15px;
+        margin-left: -10px;
       }
-
-      path, polygon {
-        // transition: fill 200ms ease-out;
-      }
-      /*
-      body.scrolled & {
-        path, polygon {
-          fill: theme('colors.darkgray');
-        }
-      }
-      */
     }
 
     svg {
@@ -112,41 +74,7 @@ import Logo from "./Logo.astro"
     }
   }
 
-  // Scroll
-  body.scrolled {
-
-    /*
-    #site-header-bg {
-      transform: translateY(0);
-      transition: transform 300ms ease-out;  
-    }
-    */
-    nav {
-      // color: theme('colors.darkgray');
-      position: absolute;
-    }
-
-    #logo {
-      path, polygon {
-        // fill: theme('colors.darkgray');
-      }
-    }
+  #project-start-button {
+    right: var(--container-margin);
   }
-  /*
-  html.is-animating {
-    #site-header-bg {
-      opacity: 0;
-    }
-
-    nav li a {
-      color: white;
-    }
-
-    #logo {
-      path, polygon {
-        fill: white !important;
-      }
-    }
-  }
-  */
 </style>

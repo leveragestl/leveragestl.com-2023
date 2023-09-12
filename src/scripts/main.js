@@ -53,6 +53,7 @@ import { pageTransitions } from './animation/pageTransitions'
 
 // Header
 import { siteHeader } from './core/siteHeader'
+import { menuToggle } from './core/menuToggle'
 
 // Links
 import { linkHandler } from './utils/linkHandler'
@@ -65,7 +66,6 @@ function smoothScroll() {
     effects: true,
     // smoothTouch: 0.1,
   })
-
 }
 
 function init() {
@@ -74,7 +74,7 @@ function init() {
     smoothScroll()
   }
   
-  siteHeader(); linkHandler()
+  siteHeader(); linkHandler(); menuToggle();
 
   if (document.body.classList.contains('home')) {
     homeAnimations()

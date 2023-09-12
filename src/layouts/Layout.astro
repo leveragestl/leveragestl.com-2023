@@ -25,8 +25,8 @@ const { title, namespace } = Astro.props;
 	</head>
 	<body class:list={namespace}>
     <SiteHeader />
-    <div id="site-header-bg" class="fixed z-40 top-0 left-0 w-full h-[--site-header-height] bg-white"></div>
-    <main id="swup">
+    <!-- <div id="site-header-bg" class="fixed z-40 top-0 left-0 w-full h-[--site-header-height] bg-white"></div> -->
+    <main id="swup" class="overflow-auto h-full">
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <slot />

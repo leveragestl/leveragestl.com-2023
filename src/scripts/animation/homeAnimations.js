@@ -58,16 +58,11 @@ export function homeAnimations() {
     }).add('start')
 
     pinHeroTL
-      .to('.home #hero-inner', {yPercent: '-=25'}, 'start')
+      .to('.home #hero-inner', {yPercent: '-=35'}, 'start')
       .to('.video-container', {y: 0}, 'start')
   })
 
   // ~~~~~~~~~~~~~ Services Pin ~~~~~~~~~~~~ //
-  let triggerOffset = 100
-
-  mm.add("(min-height: 1024px)", () =>  {
-    triggerOffset = -100
-  })
 
   mm.add("(min-width: 1023.98px)", () => {
 

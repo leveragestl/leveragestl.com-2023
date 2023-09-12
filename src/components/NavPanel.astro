@@ -1,0 +1,77 @@
+---
+
+---
+
+<div id="nav-panel" class="bg-darkgray fixed inset-0 flex items-center h-full z-[998] px-[--container-margin] after:w-full after:h-1/2 after:bg-inherit after:absolute after:bottom-0 after:translate-y-1/2 after:left-0 after:skew-y-[--diagWrapperAngle] after:-z-10">
+  <div class="w-full grid grid-rows-[var(--site-header-height)_1fr] lg:grid-cols-12 lg:grid-rows-[var(--site-header-height)_1fr_2rem] items-center h-screen lg:h-full">
+    <div class="lg:contents overflow-scroll lg:overflow-auto h-full row-start-2 pt-12 pb-24">
+      <!-- Nav -->
+      <nav class="relative w-full text-left lg:col-start-first lg:col-end-9 lg:row-start-2 lg:max-h-full lg:overflow-scroll mb-12 pb-12 lg:py-2 lg:mb-0 after:absolute after:bottom-0 after:left-0 after:w-[--navPanelLineH] after:h-0.5 after:bg-mediumgray lg:after:hidden">
+        <ul class="flex flex-col gap-y-4 lg:gap-y-8 uppercase tracking-wider text-white text-32 lg:text-44 font-extrabold lg:pl-[--toggle-size]">
+          <li><a class="hover-gold" href="/">Home</a></li>
+          <li><a class="hover-gold" href="/work/">Work</a></li>
+          <li><a class="hover-gold" href="/services/">Services</a></li>
+          <li><a class="hover-gold" href="/about/">About</a></li>
+          <li><a class="hover-gold" href="/careers/">Careers</a></li>
+          <li><a class="hover-gold" href="/blog/">Blog</a></li>
+          <li><a class="hover-gold" href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- Info -->
+      <div id="contact-info" class="relative lg:col-start-9 lg:pl-[--column-width] lg:col-end-last text-left lg:row-start-2 lg:max-h-full lg:overflow-scroll lg:pb-[10%] text-white">
+        <div class="relative lg:pt-4 lg:before:absolute lg:before:-left-14 lg:before:top-0 lg:before:h-[--navPanelLineV] lg:before:w-0.5 lg:before:bg-mediumgray">
+          <!-- Social -->
+          <div class="mb-12 lg:mb-16">
+            <h3 class="h5 font-sans text-16 mb-6">Stay in touch</h3>
+            <div id="social-links" class="flex gap-x-6">
+              <a class="text-18 hover-gold" href="https://x.com/"><i class="fab fa-x-twitter"></i></a>
+              <a class="text-18 hover-gold" href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+              <a class="text-18 hover-gold" href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+              <a class="text-18 hover-gold" href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a>
+              <a class="text-18 hover-gold" href="https://pinterest.com/"><i class="fab fa-pinterest"></i></a>
+            </div>
+          </div>
+          <!-- Contact Info -->
+          <div class="mb-12 lg:mb-20">
+            <h3 class="h5 font-sans text-16 mb-5">Find us</h3>
+            <p class="mb-6">205 Chesterfield Ind Blvd<br>Chesterfield, MO 63005</p>
+            <p class="font-sans text-16 font-bold mb-4"><a href="" class="link">Email Us</a></p>
+          </div>
+      
+          <!-- Newsletter -->
+          <h3 class="h5 font-sans text-16 mb-6">Want to hear more from us?</h3>
+          <form action="" class="flex gap-x-2">
+            <input class="bg-transparent border-2 text-15 border-white w-full py-3 px-4 font-serif italic font-bold text-white text-opacity-100 antialiased placeholder:text-white" type="email" placeholder="sign up for our newsletter">
+            <input type="submit" value="join" class="bg-gold border-2 border-gold w-16 font-serif italic text-15 font-bold text-darkgray cursor-pointer">
+          </form>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss" is:global>  
+  :root {
+    --navPanelLineH: 100%;
+    --navPanelLineV: 110%;
+  }
+  #nav-panel {
+    transform: translateY(-150%);
+    transition: transform 500ms cubic-bezier(0.9,0.03,0.69,0.22);
+  }
+  .hover-gold {
+    transition: color 300ms ease-out;
+
+    &:hover {
+      color: theme('colors.gold');
+    }
+  }
+
+  .menu-toggle-active {
+    #nav-panel {
+      transform: translateY(0);
+      transition: transform 500ms cubic-bezier(0.17,0.84,0.44,1);
+    }
+  }
+</style>

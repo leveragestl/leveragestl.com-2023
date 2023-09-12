@@ -1,0 +1,27 @@
+---
+
+---
+
+<div id="nav-panel" class="bg-darkgray fixed inset-0 flex items-center h-full z-[998] px-[--container-margin]">
+  <nav class="w-full text-left h-full grid grid-rows-[var(--site-header-height)_1fr_2rem] items-center">
+    <ul class="flex flex-col gap-y-8 uppercase tracking-wider text-white text-44 font-extrabold max-h-full row-start-2 overflow-scroll py-2">
+      <li><a href="/">Home</a></li>
+      <li><a href="/work/">Work</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/careers/">Careers</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
+<style lang="scss" is:global>
+  nav li a {
+    transition: color 300ms ease-out;
+
+    &:hover {
+      color: theme('colors.gold');
+    }
+  }
+</style>

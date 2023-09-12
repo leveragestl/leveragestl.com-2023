@@ -34,6 +34,9 @@
 // Layout
 @use './core/layout';
 
+// Links
+@use './core/links';
+
 // =============================================================================
 // Icons
 // =============================================================================
@@ -77,3 +80,6 @@
   display: inline-block;
   width: fit-content;
 }
+
+.split_outer {overflow: hidden;}
+.split_inner {display: inline-block;}
