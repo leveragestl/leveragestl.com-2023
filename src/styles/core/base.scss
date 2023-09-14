@@ -24,3 +24,8 @@ main {
   background-color: theme('colors.gold');
   color: white;
 }
+
+#smooth-wrapper, #smooth-content {
+  width: 100%;
+  overflow-x: hidden;
+}

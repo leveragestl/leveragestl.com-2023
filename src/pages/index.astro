@@ -20,7 +20,7 @@ import HeroSVG from '../components/HeroSVG.astro'
         <!-- Content -->
         <div id="hero-content" class="w-full lg:max-w-[852px] text-left">
           <h2 data-hero-text class="h1 text-[45px] relative lg:text-[120px] lg:leading-[110px] mb-0 grid grid-cols-1 grid-rows-1">
-            <span class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light">We design + <br class="hidden lg:block">build brand experiences</span>
+            <span class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light [.video-unmuted_&]:opacity-0 transition-opacity duration-300 ease-out">We design + <br class="hidden lg:block">build brand experiences</span>
             <span class="relative z-10 col-start-1 row-start-1" aria-hidden="true"><span class="text-outline text-outline--light">We design + <br class="hidden lg:block">build</span> brand experiences</span>
           </h2>
         </div>
@@ -241,7 +241,7 @@ import HeroSVG from '../components/HeroSVG.astro'
           <WorkExerpt slug={post.slug} title={post.title} img={post.img} tags={post.tags} desc={post.desc} />
         )}
       </div>
-      <div class="mt-12 lg:mt-20">
+      <div class="mt-12 lg:mt-20 transition-fade">
         <span class="button button--slash text-gold font-bold antialiased font-merriweather lg:text-18 italic ease-in-out" data-aos="fade-up">
           <a href="/work/" class="anchor">
             <span class="text">view all work</span>

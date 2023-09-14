@@ -31,8 +31,10 @@ export function openNav() {
     document.body.classList.add('scroll-disabled')
   }, 1500);
 
-  let smoother = ScrollSmoother.get()
-  scrollPosY = smoother.scrollTop()
+  if (window.matchMedia('(any-hover: hover) and (pointer: fine)').matches) {
+    let smoother = ScrollSmoother.get()
+    scrollPosY = smoother.scrollTop()   
+  }
 
   // Toggle
   menuTogg.classList.add('smash')
@@ -97,8 +99,11 @@ export function openNav() {
 export function closeNav(delay) {
   // Scroll Handler
   document.body.classList.remove('scroll-disabled')
-  let smoother = ScrollSmoother.get()
-  smoother.scrollTo(scrollPosY)
+
+  if (window.matchMedia('(any-hover: hover) and (pointer: fine)').matches) {
+    let smoother = ScrollSmoother.get()
+    smoother.scrollTo(scrollPosY)
+  }
   
   setTimeout(() => {
     // Body

@@ -22,6 +22,10 @@
 
   transition: opacity 0.3s, color 0.4s;
 
+  @screen touch {
+    display: none;
+  }
+
   &:before {
     content: "";
     position: absolute;
@@ -92,7 +96,7 @@
   &.-enlarge {
     &::before {
       opacity: 1;
-      transform: scale(1.7);
+      transform: scale(1.5);
     }
   }
   &.-volume {

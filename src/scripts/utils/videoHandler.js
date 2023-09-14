@@ -1,4 +1,6 @@
 export function videoHandler() {
+  const heroInner = document.querySelector('.home .hero #hero-inner')
+
   document.addEventListener('click', (e) => {
     if (!e.target.closest('[data-video]')) return
 
@@ -6,9 +8,14 @@ export function videoHandler() {
 
     if (video.muted === true) {
       video.muted = false
-    }
-    else if (video.muted === false) {
+      
+      heroInner.classList.add('video-unmuted')
+
+    } else if (video.muted === false) {
       video.muted = true
+      
+      heroInner.classList.remove('video-unmuted')
+
     }
   })
 }

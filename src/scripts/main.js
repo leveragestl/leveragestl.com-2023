@@ -36,7 +36,7 @@ import { cursor } from './utils/cursor'
 // =============================================================================
 // Swup
 // =============================================================================
-
+/*
 import Swup from 'swup';
 import SwupBodyClassPlugin from '@swup/body-class-plugin';
 
@@ -61,7 +61,7 @@ function unload() {
   closeNav()
 }
 swup.hooks.before('content:replace', () => unload())
-
+*/
 // =============================================================================
 // Scripts
 // =============================================================================
@@ -124,4 +124,4 @@ function init() {
   }
 }
 
-// document.addEventListener('DOMContentLoaded', () => init())
+document.addEventListener('DOMContentLoaded', () => init())
