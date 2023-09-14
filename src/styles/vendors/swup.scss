@@ -2,7 +2,7 @@
 .transition-fade {
   opacity: 1;
   transform: translateY(0);
-  // display: block;
+  display: block;
 }
 
 html.is-animating .transition-fade {

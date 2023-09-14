@@ -73,13 +73,15 @@ export function homeAnimations() {
     const sceneElem = document.querySelector('[data-scene="container"]');
     const sceneElemHeight = sceneElem.offsetHeight;
 
+    const offset = getComputedStyle(document.body).getPropertyValue('--site-header-height')
+
     // const height = ((scenes.length) * sceneElemHeight) + 'px';
 
     const pinServicesTL = gsap.timeline({
       scrollTrigger: {
-        start: 'top top',
+        start: `top top+=${offset}px`,
         // start: 'top top',
-        trigger: '[data-pin="services"] .workTile__frame',
+        trigger: '[data-pin="services"]',
         pin: '[data-pin="services"]',
         scrub: true,
         end: '150%',

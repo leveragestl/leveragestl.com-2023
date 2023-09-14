@@ -1,7 +1,7 @@
 ---
 const { title, img, slug, tags, desc, class: className } = Astro.props
 ---
-<a data-parallax="window" data-anim-elem="fadeInUp" class:list={['workTile', className]} href={slug}>
+<a data-parallax="window" data-anim-elem="fadeInUp" class:list={['workTile transition-fade', className]} href={slug}>
   <div class="relative ">
     <div class="workTile__frame">
       <figure class="workTile__figure">

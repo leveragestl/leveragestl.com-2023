@@ -15,7 +15,7 @@ export function menuToggle() {
 }
 
 export function checkNav() {
-  if (navPanelToggled) {
+  if (document.body.classList.contains('menu-toggle-active')) {
     closeNav(250)
   } else {
     openNav()

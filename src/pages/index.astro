@@ -68,11 +68,11 @@ import HeroSVG from '../components/HeroSVG.astro'
       </div>
       <div data-pin="services" class="bg-darkgray text-white w-full pt-9 pb-16 lg:pt-0 lg:pb-56">
 
-        <div class="servicesContainer grid grid-cols-margins-4 gap-y-8 lg:gap-y-0 lg:grid-cols-margins-12 lg:grid-rows-auto-2 transition-fade">
+        <div class="servicesContainer grid grid-cols-margins-4 gap-y-8 lg:gap-y-0 lg:grid-cols-margins-12 lg:grid-rows-auto-2">
           <!-- content: branding -->
           <div data-scene="container" id="branding" class="col-start-wrapper col-end-wrapper lg:row-start-2 grid grid-cols-12">
             <!-- copy -->
-            <div data-scene="content" class="lg:px-16 lg:pt-16 relative col-start-first col-end-last lg:col-start-first lg:col-end-6">
+            <div data-scene="content" class="transition-fade lg:px-16 lg:pt-16 relative col-start-first col-end-last lg:col-start-first lg:col-end-6">
               <figure class="mx-auto w-fit block lg:mx-0">
                 <img src="icon-lightbulb.svg" alt="">
               </figure>
@@ -104,7 +104,7 @@ import HeroSVG from '../components/HeroSVG.astro'
             <div data-scene="image" data-parallax="" class="-mt-[--site-header-height] lg:px-16 col-start-first col-end-last lg:col-start-6 lg:col-end-last">
               <a class="workTile w-full h-full" href="#mama-lolas">
 
-                <div class="workTile__frame h-0 pb-[112%]">
+                <div class="transition-fade workTile__frame h-0 pb-[112%]">
                   <figure class="workTile__figure relative w-full h-full overflow-hidden">
                     <img class="workTile__img absolute inset-0 w-full h-full object-cover object-right-top" src="/work/mama-lolas/preview.jpg" alt="">
                   </figure>
@@ -120,7 +120,7 @@ import HeroSVG from '../components/HeroSVG.astro'
           <!-- content: website -->
           <div data-scene="container" id="websites" class="col-start-wrapper col-end-wrapper lg:row-start-2 grid grid-cols-12">
             <!-- copy -->
-            <div data-scene="content" class="lg:px-16 lg:pt-16 relative col-start-first col-end-last lg:col-start-first lg:col-end-6">
+            <div data-scene="content" class="transition-fade lg:px-16 lg:pt-16 relative col-start-first col-end-last lg:col-start-first lg:col-end-6">
               <figure class="mx-auto w-fit block lg:mx-0">
                 <img src="icon-lightbulb.svg" alt="">
               </figure>
@@ -152,7 +152,7 @@ import HeroSVG from '../components/HeroSVG.astro'
             <div data-scene="image" data-parallax="" class="-mt-[--site-header-height] lg:px-16 col-start-first col-end-last lg:col-start-6 lg:col-end-last">
               <a class="workTile w-full h-full" href="#fricks">
 
-                <div class="workTile__frame h-0 pb-[112%]">
+                <div class="transition-fade workTile__frame h-0 pb-[112%]">
                   <figure class="workTile__figure relative w-full h-full overflow-hidden">
                     <img class="workTile__img absolute inset-0 w-full h-full object-cover object-right-top" src="/work-fricks-thumb.png" alt="">
                   </figure>
@@ -169,7 +169,7 @@ import HeroSVG from '../components/HeroSVG.astro'
           <!-- content: marketing -->
           <div data-scene="container" id="marketing" class="col-start-wrapper col-end-wrapper lg:row-start-2 grid grid-cols-12">
             <!-- copy -->
-            <div data-scene="content" class="lg:px-16 lg:pt-16 relative col-start-first col-end-last lg:col-start-first lg:col-end-6">
+            <div data-scene="content" class="transition-fade lg:px-16 lg:pt-16 relative col-start-first col-end-last lg:col-start-first lg:col-end-6">
               <figure class="mx-auto w-fit block lg:mx-0">
                 <img src="icon-lightbulb.svg" alt="">
               </figure>
@@ -201,7 +201,7 @@ import HeroSVG from '../components/HeroSVG.astro'
             <div data-scene="image" data-parallax="" class="-mt-[--site-header-height] lg:px-16 col-start-first col-end-last lg:col-start-6 lg:col-end-last">
               <a class="workTile w-full h-full" href="#muros">
 
-                <div class="workTile__frame h-0 pb-[112%]">
+                <div class="transition-fade workTile__frame h-0 pb-[112%]">
                   <figure class="workTile__figure relative w-full h-full overflow-hidden">
                     <div class=""><img class="workTile__img absolute inset-0 w-full h-full object-cover object-right-top" src="/work-muros-thumb.png" alt=""></div>
                   </figure>
@@ -229,6 +229,7 @@ import HeroSVG from '../components/HeroSVG.astro'
         <!-- <div class="bg-darkgray lg:row-start-2 lg:row-end-last lg:col-start-first lg:col-end-last"></div> -->
       </div>
     </section>
+
     <!-- Work -->
     <section id="work" class="wrapper my-24 lg:my-48">
       <h3 data-anim-elem="fillText" class="h1 mb-0 text-left grid grid-cols-1 grid-rows-1">
@@ -268,15 +269,15 @@ import HeroSVG from '../components/HeroSVG.astro'
           <h3 class="h4 font-bold">The latest from leverage</h3>
         </div>
         <div class="grid lg:grid-cols-3 gap-x-32">
-          <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="#">
+          <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="/blog/">
             <h5 class="text-24 mb-0">Meet Drew - Senior Web Developer</h5>
             <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic flex items-center gap-x-2"><span class="label">read full article</span> <i class="arrow-right !bg-gold"></i></div>
           </a>
-          <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="#">
+          <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="/blog/">
             <h5 class="text-24 mb-0">Brand Guidelines: What, Why & How?</h5>
             <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic flex items-center gap-x-2"><span class="label">read full article</span> <i class="arrow-right !bg-gold"></i></div>
           </a>
-          <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="#">
+          <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="/blog/">
             <h5 class="text-24 mb-0">Web Animation Trends We're Lovin'</h5>
             <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic flex items-center gap-x-2"><span class="label">read full article</span> <i class="arrow-right !bg-gold"></i></div>
           </a>

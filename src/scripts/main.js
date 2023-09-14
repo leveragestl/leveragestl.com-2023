@@ -58,7 +58,7 @@ function unload() {
     document.body.classList.remove('scrolled')
   }
 
-  checkNav()
+  closeNav()
 }
 swup.hooks.before('content:replace', () => unload())
 
