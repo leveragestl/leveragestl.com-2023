@@ -1,7 +1,7 @@
 ---
 
 ---
-<button id="menu-toggle" aria-controls="site-menu">Site Menu
+<button data-cursor-stick data-cursor-enlarge id="menu-toggle" aria-controls="site-menu">Site Menu
   <div id="menu-icon-wrapper">
     <div id="menu-icon"></div>
   </div>
@@ -27,6 +27,11 @@
     justify-content: center;
     text-indent: -9999px;
     transition: height 300ms ease-in-out;
+    cursor: none;
+
+    .menu-toggle-active & {
+      cursor: pointer;
+    }
 
     &:hover {
       #menu-icon {

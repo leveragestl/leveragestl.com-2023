@@ -28,8 +28,10 @@ import { pageTransitions } from './animation/pageTransitions'
 import { siteHeader } from './core/siteHeader'
 import { menuToggle, checkNav, openNav, closeNav } from './core/navPanel'
 
-// Links
+// Utils
 import { linkHandler } from './utils/linkHandler'
+import { videoHandler } from './utils/videoHandler'
+import { cursor } from './utils/cursor'
 
 // =============================================================================
 // Swup
@@ -58,7 +60,7 @@ function unload() {
 
   checkNav()
 }
-swup.hooks.before('content:replace', () => unload());
+swup.hooks.before('content:replace', () => unload())
 
 // =============================================================================
 // Scripts
@@ -80,7 +82,10 @@ function init() {
     smoothScroll()
   }
   
-  siteHeader(); linkHandler(); menuToggle();
+  siteHeader()
+  linkHandler()
+  menuToggle()
+  cursor()
 
   if (document.body.classList.contains('home')) {
     homeAnimations()
@@ -112,6 +117,10 @@ function init() {
 
   if (document.querySelector('a')) {
     // pageTransitions()
+  }
+
+  if (document.querySelector('[data-video]')) {
+    videoHandler()
   }
 }
 
