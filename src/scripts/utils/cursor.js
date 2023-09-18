@@ -3,8 +3,11 @@ import gsap from "gsap";
 
 MouseFollower.registerGSAP(gsap)
 
-export function cursor() {
-  const cursor = new MouseFollower({
+let cursor
+
+export function initCursor() {
+
+  cursor = new MouseFollower({
     skewing: 0,
     skewingText: 1,
     skewingIcon: 1,
@@ -12,7 +15,7 @@ export function cursor() {
     stateDetection: {
       '-pointer': 'a, button, .button, .link',
       // '-hidden': '.button'
-    }
+    },
   })
 
   const expandEls = document.querySelectorAll('[data-cursor-enlarge]')
@@ -45,4 +48,8 @@ export function cursor() {
       }
     })
   }
+}
+
+export function removeCursor() {
+  cursor.destroy();
 }

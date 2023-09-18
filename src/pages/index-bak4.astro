@@ -14,36 +14,39 @@ import HeroSVG from '../components/HeroSVG.astro'
 
   <!-- Hero -->
   <section data-pin="hero" id="hero" class="hero relative bg-white">
-    <div id="hero-inner" class="wrapper grid items-center grid-rows-[var(--site-header-height)_1fr_var(--site-header-height)] bg-darkgray text-white min-h-[75vh] sm:min-h-[50vh] ml:min-h-[800px] lg:h-[90vh]">
-      <div class="transition-fade transition-in relative z-20 row-start-2 col-start-1 lg:flex lg:justify-center lg:items-center flex flex-col gap-y-24">
+    <div id="hero-inner" class="relative z-10 grid items-center grid-cols-margins-12 text-white"><!-- lg:grid-rows-[var(--site-header-height)_1fr_var(--site-header-height)] ml:min-h-[800px] ml:h-[75vh] lg:h-[90vh] -->
+      <div class="transition-fade transition-in relative z-20 !contents col-start-wrapper col-end-wrapper lg:!flex lg:justify-center lg:items-center flex-col gap-y-24 ml:min-h-[800px] ml:h-[75vh] lg:h-[90vh]">
 
         <!-- Content -->
-        <div id="hero-content" class="w-full lg:max-w-[852px] text-left">
+        <div id="hero-content" class="w-full lg:max-w-[852px] text-left row-start-2 col-start-wrapper col-end-wrapper py-40 lg:py-0">
           <h2 data-hero-text class="h1 text-[45px] relative lg:text-[120px] lg:leading-[110px] mb-0 grid grid-cols-1 grid-rows-1">
             <span class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light [.video-unmuted_&]:opacity-0 transition-opacity duration-300 ease-out">We design + <br class="hidden lg:block">build brand experiences</span>
             <span class="relative z-10 col-start-1 row-start-1" aria-hidden="true"><span class="text-outline text-outline--light">We design + <br class="hidden lg:block">build</span> brand experiences</span>
           </h2>
         </div>
         <!-- Video -->
-        <div class="w-full h-full z-10 video-container absolute top-0 mt-20 lg:-mt-48 xl:-mt-40">
-          <video data-video data-cursor-enlarge data-cursor-volume class="absolute cursor-none top-full opacity-0" src="/sizzle-off.mp4" autoplay loop muted poster="/videoReelThumb.jpg"></video>
-        </div>  
+        <div class="w-full h-full z-10 video-container contents lg:block lg:absolute top-full row-start-3 col-start-wrapper col-end-wrapper">
+          <video data-video data-cursor-enlarge data-cursor-volume class="cursor-none opacity-0 w-full row-start-3 col-start-wrapper col-end-wrapper z-20" src="/sizzle-off.mp4" autoplay loop muted poster="/videoReelThumb.jpg"></video>
 
+        </div>
       </div>
 
       <!-- Diagonal -->
-      <div class="wrapperCap wrapperCap--top"></div>
+      <div class="relative w-full h-full col-start-first col-end-last z-10">
+        <div class="wrapperCap wrapperCap--top !z-10"></div>
+      </div>
 
       <!-- BG -->
-      <!-- <div class="absolute bg-darkgray top-0 left-0 w-full h-full"></div> -->
+      <div class="absolute bg-darkgray top-0 left-0 w-full h-full col-start-first col-end-last row-start-first row-end-3"></div>
                 
     </div>
+    
   </section>
 
   <!-- Page Content -->
-  <div id="content" class="wrapperDiagonal !pt-0 mt-32 sm:mt-64 lg:mt-20 5xl:-mt-20 short:mt-40">
+  <div id="content" class="wrapperDiagonal !pt-0">
   <!-- Intro -->
-  <section id="intro" data-anim-group data-anim-markers class="mb-20 lg:mb-48 text-darkgray wrapper">
+  <section id="intro" data-anim-group data-anim-markers class="lg:mb-48 mt-20 text-darkgray wrapper">
     <div class="lg:max-w-[815px] lg:mx-auto transition-fade">
       <h2 data-revealText data-anim-elem="revealText" class="mb-8">Strategic design, development, and marketing is kind of our thing.</h2>
       <div data-anim-elem="fadeInUp" data-anim-timing="0.5">

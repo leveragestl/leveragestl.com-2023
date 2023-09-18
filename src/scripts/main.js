@@ -31,12 +31,11 @@ import { menuToggle, checkNav, openNav, closeNav } from './core/navPanel'
 // Utils
 import { linkHandler } from './utils/linkHandler'
 import { videoHandler } from './utils/videoHandler'
-import { cursor } from './utils/cursor'
+import { initCursor, removeCursor } from './utils/cursor'
 
 // =============================================================================
 // Swup
 // =============================================================================
-/*
 import Swup from 'swup';
 import SwupBodyClassPlugin from '@swup/body-class-plugin';
 
@@ -59,9 +58,20 @@ function unload() {
   }
 
   closeNav()
+  removeCursor()
 }
 swup.hooks.before('content:replace', () => unload())
-*/
+
+swup.hooks.on('animation:out:await', () => {
+  document.documentElement.classList.add('is-transitioning')
+})
+
+swup.hooks.on('animation:in:start', () => {
+  document.documentElement.classList.remove('is-transitioning')
+})
+
+// document.addEventListener('DOMContentLoaded', () => init())
+
 // =============================================================================
 // Scripts
 // =============================================================================
@@ -85,7 +95,7 @@ function init() {
   siteHeader()
   linkHandler()
   menuToggle()
-  cursor()
+  initCursor()
 
   if (document.body.classList.contains('home')) {
     homeAnimations()
@@ -123,5 +133,3 @@ function init() {
     videoHandler()
   }
 }
-
-document.addEventListener('DOMContentLoaded', () => init())

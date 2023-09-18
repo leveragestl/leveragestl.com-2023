@@ -11,7 +11,7 @@ export function pageTransitions() {
   // }
 
   window.addEventListener('click', (e) => {
-    gsap.set('.transition-wipe', {yPercent: -100})
+    // gsap.set('.transition-wipe', {yPercent: -100})
 
     if (e.target.closest('a') ) {
       const self = e.target.closest('a')
@@ -21,27 +21,33 @@ export function pageTransitions() {
         if (self.getAttribute('data-hash')) return
         e.preventDefault()
 
-        const transitionOutAnimTL = gsap.timeline({
-          onComplete: setTimeout(() => {
-            window.location.href = dest
-          }, 1000)
-        })
+        // const transitionOutAnimTL = gsap.timeline({
+        //   onComplete: () => {
+        //     window.location.href = dest
+        //   }
+        // })
 
-        transitionOutAnimTL.to('.transition-out', {duration: 1.5, ease: 'power3.inOut', yPercent: '+=100'})
-        transitionOutAnimTL.to('.transition-out', {duration: 1, ease: 'power1.out', autoAlpha: 0}, '<+=0.5')
-        transitionOutAnimTL.to('.transition-wipe', {duration: 0.5, ease: 'expo.out', yPercent: 0}, '-=0.85')
+        document.documentElement.classList.add('is-animating')
 
-        // setTimeout(() => {
-        //   window.location.href = dest
-        // }, 500);
+        // transitionOutAnimTL.to('.transition-fade', {duration: 1.5, ease: 'power3.inOut', yPercent: '+=100'})
+        // transitionOutAnimTL.to('.transition-fade', {duration: 1, ease: 'power1.out', autoAlpha: 0}, '<+=0.5')
+        // transitionOutAnimTL.to('.transition-wipe', {duration: 0.5, ease: 'expo.out', yPercent: 0}, '-=0.85')
+
+        setTimeout(() => {
+          window.location.href = dest
+        }, 1500);
       }
       
     }
   })
 
-  const transitionInAnimTL = gsap.timeline()
+  setTimeout(() => {
+    document.documentElement.classList.remove('is-changing')
+  }, 500)
 
-  transitionInAnimTL.to('.transition-wipe', {duration: 0.5, ease: 'expo.in', yPercent: 100})
-  transitionInAnimTL.from('.transition-in', {duration: 1.5, ease: 'power3.inOut', yPercent: '-=10'}, '-=0.85')
-  transitionInAnimTL.from('.transition-in', {duration: 1, ease: 'power1.out', autoAlpha: 0}, '<+=0.5')
+  // const transitionInAnimTL = gsap.timeline()
+
+  // transitionInAnimTL.to('.transition-wipe', {duration: 0.5, ease: 'expo.in', yPercent: 150})
+  // transitionInAnimTL.fromTo(['.transition-in', '.transition-fade'], {duration: 1.5, ease: 'power3.inOut', yPercent: '-=100'}, {yPercent: 0}, '-=0.85')
+  // transitionInAnimTL.fromTo(['.transition-in', '.transition-fade'], {duration: 1, ease: 'power1.out', autoAlpha: 0}, {autoAlpha: 1}, '<+=0.5')
 }

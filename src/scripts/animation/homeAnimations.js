@@ -17,8 +17,6 @@ window.addEventListener('resize', setIntroSpacing)
 export function homeAnimations() {
   // ~~~~~~~~~~~~~~~~~ Hero ~~~~~~~~~~~~~~~~ //
   gsap.set('#hero .wrapperCap--top', {autoAlpha: 1, rotate: 0, y: '15vw'})
-  gsap.set('#hero .video-container', {y: '45vh'})
-  gsap.set('#hero video', {y: 50})
 
   const heroAnimationTL = gsap.timeline({
     scrollTrigger: {
@@ -38,6 +36,10 @@ export function homeAnimations() {
 
   // ~~~~~~~~~~~~~~~ Hero Pin ~~~~~~~~~~~~~~ //
   mm.add("(min-width: 1023.98px)", () => {
+    gsap.set('#hero .video-container', {y: '45vh'})
+    gsap.set('#hero video', {y: 50})
+  
+
     const heroElem = document.querySelector('[data-pin="hero"]')
     const pinHeroTL = gsap.timeline({
       defaults: {
@@ -64,7 +66,7 @@ export function homeAnimations() {
 
   // ~~~~~~~~~~~~~ Services Pin ~~~~~~~~~~~~ //
 
-  mm.add("(min-width: 1023.98px)", () => {
+  mm.add("(min-width: 1024px)", () => {
 
     // Scenes 
     const scenes = gsap.utils.toArray('[data-scene="container"]');

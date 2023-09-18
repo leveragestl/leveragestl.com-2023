@@ -19,7 +19,7 @@ html.is-animating .transition-fade {
   transition: all 2s cubic-bezier(0.08,0.82,0.17,1) 500ms;
 }
 
-html.is-animating .transition-in {
+html.is-transitioning .transition-in {
   opacity: 0;
   transform: translateY(-50px) !important;
 }
@@ -38,7 +38,7 @@ html.is-animating .transition-in {
   transition: none;
 }
 
-html.is-changing .transition-wipe {
+html.is-rendering .transition-wipe {
   transform: skewY(-6.88deg) translateY(100%);
   transition: transform 300ms ease-in-out;
   transition-delay: 450ms;
