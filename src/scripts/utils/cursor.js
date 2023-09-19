@@ -32,19 +32,28 @@ export function initCursor() {
   const volumeEls = document.querySelectorAll('[data-cursor-volume]')
   for (const volumeEl of volumeEls) {
     volumeEl.addEventListener('mouseenter', () => {
-      cursor.addState('-volume')
+      if (!volumeEl.muted) {
+        cursor.removeState('-volume')
+        cursor.addState('-mute')
+      } else {
+        cursor.removeState('-mute')
+        cursor.addState('-volume')        
+      }
     })
 
     volumeEl.addEventListener('mouseleave', () => {
       cursor.removeState('-volume')
+      cursor.removeState('-mute')
     })
 
     volumeEl.addEventListener('click', () => {
 
-      if (volumeEl.getAttribute('data-cursor-volume')) {
-        cursor.toggleState('-volume')
+      if (volumeEl.muted) {
+        cursor.removeState('-volume')
+        cursor.addState('-mute')
       } else {
-        cursor.toggleState('-mute')
+        cursor.removeState('-mute')
+        cursor.addState('-volume')        
       }
     })
   }
