@@ -8,13 +8,48 @@
       <!-- Nav -->
       <nav class="transition-fade relative w-full text-left lg:col-start-first lg:col-end-9 lg:row-start-2 lg:max-h-full lg:overflow-scroll mb-12 pb-12 lg:py-2 lg:mb-0 after:absolute after:bottom-0 after:left-0 after:w-[--navPanelLineH] after:h-0.5 after:bg-mediumgray lg:after:hidden">
         <ul class="flex flex-col gap-y-4 lg:gap-y-8 uppercase tracking-wider text-white text-32 lg:text-44 font-extrabold lg:pl-[--toggle-size]">
-          <li><a class="hover-gold" href="/">Home</a></li>
-          <li><a class="hover-gold" href="/work/">Work</a></li>
-          <li><a class="hover-gold" href="/services/">Services</a></li>
-          <li><a class="hover-gold" href="/about/">About</a></li>
-          <li><a class="hover-gold" href="/careers/">Careers</a></li>
-          <li><a class="hover-gold" href="/blog/">Blog</a></li>
-          <li><a class="hover-gold" href="/contact/">Contact</a></li>
+          <li><a href="/">
+            <span data-hover="fillText" class="grid grid-cols-1 grid-rows-1">
+              <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light">Home</span>
+              <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">Home</span>
+            </span>
+          </a></li>
+          <li><a href="/work/">
+            <span data-hover="fillText" class="grid grid-cols-1 grid-rows-1">
+              <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light">Work</span>
+              <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">Work</span>
+            </span>
+          </a></li>
+          <li><a href="/services/">
+            <span data-hover="fillText" class="grid grid-cols-1 grid-rows-1">
+              <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light">Services</span>
+              <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">Services</span>
+            </span>
+          </a></li>
+          <li><a href="/about/">
+            <span data-hover="fillText" class="grid grid-cols-1 grid-rows-1">
+              <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light">About</span>
+              <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">About</span>
+            </span>
+          </a></li>
+          <li><a href="/careers/">
+            <span data-hover="fillText" class="grid grid-cols-1 grid-rows-1">
+              <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light">Careers</span>
+              <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">Careers</span>
+            </span>
+          </a></li>
+          <li><a href="/blog/">
+            <span data-hover="fillText" class="grid grid-cols-1 grid-rows-1">
+              <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light">Blog</span>
+              <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">Blog</span>
+            </span>
+          </a></li>
+          <li><a href="/contact/">
+            <span data-hover="fillText" class="grid grid-cols-1 grid-rows-1">
+              <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--light">Contact</span>
+              <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">Contact</span>
+            </span>
+          </a></li>
         </ul>
       </nav>
       <!-- Info -->
@@ -74,4 +109,41 @@
       transition: transform 1s cubic-bezier(1,0,0,1);
     }
   }
+
+  nav ul li a {
+    display: inline-block;
+  }
+
+  nav ul li {
+    a {
+      [data-filltext="fill"] .fillText__line {
+        clip-path: inset(0% 0% 0% 0%);
+        transition: clip-path 300ms ease-out;
+      }
+
+      &:hover {
+        [data-filltext="fill"] .fillText__line {
+          clip-path: inset(0% 0% 0% 100%);
+        }
+      }
+    }
+
+    &.current-menu-item a {
+      color: transparent;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: white;
+
+      &:hover {
+        color: transparent;
+        -webkit-text-stroke-color: white;
+      }
+
+      [data-filltext="fill"] .fillText__line {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+
 </style>

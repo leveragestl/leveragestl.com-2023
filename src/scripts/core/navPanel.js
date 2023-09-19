@@ -137,3 +137,27 @@ export function closeNav(delay) {
   navPanelToggled = false
 
 }
+
+export function currentMenuItem() {
+  const navLinks = document.querySelectorAll("nav a")
+
+  // `slice` here to remove the first `/` in pathname
+  let currentPath = window.location.pathname
+
+  // if (currentPath.length > 1) {
+  //   currentPath = currentPath.slice(1)
+  // }
+  
+
+  navLinks.forEach((link) => {
+    link.closest('li').classList.remove("current-menu-item")
+
+    // `link.href` returns a whole url, such as: "https://somedomain.com/posts" and we only need the last part
+    const thisPath = link.getAttribute('href')
+
+    if (currentPath === thisPath) {
+      link.closest('li').classList.add("current-menu-item")
+    }
+  });
+
+}

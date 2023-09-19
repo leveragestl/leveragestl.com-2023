@@ -7,7 +7,7 @@ gsap.registerPlugin(Flip, ScrollTrigger, SplitText, CustomEase, ScrollSmoother);
 let mm = gsap.matchMedia();
 
 export function revealText() {
-  const revealTextElems = document.querySelectorAll('[data-revealText]')
+  const revealTextElems = document.querySelectorAll('[data-revealtext]')
 
   for (const revealTextElem of revealTextElems) {
     

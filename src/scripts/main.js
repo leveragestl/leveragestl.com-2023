@@ -12,13 +12,14 @@ gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother, DrawSVGPlugin)
 // =============================================================================
 
 // Sliders
-import { quotesSlider } from './vendors/swiper'
+import { quotesSlider, servicesSlider } from './vendors/swiper'
 
 // Animation
 import { generalAnimations } from './animation/generalAnimations'
 import { homeAnimations } from './animation/homeAnimations'
 import { ctaAnimations } from './animation/ctaAnimations'
 import { revealText } from './animation/revealText'
+import { fillText, fillTextHover } from './animation/fillText'
 import { parallaxColumns } from './animation/parallaxColumns'
 import { parallaxWindow } from './animation/parallaxWindow'
 import { drawSVG } from './animation/drawSVG'
@@ -26,7 +27,7 @@ import { pageTransitions } from './animation/pageTransitions'
 
 // Header
 import { siteHeader } from './core/siteHeader'
-import { menuToggle, checkNav, openNav, closeNav } from './core/navPanel'
+import { menuToggle, checkNav, openNav, closeNav, currentMenuItem } from './core/navPanel'
 
 // Utils
 import { linkHandler } from './utils/linkHandler'
@@ -96,6 +97,7 @@ function init() {
   linkHandler()
   menuToggle()
   initCursor()
+  currentMenuItem()
 
   if (document.body.classList.contains('home')) {
     homeAnimations()
@@ -125,11 +127,20 @@ function init() {
     quotesSlider()
   }
 
+  if (document.querySelector('[data-slider="services"]')) {
+    servicesSlider()
+    window.addEventListener('resize', servicesSlider)
+  }
+
   if (document.querySelector('a')) {
     // pageTransitions()
   }
 
   if (document.querySelector('[data-video]')) {
     videoHandler()
+  }
+
+  if (document.querySelector('[data-hover="fillText"]')) {
+    fillTextHover()
   }
 }
