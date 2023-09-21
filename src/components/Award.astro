@@ -2,15 +2,11 @@
 const { org, award, proj, link, year } = Astro.props
 ---
 
-<h3 class="award__org">{org}</h3>
-<h3 class="award__award">
-  {award}{proj && <span> - </span><span class="award__proj">{link ? <a href="#">{proj}</a> : proj}</span>}
-</h3>
-<h3 class="award__year text-right">{year}</h3>
+<div class="my-8 lg:contents">
+  <h4 class="award__org mb-4 lg:mb-0">{org}</h4>
+  <h4 class="award__award mb-4 lg:mb-0">
+    {award}{proj && <span> - </span><span class="award__proj">{link ? <a href="#">{proj}</a> : proj}</span>}
+  </h4>
+  <h4 class="award__year lg:text-right mb-0">{year}</h4>
+</div>
 <div class="award__line col-span-full border border-lightgray"></div>
-
-<style lang="scss" is:inline>
-  h3 {
-    margin-bottom: 0;
-  }
-</style>

@@ -141,7 +141,6 @@
     transition: transform 3s ease-out;
     transform: translateZ(0);
     backface-visibility: hidden;
-
   }
 
   &__title {
@@ -211,17 +210,10 @@
     background-color: theme('colors.gold');
     opacity: 0;
     transition: all 300ms ease-out;
-
   }
 
   &:hover {
     .workTile {
-      &__title {
-        @screen mouse {
-          color: theme('colors.gold');          
-        }
-      }
-
       &__desc {
         opacity: 1;
         transform: translateY(0px);

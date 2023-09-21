@@ -2,9 +2,9 @@
 const { name, title, img } = Astro.props
 ---
 
-<div class="slide">
-  <figure class="mb-8">
-    <img src={img} alt="">
+<div class="swiper-slide">
+  <figure class="mb-8 overflow-hidden relative w-[554px] max-w-full h-full aspect-square">
+    <img class="object-cover object-center absolute inset-0" src={img} alt="">
   </figure>
   <h4 class="h2 !mb-0">{name}</h4>
   <p class="font-serif text-lightgray">{title}</p>

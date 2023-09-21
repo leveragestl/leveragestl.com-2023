@@ -16,6 +16,7 @@
   min-height: 100vh;
   padding-top: var(--diagWrapperHeight);
   padding-bottom: var(--diagWrapperHeight);
+  z-index: 20;
 
   @screen xl {
     padding-bottom: 0;
@@ -32,7 +33,7 @@
 
   &--top {
     transform: skewY(var(--diagWrapperAngle)) translate(-5%, 50%);
-    margin-top: calc(var(--diagWrapperHeight) * -0.85);
+    margin-top: calc(var(--diagWrapperHeight) * -1);
 
     .home #hero & {
       position: absolute;
@@ -45,6 +46,6 @@
 
   &--bottom {
     transform: skewY(var(--diagWrapperAngle)) translateY(-50%);
-    margin-bottom: calc(var(--diagWrapperHeight) * -0.85);
+    margin-bottom: calc(var(--diagWrapperHeight) * -1);
   }
 }

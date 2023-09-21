@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother, DrawSVGPlugin)
 // =============================================================================
 
 // Sliders
-import { quotesSlider, servicesSlider } from './vendors/swiper'
+import { quotesSlider, servicesSlider, staffSlider } from './vendors/swiper'
 
 // Animation
 import { generalAnimations } from './animation/generalAnimations'
@@ -125,6 +125,10 @@ function init() {
 
   if (document.querySelector('[data-slider="quotes"]')) {
     quotesSlider()
+  }
+
+  if (document.querySelector('[data-slider="staff"]')) {
+    staffSlider()
   }
 
   if (document.querySelector('[data-slider="services"]')) {

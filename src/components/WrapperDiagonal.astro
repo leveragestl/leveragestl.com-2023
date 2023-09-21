@@ -17,7 +17,7 @@ const { class: className, headerScrollTrigger = true } = Astro.props;
   <CTA />
 </div>
 <div class="wrapperCap wrapperCap--bottom"></div>
-
+<!--
 <style lang="scss">
   .wrapperDiagonal {
     position: relative;
@@ -27,6 +27,7 @@ const { class: className, headerScrollTrigger = true } = Astro.props;
     min-height: 100vh;
     padding-top: var(--diagWrapperHeight);
     padding-bottom: var(--diagWrapperHeight);
+    z-index: 10;
 
     @screen xl {
       padding-bottom: 0;
@@ -48,12 +49,13 @@ const { class: className, headerScrollTrigger = true } = Astro.props;
 
     &--top {
       transform: skewY(var(--diagWrapperAngle)) translateY(50%) translateX(-5%);
-      margin-top: calc(var(--diagWrapperHeight) * -0.9);
+      margin-top: calc(var(--diagWrapperHeight) * -1);
     }
 
     &--bottom {
       transform: skewY(var(--diagWrapperAngle)) translateY(-50%);
-      margin-bottom: calc(var(--diagWrapperHeight) * -0.9);
+      margin-bottom: calc(var(--diagWrapperHeight) * -1);
     }
   }
 </style>
+-->

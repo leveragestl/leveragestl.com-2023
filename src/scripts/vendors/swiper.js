@@ -54,3 +54,21 @@ export function servicesSlider() {
     }
   }
 }
+
+export function staffSlider() {
+  const staffSlider = new Swiper( '[data-slider="staff"]', {
+    // loop: true,
+    // autoHeight: true,
+    slidesPerView: 'auto',
+    spaceBetween: 30,
+    navigation: {
+      prevEl: '[data-slider-nav="prev"]',
+      nextEl: '[data-slider-nav="next"]'
+    },
+    breakpoints: {
+      1024: {
+        slidesPerView: 2
+      }
+    }
+  })
+}

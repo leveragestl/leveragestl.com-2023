@@ -13,54 +13,58 @@ import awards from '../data/awards.json'
 ---
 
 <Layout title='About Us' namespace="about">
-  <Hero>
-    <h2 class="h1">we embrace a  <br class="hidden lg:block"><span class="text-outline text-outline--light">culture of <br class="hidden lg:block">collaboration</span></h2>
+  <Hero class="text-left">
+    <h2 class="h1"><span class="text-outline text-outline--light">A culture of</span> <br class="hidden lg:block">collabo&shy;ration</h2>
+    <div class="lg:max-w-[772px]">
+      <p class="large">For more than a decade, we've embraced a culture of collaboration that values the relationship over the bottom line, where we partner with our clients and treat their business as our own.</p>
+    </div>
   </Hero>
-  <WrapperDiagonal>
-    <section class="wrapper mb-48">
-      <figure class="w-full h-auto">
+  <WrapperDiagonal class="!pt-0">
+    <section class="wrapper lg:mb-48 mb-20">
+      <figure class="w-full h-auto -translate-y-[--diagWrapperHeight] z-10">
         <img class="w-full h-full object-cover object-center" src="/about-collage.jpg" alt="">
       </figure>
 
-      <div class="text-center max-w-3xl mx-auto mt-32">
-        <h3 class="h2 font-[800]">We build brands through design, development, and strategic marketing</h3>
+      <div class="text-center max-w-[815px] mx-auto lg:mt-32">
+        <h3 class="h2 font-[800] px-8 lg:px-0">We strive to think strategically, act selflessly and grow creatively.</h3>
         <div class="content-block">
-          <p>We believe honest, beautiful design can create a more pleasant world. We strive to provide kind, thoughtful value in everything we do. We embrace a culture of collaboration that values the relationship over the bottom line, where we partner with our clients and treat their business as our own.</p>
-          <p>Refusing to compromise on creating exceptional work, we thrive on solving problems and our passion shows through when we're challenged to think outside of the box and push the limits of creativity to design, build, and share delightful experiences across all mediums.</p>
+          <p class="large">Spin up a template or logo in a couple of hours? Nah, your business deserves way better than that. We refuse to compromise on creating exceptional work and we thrive on solving problems. Our passion shows through when we're challenged to think outside of the box and push the limits of creativity to design, build, and share delightful experiences that drive results across all mediums.</p>
+          <p class="large">Beyond simply designing, building, and implementing beautiful brand experiences, our team tackles each day with a broader goal — to live up to our mantra and provide value in everything we do.</p>
         </div>
       </div>
     </section>
 
-    <section class="bg-darkgray text-white text-center wrapper flex w-full justify-center items-center py-60">
-      <h3 class="h1 text-outline text-outline--light text-[110px]">Be useful.<br>Be kind.<br>Be fearless.</h3>
-    </section>
+    <section class="bg-darkgray text-white">
+      <div class="text-center wrapper flex w-full justify-center items-center pt-52 pb-80 md:py-60">
+        <h3 class="h1 text-outline text-outline--light md:text-72 xl:text-[110px] leading-none">Be useful.<br>Be kind.<br>Be fearless.</h3>
+      </div>
 
-    <section class="bg-darkgray text-white pb-60">
-      <div class="text-center max-w-2xl mx-auto">
-        <h3 class="h2 font-[800]">We strive to think strategically, act selflessly, and grow creatively.</h3>
-        <div class="content-block">
-          <p>Beyond simply designing, building, and implementing beautiful brand experiences, our team tackles each day with a broader goal — to provide value in everything we do. We're extremely proud of our insanely talented group that embodies our mission.</p>
+      <div class="pb-20 mb-20 lg:pb-40 lg:mb-40 text-left">
+        <div class="px-[--container-margin]">
+          <h3 class="h1">No fluff. <br> Real people.</h3>
+        </div>
+        <div data-slider="staff" class="relative swiper flex flex-col md:flex-row gap-x-20 wrapper">
+          <div class="md:absolute flex md:top-0 md:right-[--container-margin] mt-8 md:-mt-32 gap-x-4 order-last w-full justify-center md:w-auto">
+            <NavArrows />
+          </div>
+          <div class="swiper-wrapper">
+            {staff.map((staff) =>
+              <StaffMember name={staff.name} title={staff.title} img={staff.img} />
+            )}
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="bg-darkgray text-white wrapper pb-40 mb-40">
-      <h3 class="h1">No fluff. <br> Real people.</h3>
-      <div class="relative slider flex gap-x-20">
-        <div class="absolute flex top-0 right-0 -mt-32 gap-x-4">
-          <NavArrows />
-        </div>
-        {staff.map((staff) =>
-          <StaffMember name={staff.name} title={staff.title} img={staff.img} />
-        )}
+    <section id="quotes" class="wrapper lg:pt-48 text-left">
+      <div class="transition-fade">
+        <Quotes class="mb-16 lg:px-16 lg:mb-32" />
       </div>
     </section>
 
-    <Quotes />
-
-    <section class="wrapper my-80">
-      <h3 class="h2">Awards we're proud of</h3>
-      <div class="grid grid-cols-auto-3 gap-y-12 mt-12">
+    <section class="wrapper my-40 lg:my-80 lg:text-left">
+      <h3 class="h4 font-black">Awards we're proud of</h3>
+      <div class="grid lg:grid-cols-auto-3 gap-y-4 lg:gap-y-12 mt-12">
         <div class="award__line col-span-full border border-lightgray mt-8"></div>
         {awards.map((award) => 
           <Award org={award.org} award={award.award} proj={award.proj} link={award.link} year={award.year} />

@@ -11,3 +11,16 @@
     // -webkit-backface-visibility: hidden;
   }
 }
+
+[data-slider="staff"] {
+  overflow: visible;
+
+  .swiper-slide {
+    width: auto;
+    max-width: 90%;
+
+    @screen md {
+      max-width: 100%;
+    }
+  }
+}

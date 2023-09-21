@@ -37,7 +37,7 @@ export function initCursor() {
         cursor.addState('-mute')
       } else {
         cursor.removeState('-mute')
-        cursor.addState('-volume')        
+        cursor.addState('-volume')
       }
     })
 
