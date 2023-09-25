@@ -1,7 +1,7 @@
 ---
 const { id, class: className } = Astro.props;
 ---
-<section id={id} class:list={['hero grid grid-rows-[var(--site-header-height)_1fr_var(--diagWrapperHeight)] wrapper bg-darkgray text-white h-[75vh] lg:h-screen lg:min-h-[800px]', className]}>
+<section id={id} class:list={['hero grid grid-rows-[var(--site-header-height)_1fr_var(--diagWrapperHeight)] wrapper bg-darkgray text-white text-left pt-20', className]}>
   <div class="row-start-2 !flex items-center transition-in">
     <div class="transition-fade">
       <slot />

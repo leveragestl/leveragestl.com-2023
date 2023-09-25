@@ -3,7 +3,7 @@ import CTASVG from "./CTASVG.astro";
 const { class: className } = Astro.props
 ---
 
-<section id="cta" data-anim-start="top 80%" class:list={['wrapper mt-24 lg:mt-48 lg:pb-16', className]}>
+<section id="cta" data-anim-group data-anim-start="top 80%" class:list={['wrapper mt-24 lg:mt-48 lg:pb-16', className]}>
   <div class="max-w-screen-lg mx-auto text-center transition-fade">
     <!-- <div data-draw-svg="cta"><CTASVG /></div> -->
     <h3 class="h1 text-[45px] lg:text-[120px] lg:leading-[110px] mb-0 leading-none tracking-normal z-50 relative">

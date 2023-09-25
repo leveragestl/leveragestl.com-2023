@@ -42,21 +42,22 @@ import HeroSVG from '../components/HeroSVG.astro'
 
   <!-- Page Content -->
   <div id="content" class="wrapperDiagonal !pt-0 mt-40 sm:mt-64 lg:mt-20 5xl:-mt-20 short:mt-40">
-  <!-- Intro -->
-  <section id="intro" data-anim-group data-anim-markers class="mb-20 lg:mb-48 text-darkgray wrapper">
-    <div class="lg:max-w-[815px] lg:mx-auto transition-fade">
-      <h2 data-revealtext data-anim-elem="revealText" class="mb-8">Strategic design, development, and marketing is kind of our thing.</h2>
-      <div data-anim-elem="fadeInUp" data-anim-timing="0.5">
-        <p class="large">We believe thoughtful, beautiful design leads to better experiences, and better experiences drive business results. Whether you're refreshing, creating something from scratch, or expanding upon what's already established, we can help. Let's partner together to elevate your brand, website, and content. We'll rely on your industry expertise, while we put our strategic design, development and marketing execution on display.</p>
-        <div class="mt-16 hidden lg:block">
-          <a id="services-link" class="font-black font-serif text-gold italic text-18 flex justify-center flex-col items-center gap-y-2" href="#services">
-            <span>keep scrolling to explore our services and work</span>
-            <i class="arrow-down"></i>
-          </a>
+    <!-- Intro -->
+    <section id="intro" data-anim-group data-anim-markers class="mb-20 lg:mb-48 text-darkgray wrapper">
+      <div class="lg:max-w-[815px] lg:mx-auto transition-fade">
+        <h2 data-revealtext data-anim-elem="revealText" class="mb-8">Strategic design, development, and marketing is kind of our thing.</h2>
+        <div data-anim-elem="fadeInUp" data-anim-timing="0.5">
+          <p class="large">We believe thoughtful, beautiful design leads to better experiences, and better experiences drive business results. Whether you're refreshing, creating something from scratch, or expanding upon what's already established, we can help. Let's partner together to elevate your brand, website, and content. We'll rely on your industry expertise, while we put our strategic design, development and marketing execution on display.</p>
+          <div class="mt-16 hidden lg:block">
+            <a id="services-link" class="font-black font-serif text-gold italic text-18 flex justify-center flex-col items-center gap-y-2" href="#services">
+              <span>keep scrolling to explore our services and work</span>
+              <i class="arrow-down"></i>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
     <!-- Services -->
     <section id="services" data-anim-group class="lg:text-left">
       <div class="wrapper mt-7 transition-fade">
@@ -237,7 +238,11 @@ import HeroSVG from '../components/HeroSVG.astro'
       </h3>
       <div class="grid md:grid-cols-2 mt-12 gap-y-12 md:gap-y-16 md:mt-16 work-columns">
         {posts.map((post) =>
-          <WorkExerpt slug={post.slug} title={post.title} img={post.img} tags={post.tags} desc={post.desc} />
+          <div data-anim-elem="fadeInUp" class="workTile md:mx-6 xl:mx-16">
+            <div class="transition-fade">
+              <WorkExerpt slug={post.slug} title={post.title} img={post.img} tags={post.tags} desc={post.desc} />
+            </div>
+          </div>
         )}
       </div>
       <div class="mt-12 lg:mt-20 transition-fade">
@@ -253,36 +258,38 @@ import HeroSVG from '../components/HeroSVG.astro'
         </span>
       </div>
     </section>
-    <!-- Quotes -->
-    <section id="quotes" class="wrapper bg-darkgray text-white pt-24 lg:pt-48 text-left">
-      <div class="transition-fade">
-        <Quotes class="mb-16 lg:px-16 lg:mb-32" />
-      </div>
-      <hr class="border-mediumgray">
-    </section>
-    
-    <!-- Blog -->
-    <section id="blog" data-anim-group data-anim-timing="-=0.75" data-anim-start="top center" class="bg-darkgray text-white pt-16 pb-28 lg:pt-32 lg:pb-48">
-      <div class="wrapper text-left transition-fade">
-        <div data-anim-elem="fadeInUp" data-anim-timing="start" class="w-full mb-10 lg:mb-16">
-          <h3 class="h4 font-bold">The latest from leverage</h3>
+    <div class="bg-darkgray text-white">
+      <!-- Quotes -->
+      <section id="quotes" class="wrapper pt-24 lg:pt-48 text-left">
+        <div class="transition-fade">
+          <Quotes class="mb-16 lg:px-16 lg:mb-32" />
         </div>
-        <div class="grid lg:grid-cols-3 gap-x-32">
-          <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="/blog/">
-            <h5 class="text-24 mb-0">Meet Drew - Senior Web Developer</h5>
-            <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic flex items-center gap-x-2"><span class="label">read full article</span> <i class="arrow-right !bg-gold"></i></div>
-          </a>
-          <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="/blog/">
-            <h5 class="text-24 mb-0">Brand Guidelines: What, Why & How?</h5>
-            <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic flex items-center gap-x-2"><span class="label">read full article</span> <i class="arrow-right !bg-gold"></i></div>
-          </a>
-          <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="/blog/">
-            <h5 class="text-24 mb-0">Web Animation Trends We're Lovin'</h5>
-            <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic flex items-center gap-x-2"><span class="label">read full article</span> <i class="arrow-right !bg-gold"></i></div>
-          </a>
+        <hr class="border-mediumgray">
+      </section>
+      
+      <!-- Blog -->
+      <section id="blog" data-anim-group data-anim-timing="-=0.75" data-anim-start="top center" class="pt-16 pb-28 lg:pt-32 lg:pb-48">
+        <div class="wrapper text-left transition-fade">
+          <div data-anim-elem="fadeInUp" data-anim-timing="start" class="w-full mb-10 lg:mb-16">
+            <h3 class="h4 font-bold">The latest from leverage</h3>
+          </div>
+          <div class="grid lg:grid-cols-3 gap-x-32">
+            <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="/blog/">
+              <h5 class="text-24 mb-0">Meet Drew - Senior Web Developer</h5>
+              <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic flex items-center gap-x-2"><span class="label">read full article</span> <i class="arrow-right !bg-gold"></i></div>
+            </a>
+            <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="/blog/">
+              <h5 class="text-24 mb-0">Brand Guidelines: What, Why & How?</h5>
+              <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic flex items-center gap-x-2"><span class="label">read full article</span> <i class="arrow-right !bg-gold"></i></div>
+            </a>
+            <a data-anim-elem="fadeInUp" data-anim-timing="start+=0.25" class="block mb-10" href="/blog/">
+              <h5 class="text-24 mb-0">Web Animation Trends We're Lovin'</h5>
+              <div class="mt-4 lg:mt-5 text-gold font-serif font-bold text-18 italic flex items-center gap-x-2"><span class="label">read full article</span> <i class="arrow-right !bg-gold"></i></div>
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <CTA class="relative z-20" />
   </div>

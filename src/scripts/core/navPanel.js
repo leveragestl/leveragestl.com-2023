@@ -56,10 +56,16 @@ export function openNav() {
 
   gsap.set('#nav-panel #contact-info', {autoAlpha: 1})
 
+  let offset = 0.6
+  
   gsap.utils.toArray("nav ul li").forEach(function(elem, i) {
 
     gsap.set(elem, {autoAlpha: 1})
 
+    const elemLines = elem.querySelectorAll('.fillText__line')
+
+    gsap.set('.fillText__line', {opacity: 1})
+    /*
     const innerSplit = new SplitText(elem, {
       type: "lines",
       linesClass: "split_inner"
@@ -86,9 +92,20 @@ export function openNav() {
         navPanelAnimInTL.addLabel('navLoaded')
       }
     }, offset)
+    */
 
-    navPanelToggled = true
+    let decay = 0.15 / (i + 1)
+
+    if (i > 0) {
+      offset += decay
+    }
+
+    for (const elemLine of elemLines) {
+      navPanelAnimInTL.from(elemLine, {yPercent: 200, opacity: 0}, offset)
+    }
   })
+
+  navPanelToggled = true
 
   navPanelAnimInTL
     .from("html", {"--navPanelLineH": 0}, 'navLoaded-=1')

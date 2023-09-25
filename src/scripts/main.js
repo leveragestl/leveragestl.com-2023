@@ -42,21 +42,30 @@ import SwupBodyClassPlugin from '@swup/body-class-plugin';
 
 const swup = new Swup({
   plugins: [new SwupBodyClassPlugin()]
-});
+})
+
+let timingOffset = 0
+let runOnce = false
+
+setTimeout(() => {
+  timingOffset = 640
+}, 500);
 
 if (document.readyState === 'complete') {
   // setTimeout(() => init(), 50)
   init()
 } else {
-  document.addEventListener('DOMContentLoaded', () => init());
+  document.addEventListener('DOMContentLoaded', () => init())
 }
-swup.hooks.on('page:view', () => init());
+swup.hooks.on('page:view', () => init())
 
 function unload() {
   ScrollTrigger.killAll()
   if (document.body.classList.contains('scrolled')) {
     document.body.classList.remove('scrolled')
   }
+
+  runOnce = true  
 
   closeNav()
   removeCursor()
@@ -108,7 +117,7 @@ function init() {
   }
 
   if (document.querySelector('[data-parallax="window"]')) {
-    parallaxWindow()
+    setTimeout(() => parallaxWindow(), timingOffset);
   }
 
   if (document.querySelector('[data-parallax="columns"]')) {
@@ -145,6 +154,7 @@ function init() {
   }
 
   if (document.querySelector('[data-hover="fillText"]')) {
+    if (runOnce) return
     fillTextHover()
   }
 }

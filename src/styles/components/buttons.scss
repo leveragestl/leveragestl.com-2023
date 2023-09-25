@@ -9,6 +9,12 @@
   color: white;
   font-size: 15px;
 
+  @screen mouse {
+    overflow: hidden;
+    transition: color 0.75s;
+    cursor: pointer;    
+  }
+
   @screen lg {
     font-size: 18px;
     padding: 13px 29px;
@@ -118,13 +124,56 @@
       width: 230px;
     }
   }
-}
-@media only screen and (min-width: 960px) {
-  .button {
-    overflow: hidden;
-    transition: color 0.75s;
-    cursor: pointer;
 
+  &--filter {
+    background-color: transparent;
+    font-style: normal;
+    margin: 0;
+    padding: 8px 10px;
+    color: theme('colors.darkgray');
+    font-size: 16px;
+    line-height: 1;
+    border: 1px solid theme('colors.lightgray');
+    white-space: nowrap;
+    font-weight: bold;
+    font-family: 'Proxima Nova', sans-serif;
+    text-transform: uppercase;
+    overflow: inherit;
+    transition: border-color 150ms ease-out, color 300ms ease-out;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      inset: 0;
+      background-color: theme('colors.gold');
+      z-index: -1;
+      width: 0;
+
+      @screen mouse {
+        transition: width 300ms ease-in-out;        
+      }
+    }
+
+    .active & {
+      color: white;
+      border-color: theme('colors.gold');
+      &::before {
+        width: 100%;
+      }
+    }
+
+    &:hover {
+      color: white;
+      border-color: theme('colors.gold');
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+}
+@screen mouse {
+  .button {
     &--box {
 
       &:after {

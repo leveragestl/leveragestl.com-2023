@@ -1,8 +1,7 @@
 import { gsap } from "gsap";
-import { Flip } from "gsap/Flip";
-import { ScrollTrigger, SplitText, CustomEase, ScrollSmoother } from "gsap/all";
+import { ScrollTrigger } from "gsap/all";
 
-gsap.registerPlugin(Flip, ScrollTrigger, SplitText, CustomEase, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger);
 
 let mm = gsap.matchMedia();
 

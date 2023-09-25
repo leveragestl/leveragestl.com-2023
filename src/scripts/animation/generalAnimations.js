@@ -147,22 +147,10 @@ export function generalAnimations() {
 }
 
 export function fillTextHover() {
-  // fillText
   if (elem.getAttribute('data-hover') == "fillText") {
 
     const splitOutline = new SplitText(elem.querySelector('[data-filltext="outline"]'), {type: "chars, words, lines", linesClass: 'fillText__line', wordsClass: 'fillText__word', charsClass: 'fillText__char++'});
 
     const splitFill = new SplitText(elem.querySelector('[data-filltext="fill"]'), {type: "chars, words, lines", linesClass: 'fillText__line', wordsClass: 'fillText__word', charsClass: 'fillText__char++'});
-
-
-    const durDefault = 1
-    const dur = (splitFill.chars.length * 0.1 > durDefault) ? splitFill.chars.length * 0.1 : durDefault
-
-    elem.setAttribute('data-duration', dur);
-  
-    let animation = gsap.from(splitFill.lines, {duration: dur, ease: 'expo.out', clipPath: 'inset(0% 100% 0% 0%)', stagger: dur / 3, paused: true})
-
-    elem.addEventListener('mouseenter', animation.play())
-    elem.addEventListener('mouseleave', animation.reverse())
   }
 }

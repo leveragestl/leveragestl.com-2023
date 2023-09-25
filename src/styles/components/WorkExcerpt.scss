@@ -18,14 +18,6 @@
   .work-columns & {
     display: block;
     height: fit-content;
-
-    @screen md {
-      margin: 0 1.5rem;
-    }
-
-    @screen xl {
-      margin: 0 4rem;
-    }
   
     &:nth-child(even) {
       @screen md {
@@ -61,6 +53,9 @@
     &:hover {
       .workTile__img {
         transform: translateY(-50%) /* scale(1.035) */; 
+      }
+      .workTile__title {
+        color: theme('colors.gold');
       }
     }
   }
