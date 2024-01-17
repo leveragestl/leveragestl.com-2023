@@ -5,10 +5,10 @@ import Layout from '../../layouts/Layout.astro'
 import Hero from '../../components/Hero.astro'
 import WrapperDiagonal from '../../components/WrapperDiagonal.astro'
 
-// import FilteredProjects from '~/components/FilteredProjects.vue'
+// import FilteredProjects from '../../components/FilteredProjects.vue'
 import WorkExcerpt from '../../components/WorkExcerpt.astro';
 
-import projectCategories from '~/data/categories-projects.json'
+import projectCategories from '../../data/categories-projects.json'
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedProjectEntries = await getCollection("projects", ({ data }) => {

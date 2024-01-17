@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 
-import Layout from '~/layouts/Layout.astro'
-import Hero from '~/components/Hero.astro'
-import WrapperDiagonal from '~/components/WrapperDiagonal.astro'
-import PostFilters from "~/components/PostFilters.astro";
+import Layout from '../../layouts/Layout.astro'
+import Hero from '../../components/Hero.astro'
+import WrapperDiagonal from '../../components/WrapperDiagonal.astro'
+import PostFilters from "../../components/PostFilters.astro";
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("posts", ({ data }) => {
