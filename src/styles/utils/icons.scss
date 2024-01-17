@@ -36,3 +36,51 @@
   background-color: theme('colors.gold');
   mask-image: url("data:image/svg+xml,%3Csvg width='16' height='27' viewBox='0 0 16 27' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.29289 25.9571C7.68342 26.3476 8.31658 26.3476 8.70711 25.9571L15.0711 19.5931C15.4616 19.2026 15.4616 18.5695 15.0711 18.1789C14.6805 17.7884 14.0474 17.7884 13.6569 18.1789L8 23.8358L2.34315 18.1789C1.95262 17.7884 1.31946 17.7884 0.928932 18.1789C0.538408 18.5695 0.538408 19.2026 0.928932 19.5931L7.29289 25.9571ZM7 0.75L7 25.25H9L9 0.75L7 0.75Z' fill='%23BB9A54'/%3E%3C/svg%3E%0A");
 }
+
+.small-grid {
+  @extend %icon;
+  width: 28px;
+  height: 28px;
+  background-color: theme('colors.darkgray');
+  mask-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='8' height='8' fill='%23181818'/%3E%3Crect y='10' width='8' height='8' fill='%23181818'/%3E%3Crect y='20' width='8' height='8' fill='%23181818'/%3E%3Crect x='10' width='8' height='8' fill='%23181818'/%3E%3Crect x='20' width='8' height='8' fill='%23181818'/%3E%3Crect x='10' y='10' width='8' height='8' fill='%23181818'/%3E%3Crect x='10' y='20' width='8' height='8' fill='%23181818'/%3E%3Crect x='20' y='10' width='8' height='8' fill='%23181818'/%3E%3Crect x='20' y='20' width='8' height='8' fill='%23181818'/%3E%3C/svg%3E%0A");
+}
+
+.large-grid {
+  @extend %icon;
+  width: 28px;
+  height: 28px;
+  background-color: theme('colors.darkgray');
+  mask-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='12' height='12' fill='%23181818'/%3E%3Crect y='16' width='12' height='12' fill='%23181818'/%3E%3Crect x='16' width='12' height='12' fill='%23181818'/%3E%3Crect x='16' y='16' width='12' height='12' fill='%23181818'/%3E%3C/svg%3E%0A");
+}
+
+.map-marker {
+  @extend %icon;
+  width: 31px;
+  height: 47px;
+  background-color: theme('colors.darkgray');
+  mask-image: url("data:image/svg+xml,%3Csvg width='31' height='47' viewBox='0 0 31 47' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_756_355)'%3E%3Cpath d='M15.5178 47L14.9044 46.2815C14.8688 46.2371 11.1446 41.8612 7.47989 35.9837C2.51704 28.0272 0 21.2414 0 15.812C0 7.09259 6.95353 0 15.502 0C24.0504 0 31.004 7.09259 31.004 15.812C31.004 27.6034 16.7249 45.5064 16.1154 46.2613L15.5218 47H15.5178ZM15.498 1.6147C7.82816 1.6147 1.58305 7.98471 1.58305 15.812C1.58305 26.6103 12.7198 41.0579 15.4822 44.477C18.2169 40.9166 29.417 25.7101 29.417 15.812C29.417 7.98471 23.1718 1.6147 15.498 1.6147Z' fill='%23181818'/%3E%3Cpath d='M15.5021 23.8169C10.848 23.8169 7.06055 19.9537 7.06055 15.2065C7.06055 10.4592 10.848 6.59607 15.5021 6.59607C20.1563 6.59607 23.9437 10.4592 23.9437 15.2065C23.9437 19.9537 20.1563 23.8169 15.5021 23.8169ZM15.5021 8.20674C11.7187 8.20674 8.64359 11.3473 8.64359 15.2024C8.64359 19.0575 11.7226 22.1981 15.5021 22.1981C19.2817 22.1981 22.3607 19.0575 22.3607 15.2024C22.3607 11.3473 19.2817 8.20674 15.5021 8.20674Z' fill='%23181818'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_756_355'%3E%3Crect width='31' height='47' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+}
+
+.envelope {
+  @extend %icon;
+  width: 37px;
+  height: 34px;
+  background-color: theme('colors.darkgray');
+  mask-image: url("data:image/svg+xml,%3Csvg width='37' height='34' viewBox='0 0 37 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36.99 0.175256V0H0V31.9184H37V0.165336L36.99 0.175256ZM35.6025 1.32269L18.5017 15.4887L1.39749 1.32269H35.6025ZM35.6627 30.5957H1.33731V2.99919L17.6425 16.5005L18.5017 17.2115L19.3609 16.5005L35.6627 2.99919V30.5957Z' fill='%23181818'/%3E%3C/svg%3E%0A");
+}
+
+.wedge {
+  @extend %icon;
+  width: 36px;
+  height: 36px;
+  background-color: theme('colors.darkgray');
+  background-image: url("data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M36 3.8147e-06V36H3.8147e-06L36 3.8147e-06ZM4.22488 34.25H34.25V4.22488L4.22488 34.25Z' fill='%23181818'/%3E%3C/svg%3E%0A");
+}
+
+.play {
+  @extend %icon;
+  width: 38px;
+  height: 44px;
+  background-color: white;
+  mask-image: url("data:image/svg+xml,%3Csvg width='38' height='44' viewBox='0 0 38 44' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.5 2.08141L36 22L1.5 41.9186L1.5 2.08141Z' stroke='white' stroke-width='2'/%3E%3C/svg%3E%0A");
+}

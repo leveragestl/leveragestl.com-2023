@@ -1,8 +1,22 @@
 @mixin wrapper {
   margin-left: auto;
   margin-right: auto;
-  padding-left: (var(--grid-margin));
-  padding-right: (var(--grid-margin));
+  padding-left: var(--wrapper-margin);
+  padding-right: var(--wrapper-margin);
+}
+
+@mixin wrapper-wide {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--wrapper-wide-margin);
+  padding-right: var(--wrapper-wide-margin);
+}
+
+@mixin wrapper-narrow {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--wrapper-narrow-margin);
+  padding-right: var(--wrapper-narrow-margin);
 }
 
 @mixin no-wrapper {
@@ -10,4 +24,11 @@
   margin-right: unset;
   padding-left: unset;
   padding-right: unset;
+}
+
+@mixin container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-margin);
+  padding-right: var(--container-margin);
 }

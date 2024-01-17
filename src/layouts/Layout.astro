@@ -2,6 +2,7 @@
 import '../styles/global.scss'
 import SiteHeader from '../components/SiteHeader.astro'
 import SiteFooter from '../components/SiteFooter.astro';
+import Button from '../components/ui/Button-old.astro';
 // import { PageTransition } from 'astro-page-transition';
 export interface Props {
 	title: string;
@@ -16,7 +17,7 @@ const { title, namespace } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description">
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="generator" content={Astro.generator} />
     <link rel="preload" href="https://use.typekit.net/cin4lzn.css" as="style">
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -26,7 +27,7 @@ const { title, namespace } = Astro.props;
 	<body class:list={namespace}>
     <SiteHeader />
     <!-- <div id="site-header-bg" class="fixed z-40 top-0 left-0 w-full h-[--site-header-height] bg-white"></div> -->
-    <main id="swup" class="overflow-auto h-full">
+    <main id="swup" class="">
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <slot />

@@ -1,7 +1,18 @@
 {
-  // "extends": "astro/tsconfigs/base"
+  "extends": "./node_modules/astro/tsconfigs/base.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "types": ["unplugin-fonts/client"]
-  }
+    "baseUrl": "/Users/drewhagni/Documents/Projects/Leverage/sites/Site Redesign 2023/leveragestl.com",
+    "paths": {
+      "~/*": [
+        "src/*"
+      ]
+    },
+    "jsx": "preserve"
+  },
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.astro"
+  ]
 }

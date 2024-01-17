@@ -1,0 +1,185 @@
+---
+draft: false
+title: "Fricks Quality Meats"
+excerpt: "Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum."
+image: {
+src: "/work/fricks/fricks-featured-image.jpg",
+alt: ""
+}
+publishDate: "2024-01-08 12:45"
+category: ""
+tags: ["video", "website design + development", "photography"]
+---
+
+{/* Utils */}
+import Button from '~/components/ui/Button.astro'
+import { Image } from 'astro:assets'
+
+{/*Intro*/}
+<section id="intro" class="wrapper lg:grid grid-cols-12 text-left">
+  <div class="md:col-start-first md:col-end-8 mb-8 lg:mb-0">
+    <h3 class="font-extrabold">An unforgettable eating experience for five generations and counting</h3>
+    <p class="large">Frick's has been producing quality meats for generations, but for them it's more than just a product—it's a passion. They truly care about the team behind the product and the people who enjoy it. We helped arm them with new photography and a brand anthem video to humanize their brand, and showcase the emotional connection people feel when consuming their products. We then utilized these assets when redesigning and developing their website—which has served as a more valuable resource for their customers.</p>
+  </div>
+
+  <div class="md:col-start-9 md:col-end-last lg:flex justify-center">
+    <div class="">
+      <h4 class="mb-8 inline-block after:w-full after:h-[2px] after:bg-darkgray after:block">Project Scope</h4>
+      <ul class="font-serif">
+        <li class="mb-2"><a class="hover:text-gold transition-colors duration-300 ease-out" href="">video</a></li>
+        <li class="mb-2"><a class="hover:text-gold transition-colors duration-300 ease-out" href="">photography</a></li>
+        <li class="mb-2"><a class="hover:text-gold transition-colors duration-300 ease-out" href="">web design + development</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{/*Video*/}
+<section id="video" class="wrapper-wide">
+  <video data-video data-cursor-play data-cursor-enlarge playsinline class="w-full cursor-pointer bg-darkgray" src="/work/fricks/fricks-video.mp4" poster="/work/fricks/fricks-video-thumbnail.png"></video>
+</section>
+
+{/*Text Block*/}
+<section class="wrapper text-center">
+  <div class="lg:max-w-screen-sm mx-auto">
+    <h3 class="font-extrabold max-w-[250px] lg:max-w-none mx-auto">A frickin' good story line</h3>
+    <p class="large">We set out to share Frick's story with their audience and featured it on the home page of their website. I'm going to re-write this content to more specifically talk about the brand anthem video and what went into producing it.</p>
+  </div>
+</section>
+
+{/*Slider*/}
+<section id="slider">
+  <div data-slider="image-carousel" data-cursor="-hidden" class="relative wrapper swiper flex flex-col md:flex-row gap-x-20 cursor-grab active:cursor-grabbing">
+    <div class="swiper-wrapper">
+
+      <figure class="swiper-slide w-full h-full overflow-clip aspect-[542/554] bg-neutral-200">
+        <img class="w-full h-full object-cover object-center" src="/work/fricks/fricks-slide-1.jpg" alt="" />
+      </figure>
+
+      <figure class="swiper-slide w-full h-full overflow-clip aspect-[542/554] bg-neutral-200">
+        <img class="w-full h-full object-cover object-center" src="/work/fricks/fricks-slide-2.jpg" alt="" />
+      </figure>
+
+      <figure class="swiper-slide w-full h-full overflow-clip aspect-[542/554] bg-neutral-200">
+        <img class="w-full h-full object-cover object-center" src="/work/fricks/fricks-slide-3.jpg" alt="" />
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+{/*Text Block (side-by-side)*/}
+<section class="wrapper-wide grid grid-cols-12 text-left">
+  <div class="col-start-first col-end-last md:col-end-8">
+    <h3 class="h1">Bringing it <br class="hidden lg:block" />all together</h3>
+  </div>
+  <div class="md:col-start-8 col-start-first col-end-last content-block">
+    <p class="large">Frick's came to us with a website that was primarily focused on the mobile experience. We redesigned and developed their site to be a beautiful, dynamic experience across any device. The Frick's brand is jovial, but they are also very serious about the quality of their product. By animating large, bold phrases throughout the background of the site we were able to demonstrate their personality, while highlighting key descriptors that separate them from the competition.</p>
+  </div>
+</section>
+
+{/*Mockup*/}
+<section id="mockup" class="bg-darkgray md:mt-60 !mb-0 pb-16 md:pb-32">
+  <figure class="md:w-3/4 max-w-screen-3xl mx-auto -translate-y-8 md:-translate-y-28">
+    <img src="/work/fricks/fricks-laptop.png" alt="fricksqualitymeats.com website mockup on macbook" />
+  </figure>
+  <div class="text-center md:-mt-28"><Button tag='a' slash>see full website</Button></div>
+</section>
+
+{/*Comparison*/}
+<section id="comparison" class="!mb-0">
+  <div data-compare-swiper>  
+    {/*images*/}
+    <div class="image">
+      <h5 class="label text-center">before</h5>
+      <figure><img class="w-full" src="/work/fricks/fricks-hero-old.png" alt="Screenshot of old website" /></figure>
+    </div>
+    <div class="image">
+      <h5 class="label text-center">after</h5>
+      <figure><img class="w-full" src="/work/fricks/fricks-hero-new.jpg" alt="Screenshot of new website" /></figure>
+    </div>
+
+    {/*background*/}
+    <div class="background bg-mediumgray col-span-full row-span-full w-full h-full -z-10 hidden mouse:block"></div>
+  </div>
+</section>
+
+<div class="bg-darkgray text-white">
+
+  {/*Stats*/}
+  <section id="stats" class="wrapper text-center pt-12 md:pt-36">
+    <h3 class="font-extrabold">A mouthwatering <br />resource for consumers</h3>
+    <div class="content-block max-w-screen-md mx-auto">
+      <p>By building more robust 'Recipe' and 'Meat Know-How' sections, as well as adding a store locator tool, the Frick's website is now a better resource for their customers.</p>
+      <p>The number of inquiries regarding their product—such as cooking and carving questions, recipe ideas, or where to find their products, had already decreased by 12% just weeks after launch. This has allowed them to spend more time on other areas of the business rather than responding to questions.</p>
+    </div>
+    <div class="grid gap-y-12 lg:grid-cols-3 mt-12 md:mt-20">
+      <div class="">
+        <h4 class="text-outline text-outline--light h1 text-[5.625rem] mb-0">12%</h4>
+        <h5 class="h3 font-extrabold mb-1">Decrease</h5>
+        <div class="max-w-[25ch] mx-auto">
+          <p class="small">in customer questions just weeks after site launch</p>
+        </div>
+      </div>
+      <div class="">
+        <h4 class="text-outline text-outline--light h1 text-[5.625rem] mb-0">20%</h4>
+        <h5 class="h3 font-extrabold mb-1">Increase</h5>
+        <div class="max-w-[25ch] mx-auto">
+          <p class="small">in product sales</p>
+        </div>
+      </div>
+      <div class="">
+        <h4 class="text-outline text-outline--light h1 text-[5.625rem] mb-0">20%</h4>
+        <h5 class="h3 font-extrabold mb-1">Increase</h5>
+        <div class="max-w-[25ch] mx-auto">
+          <p class="small">in product sales</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Mockups */}
+  <section id="mockups" class="lg:px-[--container-margin] mt-20 lg:mt-0">
+    <div class="relative lg:grid grid-cols-2 grid-rows-2 bg-[#F8F3EC] gap-y-10" style={`background-image:url('/work/fricks/fricks-bg.png');`}>
+      <figure class="row-span-full flex justify-center items-center relative z-10 -translate-y-10 lg:translate-y-0">
+        <img class="h-auto" width="302" src="/work/fricks/fricks-phone.png" alt="Mockup of fricksqualitymeats.com on iPhone" />
+      </figure>
+
+      <figure class="lg:absolute z-0 lg:-bottom-4 lg:-left-2 -translate-y-16 lg:translate-y-0">
+        <img class="" src="/work/fricks/smokey-goodness.svg" alt="" />
+      </figure>
+
+      <div class="wrapper lg:contents flex flex-col gap-y-8 -translate-y-24 lg:translate-y-0">
+        <figure class="col-start-2 lg:-mt-20 relative z-10">
+          <img width="632" class="shadow-md" src="/work/fricks/fricks-layout-1.jpg" alt="Screenshot of fricksqualitymeats.com homepage" />
+        </figure>
+        <figure class="col-start-2 lg:-mb-20 relative z-10 -mb-40">
+          <img width="632" class="shadow-md" src="/work/fricks/fricks-layout-2.jpg" alt="Screenshot of fricksqualitymeats.com recipe page" />
+        </figure>
+      </div>
+
+      <figure class="absolute hidden lg:block z-0 lg:top-[calc(50%_-_3rem)] lg:-right-2 lg:-translate-y-1/2">
+        <img class="" src="/work/fricks/serious-flavor.svg" alt="" />
+      </figure>
+    </div>
+  </section>
+
+  {/*Quote*/}
+  <section id="quote" class="wrapper pt-32 pb-12 mb-20 md:py-36 text-left">
+    <div class="max-w-lg">
+      <h3 class="h4 mb-8 lg:mb-16">What our clients are saying...</h3>
+    </div>
+    <div class="max-w-[824px] mx-auto">
+      <blockquote class="mb-10 grid grid-cols-2 gap-y-8 lg:gap-y-12 justify-between">
+        <div class="col-span-2">
+          &OpenCurlyDoubleQuote;Matt and Laura were very responsive, thorough, and helped us get the most out of our budget. They met our ambitions and unique challenges head on, and the improved functionality of our website has reduced consumer inquiries and the man-hours needed to respond to them. Thanks Matt & Laura for helping us achieve our goals! &CloseCurlyDoubleQuote;
+        </div>
+        <cite class="col-span-2 lg:col-span-1">
+          <div class="h4 mb-0 uppercase">Rachel F.</div>
+          <div class="italic text-base">Marketing Coordinator, Frick's Quality Meats</div>
+        </cite>
+      </blockquote>
+    </div>
+  </section>
+
+</div>

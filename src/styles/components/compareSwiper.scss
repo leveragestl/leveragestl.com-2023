@@ -1,0 +1,66 @@
+@use '../_partials/variables' as *;
+@use '../_partials/mixins' as *;
+
+[data-compare-swiper] {
+  @include wrapper;
+  padding-bottom: 2rem;
+
+  .label {
+    margin: 2rem 0;
+  }
+}
+
+@screen mouse {
+  [data-compare-swiper] {
+    --percentage: 100%;
+  
+    padding: 0 !important;
+    display: grid;
+    grid-template-columns: calc(var(--container-margin) + 4.1666vw) [content-start left] minmax(0, 1fr) [mid right] minmax(0, 1fr) [content-end] calc(var(--container-margin) + 4.1666vw);
+    grid-template-rows: 3rem [labels] auto [images] 1fr;
+    overflow: hidden;
+  
+    .label {
+      grid-row-start: labels;
+      font-weight: 700;
+      font-style: italic;
+      color: theme('colors.lightgray');
+      margin-bottom: 3rem;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  
+    .image {
+      // @include container;
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+      grid-row-start: images;
+      padding: 0 var(--wrapper-margin);
+  
+      figure {
+        display: flex;
+        justify-content: center;
+        height: calc(100vh - 100px);
+        width: auto;
+      }
+  
+      img {
+        height: 100%;
+        width: auto;
+        max-width: none;
+      }
+  
+      &:nth-of-type(1) {
+        clip-path: polygon(0 0, var(--percentage) 0, var(--percentage) 100%, 0 100%);
+      }
+  
+      &:nth-of-type(2) {
+        clip-path: polygon(100% 0, var(--percentage) 0, var(--percentage) 100%, 100% 100%);    
+      }
+    }
+  
+    .background {
+      clip-path: polygon(100% 0, var(--percentage) 0, var(--percentage) 100%, 100% 100%);
+    }
+  }
+}

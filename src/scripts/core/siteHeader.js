@@ -8,11 +8,12 @@ export function siteHeader() {
   let scrollTarget = window.innerHeight
 
   if(document.querySelector('[data-header-scrolled]')) {
-    scrollTarget = document.querySelector('[data-header-scrolled]').offsetTop
+    const wrapperCapHeight = document.querySelector('.wrapperCap.wrapperCap--top').clientHeight
+    scrollTarget = document.querySelector('[data-header-scrolled]').offsetTop - (wrapperCapHeight / 3)
   }
 
   function checkScroll() {
-    let scrolled = document.scrollingElement.scrollTop
+    let scrolled = document.scrollingElement.scrollTop + 100
     let position = document.querySelector('body').offsetTop
     if( scrolled > position + scrollTarget ) {
       document.body.classList.add('scrolled')
@@ -40,7 +41,6 @@ export function siteHeader() {
     // onEnter:() => document.body.classList.remove('scrolled'),
     // onEnterBack:() => document.body.classList.remove('scrolled')
   })
-  */
 
   /*
   const siteHeaderAnimTL = gsap.timeline({

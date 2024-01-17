@@ -2,71 +2,43 @@
 import Layout from '../layouts/Layout.astro'
 import Hero from '../components/Hero.astro'
 import WrapperDiagonal from '../components/WrapperDiagonal.astro'
-
-import StaffMember from '../components/StaffMember.astro'
-import Quotes from '../components/Quotes.astro'
-import NavArrows from '../components/NavArrows.astro'
-import Award from '../components/Award.astro'
-
-import staff from '../data/staff.json'
-import awards from '../data/awards.json'
+import ContactForm from '~/components/ContactForm.astro';
 ---
 
 <Layout title='Contact Us' namespace="contact">
-  <Hero>
-    <h2 class="h1">we embrace a  <br class="hidden lg:block"><span class="text-outline text-outline--light">culture of <br class="hidden lg:block">collaboration</span></h2>
+  <Hero short class="pb-20 lg:pb-0">
+    <h2 class="h1"><span class="text-outline text-outline--light">Let's get</span>  <br class="hidden lg:block"><span class="">started</h2>
   </Hero>
-  <WrapperDiagonal>
-    <section class="wrapper mb-48">
-      <figure class="w-full h-auto">
-        <img class="w-full h-full object-cover object-center" src="/about-collage.jpg" alt="">
-      </figure>
+  <WrapperDiagonal class="z-20" defaultCTA={false}>
+    <div class="flex flex-col lg:grid lg:grid-cols-2 wrapper">
 
-      <div class="text-center max-w-3xl mx-auto mt-32">
-        <h3 class="h2 font-[800]">We build brands through design, development, and strategic marketing</h3>
-        <div class="content-block">
-          <p>We believe honest, beautiful design can create a more pleasant world. We strive to provide kind, thoughtful value in everything we do. We embrace a culture of collaboration that values the relationship over the bottom line, where we partner with our clients and treat their business as our own.</p>
-          <p>Refusing to compromise on creating exceptional work, we thrive on solving problems and our passion shows through when we're challenged to think outside of the box and push the limits of creativity to design, build, and share delightful experiences across all mediums.</p>
-        </div>
-      </div>
-    </section>
+      <!-- Info -->
+      <section class="font-semibold antialiased grid grid-cols-[auto_1fr] gap-x-8 gap-y-2 items-center lg:-mt-[calc(var(--diagWrapperHeight)_/_3)] order-last lg:order-first text-left transition-fade transition-in">
 
-    <section class="bg-darkgray text-white text-center wrapper flex w-full justify-center items-center py-60">
-      <h3 class="h1 text-outline text-outline--light text-[110px]">Be useful.<br>Be kind.<br>Be fearless.</h3>
-    </section>
+        <!-- Location -->
+        <i class="map-marker"></i>
+        <p class="leading-snug">205 Chesterfield Industrial Blvd.<br>
+          Chesterfield, MO 63005</p>
+        <div class="col-start-2 mb-8 lg:mb-16"><a class="text-gold font-serif lowercase font-bold italic" href="">get directions</a></div>
 
-    <section class="bg-darkgray text-white pb-60">
-      <div class="text-center max-w-2xl mx-auto">
-        <h3 class="h2 font-[800]">We strive to think strategically, act selflessly, and grow creatively.</h3>
-        <div class="content-block">
-          <p>Beyond simply designing, building, and implementing beautiful brand experiences, our team tackles each day with a broader goal — to provide value in everything we do. We're extremely proud of our insanely talented group that embodies our mission.</p>
-        </div>
-      </div>
-    </section>
+        <!-- Email -->
+        <i class="envelope"></i>
+        <p class="leading-snug">Say hello or ask us a question.<br>
+          We're happy to hear from you.</p>
+        <div class="col-start-2 mb-8 lg:mb-16"><a class="text-gold font-serif lowercase font-bold italic" href="">email us</a></div>
 
-    <section class="bg-darkgray text-white wrapper pb-40 mb-40">
-      <h3 class="h1">No fluff. <br> Real people.</h3>
-      <div class="relative slider flex gap-x-20">
-        <div class="absolute flex top-0 right-0 -mt-32 gap-x-4">
-          <NavArrows />
-        </div>
-        {staff.map((staff) =>
-          <StaffMember name={staff.name} title={staff.title} img={staff.img} />
-        )}
-      </div>
-    </section>
+        <!-- Careers -->
+        <i class="wedge"></i>
+        <p class="leading-snug">Interested in working at Leverage?</p>
+        <div class="col-start-2 mb-8 lg:mb-16"><a class="text-gold font-serif lowercase font-bold italic" href="">visit our careers page</a></div>
 
-    <Quotes />
+      </section>
 
-    <section class="wrapper my-80">
-      <h3 class="h2">Awards we're proud of</h3>
-      <div class="grid grid-cols-auto-3 gap-y-12 mt-12">
-        <div class="award__line col-span-full border border-lightgray mt-8"></div>
-        {awards.map((award) => 
-          <Award org={award.org} award={award.award} proj={award.proj} link={award.link} year={award.year} />
-        )}
-      </div>
-    </section>
-
+      <!-- Form -->
+      <section class="bg-mediumgray w-full text-white p-6 py-14 lg:p-16 lg:pb-[50%] -mt-[calc(var(--diagWrapperHeight)_+_4rem)] lg:-mt-[calc(var(--diagWrapperHeight)_+_8rem)] lg:-mb-[calc(var(--diagWrapperHeight)_*_2)] mb-16 relative z-50 transition-fade transition-in">
+        <h3 class="font-extrabold">First, tell us about <br>your project.</h3>
+        <ContactForm />
+      </section>
+    </div>
   </WrapperDiagonal>
 </Layout>

@@ -57,6 +57,35 @@ export function initCursor() {
       }
     })
   }
+
+  const playEls = document.querySelectorAll('[data-cursor-play]')
+  for (const playEl of playEls) {
+    playEl.addEventListener('mouseenter', () => {
+      cursor.removeState('-playing'); cursor.removeState('-paused')
+
+      if (playEl.paused || playEl.ended) {
+        cursor.addState('-paused')
+      } else {
+        cursor.addState('-playing')
+      }
+
+    })
+
+    playEl.addEventListener('mouseleave', () => {
+      cursor.removeState('-playing'); cursor.removeState('-paused')
+    })
+
+    playEl.addEventListener('click', () => {
+      cursor.removeState('-playing'); cursor.removeState('-paused')
+
+      if (playEl.paused || playEl.ended) {
+        cursor.addState('-playing')
+      } else {
+        cursor.addState('-paused')
+      }          
+
+    })
+  }
 }
 
 export function removeCursor() {

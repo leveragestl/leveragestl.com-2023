@@ -1,0 +1,78 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from '~/layouts/Layout.astro'
+import Hero from '~/components/Hero.astro'
+import WrapperDiagonal from '~/components/WrapperDiagonal.astro'
+import PostFilters from "~/components/PostFilters.astro";
+
+// Filter blog entries with 'draft: false' & date before current date
+const publishedBlogEntries = await getCollection("posts", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+
+// Sort content entries by publication date
+publishedBlogEntries.sort(function (a, b) {
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
+---
+
+<Layout title='Blog' namespace="blog">
+  <Hero>
+    <h2 class="h1"><span class="text-outline text-outline--light">News + Insights</span></h2>
+  </Hero>
+
+  <!-- Featured Post -->
+
+  <WrapperDiagonal defaultCTA={false} class="pb-20">
+
+    <!-- Featured Post -->
+    <section class="wrapper-wide -mt-[--diagWrapperHeight] mb-12 text-left transition-in transition-fade">
+      {publishedBlogEntries.slice(0, 1).map((post, i) => (
+        <div class="grid md:grid-cols-[3fr_2fr] items-center gap-x-8 5xl:gap-x-20">
+          <figure class="w-full mb-8">
+            <a href={`/blog/${(post.slug).replaceAll('//', '/')}`}>
+              <img class="w-full object-cover aspect-video" src={post.data.image.src} alt={post.data.image.alt && post.data.image.alt} />  
+            </a>
+          </figure>
+          <div class="">
+            <h4 class="text-gold text-16 mb-2 lg:mb-6">Featured</h4>
+            <h3 class="font-extrabold"><a href={`/blog/${(post.slug).replaceAll('//', '/')}`}>{post.data.title}</a></h3>
+            <div class="content-block">
+              <p class="!mb-4 lg:!mb-8">{post.data.excerpt}</p>
+            </div>
+            <a class="lowercase font-bold font-serif italic text-gold" href={('/blog/'+post.slug).replace('//', '/')}>read full article</a>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- Filters -->
+    <section class="transition-in transition-fade relative z-10 wrapper mb-12 md:mb-24">
+      <PostFilters />
+    </section>
+
+    <!-- Posts -->
+    <section class="wrapper transition-in transition-fade">
+      <div class="grid md:grid-cols-3 gap-12 work-columns">
+        {publishedBlogEntries.slice(1).map((post, i) => (
+          <a href={`/blog/${(post.slug).replaceAll('//', '/')}`} class="text-left">
+            <figure class="w-full mb-4">
+              <img class="w-full aspect-square object-cover" src={post.data.image.src} alt={post.data.image.alt && post.data.image.alt} />
+            </figure>
+            <div>
+              <h3 class="font-serif normal-case text-28/8 font-normal mb-2 lg:mb-6">{post.data.title}</h3>
+              <div class="flex gap-x-2 uppercase font-bold">
+                <span class="text-gold">{post.data.category}</span>
+                <span>/</span>
+                <span>{post.data.author}</span>
+              </div>
+              <time class="text-gray-400" datetime={post.data.publishDate.toISOString()}>{ /* post.data.publishDate.toDateString() */}</time>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+  </WrapperDiagonal>
+</Layout>

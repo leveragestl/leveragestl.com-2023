@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string,
+  type: string,
+  description: string,
+  id: string
+}
+const {title, type, description, id} = Astro.props
+---
+
+<div class="border-darkgray border-b">
+  <div class="accordion">
+    <input class="accordion__checkbox" type="checkbox" id=`accordion-${id}`>
+    <div class="accordion__inner">
+      <label class="accordion__header" for=`accordion-${id}`>
+        <div class="lg:contents">
+          <h3 class="h4 lg:text-left w-full mb-0">{title}</h3>
+          <h4 class="lg:text-center text-20 lg:text-24 text-lightgray lg:text-darkgray w-full mb-0">{type}</h4>
+        </div>
+        <div class="lg:text-right w-full flex justify-end px-8">
+          <div class="accordion__indicator"></div>
+        </div>
+      </label>
+      <div class="accordion__content">
+        <div class="accordion__answer max-w-[100ch] text-left">
+          <p set:html={description} />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

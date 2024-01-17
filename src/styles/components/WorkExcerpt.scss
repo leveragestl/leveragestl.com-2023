@@ -1,4 +1,4 @@
-@import 'node_modules/easings-css';
+@use 'node_modules/easings-css/_easings.scss' as *;
 
 :root {
   --rotate: 0;
@@ -14,18 +14,24 @@
 
 .workTile {
 
+  &.offset {
+    @screen md {
+      margin-top: 4rem;
+    }
+
+    @screen xl {
+      margin-top: 6rem;
+    }
+  }
+
   // Work Section (columns)
   .work-columns & {
     display: block;
     height: fit-content;
   
-    &:nth-child(even) {
-      @screen md {
-        margin-top: 4rem;
-      }
-
-      @screen xl {
-        margin-top: 6rem;
+    .home & {
+      &:nth-child(even) {
+        @extend .offset;
       }
     }
 
@@ -72,12 +78,16 @@
 
   &__desc {
     margin-top: 1.5rem;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
     opacity: 0;
     transform: translateY(10px);
     transition: all 640ms $ease-out-cubic;
     display: none;
+  }
+
+  &__image {
+    position: relative;
   }
 
   &__frame {

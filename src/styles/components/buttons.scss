@@ -7,7 +7,7 @@
   font-family: 'Merriweather', serif;
   padding: 5px 14px;
   color: white;
-  font-size: 15px;
+  font-size: 0.9375rem;
 
   @screen mouse {
     overflow: hidden;
@@ -16,7 +16,7 @@
   }
 
   @screen lg {
-    font-size: 18px;
+    font-size: 1.125rem;
     padding: 13px 29px;
   }
 
@@ -73,8 +73,8 @@
     width: 145px;
     padding: 12px 0;
     margin: 0 auto;
-    font-size: 14px;
-    line-height: 14px;
+    font-size: 0.875rem;
+    line-height: 1;
     border: 1px solid theme('colors.gold');
     display: block;
 
@@ -126,14 +126,18 @@
   }
 
   &--filter {
+    --checkbox-size: 35px;
+
+    position: relative;
     background-color: transparent;
     font-style: normal;
-    margin: 0;
+    width: calc(100% - 20px);
+    margin: 5px 10px;
     padding: 8px 10px;
-    color: theme('colors.darkgray');
-    font-size: 16px;
-    line-height: 1;
     border: 1px solid theme('colors.lightgray');
+    color: theme('colors.darkgray');
+    font-size: 1rem;
+    line-height: 1;
     white-space: nowrap;
     font-weight: bold;
     font-family: 'Proxima Nova', sans-serif;
@@ -141,6 +145,105 @@
     overflow: inherit;
     transition: border-color 150ms ease-out, color 300ms ease-out;
 
+    @screen lg {
+      width: 100%;
+      margin: 0;
+      margin-bottom: 0;
+      border: 1px solid theme('colors.lightgray');
+    }
+
+    // padding-left: var(--checkbox-size);
+
+    /*
+    i.checkbox, i.radio {
+      position: absolute;
+      display: inline-block;
+      width: var(--checkbox-size);
+      height: 100%;
+      top: 0;
+      left: 0;
+      // border-right: 1px solid theme('colors.lightgray');
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 150ms ease-out;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        transition: border-color 300ms ease-out;
+      }
+    }
+
+    i.checkbox::before {
+      width: calc(var(--checkbox-size) / 2);
+      height: calc(var(--checkbox-size) / 2);
+      border: 3px solid theme('colors.mediumgray');
+    }
+
+    i.radio::before {
+      width: calc(var(--checkbox-size) / 2);
+      height: calc(var(--checkbox-size) / 2);
+      border: 3px solid theme('colors.mediumgray');
+      border-radius: 9999px;
+    }
+
+    &:hover i.checkbox, &:hover i.radio {
+      border-color: theme('colors.gold');
+
+      &::before {
+        border-color: theme('colors.gold');
+      }
+    }
+
+    &.active i.checkbox {
+      &::before {
+        width: calc(var(--checkbox-size) / 3);
+        height: calc(var(--checkbox-size) / 2);
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+        margin-top: -5px;
+      }
+    }
+
+    &.active i.radio {
+      &::before {
+        border-width: 6px;
+      }
+    }
+
+    &.active i.checkbox, &.active i.radio {
+      border-color: white;
+
+      &::before {
+        border-color: white;
+      }
+    }
+    */
+
+    /*
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 0;
+      width: var(--checkbox-width);
+      height: 100%;
+      border-right: 1px solid theme('colors.lightgray');
+      z-index: 50;
+    }
+
+    &.active::before  {
+      border-right-color: white;
+    }
+
+    &:hover::before {
+      border-right-color: theme('colors.gold');
+    }
+    */
     &::before {
       content: '';
       display: block;
@@ -148,27 +251,99 @@
       inset: 0;
       background-color: theme('colors.gold');
       z-index: -1;
-      width: 0;
+      width: 0%;
 
       @screen mouse {
-        transition: width 300ms ease-in-out;        
+        transition: width 300ms ease-in-out;
       }
     }
 
-    .active & {
+    @screen mouse {
+      &:hover {
+        color: theme('colors.gold');
+        border-color: theme('colors.gold');
+        // &::before {
+        //   width: 100%;
+        // }
+      } 
+    }
+
+    &.active {
       color: white;
       border-color: theme('colors.gold');
       &::before {
         width: 100%;
       }
     }
+  }
+
+  &--dropdown {
+    @extend .button--filter;
+    margin: 0;
+    padding: 15px 10px;
+    border-color: theme('colors.darkgray');
+    margin-bottom: 0;
+    border: 2px solid theme('colors.darkgray');
 
     &:hover {
-      color: white;
-      border-color: theme('colors.gold');
-      &::before {
-        width: 100%;
-      }
+      border-color: theme('colors.darkgray');
+      color: theme('colors.darkgray');
+    }
+
+    @screen lg {
+      margin-bottom: 0;
+    }
+
+    &::before, &::after {
+      --indicator-size: 10px;
+      --indicator-weight: 2px;
+      --indicator-color: transparent;
+      --indicator-translate-y: -50%;
+      --indicator-translate-x: 0;
+      --indicator-transform-rotate: 45deg;
+  
+      content: '';
+      display: block;
+      position: absolute;
+      inset: unset;
+      top: 50%;
+      right: 18px;
+      transform: translate(var(--indicator-translate-x), var(--indicator-translate-y)) rotate(var(--indicator-transform-rotate));
+      background-color: var(--indicator-color);
+    }
+
+    &::before {
+      display: none;
+      --indicator-translate-x: calc(var(--indicator-size) * 0.425);
+      
+      width: var(--indicator-size);
+      height: var(--indicator-weight);
+      transform: translate(var(--indicator-translate-x), var(--indicator-translate-y)) rotate(var(--indicator-transform-rotate));
+    }
+
+    &::after {
+      width: var(--indicator-size);
+      height: var(--indicator-size);
+      border: var(--indicator-weight) solid theme('colors.darkgray');
+      border-top: none;
+      border-left: none;
+      transform: translateY(-70%) rotate(45deg);
+    }
+
+    &.open::before, &.open::after {
+      --indicator-size: 14px;
+      --indicator-color: theme('colors.darkgray');
+      right: 22px;
+    }
+
+    &.open::before {
+      display: block;
+    }
+
+    &.open::after {
+      width: var(--indicator-weight);
+      height: var(--indicator-size);
+      transform: translate(var(--indicator-translate-x), var(--indicator-translate-y)) rotate(var(--indicator-transform-rotate));
     }
   }
 }

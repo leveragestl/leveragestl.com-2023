@@ -3,18 +3,17 @@
 // =============================================================================
 
 :root {
-	--grid-margin: max(4.1666vw, calc((100vw - theme('screens.2xl')) / 2));
-	--container-margin: max(5vw, calc((100vw - theme('screens.6xl')) / 2));
-	--margin-diff: calc(var(--grid-margin) - var(--container-margin));
-	--column-width: calc((100vw - var(--grid-margin)) / 12);
-
   --site-header-height: 75px;
+  @screen xl {--site-header-height: 100px;}
 
-  @screen xl {
-    --site-header-height: 100px;
-  }
+  --wrapper-narrow-margin: max(4.1666vw, calc((100vw - theme('screens.md')) / 2));
+	--wrapper-margin: max(4.1666vw, calc((100vw - theme('screens.2xl')) / 2));
+  --wrapper-wide-margin: max(4.1666vw, calc((100vw - theme('screens.4xl')) / 2));
+	--container-margin: max(4.1666vw, calc((100vw - theme('screens.6xl')) / 2));
+	--margin-diff: calc(var(--wrapper-margin) - var(--container-margin));
+	--column-width: calc((100vw - var(--wrapper-margin)) / 12);
 
-  --wrapper-width: calc(var(--grid-margin) * 12);
+  --wrapper-width: calc(var(--wrapper-margin) * 12);
   --diagWrapperAngle: -6.88deg;
   --diagWrapperHeight: 15vw;
 }

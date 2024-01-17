@@ -1,4 +1,7 @@
+// =============================================================================
 // Tailwind (base)
+// =============================================================================
+
 @use './vendors/tailwindcss/base.css' as *;
 
 // =============================================================================
@@ -9,17 +12,12 @@
 @use './_partials/_mixins' as *;
 @use './_partials/typography' as *;
 
-// Tailwind (everything else)
-@use './vendors/tailwindcss/components.css' as *;
-@use './vendors/tailwindcss/utilities.css' as *;
-
-
 // =============================================================================
 // Vendors
 // =============================================================================
 
 // Easings
-@use 'node_modules/easings-css' as *;
+@use 'node_modules/easings-css/_easings.scss' as *;
 
 // Font Awesome
 @use '@fortawesome/fontawesome-free/css/all.min.css' as *;
@@ -53,9 +51,6 @@
 // Swup
 @use './vendors/swup';
 
-// Swiper
-@use './vendors/swiper';
-
 // Cursor
 @use "./utils/cursor";
 
@@ -66,9 +61,30 @@
 // Buttons
 @use './components/buttons';
 
+// Accordions
+@use './components/accordions';
+
 // Work Excerpt
 @use './components/WorkExcerpt';
 
+// Forms
+@use './components/forms';
+
+// Compare Swiper
+@use './components/compareSwiper';
+
+// =============================================================================
+// Content
+// =============================================================================
+
+@use './content/posts';
+
+// =============================================================================
+// Tailwind (everything else)
+// =============================================================================
+
+@use './vendors/tailwindcss/components.css' as *;
+@use './vendors/tailwindcss/utilities.css' as *;
 
 // =============================================================================
 // Misc

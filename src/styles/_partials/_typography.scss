@@ -3,18 +3,18 @@
 // =============================================================================
 
 body {
-  font-size: 16px;
-  text-align: center;
+  font-size: 1rem;
+  // text-align: center;
 }
 
 p, .p {
-  font-size: 16px;
-  line-height: 28px;
+  font-size: 1rem;
+  line-height: 1.875rem;
 }
 
 p.large {
-  font-size: 18px;
-  line-height: 32px;
+  font-size: 1.125rem;
+  line-height: 2.25rem;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -26,57 +26,58 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, h2, h3, .h1, .h2, .h3 {
-  font-family: proxima-nova;
+  font-family: theme('fontFamily.sans');
   text-transform: uppercase;
 }
 
 h4, h5, h6, .h4, .h5, .h6 {
-  font-family: merriweather;
+  font-family: theme('fontFamily.serif');
 }
 
 h1, .h1 {
-  font-size: 45px;
+  font-size: 3.4375rem;
   line-height: 1;
   font-weight: 800;
   letter-spacing: 1.35px;
 
   @screen xl {
-    font-size: 90px;
-    line-height: 94px;
+    font-size: 5.625rem;
+    line-height: 5.875rem;
   }
 }
 
 h2, .h2 {
-  font-size: 34px;
+  font-size: 2.125rem;
   line-height: 1;
   font-weight: 800;
 
   @screen xl {
-    font-size: 60px;
+    font-size: 3.75rem;
   }
 }
 
 h3, .h3 {
-  font-size: 26px;
+  font-size: 1.75rem;
+  line-height: 1;
   text-transform: uppercase;
   font-weight: bold;
 
   @screen xl {
-    font-size: 40px;
-    line-height: 42px;
+    font-size: 2.5rem;
+    line-height: 2.625rem;
   }
 }
 
 h4, .h4 {
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: normal;
   text-transform: uppercase;
-  font-family: proxima-nova, sans-serif;
+  font-family: theme('fontFamily.sans');
   font-weight: bold;
   line-height: normal;
 
   @screen xl {
-    font-size: 26px;
+    font-size: 1.625rem;
   }
 }
 
@@ -106,18 +107,34 @@ h4, .h4 {
 .content-block {
   p {
     margin-bottom: 2rem;
+    line-height: 1.625rem;
+  }
+
+  p.large {
+    line-height: 2rem;
+  }
+
+  ul {
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 100 100'><circle cx='50%' cy='50%' r='20' /></svg>");
+  }
+
+  li {
+    padding-left: 1rem;
+    list-style-type: disc;
   }
 }
 
 blockquote {
   p {
-    font-family: proxima-nova, sans-serif;
-    font-size: 26px;
-    line-height: 40px;
+    font-family: theme('fontFamily.sans');
+    font-size: 1.625rem;
+    line-height: 2.5rem;
     
     @screen xl {
-      font-size: 30px;
-      line-height: 46px;
+      font-size: 1.875rem;
+      line-height: 2.875rem;
     }
   }
 
@@ -127,8 +144,8 @@ blockquote {
   }
 
   @screen xl {
-    font-size: 30px;
-    line-height: 46px;
+    font-size: 1.875rem;
+    line-height: 2.875rem;
   }
 }
 
@@ -144,6 +161,6 @@ blockquote {
 }
 
 blockquote {
-  font-family: merriweather;
+  font-family: theme('fontFamily.serif');
   margin-bottom: 2rem;
 }

@@ -1,0 +1,50 @@
+.single-post .content-block {
+  h1, h2, h3,
+  .h1, .h2, .h3 {
+    font-family: theme('fontFamily.serif');
+    text-transform: none;
+    font-weight: normal;
+    font-size: 1.75rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 3.5rem 0 2rem;
+
+    @screen lg {
+      margin: 3.5rem 0 1rem;
+    }
+  }
+
+  h4, h5, h6,
+  .h4, .h5, .h6 {
+    font-size: 1rem;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-family: theme('fontFamily.sans');
+  }
+
+  blockquote {
+    padding: 2.5rem 0;
+    margin: 4rem 0;
+    border: 1px solid theme('colors.darkgray');
+    border-left: none;
+    border-right: none;
+    font-family: theme('fontFamily.sans');
+    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 2rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    p {
+      font-size: 1.125rem;
+      margin-bottom: 0;
+      // max-width: 60ch;
+      padding: 0 2rem;
+      margin: 0 auto;
+
+      @screen lg {
+        padding: 0 4rem;
+      }
+    }
+  }
+}

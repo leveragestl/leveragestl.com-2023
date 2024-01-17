@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  url: string;
+  external?: boolean;
+}
+
+const { title, url, external = false } = Astro.props
+---
+<!-- <a class="button text-gold font-merriweather font-bold text-18 antialiased italic" target={external && '_blank'} href={url} >{title}</a> -->
+
+<span class="button button--slash">
+  <a href={url} target={external && '_blank'}>
+    <span class="text">{title}</span>
+    <span class="line line--right"></span>
+    <span class="line line--top"></span>
+    <span class="line line--left line--left--end"></span>
+    <span class="line line--left line--left--start"></span>
+    <span class="line line--bottom"></span>
+  </a>
+</span>

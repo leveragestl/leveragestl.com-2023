@@ -1,30 +1,38 @@
 [
   {
-    "title": "Frick's Quality Meats",
-    "img": "/work-fricks-thumb.png",
-    "slug": "#",
-    "tags": ["video", "website design + development", "photography"],
-    "desc": "New photography and a brand anthem video helped showcase the emotional connection people feel when consuming their products."
+    "id": 1,
+    "author": "Matt Kreikemeier",
+    "title": "Knox Kronenberg Website Design + Build",
+    "excerpt": "Knox Kronenberg is an amazingly talented photographer that came to us in need of a website to showcase, and ultimately sell, his work. He wasn't looking for your ordinary website",
+    "img": "/blog/knox.png",
+    "slug": "/knox-kronenberg-website-design-build/",
+    "category": "design"
   },
   {
-    "title": "Muros",
-    "img": "/work-muros-thumb.png",
-    "slug": "#",
-    "tags": ["website design + development"],
-    "desc": "Nullam id dolor id nibh ultricies vehicula ut id elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+    "id": 2,
+    "author": "Matt Kreikemeier",
+    "title": "Meet Drew - Senior Web Developer",
+    "excerpt": "Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+    "img": "/blog/drew.png",
+    "slug": "/meet-drew-senior-web-developer/",
+    "category": "culture"
   },
   {
-    "title": "Community Partners",
-    "img": "/work-communityPartners-thumb.png",
-    "slug": "#",
-    "tags": ["branding", "website design + development"],
-    "desc": "Nullam id dolor id nibh ultricies vehicula ut id elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+    "id": 3,
+    "author": "Laura Benson",
+    "title": "Brand Guidelines: What, Why & How?",
+    "excerpt": "Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+    "img": "/blog/brand-book.png",
+    "slug": "/brand-guidelines-what-why-how/",
+    "category": "branding"
   },
   {
-    "title": "Nestlé Purina Careers",
-    "img": "/work-nestlePurinaCareers-thumb.png",
-    "slug": "#",
-    "tags": ["branding", "website design + development", "print", "digital marketing", "photography"],
-    "desc": "Nullam id dolor id nibh ultricies vehicula ut id elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+    "id": 4,
+    "author": "Abbey Schneider",
+    "title": "Web Animation Trends We're Lovin'",
+    "excerpt": "Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id elit non mi porta gravida at eget metus. Nulla vitae elit libero, a pharetra augue. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+    "img": "/blog/animation-trends.png",
+    "slug": "/web-animation-trends-were-lovin/",
+    "category": "design"
   }
 ]

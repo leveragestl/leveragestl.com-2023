@@ -1,10 +1,17 @@
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+---
+interface Props {
+  class: string
+}
+
+const {class: className} = Astro.props
+---
+<svg class:list={['', className]} version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
   viewBox="0 0 605.5 243.7" style="enable-background:new 0 0 605.5 243.7;" xml:space="preserve">
-  <title>Be Useful. Be Kind. Be Fearless</title>
+  <title>Be Useful. Be Kind. Be Fearless.</title>
   <style type="text/css">
     .tag-char{fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:10;}
   </style>
-  <g id="be-useful" class="draw-group">
+  <g id="be-useful" class="draw-group flex justify-center w-full bg-red-500">
     <g id="be1">
         <path class="tag-char" d="M5.4,66V6h34C51.3,6,57,13.7,57,21.3c0,7.5-4.6,12.5-10.3,13.8c6.4,1,11.4,7.1,11.4,14.7
           c0,8.7-5.8,16.3-17.6,16.3H5.4z M41.2,24c0-2.9-2.2-5-5.3-5h-15v10h15C39.1,29,41.2,27,41.2,24z M42.4,47.6c0-3-2.2-5.4-5.9-5.4
@@ -25,7 +32,7 @@
         <path class="tag-char" d="M485.8,58.6c0-4.6,3.9-8.5,8.5-8.5s8.5,3.9,8.5,8.5s-3.9,8.5-8.5,8.5S485.8,63.2,485.8,58.6z"/>
       </g>
   </g>
-  <g id="be-kind" class="draw-group">
+  <g id="be-kind" class="draw-group flex justify-center w-full bg-red-500">
     <g id="be2">
       <path class="tag-char" d="M5.4,152V92h34C51.3,92,57,99.7,57,107.3c0,7.5-4.6,12.5-10.3,13.8c6.4,1,11.4,7.1,11.4,14.7
       c0,8.7-5.8,16.3-17.6,16.3H5.4z M41.2,110c0-2.9-2.2-5-5.3-5h-15v10h15C39.1,115,41.2,113,41.2,110z M42.4,133.6
@@ -41,7 +48,7 @@
       <path class="tag-char" d="M357.9,144.6c0-4.6,3.9-8.5,8.5-8.5s8.5,3.9,8.5,8.5s-3.9,8.5-8.5,8.5S357.9,149.2,357.9,144.6z"/>
     </g>
   </g>
-  <g id="be-fearless" class="draw-group">
+  <g id="be-fearless" class="draw-group flex justify-center w-full bg-red-500">
     <g id="be3">
         <path class="tag-char" d="M5.4,238v-60h34c11.9,0,17.5,7.7,17.5,15.3c0,7.5-4.6,12.5-10.3,13.8c6.4,1,11.4,7.1,11.4,14.7
           c0,8.7-5.8,16.3-17.6,16.3H5.4z M41.2,196c0-2.9-2.2-4.9-5.3-4.9h-15v10h15C39.1,201,41.2,199,41.2,196z M42.4,219.6

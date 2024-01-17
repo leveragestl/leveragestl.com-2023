@@ -8,15 +8,23 @@
   @include no-wrapper;
 }
 
+.wrapper-narrow {
+  @include wrapper-narrow;
+}
+
+.wrapper-wide {
+  @include wrapper-wide;
+}
+
 .wrapperDiagonal {
   position: relative;
   display: block;
-  // background-color: white;
+  background-color: white;
   color: theme('colors.darkgray');
-  min-height: 100vh;
-  padding-top: var(--diagWrapperHeight);
-  padding-bottom: var(--diagWrapperHeight);
-  z-index: 20;
+  // min-height: 100vh;
+  padding-top: calc(var(--diagWrapperHeight)/2);
+  padding-bottom: calc(var(--diagWrapperHeight)/2);
+  z-index: 30;
 
   @screen xl {
     padding-bottom: 0;
@@ -27,12 +35,12 @@
   position: relative;
   display: block;
   background-color: white;
-  width: 110%;
+  width: 100%;
   height: var(--diagWrapperHeight);
   z-index: 10;
 
   &--top {
-    transform: skewY(var(--diagWrapperAngle)) translate(-5%, 50%);
+    transform: skewY(var(--diagWrapperAngle)) translate(0, 50%);
     margin-top: calc(var(--diagWrapperHeight) * -1);
 
     .home #hero & {
@@ -41,6 +49,11 @@
       left: 0;
       z-index: 0;
       // height: 100%; 
+    }
+
+    footer & {
+      height: calc(2 * var(--diagWrapperHeight));
+      margin-top: calc(var(--diagWrapperHeight) * -1.5);
     }
   }
 

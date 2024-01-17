@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Button from './ui/Button.astro'
+
+interface Icon {
+  src: string,
+  alt: string
+}
+
+interface Props {
+  title: string;
+  icon: string;
+  class?: string;
+  project: CollectionEntry<'projects'>;
+  [x: string]: any;
+}
+
+const { icon, title, project, class: className, ...rest} = Astro.props
+---
+<div {...rest} data-swiper="scene" data-scene="container" class:list={['col-start-wrapper col-end-wrapper lg:row-start-2 lg:!grid grid-cols-12 !flex flex-col swiper-slide', className]}>
+  <!-- copy -->
+  <div data-scene="content" class="transition-fade lg:px-16 lg:pt-16 relative col-start-first col-end-last lg:col-start-first lg:col-end-6 contents lg:block">
+    <figure class="mx-auto w-fit block lg:mx-0">
+      <img src={icon} alt="">
+    </figure>
+    <h3 class="h2 my-4">{title}</h3>
+    <slot name="description" />
+    <hr class="border-mediumgray my-8 lg:my-10">
+    <ul class="mt-4 mb-8 lg:columns-3 text-16/8 lg:text-18 font-semibold [&>li]:leading-[30px] lg:[&>li]:leading-none lg:[&>li]:mb-4 lg:[&>li]:break-inside-avoid lg:[&>li]:inline-block antialiased mx-auto w-fit lg:mx-0 lg:w-[110%] lg:max-w-[480px]">
+      <slot name="services" />
+    </ul>
+    <!-- more button -->
+    <div class="my-10 lg:my-0 order-last">
+      <Button tag="a" slash>more {title.toLowerCase()} work</Button>
+    </div>
+  </div>
+  <!-- image -->
+  <div data-scene="image" data-parallax="" class="lg:-mt-[--site-header-height] lg:px-16 col-start-first col-end-last lg:col-start-6 lg:col-end-last contents lg:block">
+    <a class="workTile w-full max-w-[500px] block mx-auto lg:max-w-none h-full" href={`/work/${project.slug}`}>
+
+      <div class="transition-fade workTile__frame h-0 pb-[112%]">
+        <figure class="workTile__figure">
+          <img class="workTile__img absolute inset-0 w-full h-full object-cover object-right-top" src={project.data.image.src} alt={project.data.image.alt}>
+        </figure>
+        <h3 class="workTile__title">{project.data.title}</h3>
+        <div class="workTile__wedge workTile__wedge--dark workTile__wedge--dark">
+          <i class="arrow-right"></i>
+        </div>
+      </div>
+
+    </a>
+  </div>
+</div>

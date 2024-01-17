@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText, ScrollSmoother, DrawSVGPlugin)
 // =============================================================================
 
 // Sliders
-import { quotesSlider, servicesSlider, staffSlider } from './vendors/swiper'
+import { quotesSlider, servicesSlider, staffSlider, imageCarousel } from './vendors/swiper'
 
 // Animation
 import { generalAnimations } from './animation/generalAnimations'
@@ -33,6 +33,16 @@ import { menuToggle, checkNav, openNav, closeNav, currentMenuItem } from './core
 import { linkHandler } from './utils/linkHandler'
 import { videoHandler } from './utils/videoHandler'
 import { initCursor, removeCursor } from './utils/cursor'
+import { twoColumns } from './utils/arrangeColumns'
+import { columnsTwo } from './utils/columnsTwo'
+
+// Components
+import { formsHandler } from './components/forms'
+import { compareSwiper } from './components/compareSwiper'
+
+// Vendors
+import { mix } from './vendors/mix'
+import { projectFilters } from './vendors/mix'
 
 // =============================================================================
 // Swup
@@ -57,7 +67,9 @@ if (document.readyState === 'complete') {
 } else {
   document.addEventListener('DOMContentLoaded', () => init())
 }
-swup.hooks.on('page:view', () => init())
+swup.hooks.on('page:view', (visit) => {
+  init()
+});
 
 function unload() {
   ScrollTrigger.killAll()
@@ -80,6 +92,12 @@ swup.hooks.on('animation:in:start', () => {
   document.documentElement.classList.remove('is-transitioning')
 })
 
+swup.hooks.on('animation:in:end', () => {
+  if (ScrollTrigger) {
+    ScrollTrigger.refresh()
+  }
+})
+
 // document.addEventListener('DOMContentLoaded', () => init())
 
 // =============================================================================
@@ -97,11 +115,7 @@ function smoothScroll() {
 }
 
 function init() {
-
-  if (window.matchMedia('(pointer: fine)').matches) {
-    smoothScroll()
-  }
-  
+  smoothScroll()  
   siteHeader()
   linkHandler()
   menuToggle()
@@ -145,6 +159,14 @@ function init() {
     window.addEventListener('resize', servicesSlider)
   }
 
+  if (document.querySelector('[data-slider="image-carousel"]')) {
+    imageCarousel()
+  }
+
+  if (document.querySelector('[data-compare-swiper]')) {
+    compareSwiper()
+  }
+
   if (document.querySelector('a')) {
     // pageTransitions()
   }
@@ -154,7 +176,28 @@ function init() {
   }
 
   if (document.querySelector('[data-hover="fillText"]')) {
-    if (runOnce) return
-    fillTextHover()
+    if (!runOnce) {
+      fillTextHover() 
+    }
+  }
+
+  if (document.querySelector('[data-arrange="2-columns"]')) {
+    twoColumns()
+  }
+
+  // if (document.querySelector('.columns-two')) {
+  //   columnsTwo()
+  // }
+
+  if (document.querySelector('#form')) {
+    formsHandler()
+  }
+
+  if (document.querySelector('[data-mix]')) {
+    mix()
+  }
+
+  if (document.querySelector('[data-filter]')) {
+    projectFilters()
   }
 }

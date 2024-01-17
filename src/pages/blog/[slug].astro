@@ -1,0 +1,105 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+import Layout from '~/layouts/Layout.astro'
+import Hero from '~/components/Hero.astro'
+import WrapperDiagonal from '~/components/WrapperDiagonal.astro'
+import PostFilters from '~/components/PostFilters.astro';
+
+// Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("posts");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }))
+}
+
+// Get the entry directly from the prop on render
+const { entry } = Astro.props
+const { Content } = await entry.render()
+
+// Filter blog entries with 'draft: false' & date before current date
+const publishedBlogEntries = await getCollection("posts", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+
+// Sort content entries by publication date
+publishedBlogEntries.sort(function (a, b) {
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
+
+// More Work Setup
+let postsArray = []
+publishedBlogEntries.map(post =>
+  // check if slugs match so we don't show the same post
+  entry.slug.replaceAll('/', '') !== post.slug.replaceAll('/', '') && (
+    postsArray.push(post)
+  )
+)
+
+---
+
+<Layout title={entry.data.title} namespace="single-post">
+  <Hero>
+    <div class="max-w-[840px]">
+      <h1 class="h2">{entry.data.title}</h1>
+      <div class="flex gap-x-2 uppercase font-bold text-lightgray">
+        <span class="text-gold">{entry.data.category}</span>
+        <span>/</span>
+        <span>{entry.data.author}</span>
+      </div>
+    </div>
+  </Hero>
+
+  <WrapperDiagonal defaultCTA={false}>
+    <!-- Featured Image -->
+    <figure class="-mt-[--diagWrapperHeight] wrapper-wide transition-in transition-fade mb-20 md:mb-40">
+      <img class="w-full aspect-video lg:aspect-[21/9] object-cover" src={entry.data.image.src} alt={entry.data.image.alt}>
+    </figure>
+
+    <!-- Content -->
+    <section class="max-w-[80ch] mx-auto content-block mb-20 md:mb-40 px-[--wrapper-margin] lg:px-0 text-left">
+      <Content />
+    </section>
+
+    <!-- Filters -->
+    <section class="transition-in transition-fade relative z-50 wrapper mb-20 md:mb-40">
+      <PostFilters />
+    </section>
+
+    <!-- Recent Posts -->
+    <section class="wrapper">
+      <div class="w-full flex justify-center">
+        <h3 data-anim-elem="fillText" class="h1 mb-0 grid grid-cols-1 grid-rows-1">
+          <span data-filltext="outline" class="transition-fade relative z-40 col-start-1 row-start-1 text-outline text-outline--dark">Recent Posts</span>
+          <span data-filltext="fill" class="transition-fade relative z-40 col-start-1 row-start-1">Recent Posts</span>
+        </h3>
+      </div>
+      <div class="grid md:grid-cols-2 mt-12 gap-x-8 md:gap-x-32 md:gap-y-16 md:mt-16 work-columns">
+
+        {postsArray.slice(0, 2).map(post =>
+          <div data-anim-elem="fadeInUp" class="">
+            <div class="transition-fade">
+              <a href={`/blog/${(post.slug).replaceAll('//', '/')}`}>
+                <figure class="w-full mb-4">
+                  <img class="w-full aspect-square object-cover" src={post.data.image.src} alt={post.data.image.alt && post.data.image.alt} />
+                </figure>
+                <div>
+                  <h3 class="font-serif normal-case text-28/8 font-normal mb-6">{post.data.title}</h3>
+                  <div class="flex gap-x-2 uppercase font-bold">
+                    <span class="text-gold">{post.data.category}</span>
+                    <span>/</span>
+                    <span>{post.data.author}</span>
+                  </div>
+                  <time class="text-gray-400" datetime={post.data.publishDate.toISOString()}>{ /* post.data.publishDate.toDateString() */}</time>
+                </div>
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+
+    </section>
+  </WrapperDiagonal>
+</Layout>

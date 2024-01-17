@@ -1,0 +1,131 @@
+// Easings
+@use 'node_modules/easings-css/_easings.scss' as *;
+
+.accordion {
+  --padding: 20px;
+
+  margin-bottom: 0;
+  // display: inline-block;
+  width: 100%;
+
+  @screen md {
+    // margin-bottom: 1rem;
+    --padding: 30px;
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__inner {
+    position: relative;
+    display: block;
+    background-color: rgba(255,255,255,0.8);
+    // box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    border-radius: 5px;
+
+    @screen md {
+      // box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+  }
+
+  &__header {
+    position: relative;
+    width: 100%;
+    padding: 30px 0;
+    cursor: pointer;
+    z-index: 10;
+    text-align: left;
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+
+    @screen lg {
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: space-between;
+      padding: 40px 0;
+    }
+  }
+
+  &__indicator {
+    --indicator-width: 16px;
+    --indicator-weight: 3px;
+
+    display: block;
+    position: relative;
+    width: var(--indicator-width);
+    height: var(--indicator-width);
+    transition: transform 320ms $easeOutExpo;
+
+    .accordion__checkbox:checked + .accordion__inner & {
+      transform: rotate(180deg);
+      transform-origin: center;
+      transition: none;
+    }
+
+    &::before, &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      background-color: theme('colors.gold');
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &::before {
+      width: 100%;
+      height: var(--indicator-weight);
+    }
+
+    &::after {
+      width: var(--indicator-weight);
+      height: 100%;
+      transition: height 320ms $easeOutExpo;
+
+      .accordion__checkbox:checked + .accordion__inner & {
+        height: 0;
+      }
+    }
+  }
+  
+  &__question {
+    font-family: theme('fontFamily.serif');
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    margin-bottom: 0;
+    font-size: 1.125rem;
+    padding-right: 1rem;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 640ms $easeOutExpo 80ms;
+    padding: var(--padding) 0;
+    margin-top: calc(var(--padding) * -2);
+
+    .accordion__checkbox:checked + .accordion__inner & {
+      grid-template-rows: 1fr;
+      transition: grid-template-rows 640ms $easeOutExpo;
+    }
+  }
+
+  &__answer {
+    min-height: 0;
+    transition: visibility 320ms $easeOutExpo, opacity 320ms $easeOutExpo;
+    visibility: hidden;
+    opacity: 0;
+
+    .accordion__checkbox:checked + .accordion__inner & {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 640ms $easeOutExpo 160ms;
+    }
+
+    p {
+      margin-bottom: 0;
+      padding: 1rem 0;
+    }
+  }
+}

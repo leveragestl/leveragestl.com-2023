@@ -2,14 +2,14 @@
 import NavArrows from "./NavArrows.astro"
 import quotes from '../data/quotes.json'
 
-const { class: className } = Astro.props;
+const { class: className, ...rest } = Astro.props;
 ---
 
-<div data-anim-elem="fadeInUp" class:list={[className]}>
+<div data-anim-elem="fadeInUp" class:list={['text-left', className]}>
   <div class="max-w-lg">
     <h3 class="h4 mb-8 lg:mb-16">What our clients are saying...</h3>
   </div>
-  <div data-slider="quotes" class="swiper relative max-w-[824px] mx-auto">
+  <div data-cursor="-hidden" data-slider="quotes" class="swiper relative max-w-[824px] mx-auto">
     <div class="swiper-wrapper">
       {quotes.map((quote) =>
         <div class="swiper-slide cursor-grab active:cursor-grabbing">

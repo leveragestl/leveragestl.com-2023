@@ -1,0 +1,57 @@
+[
+  {
+    "label": "Branding",
+    "description": "",
+    "slug": "branding"
+  },
+  {
+    "label": "Web Design + Development",
+    "description": "",
+    "slug": "website-design-development"
+  },
+  {
+    "label": "Digital Marketing",
+    "description": "",
+    "slug": "digital-marketing"
+  },
+  {
+    "label": "Video",
+    "description": "",
+    "slug": "video"
+  },
+  {
+    "label": "Print",
+    "description": "",
+    "slug": "print"
+  },
+  {
+    "label": "Packaging",
+    "description": "",
+    "slug": "packaging"
+  },
+  {
+    "label": "Photography",
+    "description": "",
+    "slug": "photography"
+  },
+  {
+    "label": "eCommerce",
+    "description": "",
+    "slug": "ecommerce"
+  },
+  {
+    "label": "Environmental",
+    "description": "",
+    "slug": "environmental"
+  },
+  {
+    "label": "B2B",
+    "description": "",
+    "slug": "b2b"
+  },
+  {
+    "label": "B2C",
+    "description": "",
+    "slug": "b2c"
+  }
+]

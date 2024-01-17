@@ -1,29 +1,29 @@
 ---
-import CTASVG from "./CTASVG.astro";
-const { class: className } = Astro.props
+import Button from './ui/Button.astro'
+
+interface Props {
+  class?: string
+  defaultClasses?: boolean
+  headlines?: Array<string>
+  buttonText?: string
+  buttonUrl?: string
+}
+
+const { class: className, defaultClasses = true, headlines = ['We\'re ready', 'when you are'], buttonText = 'start your project', buttonUrl = '/contact/' } = Astro.props
 ---
 
-<section id="cta" data-anim-group data-anim-start="top 80%" class:list={['wrapper mt-24 lg:mt-48 lg:pb-16', className]}>
-  <div class="max-w-screen-lg mx-auto text-center transition-fade">
+<section id="cta" data-anim-group data-anim-start="top 80%" class:list={[defaultClasses && 'wrapper mt-24 lg:mt-48 lg:pb-16', className]}>
+  <div class="max-w-screen-lg mx-auto text-center transition-fade transition-in">
     <!-- <div data-draw-svg="cta"><CTASVG /></div> -->
     <h3 class="h1 text-[45px] lg:text-[120px] lg:leading-[110px] mb-0 leading-none tracking-normal z-50 relative">
       <div data-anim-elem="fillText" class="grid grid-cols-1 grid-rows-1 mx-auto">
-        <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--dark">We're ready</span>
-        <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">We're ready</span>
+        <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--dark">{headlines[0]}</span>
+        <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">{headlines[0]}</span>
       </div>
-      <span class="text-outline text-outline--filled">when you are.</span>
+      <span class="text-outline text-outline--filled">{headlines[1]}</span>
     </h3>
   </div>
-  <div class="mt-12 w-full text-center transition-fade">
-    <span data-anim-elem="fadeInUp" class="button button--slash text-gold font-merriweather font-bold text-18 antialiased italic transition-colors duration-500 ease-in-out">
-      <a href="/contact/" class="anchor">
-        <span class="text">start your project</span>
-        <span class="line line--right"></span>
-        <span class="line line--top"></span>
-        <span class="line line--left line--left--end"></span>
-        <span class="line line--left line--left--start"></span>
-        <span class="line line--bottom"></span>
-      </a>
-    </span>
+  <div class="mt-12 w-full text-center transition-fade transition-in">
+    <Button tag="a" slash href={buttonUrl}>{buttonText}</Button>
   </div>
 </section>

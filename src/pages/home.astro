@@ -1,8 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import posts from '../data/posts.json'
+import posts from '../data/projects.json'
 import Hero from '../components/Hero.astro'
-import WorkExerpt from '../components/WorkExerpt.astro'
+import WorkExcerpt from '../components/WorkExcerpt.astro'
 import WrapperDiagonal from '../components/WrapperDiagonal.astro'
 import Quotes from '../components/Quotes.astro'
 import NavArrows from '../components/NavArrows.astro'
@@ -118,7 +118,7 @@ import CTA from '../components/CTA.astro'
       <h3 class="h1 text-outline text-outline--dark text-left mb-0">Our Work</h3>
       <div class="grid lg:grid-cols-2 mt-12 gap-y-12 lg:gap-y-24 lg:mt-16">
         {posts.map((post) =>
-          <WorkExerpt slug={post.slug} title={post.title} img={post.img} tags={post.tags} desc={post.desc} />
+          <WorkExcerpt slug={post.slug} title={post.title} img={post.img} tags={post.tags} desc={post.desc} />
         )}
       </div>
       <div class="mt-12 lg:mt-20">

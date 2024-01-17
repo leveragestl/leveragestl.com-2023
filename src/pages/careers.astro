@@ -2,71 +2,100 @@
 import Layout from '../layouts/Layout.astro'
 import Hero from '../components/Hero.astro'
 import WrapperDiagonal from '../components/WrapperDiagonal.astro'
+import Button from '../components/ui/Button-old.astro'
+import CTA from '../components/CTA.astro'
+import AccordionJobListing from '../components/AccordionJobListing.astro'
 
-import StaffMember from '../components/StaffMember.astro'
-import Quotes from '../components/Quotes.astro'
-import NavArrows from '../components/NavArrows.astro'
-import Award from '../components/Award.astro'
-
-import staff from '../data/staff.json'
-import awards from '../data/awards.json'
+import benefits from '../data/benefits.json'
+import jobs from '../data/jobs.json'
+import { parse } from '@barba/core/dist/core/src/utils/url'
 ---
 
 <Layout title='Careers' namespace="careers">
-  <Hero>
-    <h2 class="h1">we embrace a  <br class="hidden lg:block"><span class="text-outline text-outline--light">culture of <br class="hidden lg:block">collaboration</span></h2>
+  <Hero class="text-center justify-center">
+    <h2 class="h1 text-[55px] xl:text-[110px]"><span class="text-outline text-outline--light">Join our</span> <br class="hidden lg:block">team</h2>
+    <Button title="view job openings" url="#openings" />
   </Hero>
-  <WrapperDiagonal>
-    <section class="wrapper mb-48">
-      <figure class="w-full h-auto">
-        <img class="w-full h-full object-cover object-center" src="/about-collage.jpg" alt="">
-      </figure>
-
-      <div class="text-center max-w-3xl mx-auto mt-32">
-        <h3 class="h2 font-[800]">We build brands through design, development, and strategic marketing</h3>
-        <div class="content-block">
-          <p>We believe honest, beautiful design can create a more pleasant world. We strive to provide kind, thoughtful value in everything we do. We embrace a culture of collaboration that values the relationship over the bottom line, where we partner with our clients and treat their business as our own.</p>
-          <p>Refusing to compromise on creating exceptional work, we thrive on solving problems and our passion shows through when we're challenged to think outside of the box and push the limits of creativity to design, build, and share delightful experiences across all mediums.</p>
+  <WrapperDiagonal defaultCTA={false}>
+    <!-- Intro -->
+    <section id="intro" data-anim-group data-anim-markers class="mb-20 lg:mb-48 text-darkgray wrapper">
+      <div class="lg:max-w-[815px] lg:mx-auto transition-fade transition-in text-center">
+        <h2 data-revealtext data-anim-elem="revealText" class="mb-8">We're always looking for creative, technical, and strategic thinkers.</h2>
+        <div data-anim-elem="fadeInUp" data-anim-timing="0.5">
+          <p class="large">We love what we do and we want the same for anyone that joins our team. Our passion is contagious and it shows through the work we create for our clients every day. It almost doesn't feel like work &ndash; and that's how we like it. If you share the same passion and want to collaborate in a fun, laid-back environment while doing what you love &ndash; we'd love to hear from you.</p>
+          <div class="mt-16">
+            <a id="benefits-link" class="font-black font-serif text-gold italic text-18 flex justify-center flex-col items-center gap-y-2" href="#benefits">
+              <span>keep scrolling to view benefits</span>
+              <i class="arrow-down"></i>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="bg-darkgray text-white text-center wrapper flex w-full justify-center items-center py-60">
-      <h3 class="h1 text-outline text-outline--light text-[110px]">Be useful.<br>Be kind.<br>Be fearless.</h3>
-    </section>
-
-    <section class="bg-darkgray text-white pb-60">
-      <div class="text-center max-w-2xl mx-auto">
-        <h3 class="h2 font-[800]">We strive to think strategically, act selflessly, and grow creatively.</h3>
-        <div class="content-block">
-          <p>Beyond simply designing, building, and implementing beautiful brand experiences, our team tackles each day with a broader goal — to provide value in everything we do. We're extremely proud of our insanely talented group that embodies our mission.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-darkgray text-white wrapper pb-40 mb-40">
-      <h3 class="h1">No fluff. <br> Real people.</h3>
-      <div class="relative slider flex gap-x-20">
-        <div class="absolute flex top-0 right-0 -mt-32 gap-x-4">
-          <NavArrows />
-        </div>
-        {staff.map((staff) =>
-          <StaffMember name={staff.name} title={staff.title} img={staff.img} />
+    <!-- Benefits -->
+    <section id="benefits" class="bg-darkgray text-white text-left wrapper py-20 lg:py-72 transition-fade transition-in">
+      <div data-arrange="2-columns" class="grid lg:grid-cols-2 gap-x-60">
+        <div class="-mt-24 hidden lg:block" data-arrange-column="1"></div>
+        <div class="mt-24 hidden lg:block" data-arrange-column="2"></div>
+        {benefits.map((benefit, i) => 
+          <div data-arrange-item class="w-full mb-14 pb-14 lg:mb-24 lg:pb-24 border-b border-b-mediumgray last:border-b-0 last:mb-0 last:pb-0 benefit max-w-xl mx-auto lg:max-w-none">
+            <h3>{benefit.headline}</h3>
+            <div class="lg:max-w-[440px]">
+              <p class="large" set:html={benefit.paragraph} />
+            </div>
+          </div>
         )}
       </div>
-    </section>
+      <!--
+      <div data-arrange="2-columns" class="grid lg:grid-cols-2 gap-x-60">
+        <div class="lg:-mt-16">
+          {benefits.filter((benefit, i) => (i % 2 === 0)).map((benefit, i) =>
+            <div class="w-full mb-20 benefit">
+              <h3>{benefit.headline}</h3>
+              <p>{benefit.paragraph}</p>
+            </div>
+          )}
+        </div>
 
-    <Quotes />
-
-    <section class="wrapper my-80">
-      <h3 class="h2">Awards we're proud of</h3>
-      <div class="grid grid-cols-auto-3 gap-y-12 mt-12">
-        <div class="award__line col-span-full border border-lightgray mt-8"></div>
-        {awards.map((award) => 
-          <Award org={award.org} award={award.award} proj={award.proj} link={award.link} year={award.year} />
-        )}
+        <div class="lg:mt-16">
+          {benefits.filter((benefit, i) => (i % 2 !== 0)).map((benefit, i) => 
+            <div class="w-full mb-20 benefit">
+              <h3>{benefit.headline}</h3>
+              <p>{benefit.paragraph}</p>
+            </div>
+          )}
+        </div>
       </div>
+      -->
     </section>
 
+    <!-- Openings -->
+    <section id="openings" class="wrapper py-20 lg:py-40 transition-fade transition-in">
+      <h3 data-anim-elem="fillText" class="h1 text-left grid grid-cols-1 grid-rows-1">
+        <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--dark">Current <br>Openings</span>
+        <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">Current <br>Openings</span>
+      </h3>
+      
+      <div class="lg:mx-14 border-t border-darkgray mt-8 lg:mt-12">
+        {jobs.map((job, i) => 
+          <AccordionJobListing title={job.title} type={job.type} description={job.description} id={i.toString()} />
+        )}  
+      </div>
+
+      <!--
+      <li class="border-b-darkgray border-b py-8">
+        <div class="flex justify-between items-center">
+          <h3 class="h4"></h3>
+          <h4></h4>
+          <button class="text-gold text-[34px] font-bold">+</button>
+        </div>
+        <div class="max-w-[100ch] text-left">
+          <p set:html= />
+        </div>
+      </li>
+      -->
+    </section>
+    <CTA headlines={['Meet our team']} buttonText='learn more about us' buttonUrl='/about/' />
   </WrapperDiagonal>
 </Layout>

@@ -1,0 +1,18 @@
+---
+const { author, title, excerpt, img, slug, category, class: className } = Astro.props
+---
+<a class:list={['', className]} href={slug}>
+  <div class="relative ">
+    <div class="postTile__frame">
+      <figure class="postTile__figure">
+        <img class="postTile__img object-" src={img} alt="">
+      </figure>
+    </div>
+  </div>
+  <div class="postTile__content">
+    <span class="postTile__category">{category}</span>
+    <span class="postTile__author">{author}</span>
+    <h3 class="postTile__title h3">{title}</h3>
+    <div class="postTile__excerpt">{excerpt}</div>
+  </div>
+</a>

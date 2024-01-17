@@ -1,0 +1,66 @@
+---
+import Button from '~/components/ui/Button.astro';
+---
+
+<!-- To make this contact form work, create your free access key from https://web3forms.com/ - Then you will get all form submissions in your email inbox. -->
+<form action="https://api.web3forms.com/submit" method="POST" id="form" class="needs-validation text-darkgray" novalidate>
+
+  <!-- Hidden -->
+  <input type="hidden" name="access_key" value="c03b3bbe-0911-4575-8186-03c0fa3ec8aa" />
+  <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
+
+  <ul class="steps">
+    <li class="step h5 active">Step 1</li>
+    <li class="step h5">Step 2</li>
+    <li class="step h5">Step 3</li>
+  </ul>
+
+  <!-- Message -->
+  <div class="field">
+    <textarea name="message" required placeholder="*describe your project..."></textarea>
+    <div class="empty-feedback invalid-feedback">Please enter your message.</div>
+  </div>
+
+  <div class="field-group grid lg:grid-cols-2 gap-4">
+
+    <!-- Budget -->
+    <div class="field">
+      <select name="budget" id="budget">
+        <option value="" selected>*estimated budget</option>
+        <option value="option 1">Option 1</option>
+        <option value="option 2">Option 2</option>
+        <option value="option 3">Option 3</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <select name="timing" id="timing">
+        <option value="" selected>*preferred timing</option>
+        <option value="option 1">Option 1</option>
+        <option value="option 2">Option 2</option>
+        <option value="option 3">Option 3</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Name -->
+  <div class="field hidden">
+    <input type="text" placeholder="Full Name" name="name"
+    />
+    <div class="empty-feedback invalid-feedback">Please provide your full name.</div>
+  </div>
+
+  <!-- Email -->
+  <div class="field hidden">
+    <label for="email_address" class="sr-only">Email Address</label>
+    <input id="email_address" type="email" placeholder="Email Address" name="email" />
+    <div class="empty-feedback">Please provide your email address.</div>
+    <div class="invalid-feedback">Please provide a valid email address.</div>
+  </div>
+
+  <!-- Submit -->
+  <Button tag='button' type="submit" outline>Next Step</Button>
+
+  <!-- Results -->
+  <div id="result"></div>
+</form>

@@ -1,0 +1,57 @@
+[
+  {
+    "label": "Design",
+    "description": "",
+    "slug": "design"
+  },
+  {
+    "label": "Culture",
+    "description": "",
+    "slug": "culture"
+  },
+  {
+    "label": "Branding",
+    "description": "",
+    "slug": "branding"
+  },
+  {
+    "label": "Marketing",
+    "description": "",
+    "slug": "marketing"
+  },
+  {
+    "label": "Award",
+    "description": "",
+    "slug": "award"
+  },
+  {
+    "label": "Business",
+    "description": "",
+    "slug": "business"
+  },
+  {
+    "label": "Thought Piece",
+    "description": "",
+    "slug": "thought-piece"
+  },
+  {
+    "label": "Email Marketing",
+    "description": "",
+    "slug": "email-marketing"
+  },
+  {
+    "label": "Leverage News",
+    "description": "",
+    "slug": "leverage-news"
+  },
+  {
+    "label": "Technology",
+    "description": "",
+    "slug": "technology"
+  },
+  {
+    "label": "Resources",
+    "description": "",
+    "slug": "resources"
+  }
+]

@@ -26,7 +26,8 @@ module.exports = {
 			'9xl': '2800px',
 			'mouse': { 'raw': '(any-hover: hover) and (pointer: fine)' },
 			'touch': { 'raw': '(any-hover: none) and (pointer: coarse)' },
-      'short': { 'raw': '(max-height: 1024px) and (min-aspect-ratio: 4/3)' },
+      'short': { 'raw': '(max-height: 1024px)' },
+      'shorter': { 'raw': '(max-height: 768px)' },
       'portrait': { 'raw': '(min-width: 1280px) and (orientation: portrait)' },
     },
     fontFamily: {
@@ -82,6 +83,9 @@ module.exports = {
 				'4/3': '4 / 3',
 				'portrait': '3 / 4',
 			},
+      borderWidth: {
+        '6': '6px'
+      },
       gridTemplateColumns: {
 				'auto-1':		'repeat(1, auto)',
 				'auto-2':		'repeat(2, auto)',
@@ -98,7 +102,7 @@ module.exports = {
 
 				'margins-4':	'[start] max(5vw, calc((100vw - theme("screens.3xl")) / 2)) [wrapperStart] repeat(2, 1fr) [mid columnMid wrapperMid] repeat(2, 1fr) [wrapperEnd] max(5vw, calc((100vw - theme("screens.3xl")) / 2)) [end]',
 
-				'margins-12':	'[start] var(--container-margin) [containerStart] calc(var(--grid-margin) - var(--container-margin)) [wrapperStart] repeat(6, [columnLine] 1fr [columnLine]) [mid columnMid wrapperMid] repeat(6, [columnLine] 1fr [columnLine]) [wrapperEnd] calc(var(--grid-margin) - var(--container-margin)) [containerEnd] var(--container-margin) [end]',
+				'margins-12':	'[start] var(--container-margin) [containerStart] calc(var(--wrapper-margin) - var(--container-margin)) [wrapperStart] repeat(6, [columnLine] 1fr [columnLine]) [mid columnMid wrapperMid] repeat(6, [columnLine] 1fr [columnLine]) [wrapperEnd] calc(var(--wrapper-margin) - var(--container-margin)) [containerEnd] var(--container-margin) [end]',
       },
       gridTemplateRows:  {
 				'auto-1':		'repeat(1, auto)',

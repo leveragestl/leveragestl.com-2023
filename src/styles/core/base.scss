@@ -9,9 +9,14 @@ body {
   // background-color: white;
   color: theme('colors.darkgray');
   font-family: proxima-nova, sans-serif;
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 1rem;
+  line-height: 1.625rem;
   // scroll-behavior: smooth;
+  text-align: center;
+
+  @screen lg {
+    text-align: left;
+  }
 }
 
 main {
@@ -25,7 +30,35 @@ main {
   color: white;
 }
 
+// =============================================================================
+// Smooth Scroll Overrides
+// =============================================================================
+
+/*
 #smooth-wrapper, #smooth-content {
   width: 100%;
   overflow-x: hidden;
+}
+*/
+
+@media only screen and (any-hover: none) and (pointer: coarse) {
+  html, body {
+    height: auto !important;
+    overscroll-behavior: auto !important;
+    scroll-behavior: none !important;
+  }
+
+  #smooth-wrapper {
+    height: auto;
+    inset: auto;
+    width: 100%;
+    position: relative;
+    overflow: visible;
+  }
+
+  #smooth-content {
+    box-sizing: border-box;
+    width: 100%;
+    overflow: visible;
+  }
 }

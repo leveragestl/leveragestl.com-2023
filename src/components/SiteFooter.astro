@@ -2,52 +2,57 @@
 import '../styles/_partials/_variables.scss'
 import TagSVG from './TagSVG.astro';
 ---
-<footer class="relative wrapper bg-darkgray text-white pt-[--diagWrapperHeight] -mt-[--diagWrapperHeight]">
+<footer class="relative -mt-[--diagWrapperHeight] z-20">
 
-  <!-- Newsletter -->
-  <div data-anim-elem="fadeInUp" data-anim-start="top 90%" class="text-center max-w-screen-sm mx-auto mt-24 mb-20 transition-fade">
-    <h3 class="text-28 lg:text-40 lg:leading-[42px] font-extrabold mb-4">Want to hear more from us?</h3>
-    <form action="" class="flex gap-x-2">
-      <input class="bg-transparent border-2 border-white w-full py-5 px-4 font-serif italic font-bold text-white text-opacity-100 antialiased placeholder:text-white" type="email" placeholder="sign up for our newsletter">
-      <input type="submit" value="join" class="bg-gold border-2 border-gold w-28 font-serif italic text-18 font-bold text-darkgray cursor-pointer">
-    </form>
-  </div>
+  <div class="wrapperCap wrapperCap--top !bg-darkgray"></div>
 
-  <hr class="border-mediumgray">
-
-  <div class="grid lg:grid-cols-2 pt-20">
-    <!-- <h3 class="h2 text-[45px] lg:text-[90px] lg:text-left leading-none text-outline text-outline--light mb-0 order-last lg:order-none mt-16 lg:mt-0">Be useful.<br>Be kind.<br>Be fearless.</h3> -->
-    <div class="order-last lg:order-none mb-0 mt-16 lg:mt-0" data-draw-svg>
+  <div class="wrapper bg-darkgray text-white -mt-[calc(var(--diagWrapperHeight)_/_3)] z-50 relative pt-24">
+    <!-- Newsletter -->
+    <div data-anim-elem="fadeInUp" data-anim-start="top 90%" class="text-center max-w-screen-sm mx-auto mb-20 transition-fade">
+      <h3 class="text-28 lg:text-40 lg:leading-[42px] font-extrabold mb-4">Want to hear more from us?</h3>
+      <form action="" class="flex gap-x-2">
+        <input class="bg-transparent border-2 border-white w-full py-5 px-4 font-serif italic font-bold text-white text-opacity-100 antialiased placeholder:text-white" type="email" placeholder="sign up for our newsletter">
+        <input type="submit" value="join" class="bg-gold border-2 border-gold w-28 font-serif italic text-18 font-bold text-darkgray cursor-pointer">
+      </form>
+    </div>
+    <hr class="border-mediumgray">
+    <div class="grid lg:grid-cols-2 pt-20">
+      <!-- <h3 class="h2 text-[45px] lg:text-[90px] lg:text-left leading-none text-outline text-outline--light mb-0 order-last lg:order-none mt-16 lg:mt-0">Be useful.<br>Be kind.<br>Be fearless.</h3> -->
+      <div class="order-last justify-center lg:order-none mb-0 mt-16 lg:mt-0" data-draw-svg>
+        <div class="transition-fade">
+          <TagSVG class="hidden lg:block" />
+          <h3 class="text-[2.8125rem] leading-none font-extrabold tracking-[1.35px] text-outline text-outline--light lg:hidden">Be Useful. <br />Be Kind. <br />Be Fearless.</h3>
+        </div>
+      </div>
+      <!-- Contact Info -->
       <div class="transition-fade">
-        <TagSVG />
+        <div class="grid lg:grid-cols-2 lg:pl-20 lg:text-left">
+          <div class="">
+            <h4 class="p leading-none mb-0">Find Us</h4>
+            <p class="mt-6">205 Chesterfield Ind Blvd<br>Chesterfield, MO 63005</p>
+            <div class="font-sans text-16 font-bold mt-10 mb-4 flex gap-x-4 justify-center lg:justify-start">
+              <a href="" class="link">Email Us</a>
+              <span>|</span>
+              <a href="/careers/" class="link">Careers</a>
+            </div>
+          </div>
+          <!-- Social -->
+          <div class="mt-14 lg:mt-0">
+            <p class="uppercase font-bold">Stay in touch</p>
+            <ul class="flex gap-x-6 mt-6 justify-center lg:justify-normal">
+              <li><a class="hover-gold" href="https://x.com/leveragestl/"><i class="fab fa-x-twitter text-22"></i></a></li>
+              <li><a class="hover-gold" href="https://instagram.com/leveragestl/"><i class="fab fa-instagram text-22"></i></a></li>
+              <li><a class="hover-gold" href="https://facebook.com/leveragestl/"><i class="fab fa-facebook text-22"></i></a></li>
+              <li><a class="hover-gold" href="https://linkedin.com/company/leveragestl/"><i class="fab fa-linkedin text-22"></i></a></li>
+              <li><a class="hover-gold" href="https://pinterest.com/leveragestl/"><i class="fab fa-pinterest text-22"></i></a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- Contact Info -->
-    <div class="transition-fade">
-      <div class="grid lg:grid-cols-2 lg:pl-20 lg:text-left">
-        <div class="">
-          <h4 class="p leading-none mb-0">Find Us</h4>
-          <p class="mt-6">205 Chesterfield Ind Blvd<br>Chesterfield, MO 63005</p>
-          <p class="mt-10 font-bold"><a href="">Email Us</a></p>
-        </div>
-        <!-- Social -->
-        <div class="mt-14 lg:mt-0">
-          <p class="uppercase font-bold">Stay in touch</p>
-          <ul class="flex gap-x-6 mt-6 justify-center lg:justify-normal">
-            <li><a class="hover-gold" href="https://x.com/leveragestl/"><i class="fab fa-x-twitter text-22"></i></a></li>
-            <li><a class="hover-gold" href="https://instagram.com/leveragestl/"><i class="fab fa-instagram text-22"></i></a></li>
-            <li><a class="hover-gold" href="https://facebook.com/leveragestl/"><i class="fab fa-facebook text-22"></i></a></li>
-            <li><a class="hover-gold" href="https://linkedin.com/company/leveragestl/"><i class="fab fa-linkedin text-22"></i></a></li>
-            <li><a class="hover-gold" href="https://pinterest.com/leveragestl/"><i class="fab fa-pinterest text-22"></i></a></li>
-          </ul>
-        </div>
-      </div>
+    <!-- Copyright -->
+    <div class="w-full lg:text-right pt-8 pb-20 lg:pt-20 lg:pb-14 transition-fade">
+      <p>© Leverage LLC | All rights reserved.</p>
     </div>
-  </div>
-
-  <!-- Copyright -->
-  <div class="w-full lg:text-right pt-20 pb-14 transition-fade">
-    <p>© Leverage LLC | All rights reserved.</p>
   </div>
 </footer>
