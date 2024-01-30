@@ -19,28 +19,36 @@ export function careersAnimations() {
         trigger: '.pin-wrapper',
         scrub: true,
         pin: '.pin-wrapper',
-        end: `+=${(photos.length - 1) * 100}%`,
+        // end: `+=${(photos.length - 2) * 100}%`,
         // markers: true,
         invalidateOnRefresh: true
       }
     })
-  
-    careersHeroPinTL.set('[data-anim-item]', {autoAlpha: 1})
-    careersHeroPinTL.to('[data-anim-item="1"]', {y: '-50vh'})
-    careersHeroPinTL.to('[data-anim-item="2"]', {y: '-50vh'}, 0.2)
-    careersHeroPinTL.to('[data-anim-item="3"]', {y: '-50vh'}, 0.3)
-    careersHeroPinTL.to('[data-anim-item="4"]', {y: 0, onComplete: () => animLastPhoto()}, 0.2)
-  }
 
-  function animLastPhoto() {
-    gsap.to('[data-anim-item="4"]', {y: '-50vh', scrollTrigger: {
-      trigger: animGroup,
-      start: 'top top',
-      scrub: true,
-      // markers: true,
-      invalidateOnRefresh: true,
-      once: true,
-  }})
+    function animLastPhoto() {
+      const tl = gsap.timeline({
+        defaults: {
+          duration: 1,
+          ease: 'none'
+        },
+      })
+      tl.to('[data-anim-item="4"]', {y: '-=50vh', scrollTrigger: {
+        trigger: animGroup,
+        start: 'top top',
+        scrub: true,
+        // markers: true,
+        invalidateOnRefresh: true,
+        paused: true
+      }})
+      return tl
+    }
+  
+    careersHeroPinTL
+      .set('[data-anim-item]', {autoAlpha: 1})
+      .to('[data-anim-item="1"]', {y: '-50vh'})
+      .to('[data-anim-item="2"]', {y: '-50vh'}, '<+=0.2')
+      .to('[data-anim-item="3"]', {y: '-100vh'}, '<+=0.1')
+      .to('[data-anim-item="4"]', {y: 0, onComplete: () => animLastPhoto()}, '<')
   }
 
   /*
