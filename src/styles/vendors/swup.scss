@@ -32,7 +32,7 @@ html.is-transitioning .transition-in {
   top: -25%;
   left: 0;
   background-color: theme('colors.gold');
-  z-index: 50;
+  z-index: 1000;
   opacity: 1;
   transform: skewY(-6.88deg) translateY(-100%);
   transition: none;

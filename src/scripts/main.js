@@ -18,6 +18,8 @@ import { quotesSlider, servicesSlider, staffSlider, imageCarousel } from './vend
 import { generalAnimations } from './animation/generalAnimations'
 import { homeAnimations } from './animation/homeAnimations'
 import { ctaAnimations } from './animation/ctaAnimations'
+import { aboutAnimations } from './animation/aboutAnimations'
+import { careersAnimations } from './animation/careersAnimations'
 import { revealText } from './animation/revealText'
 import { fillText, fillTextHover } from './animation/fillText'
 import { parallaxColumns } from './animation/parallaxColumns'
@@ -92,11 +94,11 @@ swup.hooks.on('animation:in:start', () => {
   document.documentElement.classList.remove('is-transitioning')
 })
 
-swup.hooks.on('animation:in:end', () => {
-  if (ScrollTrigger) {
-    ScrollTrigger.refresh()
-  }
-})
+// swup.hooks.on('animation:in:end', () => {
+//   if (ScrollTrigger) {
+//     ScrollTrigger.refresh()
+//   }
+// })
 
 // document.addEventListener('DOMContentLoaded', () => init())
 
@@ -111,6 +113,7 @@ function smoothScroll() {
     smooth: 1,
     effects: true,
     // smoothTouch: 0.1,
+    normalizeScroll: true
   })
 }
 
@@ -142,10 +145,18 @@ function init() {
     generalAnimations()
   }
 
+  if (document.querySelector('body.about')) {
+    aboutAnimations()
+  }
+
+  if (document.querySelector('body.careers')) {
+    careersAnimations()
+  }
+
   if (document.querySelector('[data-draw-svg]')) {
     drawSVG()
   }
-
+  
   if (document.querySelector('[data-slider="quotes"]')) {
     quotesSlider()
   }

@@ -1,6 +1,6 @@
 @use '../../_partials/_mixins' as *;
 
-[data-slider=services] {
+[data-slider=services].swiper {
   .swiper-wrapper {
     display: flex !important;
     transform-style: preserve-3d;

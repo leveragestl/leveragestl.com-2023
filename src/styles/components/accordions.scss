@@ -2,15 +2,30 @@
 @use 'node_modules/easings-css/_easings.scss' as *;
 
 .accordion {
-  --padding: 20px;
+  --paddingX: 1rem;
+  --paddingY: 1.1875rem;
 
-  margin-bottom: 0;
   // display: inline-block;
   width: 100%;
+  border: 1px solid theme('colors.darkgray');
+  margin-bottom: 1rem;
+  padding: 0 var(--paddingX);
 
   @screen md {
-    // margin-bottom: 1rem;
-    --padding: 30px;
+    --paddingX: 2rem;
+  }
+
+  &.job-listing {
+    --paddingX: 0;
+    --paddingY: 1.25rem;
+
+    border: none;
+    border-bottom: 1px solid theme('colors.darkgray');
+    margin-bottom: 0;
+
+    @screen lg {
+      --paddingY: 2.5rem;
+    }
   }
 
   &__checkbox {
@@ -21,29 +36,81 @@
     position: relative;
     display: block;
     background-color: rgba(255,255,255,0.8);
-    // box-shadow: 0 0 10px rgba(0,0,0,0.15);
     border-radius: 5px;
-
-    @screen md {
-      // box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
   }
 
   &__header {
     position: relative;
     width: 100%;
-    padding: 30px 0;
     cursor: pointer;
     z-index: 10;
     text-align: left;
     display: inline-grid;
     grid-template-columns: auto 1fr;
     align-items: center;
+    padding: var(--paddingY) 0;
 
     @screen lg {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       justify-content: space-between;
-      padding: 40px 0;
+
+      & > * {
+        display: contents;
+      }
+    }
+
+    .job-listing & {
+      // padding: 30px 0;
+
+      @screen lg {
+        grid-template-columns: repeat(3, 1fr);
+        // padding: 40px 0;
+      }
+    }
+  }
+
+  &__label {
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 1rem;
+    line-height: 1;
+
+    @screen lg {
+      font-size: 1rem;
+      text-align: left;
+    }
+
+    .job-listing & {
+      font-size: 1.5rem;
+
+      @screen lg {
+        font-size: 1.625rem;
+      }
+    }
+  }
+
+  &__indicator-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 1rem;
+
+    @screen lg {
+      text-align: right;
+      padding: 0 2rem;
+    }
+  }
+
+  &__type {
+    font-size: 20px;
+    color: theme('colors.lightgray');
+    width: 100%;
+    margin-bottom: 0;
+
+    @screen lg {
+      text-align: center;
+      font-size: 24px;
+      color: theme('colors.darkgray');
     }
   }
 
@@ -87,23 +154,13 @@
       }
     }
   }
-  
-  &__question {
-    font-family: theme('fontFamily.serif');
-    text-transform: none;
-    letter-spacing: 0;
-    font-weight: 600;
-    margin-bottom: 0;
-    font-size: 1.125rem;
-    padding-right: 1rem;
-  }
 
   &__content {
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 640ms $easeOutExpo 80ms;
-    padding: var(--padding) 0;
-    margin-top: calc(var(--padding) * -2);
+    // padding: calc(var(--paddingY) * 2) 0;
+    // margin-top: calc(var(--paddingY) * -2);
 
     .accordion__checkbox:checked + .accordion__inner & {
       grid-template-rows: 1fr;
@@ -111,21 +168,24 @@
     }
   }
 
-  &__answer {
+  &__content-inner {
     min-height: 0;
-    transition: visibility 320ms $easeOutExpo, opacity 320ms $easeOutExpo;
+    transition: visibility 320ms $easeOutExpo, opacity 320ms $easeOutExpo, padding 320ms;
     visibility: hidden;
     opacity: 0;
+    max-width: 100ch;
+    text-align: left;
 
     .accordion__checkbox:checked + .accordion__inner & {
       opacity: 1;
       visibility: visible;
       transition: opacity 640ms $easeOutExpo 160ms;
+      padding-bottom: var(--paddingY);
+      // padding: calc(var(--paddingY) / 2) 0;
     }
 
     p {
       margin-bottom: 0;
-      padding: 1rem 0;
     }
   }
 }

@@ -96,48 +96,62 @@ export function generalAnimations() {
 
     for (const animGroup of animGroups) { 
 
-      // Start
-      let animStart = 'top 75%' 
-      if (window.matchMedia('(max-width: 1023.98px)').matches) {
-        animStart = 'top bottom'
-      }
-      if (animGroup.hasAttribute('data-anim-start')) {
-        animStart = animGroup.getAttribute('data-anim-start')
-      }
+      if (animGroup.getAttribute('data-anim-group') == 'stagger') {
 
-      // Markers
-      let animMarkers = false
-      if (animGroup.hasAttribute('data-anim-markers')) {
-        animMarkers = animGroup.getAttribute('data-anim-markers')
-      }
+        let animStaggerElemArray = []
+        const animStaggerElems = animGroup.querySelectorAll('[data-anim-elem]')
 
-      const animGroupTL = gsap.timeline({
-        defaults: {
-          duration: 1,
-          ease: 'none'
-        },
-        scrollTrigger: {
-          trigger: animGroup,
-          start: animStart,
-          markers: animMarkers,
-          toggleActions: 'restart none none reverse'
-        }
-      })
-
-      let animElems = animGroup.querySelectorAll('[data-anim-elem]')
-  
-      for (const animElem of animElems) {
-
-        // Timing
-        let animTiming
-        if (animGroup.hasAttribute('data-anim-timing')) {
-          animTiming = animGroup.getAttribute('data-anim-timing')
-        }
-        if (animElem.hasAttribute('data-anim-timing')) {
-          animTiming = animElem.getAttribute('data-anim-timing')
+        for (const animStaggerElem of animStaggerElems) {
+          animStaggerElemArray.push(animStaggerElem)
         }
 
-        animationEffect(animElem, animGroupTL, animTiming)
+        gsap.to(animStaggerElemArray, {duration: 2, ease: 'expo.out', delay: 1, autoAlpha: 1, y: 0, stagger: {each: 0.1, ease: 'expo.in'}})
+
+      } else {
+
+        // Start
+        let animStart = 'top 75%' 
+        if (window.matchMedia('(max-width: 1023.98px)').matches) {
+          animStart = 'top bottom'
+        }
+        if (animGroup.hasAttribute('data-anim-start')) {
+          animStart = animGroup.getAttribute('data-anim-start')
+        }
+
+        // Markers
+        let animMarkers = false
+        if (animGroup.hasAttribute('data-anim-markers')) {
+          animMarkers = animGroup.getAttribute('data-anim-markers')
+        }
+
+        const animGroupTL = gsap.timeline({
+          defaults: {
+            duration: 1,
+            ease: 'none'
+          },
+          scrollTrigger: {
+            trigger: animGroup,
+            start: animStart,
+            markers: animMarkers,
+            toggleActions: 'restart none none reverse'
+          }
+        })
+
+        let animElems = animGroup.querySelectorAll('[data-anim-elem]')
+    
+        for (const animElem of animElems) {
+
+          // Timing
+          let animTiming
+          if (animGroup.hasAttribute('data-anim-timing')) {
+            animTiming = animGroup.getAttribute('data-anim-timing')
+          }
+          if (animElem.hasAttribute('data-anim-timing')) {
+            animTiming = animElem.getAttribute('data-anim-timing')
+          }
+
+          animationEffect(animElem, animGroupTL, animTiming)
+        }
       }
     } 
   }

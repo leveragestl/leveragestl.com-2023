@@ -19,7 +19,7 @@
 .wrapperDiagonal {
   position: relative;
   display: block;
-  background-color: white;
+  // background-color: white;
   color: theme('colors.darkgray');
   // min-height: 100vh;
   padding-top: calc(var(--diagWrapperHeight)/2);
@@ -52,6 +52,7 @@
     }
 
     footer & {
+      transform: skewY(var(--diagWrapperAngle));
       height: calc(2 * var(--diagWrapperHeight));
       margin-top: calc(var(--diagWrapperHeight) * -1.5);
     }

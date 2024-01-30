@@ -35,6 +35,9 @@
 // Links
 @use './core/links';
 
+// Animations
+@use './core/animations';
+
 // Page Transitions
 // @use './core/transitions';
 
@@ -97,13 +100,13 @@
 }
 
 [data-anim-elem="fillText"] {
-  width: fit-content;
+  // width: fit-content;
 }
 
 [data-anim-elem="fillText"] > *,
 .fillText__line {
   display: inline-block;
-  width: fit-content;
+  // width: fit-content;
 }
 
 .split_outer {
@@ -116,4 +119,15 @@
 
 body.scroll-disabled {
   height: 100% !important;
+}
+
+html.is-rendering::before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
 }

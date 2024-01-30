@@ -70,11 +70,10 @@ h3, .h3 {
 
 h4, .h4 {
   font-size: 1.5rem;
-  line-height: normal;
+  line-height: 1;
   text-transform: uppercase;
   font-family: theme('fontFamily.sans');
-  font-weight: bold;
-  line-height: normal;
+  font-weight: 800;
 
   @screen xl {
     font-size: 1.625rem;

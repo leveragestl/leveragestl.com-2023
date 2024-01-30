@@ -14,69 +14,81 @@ import awards from '../data/awards.json'
 ---
 
 <Layout title='About Us' namespace="about">
-  <Hero class="pb-32 lg:pb-0">
-    <h2 class="h1"><span class="text-outline text-outline--light">A culture of</span> <br class="hidden lg:block">collabo&shy;ration</h2>
-    <div class="lg:max-w-[772px]">
-      <p class="large">For more than a decade, we've embraced a culture of collaboration that values the relationship over the bottom line, where we partner with our clients and treat their business as our own.</p>
-    </div>
-  </Hero>
-  <WrapperDiagonal class="">
-    <section class="wrapper lg:mb-48 mb-20 transition-fade transition-in">
-      <figure class="w-full h-auto -mt-[calc(var(--diagWrapperHeight)_+_6rem)] lg:-mt-[--diagWrapperHeight] z-10">
-        <img class="w-full h-full object-cover object-center" src="/about-collage.jpg" alt="">
-      </figure>
-
-      <div class="text-center max-w-[815px] mx-auto mt-20 lg:mt-32">
-        <h3 class="h2 font-[800] px-8 lg:px-0">We strive to think strategically, act selflessly and grow creatively.</h3>
-        <div class="content-block px-4">
-          <p class="large">Spin up a template or logo in a couple of hours? Nah, your business deserves way better than that. We refuse to compromise on creating exceptional work and we thrive on solving problems. Our passion shows through when we're challenged to think outside of the box and push the limits of creativity to design, build, and share delightful experiences that drive results across all mediums.</p>
-          <p class="large">Beyond simply designing, building, and implementing beautiful brand experiences, our team tackles each day with a broader goal — to live up to our mantra and provide value in everything we do.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="staff" class="bg-darkgray text-white transition-fade transition-in">
-      <div class="text-center wrapper flex w-full justify-center items-center pt-52 pb-80 md:py-60">
-        <h3 class="h1 text-outline text-outline--light md:text-72 xl:text-[110px] leading-none">Be useful.<br>Be kind.<br>Be fearless.</h3>
-      </div>
-
-      <div class="relative pb-40 mb-20 lg:pb-40 lg:mb-40 text-left lg:grid lg:grid-cols-margins-12">
-        <div class="wrapper lg:contents">
-          <div class="col-start-wrapper col-end-mid row-start-1">
-            <h3 class="h1">No fluff. <br> Real people.</h3>
-          </div>
-          <div class="max-w-2xl col-start-wrapper col-end-mid row-start-2">
-            <p class="large">It's not about us, but since we'll be an extension of your team—we figured you may want to see our faces before we get rollin'.</p>
+  <div class="pin-wrapper">
+    <section id="hero" class="hero relative grid wrapper bg-darkgray text-white text-left grid-rows-[var(--site-header-height)_1fr_auto] pb-32 lg:pb-0">
+      <div class="row-start-2 !flex items-center transition-in z-10 pt-20 lg:pt-40">
+        <div class="transition-fade">
+          <h2 class="h1"><span class="text-outline text-outline--light">A culture of</span> <br class="hidden lg:block">collabo&shy;ration</h2>
+          <div class="lg:max-w-[772px]">
+            <p class="large">For more than a decade, we've embraced a culture of collaboration that values the relationship over the bottom line, where we partner with our clients and treat their business as our own.</p>
           </div>
         </div>
-        <div data-slider="staff" data-cursor="-hidden" class="swiper flex flex-col md:flex-row gap-x-20 wrapper cursor-grab active:cursor-grabbing col-start-first col-end-last row-start-3 w-full mt-20">
-          <div class="swiper-wrapper">
-            {staff.map((staff) =>
-              <StaffMember name={staff.name} title={staff.title} img={staff.img} />
-            )}
+      </div>
+      <!-- photo shuffle -->
+      <div data-anim-group="unshuffle" class="z-50 row-start-3 mt-20 lg:mt-80 relative grid lg:-mb-[--diagWrapperHeight]">
+        <figure data-anim-item="1" class="w-11/12 h-auto aspect-[1208/591] col-start-1 col-end-1 row-start-1 row-end-1 ml-[--column-width]">
+          <img class="w-full h-full object-cover object-center" src="/about/huddle.jpg" alt="">
+        </figure>
+        <figure data-anim-item="2" class="w-11/12 h-auto aspect-[1208/591] col-start-1 col-end-1 row-start-1 row-end-1 mt-8">
+          <img class="w-full h-full object-cover object-center" src="/about/chip-dip.jpg" alt="">
+        </figure>
+        <figure data-anim-item="3" class="w-11/12 h-auto aspect-[1208/591] col-start-1 col-end-1 row-start-1 row-end-1 ml-[calc(var(--column-width)/4)] -mt-8">
+          <img class="w-full h-full object-cover object-center" src="/about/beer.jpg" alt="">
+        </figure>
+      </div>
+    </section>
+    <WrapperDiagonal class="pt-[--diagWrapperHeight]">
+      <section class="wrapper lg:mb-48 mb-20 transition-fade transition-in">
+        <div class="text-center max-w-[815px] mx-auto mt-20 lg:mt-32">
+          <h3 class="h2 font-[800] px-8 lg:px-0">We strive to think strategically, act selflessly and grow creatively.</h3>
+          <div class="content-block px-4">
+            <p class="large">Spin up a template or logo in a couple of hours? Nah, your business deserves way better than that. We refuse to compromise on creating exceptional work and we thrive on solving problems. Our passion shows through when we're challenged to think outside of the box and push the limits of creativity to design, build, and share delightful experiences that drive results across all mediums.</p>
+            <p class="large">Beyond simply designing, building, and implementing beautiful brand experiences, our team tackles each day with a broader goal — to live up to our mantra and provide value in everything we do.</p>
           </div>
         </div>
-        <div class="flex gap-x-4 col-start-mid col-end-container row-start-2 w-full justify-center lg:justify-end mt-8 lg:mt-0 px-[--wrapper-margin] lg:px-0">
-          <NavArrows />
+      </section>
+      <section id="staff" class="bg-darkgray text-white transition-fade transition-in">
+        <div class="relative text-center wrapper grid grid-cols-12 grid-rows-[repeat(2,_auto)_1fr] w-full justify-center items-center pt-52 pb-80 md:py-60">
+          <h3 class="h1 text-outline text-outline--light md:text-72 xl:text-[110px] leading-none row-start-1 row-end-3 col-start-first col-span-full z-10">Be useful.<br>Be kind.<br>Be fearless.</h3>
+          <figure data-speed="1.1" class="aspect-[438/447] col-start-9 col-end-last row-end-last row-span-2 w-full h-full z-0">
+            <img class="object-cover object-center w-full h-full" src="/careers/winslow-treat.jpg" alt="Abbey feeding Winslow the dog a treat" />
+          </figure>
         </div>
-      </div>
-    </section>
-
-    <section id="quotes" class="wrapper lg:pt-48 text-left transition-fade transition-in">
-      <div class="transition-fade">
-        <Quotes class="mb-16 lg:px-16 lg:mb-32" />
-      </div>
-    </section>
-
-    <section class="wrapper my-40 lg:my-80 lg:text-left transition-fade transition-in">
-      <h3 class="h4 font-black mb-0">Awards we're proud of</h3>
-      <div class="grid lg:grid-cols-auto-3 gap-y-4 lg:gap-y-12 lg:mt-12">
-        <div class="award__line col-span-full border border-lightgray mt-8"></div>
-        {awards.map((award) => 
-          <Award org={award.org} award={award.award} proj={award.proj} link={award.link} year={award.year} />
-        )}
-      </div>
-    </section>
-
-  </WrapperDiagonal>
+        <div class="relative pb-40 mb-20 lg:pb-40 lg:mb-40 text-left lg:grid lg:grid-cols-margins-12">
+          <div class="wrapper lg:contents">
+            <div class="col-start-wrapper col-end-mid row-start-1">
+              <h3 class="h1">No fluff. <br> Real people.</h3>
+            </div>
+            <div class="max-w-2xl col-start-wrapper col-end-mid row-start-2">
+              <p class="large">It's not about us, but since we'll be an extension of your team—we figured you may want to see our faces before we get rollin'.</p>
+            </div>
+          </div>
+          <div data-slider="staff" data-cursor="-hidden" class="swiper flex flex-col md:flex-row gap-x-20 wrapper cursor-grab active:cursor-grabbing col-start-first col-end-last row-start-3 w-full mt-20">
+            <div class="swiper-wrapper">
+              {staff.map((staff) =>
+                <StaffMember name={staff.name} title={staff.title} img={staff.img} />
+              )}
+            </div>
+          </div>
+          <div class="flex gap-x-4 col-start-mid col-end-container row-start-2 w-full justify-center lg:justify-end mt-8 lg:mt-0 px-[--wrapper-margin] lg:px-0">
+            <NavArrows />
+          </div>
+        </div>
+      </section>
+      <section id="quotes" class="wrapper lg:pt-48 text-left transition-fade transition-in">
+        <div class="transition-fade">
+          <Quotes class="mb-16 lg:px-16 lg:mb-32" />
+        </div>
+      </section>
+      <section class="wrapper my-40 lg:my-80 lg:text-left transition-fade transition-in">
+        <h3 class="h4 font-black mb-0">Awards we're proud of</h3>
+        <div class="grid lg:grid-cols-auto-3 gap-y-4 lg:gap-y-12 lg:mt-12">
+          <div class="award__line col-span-full border border-lightgray mt-8"></div>
+          {awards.map((award) =>
+            <Award org={award.org} award={award.award} proj={award.proj} link={award.link} year={award.year} />
+          )}
+        </div>
+      </section>
+    </WrapperDiagonal>
+  </div>
 </Layout>

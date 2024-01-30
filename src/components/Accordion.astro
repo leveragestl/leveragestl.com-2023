@@ -1,21 +1,29 @@
 ---
 interface Props {
-  title: string,
-  description: string
+  group: string,
+  id: string,
+  label: string,
+  class?: string,
+  open?: boolean;
+  [x: string]: any;
 }
-const {title, description} = Astro.props
+const {id, label, class: className, open = false, ...rest} = Astro.props
 ---
 
-<div class="accordion">
-  <input class="accordion__checkbox" type="checkbox" id="accordion-0">
+<div class:list={['accordion', className]} {...rest}>
+  <input class="accordion__checkbox" type="checkbox" checked={open && "checked"} id=`accordion-${id}`>
   <div class="accordion__inner">
-    <label class="accordion__header" for="accordion-0">
-      <h4 class="accordion__question">{title}</h4>
-      <div class="accordion__indicator"></div>
+    <label class="accordion__header" for=`accordion-${id}`>
+      <div class="">
+        <h3 class="accordion__label">{label}</h3>
+      </div>
+      <div class="accordion__indicator-wrapper">
+        <div class="accordion__indicator"></div>
+      </div>
     </label>
     <div class="accordion__content">
-      <div class="accordion__answer">
-        <p set:html={description} />
+      <div class="accordion__content-inner">
+        <slot />
       </div>
     </div>
   </div>

@@ -2,21 +2,126 @@
 import Layout from '../layouts/Layout.astro'
 import Hero from '../components/Hero.astro'
 import WrapperDiagonal from '../components/WrapperDiagonal.astro'
-import Button from '../components/ui/Button-old.astro'
+
+// Components
 import CTA from '../components/CTA.astro'
+import Accordion from '~/components/Accordion.astro'
 import AccordionJobListing from '../components/AccordionJobListing.astro'
+
+// UI
+import Button from '~/components/ui/Button.astro'
 
 import benefits from '../data/benefits.json'
 import jobs from '../data/jobs.json'
-import { parse } from '@barba/core/dist/core/src/utils/url'
 ---
 
 <Layout title='Careers' namespace="careers">
-  <Hero class="text-center justify-center">
-    <h2 class="h1 text-[55px] xl:text-[110px]"><span class="text-outline text-outline--light">Join our</span> <br class="hidden lg:block">team</h2>
-    <Button title="view job openings" url="#openings" />
-  </Hero>
-  <WrapperDiagonal defaultCTA={false}>
+
+  <div class="pin-wrapper">
+    <section data-anim-group="cascade" id="hero" class="hero text-center relative grid">
+      <!-- content -->
+      <div class="col-start-1 col-end-1 row-start-1 row-end-1 w-full h-full grid wrapper grid-rows-[var(--site-header-height)_1fr_calc(var(--diagWrapperHeight)_/_2)] bg-darkgray text-white overflow-hidden justify-center min-h-[675px] xl:min-h-screen">
+        <div class="row-start-2 !flex items-center transition-in -translate-y-[10%] xl:translate-y-0">
+          <div class="transition-fade">
+    
+            <h2 class="h1 text-[55px] md:text-72 xl:text-[120px] xl:leading-[110px]"><span class="text-outline text-outline--light">Join our</span> <br class="hidden md:block" />team</h2>
+            <Button slash tag="a" href="#openings">view job openings</Button>
+          </div><!-- transition-fade -->
+        </div>
+      </div>
+
+      <!-- photos -->
+      <!-- top -->
+      <figure data-anim-item="1" class="absolute z-50 top-0 left-1/2 translate-y-[100vh] -translate-x-1/2 opacity-0">
+        <div class="transition-fade">
+          <picture class="bg-mediumgray">
+            <img class="aspect-[438/448] w-[166px] sm:w-[250px] md:w-[250px] xl:w-[438px] object-cover object-center" src="/public/careers/winslow-treat.jpg" alt="">
+          </picture>
+        </div>
+      </figure>
+      <!-- right -->
+      <figure data-anim-item="2" class="absolute z-50 -right-8 lg:-right-20 translate-y-[100vh] opacity-0">
+        <div class="transition-fade">
+          <picture class="bg-mediumgray">
+            <img class="aspect-[438/448] w-[166px] sm:w-[250px] md:w-[250px] xl:w-[438px] object-cover object-center" src="/public/careers/matt-hat.jpg" alt="">
+          </picture>
+        </div>
+      </figure>
+      <!-- left -->
+      <figure data-anim-item="3" class="absolute z-50 left-[--container-margin] translate-y-[100vh] opacity-0">
+        <div class="transition-fade">
+          <picture class="bg-mediumgray">
+            <img class="aspect-[438/448] w-[166px] sm:w-[250px] md:w-[250px] xl:w-[438px] object-cover object-center" src="/public/careers/andy-frog.jpg" alt="">
+          </picture>
+        </div>
+      </figure>
+      <!-- bottom -->
+      <figure data-anim-item="4" class="absolute z-50 left-1/2 translate-y-[100vh] -translate-x-1/2 opacity-0">
+        <div class="transition-fade">
+          <picture class="bg-mediumgray">
+            <img class="aspect-[438/448] lg:translate-x-[80%] w-[166px] sm:w-[250px] md:w-[250px] xl:w-[438px] object-cover object-center" src="/public/careers/iwd.jpg" alt="">
+          </picture>
+        </div>
+      </figure>
+
+    </section>
+
+    <div class="wrapperCap wrapperCap--top"></div>
+  </div>
+
+    <!--
+    <section data-anim-group="stagger" id="hero" class="hero text-center relative grid">
+      <!-- content --
+      <div class="col-start-1 col-end-1 row-start-1 row-end-1 w-full h-full grid wrapper grid-rows-[var(--site-header-height)_1fr_calc(var(--diagWrapperHeight)_/_2)] bg-darkgray text-white overflow-hidden justify-center min-h-[675px] xl:min-h-screen">
+        <div class="row-start-2 !flex items-center transition-in -translate-y-[10%] xl:translate-y-0">
+          <div class="transition-fade">
+        
+            <h2 class="h1 text-[55px] md:text-72 xl:text-[120px] xl:leading-[110px]"><span class="text-outline text-outline--light">Join our</span> <br class="hidden md:block" />team</h2>
+            <Button slash tag="a" href="#openings">view job openings</Button>
+          </div><!-- transition-fade --
+        </div>
+      </div>
+  
+      <!-- photos --
+      <!-- top --
+      <figure class="absolute z-40 top-0 left-1/2 -translate-y-1/2 -translate-x-1/2">
+        <div data-anim-elem class="transition-fade">
+          <picture class="bg-mediumgray">
+            <img class="aspect-[438/448] w-[166px] sm:w-[250px] md:w-[250px] xl:w-[438px] md:-translate-y-[25%] lg:-translate-y-0 object-cover object-center" src="/public/careers/winslow-treat.jpg" alt="">
+          </picture>
+        </div>
+      </figure>
+  
+      <!-- right --
+      <figure class="absolute z-40 top-1/2 -right-8 lg:-right-20 -translate-y-1/2">
+        <div data-anim-elem class="transition-fade">
+          <picture class="bg-mediumgray">
+            <img class="aspect-[438/448] w-[166px] sm:w-[250px] md:w-[250px] xl:w-[438px] translate-y-[90%] sm:-translate-y-0 object-cover object-center" src="/public/careers/matt-hat.jpg" alt="">
+          </picture>
+        </div>
+      </figure>
+  
+      <!-- bottom --
+      <figure class="absolute z-40 top-full left-1/2 -translate-y-1/2 -translate-x-1/2">
+        <div data-anim-elem class="transition-fade">
+          <picture class="bg-mediumgray">
+            <img class="aspect-[438/448] w-[166px] sm:w-[250px] md:w-[250px] xl:w-[438px] -translate-y-[20%] lg:translate-x-[55%] lg:-translate-y-[15%] object-cover object-center" src="/public/careers/iwd.jpg" alt="">
+          </picture>
+        </div>
+      </figure>
+  
+      <!-- left --
+      <figure class="absolute z-40 top-1/2 left-[--container-margin] -translate-y-1/2">
+        <div data-anim-elem class="transition-fade">
+          <picture class="bg-mediumgray">
+            <img class="aspect-[438/448] w-[166px] sm:w-[250px] md:w-[250px] xl:w-[438px] -translate-y-[10%] lg:translate-y-[35%] object-cover object-center" src="/public/careers/andy-frog.jpg" alt="">
+          </picture>
+        </div>
+      </figure>
+    </section>
+    -->
+    
+  <WrapperDiagonal defaultCTA={false} top={false}>
     <!-- Intro -->
     <section id="intro" data-anim-group data-anim-markers class="mb-20 lg:mb-48 text-darkgray wrapper">
       <div class="lg:max-w-[815px] lg:mx-auto transition-fade transition-in text-center">
@@ -32,13 +137,12 @@ import { parse } from '@barba/core/dist/core/src/utils/url'
         </div>
       </div>
     </section>
-
     <!-- Benefits -->
     <section id="benefits" class="bg-darkgray text-white text-left wrapper py-20 lg:py-72 transition-fade transition-in">
       <div data-arrange="2-columns" class="grid lg:grid-cols-2 gap-x-60">
         <div class="-mt-24 hidden lg:block" data-arrange-column="1"></div>
         <div class="mt-24 hidden lg:block" data-arrange-column="2"></div>
-        {benefits.map((benefit, i) => 
+        {benefits.map((benefit, i) =>
           <div data-arrange-item class="w-full mb-14 pb-14 lg:mb-24 lg:pb-24 border-b border-b-mediumgray last:border-b-0 last:mb-0 last:pb-0 benefit max-w-xl mx-auto lg:max-w-none">
             <h3>{benefit.headline}</h3>
             <div class="lg:max-w-[440px]">
@@ -57,9 +161,8 @@ import { parse } from '@barba/core/dist/core/src/utils/url'
             </div>
           )}
         </div>
-
         <div class="lg:mt-16">
-          {benefits.filter((benefit, i) => (i % 2 !== 0)).map((benefit, i) => 
+          {benefits.filter((benefit, i) => (i % 2 !== 0)).map((benefit, i) =>
             <div class="w-full mb-20 benefit">
               <h3>{benefit.headline}</h3>
               <p>{benefit.paragraph}</p>
@@ -69,20 +172,25 @@ import { parse } from '@barba/core/dist/core/src/utils/url'
       </div>
       -->
     </section>
-
     <!-- Openings -->
     <section id="openings" class="wrapper py-20 lg:py-40 transition-fade transition-in">
-      <h3 data-anim-elem="fillText" class="h1 text-left grid grid-cols-1 grid-rows-1">
+      <h3 data-anim-elem="fillText" class="h1 lg:w-fit lg:mb-20 grid grid-cols-1 grid-rows-1">
         <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--dark">Current <br>Openings</span>
         <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">Current <br>Openings</span>
       </h3>
-      
+  
       <div class="lg:mx-14 border-t border-darkgray mt-8 lg:mt-12">
-        {jobs.map((job, i) => 
-          <AccordionJobListing title={job.title} type={job.type} description={job.description} id={i.toString()} />
-        )}  
+        {jobs.map((job, i) =>
+          <AccordionJobListing
+            label={job.title}
+            type={job.type}
+            content={job.description}
+            group="jobs"
+            id={i.toString()}
+            class="job-listing"
+          />
+        )}
       </div>
-
       <!--
       <li class="border-b-darkgray border-b py-8">
         <div class="flex justify-between items-center">
@@ -96,6 +204,45 @@ import { parse } from '@barba/core/dist/core/src/utils/url'
       </li>
       -->
     </section>
-    <CTA headlines={['Meet our team']} buttonText='learn more about us' buttonUrl='/about/' />
+    <!-- Application -->
+    <section id="application" class="wrapper text-left">
+      <div class="lg:grid grid-cols-12">
+        <figure class="mb-8 col-start-first col-span-4">
+          <img src="/mug.jpg" alt="Leverage branded mug on desk" />
+        </figure>
+        <div class="col-end-last col-span-7 lg:mt-14">
+          <h2 class="text-extrabold mb-4 lg:mb-8">Ready to apply?</h2>
+          <div class="content-block">
+            <p>We believe the creative agency world is full of multi-talented people. Rather than specific job descriptions, our hope is to learn about anything you're good at, what interests you, or simply what value you think you can bring to a company like Leverage. You may be a developer by trade, but you also happen to love to write — that's great, let us know! We'd love for you to reach out and let us know about your talents, what makes you tick, and what you hope to accomplish in your career.</p>
+          </div>
+          <form action="https://api.web3forms.com/submit" method="POST" id="form" class="needs-validation mt-14" novalidate style="--primary-color: var(--color-darkgray)">
+            <!-- Hidden -->
+            <input type="hidden" name="access_key" value="c03b3bbe-0911-4575-8186-03c0fa3ec8aa" />
+            <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
+  
+            <ul class="steps mb-10">
+              <li class="step h5 active">Step 1</li>
+              <li class="step h5">Step 2</li>
+              <li class="step h5">Step 3</li>
+            </ul>
+            <div class="content-block">
+              <h4 class="mb-4">First, tell us about your experience.</h4>
+              <p>Select as many as you want. Don't see something listed that you're great at? Write it in!</p>
+            </div>
+            <Accordion label="Creative" group="experience" id="creative">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sit vero modi, in facilis aperiam. Officia reprehenderit, illo cupiditate et soluta consequuntur, dolores sint assumenda voluptatum magnam in illum sit!</Accordion>
+            <Accordion label="Technical" group="experience" id="technical">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sit vero modi, in facilis aperiam. Officia reprehenderit, illo cupiditate et soluta consequuntur, dolores sint assumenda voluptatum magnam in illum sit!</Accordion>
+            <Accordion label="Marketing" group="experience" id="marketing">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sit vero modi, in facilis aperiam. Officia reprehenderit, illo cupiditate et soluta consequuntur, dolores sint assumenda voluptatum magnam in illum sit!</Accordion>
+            <Accordion label="Project Development" group="experience" id="project-development">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sit vero modi, in facilis aperiam. Officia reprehenderit, illo cupiditate et soluta consequuntur, dolores sint assumenda voluptatum magnam in illum sit!</Accordion>
+            <!-- Other Skills -->
+            <div class="field">
+              <textarea placeholder="any other skills to note?" name="other_skills" id="other_skills"></textarea>
+              <div class="empty-feedback invalid-feedback">Please enter your message.</div>
+            </div>
+            <Button class="min-w-[150px]" tag="button" type="submit" outline>Next</Button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <CTA class="px-8 lg:px-0" headlines={["Meet our team"]} buttonText="learn more about us" buttonUrl="/about/" />
   </WrapperDiagonal>
 </Layout>

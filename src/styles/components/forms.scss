@@ -1,4 +1,6 @@
 form {
+  --primary-color: white;
+
   .field, .field-group {
     margin-bottom: 1rem;
   }
@@ -11,13 +13,18 @@ form {
     display: block;
     width: 100%;
     padding: 0.75rem 1rem;
-    border: 1px solid white;
+    border: 1px solid var(--primary-color);
     outline: none;
     background-color: transparent;
-    color: white;
+    color: var(--primary-color);
     font-family: theme('fontFamily.serif');
     font-style: italic;
     font-size: 0.9375rem;
+    padding: 1.5rem;
+
+    &::placeholder {
+      font-weight: bold;
+    }
 
     &:focus {
     }
@@ -37,7 +44,7 @@ form {
   }
   
   ::placeholder, select {
-    color: white;
+    color: var(--primary-color);
     text-transform: lowercase;
     font-family: theme('fontFamily.serif');
     font-style: italic;
@@ -61,7 +68,7 @@ form {
     --step-color: theme('colors.lightgray');
 
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     column-gap: 1rem;
     text-transform: uppercase;
     font-weight: bold;

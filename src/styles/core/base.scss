@@ -40,12 +40,12 @@ main {
   overflow-x: hidden;
 }
 */
-
+/*
 @media only screen and (any-hover: none) and (pointer: coarse) {
   html, body {
     height: auto !important;
     overscroll-behavior: auto !important;
-    scroll-behavior: none !important;
+    scroll-behavior: auto !important;
   }
 
   #smooth-wrapper {
@@ -62,3 +62,4 @@ main {
     overflow: visible;
   }
 }
+*/

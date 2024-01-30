@@ -7,14 +7,26 @@ interface Props {
   class?: string;
   headerScrollTrigger?: boolean;
   defaultCTA?: boolean;
+  top?: boolean;
+  bottom?: boolean;
 }
 
-const { class: className, headerScrollTrigger = true, defaultCTA = true } = Astro.props;
+const { 
+  class: className,
+  headerScrollTrigger = true,
+  defaultCTA = true,
+  top = true,
+  bottom = true
+} = Astro.props;
 ---
 {headerScrollTrigger ? <div data-header-scrolled></div> : ''}
+{top && 
 <div class="wrapperCap wrapperCap--top"></div>
+}
 <div class:list={['wrapperDiagonal', className]}>
   <slot />
   {(defaultCTA) && <CTA />}
 </div>
+{bottom && 
 <div class="wrapperCap wrapperCap--bottom"></div>
+}

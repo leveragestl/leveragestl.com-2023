@@ -29,7 +29,7 @@ export function servicesSlider() {
   const sliderWrapperEl = document.querySelector('[data-swiper=wrapper]')
   const slideEls = document.querySelectorAll('[data-swiper=scene]')
 
-  if (window.matchMedia('only screen and (max-width: 1280px), (pointer: coarse)').matches) {
+  if (window.matchMedia('only screen and (max-width: 1280px), (pointer: coarse)').matches && sliderEl && sliderWrapperEl && slideEls) {
     sliderEl.classList.add('swiper')
     sliderWrapperEl.classList.add('swiper-wrapper')
 
@@ -47,11 +47,13 @@ export function servicesSlider() {
       })  
     }, 500);
   } else {
-    sliderEl.classList.remove('swiper')
-    sliderWrapperEl.classList.remove('swiper-wrapper')
-
-    for (const slideEl of slideEls) {
-      slideEl.classList.remove('swiper-slide')
+    if (sliderEl) {
+      sliderEl.classList.remove('swiper')
+      sliderWrapperEl.classList.remove('swiper-wrapper')
+  
+      for (const slideEl of slideEls) {
+        slideEl.classList.remove('swiper-slide')
+      }        
     }
   }
 }

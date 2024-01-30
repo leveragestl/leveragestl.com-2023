@@ -9,7 +9,7 @@ interface Props {
   buttonUrl?: string
 }
 
-const { class: className, defaultClasses = true, headlines = ['We\'re ready', 'when you are'], buttonText = 'start your project', buttonUrl = '/contact/' } = Astro.props
+const { class: className, defaultClasses = true, headlines = ["We\'re ready", "when you are"], buttonText = "start your project", buttonUrl = "/contact/" } = Astro.props
 ---
 
 <section id="cta" data-anim-group data-anim-start="top 80%" class:list={[defaultClasses && 'wrapper mt-24 lg:mt-48 lg:pb-16', className]}>
@@ -23,7 +23,7 @@ const { class: className, defaultClasses = true, headlines = ['We\'re ready', 'w
       <span class="text-outline text-outline--filled">{headlines[1]}</span>
     </h3>
   </div>
-  <div class="mt-12 w-full text-center transition-fade transition-in">
+  <div class="mt-4 lg:mt-12 w-full text-center transition-fade transition-in">
     <Button tag="a" slash href={buttonUrl}>{buttonText}</Button>
   </div>
 </section>

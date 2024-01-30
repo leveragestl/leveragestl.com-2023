@@ -5,22 +5,24 @@ interface Props {
   id?: string,
   class?: string,
   short?: boolean,
+  full?: boolean,
   image?: any,
   alt?: string,
   width?: number,
   height?: number,
 }
 
-const { id, class: className, short = false, image, alt = '', width, height } = Astro.props;
+const { id, class: className, short = false, full = false, image, alt = '', width, height } = Astro.props;
 ---
 
 <section id={id} class:list={[
-  'hero relative grid wrapper bg-darkgray text-white text-left pt-20 overflow-hidden',
+  'hero relative grid wrapper bg-darkgray text-white text-left overflow-hidden',
   !short && 'grid-rows-[var(--site-header-height)_1fr_var(--diagWrapperHeight)]',
   short && 'grid-rows-[var(--site-header-height)_1fr_calc(var(--diagWrapperHeight)_/_2)]',
+  full && 'min-h-screen',
   className
   ]}>
-  <div class="row-start-2 !flex items-center transition-in z-10">
+  <div class="row-start-2 !flex items-center transition-in z-10 pt-20">
     <div class="transition-fade">
       <slot />
     </div>
