@@ -1,5 +1,5 @@
 import gsap from "gsap"
-import ScrollTrigger from "gsap/all"
+import ScrollTrigger from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -10,16 +10,26 @@ export function careersAnimations() {
   scrubAnimation()
 
   function scrubAnimation() {
+    ScrollTrigger.create({
+      trigger: animGroup,
+      scrub: true,
+      pin: '.pin-wrapper',
+      start: 'top top',
+      end: `+=${(photos.length - 2) * 100}%`,
+      // markers: true
+    });
+
     const careersHeroPinTL = gsap.timeline({
       defaults: {
         duration: 1,
         ease: 'none'
       },
       scrollTrigger: {
-        trigger: '.pin-wrapper',
+        trigger: animGroup,
         scrub: true,
-        pin: '.pin-wrapper',
-        // end: `+=${(photos.length - 2) * 100}%`,
+        start: 'top top',
+        // pin: '.pin-wrapper',
+        end: `+=${(photos.length - 1) * 100}%`,
         // markers: true,
         invalidateOnRefresh: true
       }
@@ -45,10 +55,10 @@ export function careersAnimations() {
   
     careersHeroPinTL
       .set('[data-anim-item]', {autoAlpha: 1})
-      .to('[data-anim-item="1"]', {y: '-50vh'})
-      .to('[data-anim-item="2"]', {y: '-50vh'}, '<+=0.2')
-      .to('[data-anim-item="3"]', {y: '-100vh'}, '<+=0.1')
-      .to('[data-anim-item="4"]', {y: 0, onComplete: () => animLastPhoto()}, '<')
+      .to('[data-anim-item="1"]', {duration: 1.2, y: '-=200vh'})
+      .to('[data-anim-item="2"]', {duration: 1.1, y: '-=200vh'}, '<+=0.35')
+      .to('[data-anim-item="3"]', {duration: 1.1, y: '-=200vh'}, '<+=0.1')
+      .to('[data-anim-item="4"]', {duration: 0.9, y: '-=200vh'}, '<+=0.15')
   }
 
   /*

@@ -1,0 +1,42 @@
+---
+import { getCollection } from "astro:content";
+
+// Props
+interface Props {
+  label: string;
+  tags: Array<string>;
+  isFilter?: boolean;
+  scrollTo?: string;
+}
+
+const {label, tags, isFilter = true, scrollTo} = Astro.props
+
+// Utils
+function convertToClass(elem: string, prefix?: string) {
+  return (
+    // prefix (optional) and transform to lowercase
+    (prefix ? prefix+'-' : '') + elem.toLowerCase()
+    // replace '&', '+' and spaces with dash
+    .replace(new RegExp('[ \+_&]', 'g'), '-')
+    // replace dashes of 2 or more with single dash
+    .replace(new RegExp('-{2,}', 'g'), '-')
+  )
+}
+---
+
+<div class="w-full text-left row-start-1 lg:hidden">
+  <button data-filter="dropdown" class="button button--dropdown w-full text-left">Filter {label} By</button>
+</div>
+<div data-filter="filters" class="absolute row-start-2 bg-white border-2 border-darkgray border-t-0 lg:h-auto lg:border-none mb-20 hidden w-full lg:relative lg:flex flex-col lg:flex-row lg:flex-wrap gap-2 [&_li]:leading-none transition-in transition-fade text-left py-2">
+  <div class="w-full lg:w-auto"><button type="button" class="button button--filter active" data-filter="filter" data-filter-target="all"><i class="radio"></i><span class="label">All {label}</span></button></div>
+  {tags.map(tag =>
+    <div>
+    {isFilter &&
+      <button type="button" class="button button--filter" data-filter="filter" data-filter-target={convertToClass(tag)}><i class="checkbox"></i><span class="label">{tag}</span></button>    
+    }
+    {!isFilter &&
+      <a href={`/blog/?category=${convertToClass(tag)}${(scrollTo) ? scrollTo : ''}`} class="button button--filter"><i class="checkbox"></i><span class="label">{tag}</span></a>    
+    }
+    </div>
+  )}
+</div>

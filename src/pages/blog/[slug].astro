@@ -5,6 +5,7 @@ import Layout from '../../layouts/Layout.astro'
 import Hero from '../../components/Hero.astro'
 import WrapperDiagonal from '../../components/WrapperDiagonal.astro'
 import PostFilters from '../../components/PostFilters.astro';
+import TagFilters from '../../components/TagFilters.astro';
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -22,7 +23,15 @@ const { Content } = await entry.render()
 // Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("posts", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
-});
+})
+
+// Get tags that are included in viewable posts
+const postCategories = []
+publishedBlogEntries.forEach(post => {
+  if (postCategories.indexOf(post.data.category) == -1) {
+    postCategories.push(post.data.category)
+  }
+})
 
 // Sort content entries by publication date
 publishedBlogEntries.sort(function (a, b) {
@@ -65,7 +74,7 @@ publishedBlogEntries.map(post =>
 
     <!-- Filters -->
     <section class="transition-in transition-fade relative z-50 wrapper mb-20 md:mb-40">
-      <PostFilters />
+      <TagFilters label="Posts" tags={postCategories} isFilter={false} scrollTo="#feed" />
     </section>
 
     <!-- Recent Posts -->

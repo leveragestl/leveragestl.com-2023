@@ -43,7 +43,6 @@ import { formsHandler } from './components/forms'
 import { compareSwiper } from './components/compareSwiper'
 
 // Vendors
-import { mix } from './vendors/mix'
 import { projectFilters } from './vendors/mix'
 
 // =============================================================================
@@ -204,11 +203,7 @@ function init() {
     formsHandler()
   }
 
-  if (document.querySelector('[data-mix]')) {
-    mix()
-  }
-
-  if (document.querySelector('[data-filter]')) {
+  if (document.querySelector('[data-filter="item"]')) {
     projectFilters()
   }
 }

@@ -12,10 +12,11 @@ interface Props {
   icon: string;
   class?: string;
   project: CollectionEntry<'projects'>;
+  url?: string;
   [x: string]: any;
 }
 
-const { icon, title, project, class: className, ...rest} = Astro.props
+const { icon, title, project, url, class: className, ...rest} = Astro.props
 ---
 <div {...rest} data-swiper="scene" data-scene="container" class:list={['col-start-wrapper col-end-wrapper lg:row-start-2 lg:!grid grid-cols-12 !flex flex-col swiper-slide', className]}>
   <!-- copy -->
@@ -31,7 +32,7 @@ const { icon, title, project, class: className, ...rest} = Astro.props
     </ul>
     <!-- more button -->
     <div class="my-10 lg:my-0 order-last">
-      <Button tag="a" slash>more {title.toLowerCase()} work</Button>
+      <Button href={url} tag="a" slash>more {title.toLowerCase()} work</Button>
     </div>
   </div>
   <!-- image -->

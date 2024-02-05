@@ -97,7 +97,7 @@ const servicesProject3 = await getEntry('projects', 'muros');
 
         <div data-swiper="wrapper" class="grid grid-cols-margins-4 gap-y-8 lg:gap-y-0 lg:grid-cols-margins-12 lg:grid-rows-auto-2 w-full">
           <!-- content: branding -->
-          <ServiceScene id="branding" title="Branding" icon="icon-lightbulb.svg" project={servicesProject1}>
+          <ServiceScene id="branding" title="Branding" icon="icon-lightbulb.svg" project={servicesProject1} url="/work/?category=branding">
             <p slot="description">Branding drives business results. It's the great equalizer, allowing startups to compete with corporate giants. It's also the great differentiator, helping you stand apart from your competition.</p>
             <li slot="services">Brand Guidelines</li>
             <li slot="services">Logo Design</li>
@@ -106,7 +106,7 @@ const servicesProject3 = await getEntry('projects', 'muros');
             <li slot="services">Asset Library</li>
           </ServiceScene>
           <!-- content: website -->
-          <ServiceScene id="websites" title="Websites" icon="icon-lightbulb.svg" project={servicesProject2}>
+          <ServiceScene id="websites" title="Websites" icon="icon-lightbulb.svg" project={servicesProject2} url="/work/?category=website-design-development">
             <p slot="description">Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum.</p>
             <li slot="services">Brand Guidelines</li>
             <li slot="services">Logo Design</li>
@@ -115,7 +115,7 @@ const servicesProject3 = await getEntry('projects', 'muros');
             <li slot="services">Asset Library</li>
           </ServiceScene>
           <!-- content: marketing -->
-          <ServiceScene id="marketing" title="Marketing" icon="icon-lightbulb.svg" project={servicesProject3}>
+          <ServiceScene id="marketing" title="Marketing" icon="icon-lightbulb.svg" project={servicesProject3} url="/work/?category=digital-marketing">
             <p slot="description">Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
             <li slot="services">Brand Guidelines</li>
             <li slot="services">Logo Design</li>

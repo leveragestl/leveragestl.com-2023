@@ -4,6 +4,8 @@ import { getCollection } from "astro:content";
 import Layout from '../../layouts/Layout.astro'
 import Hero from '../../components/Hero.astro'
 import WrapperDiagonal from '../../components/WrapperDiagonal.astro'
+
+import TagFilters from "../../components/TagFilters.astro";
 import PostFilters from "../../components/PostFilters.astro";
 
 // Filter blog entries with 'draft: false' & date before current date
@@ -11,10 +13,36 @@ const publishedBlogEntries = await getCollection("posts", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
 
+// Get tags that are included in viewable posts
+const postCategories = []
+
+// publishedBlogEntries.forEach(post => {
+//   if (postCategories.indexOf(post.data.category) == -1) {
+//     postCategories.push(post.data.category)
+//   }
+// })
+
+import categories from '../../data/categories-posts.json'
+categories.map(category => {
+  postCategories.push(category.slug)
+})
+
 // Sort content entries by publication date
 publishedBlogEntries.sort(function (a, b) {
   return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
-});
+})
+
+// Utils
+function convertToClass(elem: string, prefix?: string) {
+  return (
+    // prefix (optional) and transform to lowercase
+    (prefix ? prefix+'-' : '') + elem.toLowerCase()
+    // replace '&', '+' and spaces with dash
+    .replace(new RegExp('[ \+_&]', 'g'), '-')
+    // replace dashes of 2 or more with single dash
+    .replace(new RegExp('-{2,}', 'g'), '-')
+  )
+}
 ---
 
 <Layout title='Blog' namespace="blog">
@@ -49,27 +77,33 @@ publishedBlogEntries.sort(function (a, b) {
 
     <!-- Filters -->
     <section class="transition-in transition-fade relative z-10 wrapper mb-12 md:mb-24">
-      <PostFilters />
+      <TagFilters label="Posts" tags={postCategories} />
     </section>
 
+    <div class="absolute wrapper" data-filter-message="no-items" style="opacity: 0; visibility: hidden;">No posts found</div>
+
     <!-- Posts -->
-    <section class="wrapper transition-in transition-fade">
-      <div class="grid md:grid-cols-3 gap-12 work-columns">
+    <section id="feed" class="wrapper transition-in transition-fade scroll-mt-60">
+      <div data-filter="container" class="grid md:grid-cols-3 gap-12 work-columns">
         {publishedBlogEntries.slice(1).map((post, i) => (
-          <a href={`/blog/${(post.slug).replaceAll('//', '/')}`} class="text-left">
-            <figure class="w-full mb-4">
-              <img class="w-full aspect-square object-cover" src={post.data.image.src} alt={post.data.image.alt && post.data.image.alt} />
-            </figure>
-            <div>
-              <h3 class="font-serif normal-case text-28/8 font-normal mb-2 lg:mb-6">{post.data.title}</h3>
-              <div class="flex gap-x-2 uppercase font-bold">
-                <span class="text-gold">{post.data.category}</span>
-                <span>/</span>
-                <span>{post.data.author}</span>
+          <div data-filter="item" data-filter-state="exclude" data-filter-tags={convertToClass(post.data.category)} class:list={['[&.hide]:hidden', convertToClass(post.data.category, 'category')]} style="display: none;">
+            <a href={`/blog/${(post.slug).replaceAll('//', '/')}`} class="text-left">
+              <div>
+                <figure class="w-full mb-4">
+                  <img class="w-full aspect-square object-cover" src={post.data.image.src} alt={post.data.image.alt && post.data.image.alt} />
+                </figure>
+                <div>
+                  <h3 class="font-serif normal-case text-28/8 font-normal mb-2 lg:mb-6">{post.data.title}</h3>
+                  <div class="flex gap-x-2 uppercase font-bold">
+                    <span class="text-gold">{post.data.category}</span>
+                    <span>/</span>
+                    <span>{post.data.author}</span>
+                  </div>
+                  <time class="text-gray-400" datetime={post.data.publishDate.toISOString()}>{ /* post.data.publishDate.toDateString() */}</time>
+                </div>
               </div>
-              <time class="text-gray-400" datetime={post.data.publishDate.toISOString()}>{ /* post.data.publishDate.toDateString() */}</time>
-            </div>
-          </a>
+            </a>
+          </div>
         ))}
       </div>
     </section>

@@ -7,12 +7,26 @@ import WrapperDiagonal from '../../components/WrapperDiagonal.astro'
 
 // import FilteredProjects from '../../components/FilteredProjects.vue'
 import WorkExcerpt from '../../components/WorkExcerpt.astro';
-
-import projectCategories from '../../data/categories-projects.json'
+import TagFilters from "../../components/TagFilters.astro";
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedProjectEntries = await getCollection("projects", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
+})
+
+// Get tags that are included in viewable projects
+const projectCategories = []
+// publishedProjectEntries.forEach(project => {
+//   projectCategories.concat(project.data.tags).forEach(item =>{
+//     if (projectCategories.indexOf(item) == -1) {
+//       projectCategories.push(item)
+//     }
+//   })
+// })
+
+import categories from '../../data/categories-projects.json'
+categories.map(category => {
+  projectCategories.push(category.slug)
 })
 
 // Sort content entries by publication date
@@ -31,26 +45,6 @@ function convertToClass(elem: string, prefix?: string) {
     .replace(new RegExp('-{2,}', 'g'), '-')
   )
 }
-
-function arrayIntersect (arr1, arr2) {
-	return arr1.filter(function (item) {
-		return arr2.includes(item);
-	});
-}
-
-let tagSelections = ['video', 'website-design-development']
-let filteredProjects = []
-
-for (const project of publishedProjectEntries) {
-  let tagsArray = []
-  for (const tag of project.data.tags) {
-    tagsArray.push(convertToClass(tag))
-  }
-
-  if(arrayIntersect(tagSelections, tagsArray).length) {
-    filteredProjects.push(project)
-  }
-}
 ---
 
 <Layout title='Work' namespace="work">
@@ -67,25 +61,17 @@ for (const project of publishedProjectEntries) {
       </div>
 
       <div class="grid grid-rows-2 lg:block relative transition-in transition-fade z-10">
-        <div class="w-full text-left row-start-1 lg:hidden">
-          <button data-filter="dropdown" class="button button--dropdown w-full text-left">Filter Projects By</button>
-        </div>
-        <div data-filter="filters" class="absolute row-start-2 bg-white border-2 border-darkgray border-t-0 lg:h-auto lg:border-none mb-20 hidden w-full lg:relative lg:flex flex-col lg:flex-row lg:flex-wrap gap-2 [&_li]:leading-none transition-in transition-fade text-left py-2">
-          <div class="w-full lg:w-auto"><button type="button" class="button button--filter active" data-filter="filter" data-filter-target="all"><i class="radio"></i><span class="label">All Projects</span></button></div>
-          {projectCategories.map(category =>
-            <div><button type="button" class="button button--filter" data-filter="filter" data-filter-target={convertToClass(category.slug)}><i class="checkbox"></i><span class="label">{category.label}</span></button></div>
-          )}
-        </div>
+        <TagFilters label="Projects" tags={projectCategories} />
       </div>
 
+      <div class="absolute" data-filter-message="no-items" style="opacity: 0; visibility: hidden;">No projects found</div>
+
       <div data-filter="container" class="min-h-[50vh] grid md:grid-cols-2 gap-y-12 md:gap-x-36 flex-row work-columns filter-container transition-in transition-fade">
-        <!-- <FilteredProjects client:load /> -->
         {publishedProjectEntries.map((project) =>
-          <div data-filter="item" data-filter-state="include" data-filter-tags={project.data.tags.map(tag => convertToClass(tag))} class:list={['workTile [&.hide]:hidden', project.data.tags.map(tag => convertToClass(tag, 'tag'))]}>
+          <div data-filter="item" data-filter-state="exclude" data-filter-tags={project.data.tags.map(tag => convertToClass(tag))} class:list={['workTile [&.hide]:hidden', project.data.tags.map(tag => convertToClass(tag, 'tag'))]} style="display: none;">
             <WorkExcerpt slug={('/work/'+project.slug).replace('//', '/')} title={project.data.title} img={project.data.image.src} tags={project.data.tags} desc={project.data.excerpt} />
           </div>
         )}
-
         <!-- <div data-mix="include" class=""></div>
         <div data-mix="exclude" class="contents"></div> -->
       </div>

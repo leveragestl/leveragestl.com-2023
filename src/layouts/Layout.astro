@@ -31,12 +31,12 @@ const { title, namespace } = Astro.props;
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <slot />
-          <!-- <div data-transition-mask class="fixed inset-0 bg-gold w-[150%] -left-[25%] -skew-x-[21.8deg] z-[49] hidden"></div> -->
           <SiteFooter />
         </div>
       </div>
     </main>
     <div class="transition-wipe"></div>
+    <div class="transition-mask"></div>
 
     <script>
       // import '../scripts/barba.js'

@@ -121,13 +121,14 @@ body.scroll-disabled {
   height: 100% !important;
 }
 
-html.is-rendering::before {
-  content: '';
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
+html.is-rendering {
+  .transition-mask {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;      
+  }
 }

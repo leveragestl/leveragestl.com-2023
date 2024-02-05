@@ -18,6 +18,9 @@ export function initCursor() {
     },
   })
 
+  // Center dot on page load
+  document.querySelector('.mf-cursor').style.transform = 'translate(50vw, 50vh)'
+
   const expandEls = document.querySelectorAll('[data-cursor-enlarge]')
   for (const expandEl of expandEls) {
     expandEl.addEventListener('mouseenter', () => {

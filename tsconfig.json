@@ -3,11 +3,11 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": "/Users/drewhagni/Documents/Projects/Leverage/sites/Site Redesign 2023/leveragestl.com",
-    "paths": {
-      "~/*": [
-        "src/*"
-      ]
-    },
+    // "paths": {
+    //   "~/*": [
+    //     "src/*"
+    //   ]
+    // },
     "jsx": "preserve"
   },
   "include": [
