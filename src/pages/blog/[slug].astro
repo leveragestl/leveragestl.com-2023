@@ -27,10 +27,15 @@ const publishedBlogEntries = await getCollection("posts", ({ data }) => {
 
 // Get tags that are included in viewable posts
 const postCategories = []
-publishedBlogEntries.forEach(post => {
-  if (postCategories.indexOf(post.data.category) == -1) {
-    postCategories.push(post.data.category)
-  }
+// publishedBlogEntries.forEach(post => {
+//   if (postCategories.indexOf(post.data.category) == -1) {
+//     postCategories.push(post.data.category)
+//   }
+// })
+
+import categories from '../../data/categories-posts.json'
+categories.map(category => {
+  postCategories.push(category.slug)
 })
 
 // Sort content entries by publication date
