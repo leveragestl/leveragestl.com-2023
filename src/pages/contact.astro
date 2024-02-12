@@ -10,7 +10,7 @@ import ContactForm from '../components/ContactForm.astro';
     <h2 class="h1"><span class="text-outline text-outline--light">Let's get</span>  <br class="hidden lg:block"><span class="">started</h2>
   </Hero>
   <WrapperDiagonal class="z-20" defaultCTA={false}>
-    <div class="flex flex-col lg:grid lg:grid-cols-2 wrapper">
+    <div class="flex flex-col lg:grid lg:grid-cols-2 wrapper lg:items-start">
 
       <!-- Info -->
       <section class="font-semibold antialiased grid grid-cols-[auto_1fr] gap-x-8 gap-y-2 items-center lg:-mt-[calc(var(--diagWrapperHeight)_/_3)] order-last lg:order-first text-left transition-fade transition-in">
@@ -35,8 +35,7 @@ import ContactForm from '../components/ContactForm.astro';
       </section>
 
       <!-- Form -->
-      <section class="bg-mediumgray w-full text-white p-6 py-14 lg:p-16 lg:pb-[50%] -mt-[calc(var(--diagWrapperHeight)_+_4rem)] lg:-mt-[calc(var(--diagWrapperHeight)_+_8rem)] lg:-mb-[calc(var(--diagWrapperHeight)_*_2)] mb-16 relative z-50 transition-fade transition-in">
-        <h3 class="font-extrabold">First, tell us about <br>your project.</h3>
+      <section class="bg-mediumgray w-full text-white p-6 py-14 lg:p-16 lg:pb-[50%] -mt-[calc(var(--diagWrapperHeight)_+_4rem)] lg:-mt-[calc(var(--diagWrapperHeight)_+_8rem)] lg:-mb-[calc(var(--diagWrapperHeight)_*_2)] mb-16 relative z-50 transition-fade transition-in min-h-screen">
         <ContactForm />
       </section>
     </div>

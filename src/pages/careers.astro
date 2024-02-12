@@ -4,9 +4,9 @@ import Hero from '../components/Hero.astro'
 import WrapperDiagonal from '../components/WrapperDiagonal.astro'
 
 // Components
-import CTA from '../components/CTA.astro'
-import Accordion from '../components/Accordion.astro'
+import CareersForm from 'src/components/CareersForm.astro'
 import AccordionJobListing from '../components/AccordionJobListing.astro'
+import CTA from '../components/CTA.astro'
 
 // UI
 import Button from '../components/ui/Button.astro'
@@ -173,7 +173,7 @@ import jobs from '../data/jobs.json'
       -->
     </section>
     <!-- Openings -->
-    <section id="openings" class="wrapper py-20 lg:py-40 transition-fade transition-in scroll-mt-80">
+    <section id="openings" class="wrapper py-20 lg:py-40 transition-fade transition-in">
       <h3 data-anim-elem="fillText" class="h1 lg:w-fit lg:mb-20 grid grid-cols-1 grid-rows-1">
         <span data-filltext="outline" class="relative z-40 col-start-1 row-start-1 text-outline text-outline--dark">Current <br>Openings</span>
         <span data-filltext="fill" class="relative z-40 col-start-1 row-start-1">Current <br>Openings</span>
@@ -215,31 +215,7 @@ import jobs from '../data/jobs.json'
           <div class="content-block">
             <p>We believe the creative agency world is full of multi-talented people. Rather than specific job descriptions, our hope is to learn about anything you're good at, what interests you, or simply what value you think you can bring to a company like Leverage. You may be a developer by trade, but you also happen to love to write — that's great, let us know! We'd love for you to reach out and let us know about your talents, what makes you tick, and what you hope to accomplish in your career.</p>
           </div>
-          <form action="https://api.web3forms.com/submit" method="POST" id="form" class="needs-validation mt-14" novalidate style="--primary-color: var(--color-darkgray)">
-            <!-- Hidden -->
-            <input type="hidden" name="access_key" value="c03b3bbe-0911-4575-8186-03c0fa3ec8aa" />
-            <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
-  
-            <ul class="steps mb-10">
-              <li class="step h5 active">Step 1</li>
-              <li class="step h5">Step 2</li>
-              <li class="step h5">Step 3</li>
-            </ul>
-            <div class="content-block">
-              <h4 class="mb-4">First, tell us about your experience.</h4>
-              <p>Select as many as you want. Don't see something listed that you're great at? Write it in!</p>
-            </div>
-            <Accordion label="Creative" group="experience" id="creative">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sit vero modi, in facilis aperiam. Officia reprehenderit, illo cupiditate et soluta consequuntur, dolores sint assumenda voluptatum magnam in illum sit!</Accordion>
-            <Accordion label="Technical" group="experience" id="technical">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sit vero modi, in facilis aperiam. Officia reprehenderit, illo cupiditate et soluta consequuntur, dolores sint assumenda voluptatum magnam in illum sit!</Accordion>
-            <Accordion label="Marketing" group="experience" id="marketing">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sit vero modi, in facilis aperiam. Officia reprehenderit, illo cupiditate et soluta consequuntur, dolores sint assumenda voluptatum magnam in illum sit!</Accordion>
-            <Accordion label="Project Development" group="experience" id="project-development">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sit vero modi, in facilis aperiam. Officia reprehenderit, illo cupiditate et soluta consequuntur, dolores sint assumenda voluptatum magnam in illum sit!</Accordion>
-            <!-- Other Skills -->
-            <div class="field">
-              <textarea placeholder="any other skills to note?" name="other_skills" id="other_skills"></textarea>
-              <div class="empty-feedback invalid-feedback">Please enter your message.</div>
-            </div>
-            <Button class="min-w-[150px]" tag="button" type="submit" outline>Next</Button>
-          </form>
+          <CareersForm style="--primary-color: var(--color-darkgray);" />
         </div>
       </div>
     </section>

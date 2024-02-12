@@ -84,3 +84,37 @@
   background-color: white;
   mask-image: url("data:image/svg+xml,%3Csvg width='38' height='44' viewBox='0 0 38 44' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.5 2.08141L36 22L1.5 41.9186L1.5 2.08141Z' stroke='white' stroke-width='2'/%3E%3C/svg%3E%0A");
 }
+
+i.checkmark {
+  --checkmark-size: 8px;
+
+  display: inline-block;
+  width: calc(var(--checkmark-size) * 1);
+  height: calc(var(--checkmark-size) * 1.5);
+  border: 2px solid theme('colors.lightgray');
+  border-top: none;
+  border-left: none;
+  transition: border-color 150ms ease-out;
+  transform: rotate(45deg);
+
+}
+/*
+&.active i.checkmark {
+  &::before {
+    width: calc(var(--checkmark-size) / 3);
+    height: calc(var(--checkmark-size) / 2);
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+    margin-top: -5px;
+  }
+}
+
+&.active i.checkmark {
+  border-color: white;
+
+  &::before {
+    border-color: white;
+  }
+}
+*/

@@ -199,7 +199,7 @@ function init() {
   //   columnsTwo()
   // }
 
-  if (document.querySelector('#form')) {
+  if (document.querySelector('.web3-form')) {
     formsHandler()
   }
 

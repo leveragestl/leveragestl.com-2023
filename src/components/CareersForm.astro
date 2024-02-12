@@ -1,0 +1,520 @@
+---
+import Button from '../components/ui/Button.astro'
+import Accordion from './Accordion.astro'
+
+interface Props {
+  class?: string;
+  [x: string]: any;
+}
+
+const { class: className, ...rest} = Astro.props
+---
+
+<!-- To make this contact form work, create your free access key from https://web3forms.com/ - Then you will get all form submissions in your email inbox. -->
+<form action="https://api.web3forms.com/submit" method="POST" id="careers-form" class:list={["web3-form needs-validation text-darkgray mb-32", className]} {...rest} novalidate="novalidate">
+
+  <div class="form-inner mb-8">
+    <!-- Hidden -->
+    <input type="hidden" name="access_key" value="c03b3bbe-0911-4575-8186-03c0fa3ec8aa" />
+    <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
+    <input type="hidden" name="from_name" value="leveragestl.com" />
+    <input type="hidden" name="subject" value="Application Submission">
+    <!-- Step 1 -->
+    <div data-step="1" id="step-1" class="active">
+      <ul class="step-tabs">
+        <li class="step-tab h5 active"><button type="button" data-btn="step-1">Step 1</button></li>
+        <li class="step-tab h5"><button type="button" data-btn="step-2">Step 2</button></li>
+        <li class="step-tab h5"><button type="button" data-btn="step-3">Step 3</button></li>
+      </ul>
+      <div class="content-block">
+        <h4 class="mb-4">First, tell us about your experience.</h4>
+        <p>Select as many as you want. Don't see something listed that you're great at? Write it in!</p>
+      </div>
+      <!-- Creative -->
+      <Accordion label="Creative" group="experience" id="creative">
+        <div class="grid gap-x-2 grid-cols-2 lg:grid-cols-3">
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Web Design" id="careers_exp_web_design" type="checkbox" />
+            <label for="careers_exp_web_design"><i class="checkmark"></i><span>Web Design</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="App Design" id="careers_exp_app_design" type="checkbox" />
+            <label for="careers_exp_app_design"><i class="checkmark"></i><span>App Design</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="UX Design" id="careers_exp_ux_design" type="checkbox" />
+            <label for="careers_exp_ux_design"><i class="checkmark"></i><span>UX Design</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Logo Design" id="careers_exp_logo_design" type="checkbox" />
+            <label for="careers_exp_logo_design"><i class="checkmark"></i><span>Logo Design</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Print Design" id="careers_exp_print_design" type="checkbox" />
+            <label for="careers_exp_print_design"><i class="checkmark"></i><span>Print Design</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Brand Guidelines" id="careers_exp_brand_guidelines" type="checkbox" />
+            <label for="careers_exp_brand_guidelines"><i class="checkmark"></i><span>Brand Guidelines</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Identity Systems" id="careers_exp_identity_systems" type="checkbox" />
+            <label for="careers_exp_identity_systems"><i class="checkmark"></i><span>Identity Systems</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Business Collateral" id="careers_exp_business_collateral" type="checkbox" />
+            <label for="careers_exp_business_collateral"><i class="checkmark"></i><span>Business Collateral</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Packaging" id="careers_exp_packaging" type="checkbox" />
+            <label for="careers_exp_packaging"><i class="checkmark"></i><span>Packaging</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Print Ads" id="careers_exp_print_ads" type="checkbox" />
+            <label for="careers_exp_print_ads"><i class="checkmark"></i><span>Print Ads</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Catalogs, Magazines" id="careers_exp_catalogs_magazines" type="checkbox" />
+            <label for="careers_exp_catalogs_magazines"><i class="checkmark"></i><span>Catalogs, Magazines</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Print Management" id="careers_exp_print_management" type="checkbox" />
+            <label for="careers_exp_print_management"><i class="checkmark"></i><span>Print Management</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Email Design" id="careers_exp_email_design" type="checkbox" />
+            <label for="careers_exp_email_design"><i class="checkmark"></i><span>Email Design</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Photoshop" id="careers_exp_photoshop" type="checkbox" />
+            <label for="careers_exp_photoshop"><i class="checkmark"></i><span>Photoshop</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Sketch" id="careers_exp_sketch" type="checkbox" />
+            <label for="careers_exp_sketch"><i class="checkmark"></i><span>Sketch</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Figma" id="careers_exp_figma" type="checkbox" />
+            <label for="careers_exp_figma"><i class="checkmark"></i><span>Figma</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Illustrator" id="careers_exp_illustrator" type="checkbox" />
+            <label for="careers_exp_illustrator"><i class="checkmark"></i><span>Illustrator</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="InDesign" id="careers_exp_indesign" type="checkbox" />
+            <label for="careers_exp_indesign"><i class="checkmark"></i><span>InDesign</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Video" id="careers_exp_video" type="checkbox" />
+            <label for="careers_exp_video"><i class="checkmark"></i><span>Video</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="Final Cut Pro" id="careers_exp_final_cut_pro" type="checkbox" />
+            <label for="careers_exp_final_cut_pro"><i class="checkmark"></i><span>Final Cut Pro</span></label>
+          </div>
+          <div data-cursor="-hidden" class="field field-checkbox">
+            <input name="Creative Skills" value="After Effects" id="careers_exp_after_effects" type="checkbox" />
+            <label for="careers_exp_after_effects"><i class="checkmark"></i><span>After Effects</span></label>
+          </div>
+        </div>
+      </Accordion>
+      <!-- Technical -->
+      <Accordion label="Technical" group="experience" id="technical">
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-2">
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="HTML" id="careers_tech_html" type="checkbox" />
+            <label for="careers_tech_html"><i class="checkmark"></i><span>HTML</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="CSS" id="careers_tech_css" type="checkbox" />
+            <label for="careers_tech_css"><i class="checkmark"></i><span>CSS</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="JavaScript" id="careers_tech_javascript" type="checkbox" />
+            <label for="careers_tech_javascript"><i class="checkmark"></i><span>JavaScript</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="CSS Preprocessors" id="careers_tech_css_preprocessors" type="checkbox" />
+            <label for="careers_tech_css_preprocessors"><i class="checkmark"></i><span>CSS Preprocessors</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="HTML5 Boilerplate" id="careers_tech_html5_boilerplate" type="checkbox" />
+            <label for="careers_tech_html5_boilerplate"><i class="checkmark"></i><span>HTML5 Boilerplate</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Bootstrap" id="careers_tech_bootstrap" type="checkbox" />
+            <label for="careers_tech_bootstrap"><i class="checkmark"></i><span>Bootstrap</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Foundation" id="careers_tech_foundation" type="checkbox" />
+            <label for="careers_tech_foundation"><i class="checkmark"></i><span>Foundation</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="jQuery" id="careers_tech_jquery" type="checkbox" />
+            <label for="careers_tech_jquery"><i class="checkmark"></i><span>jQuery</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="React" id="careers_tech_react" type="checkbox" />
+            <label for="careers_tech_react"><i class="checkmark"></i><span>React</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Angular.js" id="careers_tech_angular_js" type="checkbox" />
+            <label for="careers_tech_angular_js"><i class="checkmark"></i><span>Angular.js</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Vue" id="careers_tech_vue" type="checkbox" />
+            <label for="careers_tech_vue"><i class="checkmark"></i><span>Vue</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Node.js" id="careers_tech_node_js" type="checkbox" />
+            <label for="careers_tech_node_js"><i class="checkmark"></i><span>Node.js</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Mobile-First Development" id="careers_tech_mobile_first_development" type="checkbox" />
+            <label for="careers_tech_mobile_first_development"><i class="checkmark"></i><span>Mobile-First Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Accessibility" id="careers_tech_accessibility" type="checkbox" />
+            <label for="careers_tech_accessibility"><i class="checkmark"></i><span>Accessibility</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Email Development" id="careers_tech_email_development" type="checkbox" />
+            <label for="careers_tech_email_development"><i class="checkmark"></i><span>Email Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="PHP" id="careers_tech_php" type="checkbox" />
+            <label for="careers_tech_php"><i class="checkmark"></i><span>PHP</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Python" id="careers_tech_python" type="checkbox" />
+            <label for="careers_tech_python"><i class="checkmark"></i><span>Python</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Ruby, Ruby on Rails" id="careers_tech_ruby_ruby_on_rails" type="checkbox" />
+            <label for="careers_tech_ruby_ruby_on_rails"><i class="checkmark"></i><span>Ruby, Ruby on Rails</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Java" id="careers_tech_java" type="checkbox" />
+            <label for="careers_tech_java"><i class="checkmark"></i><span>Java</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value=".NET" id="careers_tech_dot_net" type="checkbox" />
+            <label for="careers_tech_dot_net"><i class="checkmark"></i><span>.NET</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="RESTful Web Services" id="careers_tech_restful_web_services" type="checkbox" />
+            <label for="careers_tech_restful_web_services"><i class="checkmark"></i><span>RESTful Web Services</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Database Development" id="careers_tech_database_development" type="checkbox" />
+            <label for="careers_tech_database_development"><i class="checkmark"></i><span>Database Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="MySQL" id="careers_tech_mysql" type="checkbox" />
+            <label for="careers_tech_mysql"><i class="checkmark"></i><span>MySQL</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="GraphQL" id="careers_tech_graphql" type="checkbox" />
+            <label for="careers_tech_graphql"><i class="checkmark"></i><span>GraphQL</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Website Security" id="careers_tech_website_security" type="checkbox" />
+            <label for="careers_tech_website_security"><i class="checkmark"></i><span>Website Security</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="iOS Development" id="careers_tech_ios_development" type="checkbox" />
+            <label for="careers_tech_ios_development"><i class="checkmark"></i><span>iOS Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Objective-C" id="careers_tech_objective_c" type="checkbox" />
+            <label for="careers_tech_objective_c"><i class="checkmark"></i><span>Objective-C</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Swift" id="careers_tech_swift" type="checkbox" />
+            <label for="careers_tech_swift"><i class="checkmark"></i><span>Swift</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="React Native" id="careers_tech_react_native" type="checkbox" />
+            <label for="careers_tech_react_native"><i class="checkmark"></i><span>React Native</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Android Development" id="careers_tech_android_development" type="checkbox" />
+            <label for="careers_tech_android_development"><i class="checkmark"></i><span>Android Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Mobile Web Apps" id="careers_tech_mobile_web_apps" type="checkbox" />
+            <label for="careers_tech_mobile_web_apps"><i class="checkmark"></i><span>Mobile Web Apps</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="eCommerce" id="careers_tech_ecommerce" type="checkbox" />
+            <label for="careers_tech_ecommerce"><i class="checkmark"></i><span>eCommerce</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Magento" id="careers_tech_magento" type="checkbox" />
+            <label for="careers_tech_magento"><i class="checkmark"></i><span>Magento</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Shopify" id="careers_tech_shopify" type="checkbox" />
+            <label for="careers_tech_shopify"><i class="checkmark"></i><span>Shopify</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Stripe" id="careers_tech_stripe" type="checkbox" />
+            <label for="careers_tech_stripe"><i class="checkmark"></i><span>Stripe</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Wordpress" id="careers_tech_wordpress" type="checkbox" />
+            <label for="careers_tech_wordpress"><i class="checkmark"></i><span>Wordpress</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Drupal" id="careers_tech_drupal" type="checkbox" />
+            <label for="careers_tech_drupal"><i class="checkmark"></i><span>Drupal</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Umbraco" id="careers_tech_umbraco" type="checkbox" />
+            <label for="careers_tech_umbraco"><i class="checkmark"></i><span>Umbraco</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Git" id="careers_tech_git" type="checkbox" />
+            <label for="careers_tech_git"><i class="checkmark"></i><span>Git</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Server Setup, Hosting, Maintenance" id="careers_tech_server_setup_hosting_maintenance" type="checkbox" />
+            <label for="careers_tech_server_setup_hosting_maintenance"><i class="checkmark"></i><span>Server Setup, Hosting, Maintenance</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Technical Skills" value="Network Management" id="careers_tech_network_management" type="checkbox" />
+            <label for="careers_tech_network_management"><i class="checkmark"></i><span>Network Management</span></label>
+          </div>
+        </div>
+      </Accordion>
+      <Accordion label="Marketing" group="experience" id="marketing">
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-2">
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="Marketing Strategies" id="careers_mark_marketing_strategies" type="checkbox" />
+            <label for="careers_mark_marketing_strategies"><i class="checkmark"></i><span>Marketing Strategies</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="Content Strategies" id="careers_mark_content_strategies" type="checkbox" />
+            <label for="careers_mark_content_strategies"><i class="checkmark"></i><span>Content Strategies</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="Social Media Marketing" id="careers_mark_social_media_marketing" type="checkbox" />
+            <label for="careers_mark_social_media_marketing"><i class="checkmark"></i><span>Social Media Marketing</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="Social Media Ads" id="careers_mark_social_media_ads" type="checkbox" />
+            <label for="careers_mark_social_media_ads"><i class="checkmark"></i><span>Social Media Ads</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="SEO, SEM" id="careers_mark_seo_sem" type="checkbox" />
+            <label for="careers_mark_seo_sem"><i class="checkmark"></i><span>SEO, SEM</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="Google Analytics Reporting" id="careers_mark_google_analytics_reporting" type="checkbox" />
+            <label for="careers_mark_google_analytics_reporting"><i class="checkmark"></i><span>Google Analytics Reporting</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="Email Marketing" id="careers_mark_email_marketing" type="checkbox" />
+            <label for="careers_mark_email_marketing"><i class="checkmark"></i><span>Email Marketing</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="Google AdWords" id="careers_mark_google_adwords" type="checkbox" />
+            <label for="careers_mark_google_adwords"><i class="checkmark"></i><span>Google AdWords</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="Copy Writing, Content Creation" id="careers_mark_copy_writing_content_creation" type="checkbox" />
+            <label for="careers_mark_copy_writing_content_creation"><i class="checkmark"></i><span>Copy Writing, Content Creation</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="Retargeting" id="careers_mark_retargeting" type="checkbox" />
+            <label for="careers_mark_retargeting"><i class="checkmark"></i><span>Retargeting</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="Media Buys" id="careers_mark_media_buys" type="checkbox" />
+            <label for="careers_mark_media_buys"><i class="checkmark"></i><span>Media Buys</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Marketing Skills" value="Public Relations" id="careers_mark_public_relations" type="checkbox" />
+            <label for="careers_mark_public_relations"><i class="checkmark"></i><span>Public Relations</span></label>
+          </div>
+        </div>
+      </Accordion>
+      <Accordion label="Project Development" group="experience" id="project-development">
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-2">
+          <div class="field field-checkbox">
+            <input name="Project Development Skills" value="New Business Development" id="careers_proj_new_business_development" type="checkbox" />
+            <label for="careers_proj_new_business_development"><i class="checkmark"></i><span>New Business Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Project Development Skills" value="Client Development" id="careers_proj_client_development" type="checkbox" />
+            <label for="careers_proj_client_development"><i class="checkmark"></i><span>Client Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Project Development Skills" value="Project Management" id="careers_proj_project_management" type="checkbox" />
+            <label for="careers_proj_project_management"><i class="checkmark"></i><span>Project Management</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Project Development Skills" value="Office Administration" id="careers_proj_office_administration" type="checkbox" />
+            <label for="careers_proj_office_administration"><i class="checkmark"></i><span>Office Administration</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Project Development Skills" value="Human Resources" id="careers_proj_human_resources" type="checkbox" />
+            <label for="careers_proj_human_resources"><i class="checkmark"></i><span>Human Resources</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Project Development Skills" value="Accounting/Bookkeeping" id="careers_proj_accounting_bookkeeping" type="checkbox" />
+            <label for="careers_proj_accounting_bookkeeping"><i class="checkmark"></i><span>Accounting/Bookkeeping</span></label>
+          </div>
+        </div>
+      </Accordion>
+      <!-- Other Skills -->
+      <div class="field">
+        <textarea placeholder="any other skills to note?" name="Other Skills" id="other_skills" class="p-[1.5rem_2rem]"></textarea>
+        <div class="empty-feedback invalid-feedback">Please enter your message.</div>
+      </div>
+      <!-- Next -->
+      <Button data-btn="next" tag="button" type="button" outline>Next Step</Button>
+      <!-- <Button data-btn="next" tag="button" type="button" outline>Next Step</Button> -->
+    </div>
+    <!-- Step 2 -->
+    <div data-step="2" id="step-2">
+      <ul class="step-tabs">
+        <li class="step-tab h5"><button type="button" data-btn="step-1">Step 1</button></li>
+        <li class="step-tab h5 active"><button type="button" data-btn="step-2">Step 2</button></li>
+        <li class="step-tab h5"><button type="button" data-btn="step-3">Step 3</button></li>
+      </ul>
+      <div class="content-block">
+        <h4 class="mb-4">Awesome, thanks! Next, what are your interests?</h4>
+        <p>You may not consider yourself an expert, but everyone has to start somewhere. What are some things that you are interested in learning more about, or that you explore for fun?</p>
+      </div>
+    
+      <!-- Interests -->
+      <div class="grid gap-4">
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-2">
+          <div class="field field-checkbox">
+            <input name="Interests" value="Web Design" id="web_design" type="checkbox" />
+            <label for="web_design"><i class="checkmark"></i><span>Web Design</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Print Design" id="print_design" type="checkbox" />
+            <label for="print_design"><i class="checkmark"></i><span>Print Design</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Writing" id="writing" type="checkbox" />
+            <label for="writing"><i class="checkmark"></i><span>Writing</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Marketing" id="marketing" type="checkbox" />
+            <label for="marketing"><i class="checkmark"></i><span>Marketing</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Advertising" id="advertising" type="checkbox" />
+            <label for="advertising"><i class="checkmark"></i><span>Advertising</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Front-End Development" id="front_end_development" type="checkbox" />
+            <label for="front_end_development"><i class="checkmark"></i><span>Front-End Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Back-End Development" id="back_end_development" type="checkbox" />
+            <label for="back_end_development"><i class="checkmark"></i><span>Back-End Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Mobile App Development" id="mobile_app_development" type="checkbox" />
+            <label for="mobile_app_development"><i class="checkmark"></i><span>Mobile App Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Game Development" id="game_development" type="checkbox" />
+            <label for="game_development"><i class="checkmark"></i><span>Game Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Social Media" id="social_media" type="checkbox" />
+            <label for="social_media"><i class="checkmark"></i><span>Social Media</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="SEO" id="seo" type="checkbox" />
+            <label for="seo"><i class="checkmark"></i><span>SEO</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Client Development" id="client_development" type="checkbox" />
+            <label for="client_development"><i class="checkmark"></i><span>Client Development</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Photography" id="photography" type="checkbox" />
+            <label for="photography"><i class="checkmark"></i><span>Photography</span></label>
+          </div>
+          <div class="field field-checkbox">
+            <input name="Interests" value="Videography" id="videography" type="checkbox" />
+            <label for="videography"><i class="checkmark"></i><span>Videography</span></label>
+          </div>
+        </div>
+        <!-- Message -->
+        <div class="field">
+          <textarea name="Any other interests?" placeholder="any other interests?"></textarea>
+        </div>
+      </div>
+      <!-- Next -->
+      <Button data-btn="next" tag="button" type="button" outline>Next Step</Button>
+    </div>
+    <!-- Step 3 -->
+    <div data-step="3" id="step-3">
+      <ul class="step-tabs">
+        <li class="step-tab h5"><button type="button" data-btn="step-1">Step 1</button></li>
+        <li class="step-tab h5"><button type="button" data-btn="step-2">Step 2</button></li>
+        <li class="step-tab h5 active"><button type="button" data-btn="step-3">Step 3</button></li>
+      </ul>
+      <div class="content-block">
+        <h4 class="mb-4">Great! Last step, please pass along some contact info.</h4>
+      </div>
+      <div class="">
+        <!-- Name -->
+        <div class="field">
+          <input required type="text" placeholder="*name (first and last)" name="Name" autocomplete="name" />
+          <div class="empty-feedback invalid-feedback">Please provide your name</div>
+        </div>
+        <!-- Email -->
+        <div class="field">
+          <input required id="email_address" type="email" placeholder="*email" name="Email" />
+          <div class="empty-feedback">Please provide your email address.</div>
+          <div class="invalid-feedback">Please provide a valid email address.</div>
+        </div>
+        <!-- Phone -->
+        <div class="field">
+          <input id="phone_number" type="tel" pattern="([\+]?1?([ ]|.|-)?[\(]?([2-9][0-8][0-9])[\)]?([ ]|.|-)?[0-9]{3}(-|.)?[0-9]{4})$" placeholder="phone" name="Phone Number" />
+          <div class="invalid-feedback">Please provide a valid phone number (US or International format).</div>
+        </div>
+    
+        <!-- Address -->
+        <div class="field">
+          <input required id="address" type="text" placeholder="*current city and state of residence" name="Current city and state of residence" autocomplete="street-address" />
+          <div class="empty-feedback">Please provide your current city and state of residence</div>
+        </div>
+        <!-- URL -->
+        <div class="field">
+          <input required id="url" type="text" placeholder="*portfolio url" name="Portfolio URL" />
+          <div class="empty-feedback">Please provide your portfolio URL</div>
+        </div>
+        <!-- Resume -->
+        <div class="field">
+          <label for="resume" class="block w-full font-bold italic font-serif">*resumé <span class="font-sans text-12 not-italic font-normal">(max file size: 2mb. file types: .pdf, .doc, .docx, .txt)</span></label>
+          <input required id="resume" type="file" name="Resumé" />
+          <div class="empty-feedback invalid-feedback">Please provide your resumé</div>
+        </div>
+        <!-- Salary -->
+        <div class="field">
+          <input id="salary" type="text" placeholder="salary requirement" name="Salary requirement" />
+        </div>
+        <!-- Anything Else -->
+        <div class="field">
+          <textarea name="Anything else we should know?" placeholder="anything else we should know?"></textarea>
+        </div>
+      </div>
+      <!-- Submit -->
+      <Button data-btn="submit" tag="button" type="submit" outline>Submit</Button>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div id="result"></div>
+</form>

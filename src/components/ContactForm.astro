@@ -1,65 +1,121 @@
 ---
 import Button from '../components/ui/Button.astro';
+
+interface Props {
+  class?: string;
+  [x: string]: any;
+}
+
+const { class: className, ...rest} = Astro.props
 ---
 
 <!-- To make this contact form work, create your free access key from https://web3forms.com/ - Then you will get all form submissions in your email inbox. -->
-<form action="https://api.web3forms.com/submit" method="POST" id="form" class="needs-validation text-darkgray" novalidate>
+<form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class:list={["web3-form needs-validation text-darkgray mb-40", className]} {...rest}  novalidate="novalidate">
 
-  <!-- Hidden -->
-  <input type="hidden" name="access_key" value="c03b3bbe-0911-4575-8186-03c0fa3ec8aa" />
-  <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
-
-  <ul class="steps">
-    <li class="step h5 active">Step 1</li>
-    <li class="step h5">Step 2</li>
-    <li class="step h5">Step 3</li>
-  </ul>
-
-  <!-- Message -->
-  <div class="field">
-    <textarea name="message" required placeholder="*describe your project..."></textarea>
-    <div class="empty-feedback invalid-feedback">Please enter your message.</div>
-  </div>
-
-  <div class="field-group grid lg:grid-cols-2 gap-4">
-
-    <!-- Budget -->
-    <div class="field">
-      <select name="budget" id="budget">
-        <option value="" selected>*estimated budget</option>
-        <option value="option 1">Option 1</option>
-        <option value="option 2">Option 2</option>
-        <option value="option 3">Option 3</option>
-      </select>
+  <div class="form-inner">
+    <!-- Hidden -->
+    <input type="hidden" name="access_key" value="c03b3bbe-0911-4575-8186-03c0fa3ec8aa" />
+    <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
+    <!-- Step 1 -->
+    <div data-step="1" id="step-1" class="active">
+      <h3 class="font-extrabold text-white">First, tell us about <br>your project.</h3>
+      <ul class="step-tabs">
+        <li class="step-tab h5 active"><button type="button" data-btn="step-1">Step 1</button></li>
+        <li class="step-tab h5"><button type="button" data-btn="step-2">Step 2</button></li>
+        <li class="step-tab h5"><button type="button" data-btn="step-3">Step 3</button></li>
+      </ul>
+      <!-- Message -->
+      <div class="field">
+        <textarea required name="Describe your Project" placeholder="*describe your project..."></textarea>
+        <div class="empty-feedback invalid-feedback">Please enter your message</div>
+      </div>
+      <div class="field-group grid lg:grid-cols-2 gap-4">
+    
+        <!-- Budget -->
+        <div class="field">
+          <select required name="Budget" id="budget">
+            <option value="" selected>*estimated budget</option>
+            <option value="option 1">Option 1</option>
+            <option value="option 2">Option 2</option>
+            <option value="option 3">Option 3</option>
+          </select>
+          <div class="invalid-feedback">Please select your estimated budget</div>
+        </div>
+        <!-- Field -->
+        <div class="field">
+          <select required name="Preferred Timing" id="timing">
+            <option value="" selected>*preferred timing</option>
+            <option value="option 1">Option 1</option>
+            <option value="option 2">Option 2</option>
+            <option value="option 3">Option 3</option>
+          </select>
+          <div class="invalid-feedback">Please select your preferred timing</div>
+        </div>
+      </div>
+      <!-- Next -->
+      <Button data-btn="next" tag="button" type="button" outline>Next Step</Button>
+      <!-- <Button data-btn="next" tag="button" type="button" outline>Next Step</Button> -->
     </div>
-
-    <div class="field">
-      <select name="timing" id="timing">
-        <option value="" selected>*preferred timing</option>
-        <option value="option 1">Option 1</option>
-        <option value="option 2">Option 2</option>
-        <option value="option 3">Option 3</option>
-      </select>
+    <!-- Step 2 -->
+    <div data-step="2" id="step-2">
+      <h3 class="font-extrabold text-white">Next, let us know how to contact you.</h3>
+      <ul class="step-tabs">
+        <li class="step-tab h5"><button type="button" data-btn="step-1">Step 1</button></li>
+        <li class="step-tab h5 active"><button type="button" data-btn="step-2">Step 2</button></li>
+        <li class="step-tab h5"><button type="button" data-btn="step-3">Step 3</button></li>
+      </ul>
+    
+      <div class="grid lg:grid-cols-2 gap-4">
+        <!-- Info -->
+        <div class="field-group grid gap-4">
+          <!-- Name -->
+          <div class="field">
+            <input required type="text" placeholder="*name" name="Name" autocomplete="name" />
+            <div class="empty-feedback invalid-feedback">Please provide your name</div>
+          </div>
+    
+          <!-- Email -->
+          <div class="field">
+            <input required id="email_address" type="email" placeholder="*email" name="Email Address" />
+            <div class="empty-feedback">Please provide your email address.</div>
+            <div class="invalid-feedback">Please provide a valid email address.</div>
+          </div>
+          <!-- Phone -->
+          <div class="field">
+            <input id="phone_number" type="tel" pattern="([\+]?1?([ ]|.|-)?[\(]?([2-9][0-8][0-9])[\)]?([ ]|.|-)?[0-9]{3}(-|.)?[0-9]{4})$" placeholder="phone" name="Phone Number" />
+            <div class="invalid-feedback">Please provide a valid phone number (US or International format).</div>
+          </div>
+    
+          <!-- Company -->
+          <div class="field">
+            <input id="company" type="text" placeholder="company name and website" name="Company Name and Website" />
+          </div>
+        </div>
+    
+        <!-- Message -->
+        <div class="field">
+          <textarea name="Anything Else We Should Know?" placeholder="anything else we should know?"></textarea>
+        </div>
+      </div>
+      <!-- Next -->
+      <Button data-btn="next" tag="button" type="button" outline>Next Step</Button>
+    </div>
+    <!-- Step 3 -->
+    <div data-step="3" id="step-3">
+      <h3 class="font-extrabold text-white">Extra credit.</h3>
+      <ul class="step-tabs">
+        <li class="step-tab h5"><button type="button" data-btn="step-1">Step 1</button></li>
+        <li class="step-tab h5"><button type="button" data-btn="step-2">Step 2</button></li>
+        <li class="step-tab h5 active"><button type="button" data-btn="step-3">Step 3</button></li>
+      </ul>
+      <!-- Message -->
+      <div class="field">
+        <textarea name="How Did You Hear About Us?" placeholder="how did you hear about us?"></textarea>
+      </div>
+      <!-- Submit -->
+      <Button data-btn="submit" tag="button" type="submit" outline>Submit</Button>
     </div>
   </div>
-
-  <!-- Name -->
-  <div class="field hidden">
-    <input type="text" placeholder="Full Name" name="name"
-    />
-    <div class="empty-feedback invalid-feedback">Please provide your full name.</div>
-  </div>
-
-  <!-- Email -->
-  <div class="field hidden">
-    <label for="email_address" class="sr-only">Email Address</label>
-    <input id="email_address" type="email" placeholder="Email Address" name="email" />
-    <div class="empty-feedback">Please provide your email address.</div>
-    <div class="invalid-feedback">Please provide a valid email address.</div>
-  </div>
-
-  <!-- Submit -->
-  <Button tag="button" type="submit" outline>Next Step</Button>
 
   <!-- Results -->
   <div id="result"></div>

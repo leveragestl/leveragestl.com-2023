@@ -16,6 +16,7 @@
     "@astrojs/vue": "^4.0.8",
     "@barba/core": "^2.9.7",
     "@fortawesome/fontawesome-free": "^6.4.2",
+    "@sendgrid/mail": "^8.1.0",
     "@swup/body-class-plugin": "^3.1.1",
     "@swup/fade-theme": "^2.0.0",
     "@swup/scripts-plugin": "^1.1.0",
@@ -24,10 +25,12 @@
     "filterizr": "^2.2.4",
     "mouse-follower": "^1.1.2",
     "node-html-parser": "^6.1.11",
+    "pristinejs": "^1.1.0",
     "strip-tags": "^0.1.1",
     "swiper": "^10.2.0",
     "swup": "^4.3.4",
     "tailwindcss": "^3.3.2",
+    "vanillajs-validation": "^1.8.4",
     "vue": "^3.4.7"
   },
   "devDependencies": {
