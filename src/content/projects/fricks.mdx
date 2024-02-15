@@ -16,7 +16,7 @@ import Button from '../../components/ui/Button.astro'
 import { Image } from 'astro:assets'
 
 {/*Intro*/}
-<section id="intro" class="wrapper lg:grid grid-cols-12 text-left">
+<section id="intro" class="wrapper lg:grid grid-cols-12 text-left transition-in transition-fade">
   <div class="md:col-start-first md:col-end-8 mb-8 lg:mb-0">
     <h3 class="font-extrabold">An unforgettable eating experience for five generations and counting</h3>
     <p class="large">Frick's has been producing quality meats for generations, but for them it's more than just a product—it's a passion. They truly care about the team behind the product and the people who enjoy it. We helped arm them with new photography and a brand anthem video to humanize their brand, and showcase the emotional connection people feel when consuming their products. We then utilized these assets when redesigning and developing their website—which has served as a more valuable resource for their customers.</p>
@@ -35,12 +35,12 @@ import { Image } from 'astro:assets'
 </section>
 
 {/*Video*/}
-<section id="video" class="wrapper-wide">
+<section id="video" class="wrapper-wide transition-in transition-fade">
   <video data-video data-cursor-play data-cursor-enlarge playsinline class="w-full cursor-pointer bg-darkgray" src="/work/fricks/fricks-video.mp4" poster="/work/fricks/fricks-video-thumbnail.png"></video>
 </section>
 
 {/*Text Block*/}
-<section class="wrapper text-center">
+<section class="wrapper text-center transition-in transition-fade">
   <div class="lg:max-w-screen-sm mx-auto">
     <h3 class="font-extrabold max-w-[250px] lg:max-w-none mx-auto">A frickin' good story line</h3>
     <p class="large">We set out to share Frick's story with their audience and featured it on the home page of their website. I'm going to re-write this content to more specifically talk about the brand anthem video and what went into producing it.</p>
@@ -49,7 +49,7 @@ import { Image } from 'astro:assets'
 
 {/*Slider*/}
 <section id="slider">
-  <div data-slider="image-carousel" data-cursor="-hidden" class="relative wrapper swiper flex flex-col md:flex-row gap-x-20 cursor-grab active:cursor-grabbing">
+  <div data-slider="image-carousel" data-cursor="-hidden" class="relative wrapper swiper flex flex-col md:flex-row gap-x-20 cursor-grab active:cursor-grabbing transition-in transition-fade">
     <div class="swiper-wrapper">
 
       <figure class="swiper-slide w-full h-full overflow-clip aspect-[542/554] bg-neutral-200">
@@ -69,7 +69,7 @@ import { Image } from 'astro:assets'
 </section>
 
 {/*Text Block (side-by-side)*/}
-<section class="wrapper-wide grid grid-cols-12 text-left">
+<section class="wrapper-wide grid grid-cols-12 text-left transition-in transition-fade">
   <div class="col-start-first col-end-last md:col-end-8">
     <h3 class="h1">Bringing it <br class="hidden lg:block" />all together</h3>
   </div>
@@ -79,7 +79,7 @@ import { Image } from 'astro:assets'
 </section>
 
 {/*Mockup*/}
-<section id="mockup" class="bg-darkgray md:mt-60 !mb-0 pb-16 md:pb-32">
+<section id="mockup" class="bg-darkgray md:mt-60 !mb-0 pb-16 md:pb-32 transition-in transition-fade">
   <figure class="md:w-3/4 max-w-screen-3xl mx-auto -translate-y-8 md:-translate-y-28">
     <img src="/work/fricks/fricks-laptop.png" alt="fricksqualitymeats.com website mockup on macbook" />
   </figure>
@@ -88,26 +88,27 @@ import { Image } from 'astro:assets'
 
 {/*Comparison*/}
 <section id="comparison" class="!mb-0">
-  <div data-compare-swiper>  
-    {/*images*/}
-    <div class="image">
-      <h5 class="label text-center">before</h5>
-      <figure><img class="w-full" src="/work/fricks/fricks-hero-old.png" alt="Screenshot of old website" /></figure>
+  <div class="transition-in transition-fade">
+    <div data-compare-swiper>
+      {/*images*/}
+      <div class="image">
+        <h5 class="label text-center">before</h5>
+        <figure><img class="w-full" src="/work/fricks/fricks-hero-old.png" alt="Screenshot of old website" /></figure>
+      </div>
+      <div class="image">
+        <h5 class="label text-center">after</h5>
+        <figure><img class="w-full" src="/work/fricks/fricks-hero-new.jpg" alt="Screenshot of new website" /></figure>
+      </div>
+      {/*background*/}
+      <div class="background bg-mediumgray col-span-full row-span-full w-full h-full -z-10 hidden mouse:block"></div>
     </div>
-    <div class="image">
-      <h5 class="label text-center">after</h5>
-      <figure><img class="w-full" src="/work/fricks/fricks-hero-new.jpg" alt="Screenshot of new website" /></figure>
-    </div>
-
-    {/*background*/}
-    <div class="background bg-mediumgray col-span-full row-span-full w-full h-full -z-10 hidden mouse:block"></div>
   </div>
 </section>
 
 <div class="bg-darkgray text-white">
 
   {/*Stats*/}
-  <section id="stats" class="wrapper text-center pt-12 md:pt-36">
+  <section id="stats" class="wrapper text-center pt-12 md:pt-36 transition-in transition-fade">
     <h3 class="font-extrabold">A mouthwatering <br />resource for consumers</h3>
     <div class="content-block max-w-screen-md mx-auto">
       <p>By building more robust 'Recipe' and 'Meat Know-How' sections, as well as adding a store locator tool, the Frick's website is now a better resource for their customers.</p>
@@ -139,7 +140,7 @@ import { Image } from 'astro:assets'
   </section>
 
   {/* Mockups */}
-  <section id="mockups" class="lg:px-[--container-margin] mt-20 lg:mt-0">
+  <section id="mockups" class="lg:px-[--container-margin] mt-20 lg:mt-0 transition-in transition-fade">
     <div class="relative lg:grid grid-cols-2 grid-rows-2 bg-[#F8F3EC] gap-y-10" style={`background-image:url('/work/fricks/fricks-bg.png');`}>
       <figure class="row-span-full flex justify-center items-center relative z-10 -translate-y-10 lg:translate-y-0">
         <img class="h-auto" width="302" src="/work/fricks/fricks-phone.png" alt="Mockup of fricksqualitymeats.com on iPhone" />
@@ -165,7 +166,7 @@ import { Image } from 'astro:assets'
   </section>
 
   {/*Quote*/}
-  <section id="quote" class="wrapper pt-32 pb-12 mb-20 md:py-36 text-left">
+  <section id="quote" class="wrapper pt-32 pb-12 mb-20 md:py-36 text-left transition-in transition-fade">
     <div class="max-w-lg">
       <h3 class="h4 mb-8 lg:mb-16">What our clients are saying...</h3>
     </div>

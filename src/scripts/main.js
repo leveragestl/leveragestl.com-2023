@@ -24,6 +24,7 @@ import { revealText } from './animation/revealText'
 import { fillText, fillTextHover } from './animation/fillText'
 import { parallaxColumns } from './animation/parallaxColumns'
 import { parallaxWindow } from './animation/parallaxWindow'
+import { parallaxElems } from './animation/parallaxElems'
 import { drawSVG } from './animation/drawSVG'
 import { pageTransitions } from './animation/pageTransitions'
 
@@ -117,7 +118,7 @@ function smoothScroll() {
 }
 
 function init() {
-  smoothScroll()  
+  // smoothScroll()  
   siteHeader()
   linkHandler()
   menuToggle()
@@ -205,5 +206,9 @@ function init() {
 
   if (document.querySelector('[data-filter="item"]')) {
     projectFilters()
+  }
+
+  if (!ScrollSmoother.get()) {
+    parallaxElems()
   }
 }

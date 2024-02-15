@@ -9,13 +9,23 @@ interface Props {
 const { class: className, ...rest} = Astro.props
 ---
 
-<!-- To make this contact form work, create your free access key from https://web3forms.com/ - Then you will get all form submissions in your email inbox. -->
-<form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class:list={["web3-form needs-validation text-darkgray mb-40", className]} {...rest}  novalidate="novalidate">
+<form action="https://submit-form.com/jSIKoVMDj" method="POST" id="contact-form" class:list={["web3-form needs-validation text-darkgray mb-32", className]} {...rest} novalidate="novalidate" data-subject="Contact Form Submission" data-from="leveragestl.com">
 
   <div class="form-inner">
-    <!-- Hidden -->
+    <!-- Web3 Forms -->
+    <!--
     <input type="hidden" name="access_key" value="c03b3bbe-0911-4575-8186-03c0fa3ec8aa" />
     <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
+    -->
+
+    <!-- FormSpark -->
+    <!--
+    <input type="hidden" name="_email.subject" value="You have a new message!" />
+    <input type="hidden" name="_email.from" value="John Doe" />
+    <input id="title" type="hidden" name="_email.template.title" value="My Custom Title" />
+    <input id="footer" type="hidden" name="_email.template.footer" value="false" />
+    -->
+    
     <!-- Step 1 -->
     <div data-step="1" id="step-1" class="active">
       <h3 class="font-extrabold text-white">First, tell us about <br>your project.</h3>
@@ -70,7 +80,7 @@ const { class: className, ...rest} = Astro.props
         <div class="field-group grid gap-4">
           <!-- Name -->
           <div class="field">
-            <input required type="text" placeholder="*name" name="Name" autocomplete="name" />
+            <input id="name" required type="text" placeholder="*name" name="Name" autocomplete="name" />
             <div class="empty-feedback invalid-feedback">Please provide your name</div>
           </div>
     
@@ -82,7 +92,7 @@ const { class: className, ...rest} = Astro.props
           </div>
           <!-- Phone -->
           <div class="field">
-            <input id="phone_number" type="tel" pattern="([\+]?1?([ ]|.|-)?[\(]?([2-9][0-8][0-9])[\)]?([ ]|.|-)?[0-9]{3}(-|.)?[0-9]{4})$" placeholder="phone" name="Phone Number" />
+            <input id="phone_number" type="tel" pattern="([\+]?1?([ ]|.|-)?(\()?([2-9][0-8][0-9])(\))?([ ]|.|-)?[0-9]{3}(-|.)?[0-9]{4})" placeholder="phone" name="Phone Number" />
             <div class="invalid-feedback">Please provide a valid phone number (US or International format).</div>
           </div>
     

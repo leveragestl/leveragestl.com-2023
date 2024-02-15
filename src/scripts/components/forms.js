@@ -1,11 +1,20 @@
 import {gsap} from 'gsap'
 import { ScrollSmoother } from 'gsap/ScrollSmoother'
 
+import uploadcare from 'uploadcare-widget'
+// import * as LR from '@uploadcare/blocks'
+// LR.registerBlocks(LR)
+
+// todo: implement security measures
+
+// Possible enhancements
 // todo: animate steps/implement slider?
 // todo: Back button?
 // todo: validation onBlur?
 
-// Helper Functions
+// =============================================================================
+// Helper functions
+// =============================================================================
 function serialize (data) {
 	let obj = {};
 	for (let [key, value] of data) {
@@ -21,12 +30,30 @@ function serialize (data) {
 	return obj
 }
 
+function fileTypeLimit(types) {
+  types = types.split(' ')
+
+  return function(fileInfo) {
+    if (fileInfo.name === null) {
+      return
+    }
+    var extension = fileInfo.name.split('.').pop()
+
+    if (types.indexOf(extension) == -1) {
+      throw new Error('fileType')
+    }
+  }
+}
+
 export function formsHandler() {
+  const smoother = ScrollSmoother.get()
+
   const form = document.querySelector(".web3-form")
   const formInner = form.querySelector(".form-inner")
   const result = form.querySelector("#result")
-  let scrollOffset
+  const parentSection = form.closest('section')
 
+  let scrollOffset
   if(getComputedStyle(form).getPropertyValue('scroll-margin') !== '0px') {
     scrollOffset = getComputedStyle(form).getPropertyValue('scroll-margin-top')
   } else {
@@ -35,43 +62,81 @@ export function formsHandler() {
 
   form.addEventListener("submit", function (e) {
     e.preventDefault()
+    if (smoother) {
+      smoother.scrollTo(`#${parentSection.id}`, true, `top ${scrollOffset}`)
+    } else {
+      const scrollTarget = parentSection.getBoundingClientRect().top + window.scrollY
+      window.scroll(0, scrollTarget - parseInt(scrollOffset))
+}
     form.classList.add("was-validated")
     if (!form.checkValidity()) {
       form.querySelectorAll(":invalid")[0].focus()
       return
     }
 
-    const nameInput = form.querySelector('input[name=Name]')
-    const subjectInput = form.querySelector('input[name=subject]')
-    const fromNameInput = form.querySelector('input[name=from_name]')
+    // =========================================================================
+    // Get/set custom notification data
+    // =========================================================================
 
-    // Rename Subject Line
-    if (subjectInput && nameInput.value.length !== 0) {
-      const subjectInputVal = subjectInput.value
-      subjectInput.value = subjectInputVal + ' from ' + nameInput.value    
-    }
+    let fromStr, subjectStr, titleBool, footerBool
+    const formDataFrom = form.getAttribute('data-from')
+    const formDataSubject = form.getAttribute('data-subject')
+    const nameInput = form.querySelector('input#name')
+    const emailInput = form.querySelector('input#email_address')
 
-    // Rename From Name
-    if (fromNameInput && nameInput.value.length !== 0) {
-      fromNameInput.value = nameInput.value
-    }
+    titleBool = (form.getAttribute('data-title') === 'false') ? false : true
+    footerBool = (form.getAttribute('data-footer') === 'false') ? false : true
+
+    // Rename From value
+    fromStr = (nameInput.value.length !== 0) ? nameInput.value : formDataFrom
+
+    // Rename Subject value
+    subjectStr = (nameInput.value.length !== 0) ? `${formDataSubject} from ${nameInput.value}` : formDataSubject
+
+    // =========================================================================
+    // Prepare form data
+    // =========================================================================
 
     const formData = new FormData(form)
 
-    // const object = Object.fromEntries(array)
+    // Using helper function to capture all checkboxes values that have the same "name" attr and group them into an array
     const object = serialize(formData)
 
+    // Clean up data
     Object.keys(object).forEach(function (item) {
+
+      // Convert any arrays into comma separated strings
       if(Array.isArray(object[item])) {
         object[item] = object[item].join(', ')
       }
+
+      // Delete empty inputs
+      if(object[item] === "" || object[item] === null) {
+        delete object[item]
+      }
+
+      // Delete no file upload
+      if (object[item] instanceof File && object[item].size === 0) {
+        delete object[item]
+      }
     })
+
+    // Append custom notification data
+    object["_email"] = {
+      from: fromStr,
+      subject: subjectStr,
+      replyto: emailInput.value,
+      template: {
+        title: titleBool,
+        footer: footerBool,
+      }
+    }
 
     const json = JSON.stringify(object)
 
     result.innerHTML = "Sending..."
 
-    fetch("https://api.web3forms.com/submit", {
+    fetch(form.getAttribute('action'), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,16 +149,16 @@ export function formsHandler() {
         if (response.status == 200) {
           formInner.style.display = "none"
           result.style.display = ""
-          result.innerHTML = json.message
+          result.innerHTML = "Thank you for your submission!"
         } else {
           console.log(response)
           result.classList.add("text-red-500")
-          result.innerHTML = json.message
+          result.innerHTML = "Something went wrong"
         }
       })
       .catch((error) => {
         console.log(error)
-        result.innerHTML = "Something went wrong!"
+        result.innerHTML = "Something went wrong"
       })
       .then(function () {
         form.reset()
@@ -103,6 +168,10 @@ export function formsHandler() {
           result.style.display = "none"
           formInner.style.display = ""
         }, 5000)
+        if (document.querySelector('[data-uploadcare]')) {
+          const widget = uploadcare.Widget("[data-uploadcare]");
+          widget.value(null);            
+        }
       })
   })
 
@@ -110,16 +179,16 @@ export function formsHandler() {
   // File Size Limit
   // ===========================================================================
 
-  const inputFiles = document.querySelectorAll('input[type=file]')
+  // const inputFiles = document.querySelectorAll('input[type=file]')
 
-  for (const inputFile of inputFiles) {
-    inputFile.onchange = function() {
-      if(this.files[0].size > 2097152){
-        alert("File exceeds maximum file size limit");
-        this.value = "";
-      }
-    }
-  }
+  // for (const inputFile of inputFiles) {
+  //   inputFile.onchange = function() {
+  //     if(this.files[0].size > 2097152){
+  //       alert("File exceeds maximum file size limit");
+  //       this.value = "";
+  //     }
+  //   }
+  // }
   
   // ===========================================================================
   // Validation
@@ -155,7 +224,7 @@ export function formsHandler() {
         }
       })
     }
-    
+
     if (nextBtn) {
       nextBtn.addEventListener('click', () => {
         let currentNum = parseInt(stepSection.getAttribute('data-step'))
@@ -164,8 +233,12 @@ export function formsHandler() {
         if(validation(stepSection)) {
           getStep(nextNum)
           setTimeout(() => {
-            console.log('scrollTop')
-            ScrollSmoother.get().scrollTo(`#${form.id}`, true, `top ${scrollOffset}`)              
+            if (smoother) {
+              smoother.scrollTo(`#${form.id}`, true, `top ${scrollOffset}`)
+            } else {
+              const scrollTarget = form.getBoundingClientRect().top + window.scrollY
+              window.scroll(0, scrollTarget - parseInt(scrollOffset))
+            }
           }, 10);
         } else {
           stepSection.classList.add("was-validated")
@@ -174,6 +247,10 @@ export function formsHandler() {
       })
     }
   }
+
+  // window.addEventListener('scroll', () => {
+  //   console.log(window.scrollY);
+  // })
 
   function getStep(target) {
     setTimeout(() => {
@@ -219,4 +296,24 @@ export function formsHandler() {
     }
     return true
   }
+
+  // ===========================================================================
+  // Uploadcare
+  // ===========================================================================
+
+  const inputs = form.querySelectorAll('[data-uploadcare]')
+  for (const input of inputs) {
+    const widget = uploadcare.Widget(input)
+
+    if (input.getAttribute('data-file-types')) {
+      widget.validators.push(fileTypeLimit(input.getAttribute('data-file-types')))
+    }
+
+    const button = input.closest('.field').querySelector('button.uploadcare--widget__button_type_open')
+
+    if (input.getAttribute('data-btn-text')) {
+      button.innerHTML = input.getAttribute('data-btn-text')
+    }    
+  }
+
 }

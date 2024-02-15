@@ -9,13 +9,15 @@ export function compareSwiper() {
 
   if (window.matchMedia('(any-hover: hover) and (pointer: fine)').matches) {
 
+    const parentElem = document.querySelector('[data-compare-swiper]').closest('section')
+
     swiperAnimTL = gsap.timeline({
       scrollTrigger: {
         trigger: '[data-compare-swiper]',
         scrub: true,
         // start: 'top center',
         // end: 'center center',
-        pin: true,
+        pin: parentElem,
         start: 'top top-=1px',
         // markers: true,
         invalidateOnRefresh: true,

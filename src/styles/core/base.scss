@@ -2,6 +2,7 @@ html, body {
   width: 100%;
   overflow-x: hidden;
   background-color: theme('colors.darkgray');
+  scroll-behavior: smooth !important;
 }
 
 body {

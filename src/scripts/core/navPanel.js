@@ -31,7 +31,7 @@ export function openNav() {
     document.body.classList.add('scroll-disabled')
   }, 1500);
 
-  if (window.matchMedia('(any-hover: hover) and (pointer: fine)').matches) {
+  if (window.matchMedia('(any-hover: hover) and (pointer: fine)').matches && ScrollSmoother.get()) {
     let smoother = ScrollSmoother.get()
     scrollPosY = smoother.scrollTop()   
   }
@@ -117,7 +117,7 @@ export function closeNav(delay) {
   // Scroll Handler
   document.body.classList.remove('scroll-disabled')
 
-  if (window.matchMedia('(any-hover: hover) and (pointer: fine)').matches) {
+  if (window.matchMedia('(any-hover: hover) and (pointer: fine)').matches && ScrollSmoother.get()) {
     let smoother = ScrollSmoother.get()
     smoother.scrollTo(scrollPosY)
   }

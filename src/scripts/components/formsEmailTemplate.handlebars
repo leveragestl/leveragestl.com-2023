@@ -1,0 +1,24 @@
+<table width="100%" style="background-color: #f3f4f6;">
+  <tbody>
+    <tr>
+      <td></td>
+      <td style="max-width: 580px; width: 580px;">
+          <br />
+          <div style="text-align: left; background-color: white; padding: 30px;">
+            <p>Hello,</p>
+            <p>A new form has been submitted on your website. Details below.</p>
+            <br />
+            <div>
+              {{#each data}}<div><span style="color: #6b86ff; font-size: 14px;">{{@key}}</span><br />{{this}}</div><br />{{/each}}
+            </div>
+          </div>
+          <div style="text-align: center;">
+            <br />
+            <p><a href="{{viewLink}}">View in Formspark</a></p>
+            <br />
+          </div>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

@@ -10,15 +10,26 @@ interface Props {
 const { class: className, ...rest} = Astro.props
 ---
 
-<!-- To make this contact form work, create your free access key from https://web3forms.com/ - Then you will get all form submissions in your email inbox. -->
-<form action="https://api.web3forms.com/submit" method="POST" id="careers-form" class:list={["web3-form needs-validation text-darkgray mb-32", className]} {...rest} novalidate="novalidate">
+<form action="https://submit-form.com/xJok49gMZ" method="POST" id="careers-form" class:list={["web3-form needs-validation text-darkgray mb-32", className]} {...rest} novalidate="novalidate" data-subject="Application Submission" data-from="leveragestl.com">
 
+  <!-- Web3 Forms -->
+  <!--
+  <input type="hidden" name="access_key" value="c03b3bbe-0911-4575-8186-03c0fa3ec8aa" />
+  <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
+  <input id="from" type="hidden" name="from_name" value="leveragestl.com" />
+  <input id="subject" type="hidden" name="subject" value="Application Submission">
+  -->
+
+  <!-- FormSpark -->
+  <!--
+  <input type="hidden" name="_email.subject" value="You have a new message!" />
+  <input type="hidden" name="_email.from" value="John Doe" />
+  <input id="title" type="hidden" name="_email.template.title" value="My Custom Title" />
+  <input id="footer" type="hidden" name="_email.template.footer" value="false" />
+  -->
+  
   <div class="form-inner mb-8">
-    <!-- Hidden -->
-    <input type="hidden" name="access_key" value="c03b3bbe-0911-4575-8186-03c0fa3ec8aa" />
-    <input type="checkbox" class="hidden" style="display:none" name="botcheck" />
-    <input type="hidden" name="from_name" value="leveragestl.com" />
-    <input type="hidden" name="subject" value="Application Submission">
+
     <!-- Step 1 -->
     <div data-step="1" id="step-1" class="active">
       <ul class="step-tabs">
@@ -470,40 +481,51 @@ const { class: className, ...rest} = Astro.props
       <div class="">
         <!-- Name -->
         <div class="field">
-          <input required type="text" placeholder="*name (first and last)" name="Name" autocomplete="name" />
+          <input data-required id="name" type="text" placeholder="*name (first and last)" name="Name" autocomplete="name" />
           <div class="empty-feedback invalid-feedback">Please provide your name</div>
         </div>
         <!-- Email -->
         <div class="field">
-          <input required id="email_address" type="email" placeholder="*email" name="Email" />
+          <input data-required id="email_address" type="email" placeholder="*email" name="Email" />
           <div class="empty-feedback">Please provide your email address.</div>
           <div class="invalid-feedback">Please provide a valid email address.</div>
         </div>
         <!-- Phone -->
         <div class="field">
-          <input id="phone_number" type="tel" pattern="([\+]?1?([ ]|.|-)?[\(]?([2-9][0-8][0-9])[\)]?([ ]|.|-)?[0-9]{3}(-|.)?[0-9]{4})$" placeholder="phone" name="Phone Number" />
+          <input id="phone_number" type="tel" pattern="([\+]?1?([ ]|.|-)?(\()?([2-9][0-8][0-9])(\))?([ ]|.|-)?[0-9]{3}(-|.)?[0-9]{4})" placeholder="phone" name="Phone Number" />
           <div class="invalid-feedback">Please provide a valid phone number (US or International format).</div>
         </div>
     
         <!-- Address -->
         <div class="field">
-          <input required id="address" type="text" placeholder="*current city and state of residence" name="Current city and state of residence" autocomplete="street-address" />
+          <input data-required id="address" type="text" placeholder="*current city and state of residence" name="Current city and state of residence" autocomplete="street-address" />
           <div class="empty-feedback">Please provide your current city and state of residence</div>
         </div>
         <!-- URL -->
         <div class="field">
-          <input required id="url" type="text" placeholder="*portfolio url" name="Portfolio URL" />
+          <input data-required id="url" type="text" placeholder="*portfolio url" name="Portfolio URL" />
           <div class="empty-feedback">Please provide your portfolio URL</div>
         </div>
-        <!-- Resume -->
+
+        <!-- Upload Care -->
         <div class="field">
-          <label for="resume" class="block w-full font-bold italic font-serif">*resumé <span class="font-sans text-12 not-italic font-normal">(max file size: 2mb. file types: .pdf, .doc, .docx, .txt)</span></label>
-          <input required id="resume" type="file" name="Resumé" />
-          <div class="empty-feedback invalid-feedback">Please provide your resumé</div>
+          <label for="resume" class="block w-full font-bold italic font-serif">*resumé <span class="font-sans text-12 not-italic font-normal">(max file size: 10mb. file types: .pdf, .doc, .docx, .txt)</span></label>
+          <input type="hidden" id="resume" name="Resumé" data-uploadcare data-system-dialog data-file-types="pdf doc docx txt" data-input-accept-types=".pdf,.doc,.docx,.txt" data-tabs="file" data-btn-text="Choose File" data-public-key="4d9203816543294fa441" />
+          <!-- <input type="file" id="file" name="File" /> -->
+          <!-- <lr-config ctx-name="my-uploader" pubkey="4d9203816543294fa441"></lr-config>
+          <lr-file-uploader-regular ctx-name="my-uploader" css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.32.0/web/lr-file-uploader-regular.min.css"></lr-file-uploader-regular>   -->
         </div>
+
+        <!-- Resumé -->
+        <!-- <div class="field">
+          <label for="resume" class="block w-full font-bold italic font-serif">*resumé <span class="font-sans text-12 not-italic font-normal">(max file size: 2mb. file types: .pdf, .doc, .docx, .txt)</span></label>
+          <input data-required id="resume" type="file" name="Resumé" />
+          <div class="empty-feedback invalid-feedback">Please provide your resumé</div>
+        </div> -->
+
         <!-- Salary -->
         <div class="field">
-          <input id="salary" type="text" placeholder="salary requirement" name="Salary requirement" />
+          <input id="salary" type="text" placeholder="salary requirement" name="Salary Requirement" />
         </div>
         <!-- Anything Else -->
         <div class="field">

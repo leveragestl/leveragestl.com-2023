@@ -29,8 +29,8 @@ const { id, class: className, short = false, full = false, image, alt = '', widt
   </div>
   {image &&
     <div class="absolute top-0 left-0 w-full z-0 row-end-2 after:bg-black after:opacity-25 after:block after:w-full after:h-screen after:top-0 after:left-0 after:z-20 after:absolute">
-      <figure class="w-full" data-speed="0.5">
-        <Image class:list={['object-cover object-bottom w-full h-screen absolute top-1/2 -translate-y-1/2']} src={image} alt={alt} width={width} height={height} />
+      <figure class="w-full">
+        <Image data-speed="0.5" class:list={['object-cover object-bottom w-full h-screen absolute top-1/2 -translate-y-1/2']} src={image} alt={alt} width={width} height={height} />
       </figure>
     </div>
   }

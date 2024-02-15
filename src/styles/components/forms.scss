@@ -151,8 +151,9 @@ form {
     color: var(--primary-color);
     font-family: theme('fontFamily.sans');
     text-transform: uppercase;
-    font-size: 1.5rem;
-    font-weight: bold;
+    letter-spacing: 0.1em;
+    font-size: 1rem;
+    font-weight: normal;
   }
 
   // ===========================================================================
@@ -233,4 +234,67 @@ form {
 .is-invalid,
 .was-validated :invalid {
   border-color: theme('colors.red.400');
+}
+
+// =============================================================================
+// Uploadcare
+// =============================================================================
+
+.uploadcare {
+  &--widget {
+    margin: 10px 0;
+
+    button, button:hover, button:focus {
+      background-color: transparent;
+      border: 1px solid theme('colors.lightgray');
+      color: theme('colors.darkgray');
+      background-color: #eee;
+      cursor: pointer;
+      font-family: 'Proxima Nova', sans-serif;
+      // font-family: theme('fontFamily.sans');
+      // font-style: italic;
+      font-weight: 400;
+      font-size: 1rem;
+      border-radius: 0.15em;
+      padding: 0.15em 0.5em;
+      text-transform: capitalize;
+      -webkit-font-smoothing: auto;
+      -moz-osx-font-smoothing: auto;
+
+      &:hover, &:focus {
+        background-color: #ddd;
+      }
+    }
+  }
+
+  &--button {
+    background-color: transparent;
+    border: 2px solid theme('colors.gold');
+    color: theme('colors.gold');
+    cursor: pointer;
+    font-family: theme('fontFamily.serif');
+    font-size: 1rem;
+    font-style: italic;
+    border-radius: 0;
+    padding: 10px 20px;
+    text-transform: lowercase;
+  
+    &:hover, &:focus {
+      background-color: theme('colors.gold');
+      border: 1px solid theme('colors.gold');
+      color: white;
+      font-family: theme('fontFamily.serif');
+      font-style: italic;
+    }
+  }
+
+  &--dialog {
+    form input[type=color], form input[type=date], form input[type=datetime-local], form input[type=datetime], form input[type=email], form input[type=month], form input[type=number], form input[type=password], form input[type=search], form input[type=tel], form input[type=text], form input[type=time], form input[type=url], form input[type=week], form select, form textarea {
+      --primary-color: theme('colors.gold');
+    }
+  }
+  
+  &--dialog__close {
+    background-color: transparent !important;
+  }
 }
